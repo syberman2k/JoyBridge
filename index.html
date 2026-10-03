@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
 
+  <!-- NW JoyBridge App Version .06 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
   <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
-  <link rel="icon" type="image/png" href="JWJoyBridgeLogo.png">
-  <link rel="apple-touch-icon" href="JWJoyBridgeLogo.png">
+  <link rel="icon" type="image/png" href="NWJoyBridge.png">
+  <link rel="apple-touch-icon" href="NWJoyBridge.png">
   <meta name="theme-color" content="#4338ca">
 
   <!-- Link to External Web App Manifest for Proper Chrome PWA Installation -->
@@ -30,19 +31,23 @@
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200">
 
-  <!-- FIXED 80% DIMMED BACKGROUND IMAGE LAYER -->
+  <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-    <!-- Image Base -->
+    <!-- Base Wallpaper -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('AppBKGrnd.jpg');"></div>
-    <!-- 80% Dark Tint Overlay to Dim the Photo -->
-    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px]"></div>
+    <!-- Bright translucent white wash in Light Mode, deep 85% dim wash in Dark Mode -->
+    <div class="absolute inset-0 bg-white/90 dark:bg-slate-950/85 backdrop-blur-[1px] transition-colors duration-200"></div>
   </div>
 
   <!-- Header -->
-  <header class="bg-indigo-700/90 dark:bg-slate-900/90 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/50 dark:border-slate-800">
+  <header class="bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/60 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-        <img src="JWJoyBridgeLogo.png" alt="NW JoyBridge Logo" class="w-8 h-8 rounded-md object-contain bg-white/10 p-0.5">
+        <!-- Logo with SVG/Icon Fallback -->
+        <div class="w-8 h-8 rounded-md overflow-hidden bg-white/20 p-0.5 flex items-center justify-center flex-shrink-0">
+          <img src="NWJoyBridge.png" alt="NW JoyBridge Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+          <span class="hidden text-lg">🌉</span>
+        </div>
         <div>
           <h1 class="text-xl font-bold tracking-tight">NW JoyBridge</h1>
           <p class="text-xs text-indigo-200 dark:text-slate-300">2026 Eternal Happiness International Convention Language Helper</p>
@@ -79,138 +84,138 @@
 
     <!-- Screen 1: Language Selection -->
     <section id="languageScreen" class="space-y-6">
-      <div class="text-center py-4 bg-slate-900/40 dark:bg-slate-950/40 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-sm">
-        <h2 class="text-2xl font-bold text-white">Choose a Language</h2>
-        <p class="text-slate-200 dark:text-slate-300 mt-1">Select a delegate's language to begin communicating</p>
+      <div class="text-center py-4 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800/60 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
+        <p class="text-slate-600 dark:text-slate-300 mt-1">Select a delegate's language to begin communicating</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <!-- 1. Dutch -->
-        <button onclick="selectLanguage('dutch')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('dutch')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Dutch</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Dutch</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Nederlands</div>
           </div>
         </button>
 
         <!-- 2. Polish -->
-        <button onclick="selectLanguage('polish')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('polish')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Polish</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Polish</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">polski</div>
           </div>
         </button>
 
         <!-- 3. German -->
-        <button onclick="selectLanguage('german')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('german')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">German</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">German</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Deutsch</div>
           </div>
         </button>
 
         <!-- 4. Konkani (Kannada) -->
-        <button onclick="selectLanguage('konkani')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('konkani')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Konkani (Kannada)</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Konkani (Kannada)</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕೊಂಕಣಿ (ಕನ್ನಡ)</div>
           </div>
         </button>
 
         <!-- 5. Kannada -->
-        <button onclick="selectLanguage('kannada')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('kannada')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Kannada</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Kannada</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕನ್ನಡ</div>
           </div>
         </button>
 
         <!-- 6. Korean -->
-        <button onclick="selectLanguage('korean')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('korean')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Korean</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Korean</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">한국어</div>
           </div>
         </button>
 
         <!-- 7. Slovenian -->
-        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Slovenian</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Slovenian</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Slovenščina</div>
           </div>
         </button>
 
         <!-- 8. French -->
-        <button onclick="selectLanguage('french')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('french')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">French</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">French</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Français</div>
           </div>
         </button>
 
         <!-- 9. Tagalog -->
-        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Tagalog (Filipino)</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Tagalog (Filipino)</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Tagalog</div>
           </div>
         </button>
 
         <!-- 10. Simplified Chinese (Mandarin) -->
-        <button onclick="selectLanguage('chinese')" class="p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-white/20 dark:border-slate-700 rounded-xl shadow hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('chinese')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Chinese (Mandarin)</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Chinese (Mandarin)</div>
             <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">中文 (普通话)</div>
           </div>
         </button>
@@ -220,7 +225,7 @@
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
       <!-- Top Language Banner -->
-      <div class="flex items-center justify-between bg-white/90 dark:bg-slate-850/90 backdrop-blur-md border border-white/20 dark:border-slate-700 p-4 rounded-xl shadow">
+      <div class="flex items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-sm">
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -241,8 +246,8 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="categoryContainer"></div>
 
       <!-- STICKY TOP TABS BAR (Pinned during scrolling with blur & border) -->
-      <div class="sticky top-[57px] z-40 bg-slate-950/80 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-white/10 dark:border-slate-800/80 transition-colors">
-        <div class="flex bg-slate-200/90 dark:bg-slate-800/90 p-1 rounded-xl font-medium text-sm shadow">
+      <div class="sticky top-[57px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
+        <div class="flex bg-slate-200/90 dark:bg-slate-800/90 p-1 rounded-xl font-medium text-sm shadow-sm">
           <!-- 1st TAB: Left Side (Native Language Name) -->
           <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
             <span id="tabNativeText"></span>
@@ -253,7 +258,7 @@
           </button>
         </div>
         <!-- Quick Guidance Note -->
-        <p id="modeDescription" class="text-[11px] text-slate-300 dark:text-slate-400 italic text-center mt-1.5"></p>
+        <p id="modeDescription" class="text-[11px] text-slate-600 dark:text-slate-400 italic text-center mt-1.5"></p>
       </div>
 
       <!-- Phrase Cards List -->
@@ -508,10 +513,10 @@
             { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌‌ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
+            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
             { en: "How much is this?", tr: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "EE-duh-ruh BEH-lay ESH-too?" },
             { en: "I would like...", tr: "ನನಗೆ ... ಬೇಕು", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "nuh-NUH-gay ... BAY-koo" },
-            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
+            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
             { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
           ],
           ministry_skills: [
@@ -576,7 +581,7 @@
             { en: "It can be done in person or by video call.", tr: "ಹೆಂ ಖುದ್ದ್ ಮೆಳುನ್ ವಾ ವಿಡಿಯೋ ಕೊಲ್ ಮುಖಾಂತ್ರ್ ಕರ್ಯೆತ್.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "hem KHOOD-doo meh-WOON vah VEE-dee-yoh kohl moo-KHAHN-truh kur-yet." },
             { en: "Even a few minutes each week is fine.", tr: "ಹರ್ಯೆಕಾ ಸಪ್ತ್ಯಾಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಪುರೊ.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "hur-yay-KAH suhp-TYAHK kay-VUHL thoh-deemch mee-noo-TAHM poo-ROH." },
             { en: "May I show you how the course works?", tr: "ಹೊ ಕೋರ್ಸ್ ಕಸೊ ಚಲ್ತಾ ಮ್ಹಣ್ ಹಾಂವ್ ತುಮ್ಕಾಂ ದಾಕಂವ್ವೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "hoh kohrs kuh-SOH chuhl-TAH mhun HAHMV toom-KAHM dah-kuhmv-VAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಹೆಂ ದಾಕಂವ್ಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಲಾಗ್ತೆಲಿಂ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "hem dah-kuhmvk kay-VUHL thoh-deemch mee-noo-TAHM lahg-teh-LEEM." }
+            { en: "This demonstration will take only a few minutes.", tr: "ಹೆಂ ದಾಕಂವ್ಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಲಾಗ್ತೆಲಿಂ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "hem dah-kuhmvk kay-VUHL thoh-deemch mee-noo-TAHM lahg-teh-LEEM." }
           ]
         }
       },
@@ -666,7 +671,7 @@
           ],
           ministry_skills: [
             { en: "We’re offering a free Bible course this month.", tr: "Ta mesec ponujamo brezplačen svetopisemski tečaj.", phNative: "Vir offering e fri bajbl kors dis mant.", phEng: "tah MEH-sets poh-NOO-yah-moh brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
-            { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested in e fri bajbl stadi?", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY?" },
+            { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested in e fri bajbl stadi?", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
             { en: "We’re inviting people to try a free Bible lesson.", tr: "Vabimo vas, da poskusite brezplačno lekcijo o Svetem pismu.", phNative: "Vir invajting pipul tu traj e fri bajbl lesn.", phEng: "VAH-bee-moh vahs, dah poh-SKOO-see-teh brez-PLAHCH-noh LEK-tsee-yoh oh SVEH-tem PEES-moo." },
             { en: "Have you ever tried studying the Bible?", tr: "Ali ste že kdaj poskusili raziskovati Sveto pismo?", phNative: "Hev ju ever trajd stadiing de bajbl?", phEng: "AH-lee steh zheh k-dye poh-SKOO-see-lee rah-zees-koh-VAH-tee SVEH-toh PEES-moh?" },
             { en: "This course can help you understand the Bible.", tr: "Ta tečaj vam lahko pomaga razumeti Sveto pismo.", phNative: "Dis kors ken help ju anderstend de bajbl.", phEng: "tah teh-CHEY vahm LAH-hkoh poh-MAH-gah rah-ZOO-meh-tee SVEH-toh PEES-moh." },
@@ -889,7 +894,7 @@
         btn.className = `p-3 rounded-xl border text-left flex flex-col justify-between transition ${
           isActive 
             ? 'bg-indigo-600 text-white border-indigo-600 shadow' 
-            : 'bg-white/90 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-white/20 dark:border-slate-700 hover:border-indigo-400'
+            : 'bg-white/95 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
         btn.innerHTML = `
@@ -946,7 +951,7 @@
 
       list.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'phrase-card bg-white/95 dark:bg-slate-850/95 backdrop-blur-md border border-white/20 dark:border-slate-700/80 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
+        card.className = 'phrase-card bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
 
         if (currentMode === 'native') {
           card.innerHTML = `
