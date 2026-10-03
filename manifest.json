@@ -7,17 +7,17 @@
   "theme_color": "#4338ca",
   "icons": [
     {
-      "src": "JWJoyBridgeLogo.png",
+      "src": "NWJoyBridgeLogo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "JWJoyBridgeLogo.png",
+      "src": "NWJoyBridgeLogo.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "JWJoyBridgeLogo.png",
+      "src": "NWJoyBridgeLogo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
