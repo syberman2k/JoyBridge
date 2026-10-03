@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JW JoyBridge - 2026 International Convention Language Helper</title>
+
+  <!-- Browser Tab Icon (Favicon) -->
+  <link rel="icon" type="image/png" href="JWJoyBridgeLogo.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -18,7 +22,8 @@
   <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-        <span class="text-2xl">🌉</span>
+        <!-- Header Logo (replaces bridge emoji) -->
+        <img src="JWJoyBridgeLogo.png" alt="JW JoyBridge Logo" class="w-8 h-8 rounded-md object-contain bg-white/10 p-0.5">
         <div>
           <h1 class="text-xl font-bold tracking-tight">JW JoyBridge</h1>
           <p class="text-xs text-indigo-200">2026 Eternal Happiness International Convention Language Helper</p>
@@ -314,7 +319,7 @@
         data: {
           greetings: [
             { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
-            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
+            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
             { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
             { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
             { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
