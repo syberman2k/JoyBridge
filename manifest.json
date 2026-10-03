@@ -1,6 +1,6 @@
 {
-  "name": "JW JoyBridge",
-  "short_name": "JW JoyBridge",
+  "name": "NW JoyBridge",
+  "short_name": "NW JoyBridge",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
