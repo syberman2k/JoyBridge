@@ -5,10 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JW JoyBridge - 2026 International Convention Language Helper</title>
 
-  <!-- Browser Tab Icon (Favicon) -->
+  <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
   <link rel="icon" type="image/png" href="JWJoyBridgeLogo.png">
+  <link rel="apple-touch-icon" href="JWJoyBridgeLogo.png">
+  <meta name="theme-color" content="#4338ca">
 
+  <!-- Embedded Web App Manifest for Chrome PWA Installation -->
+  <link rel="manifest" href='data:application/manifest+json,{
+    "name": "JW JoyBridge - Convention Language Helper",
+    "short_name": "JW JoyBridge",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#4338ca",
+    "icons": [
+      {
+        "src": "JWJoyBridgeLogo.png",
+        "sizes": "192x192 512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ]
+  }'>
+
+  <!-- Tailwind CSS with Dark Mode Class Strategy -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -16,22 +43,36 @@
     .phrase-card:hover { transform: translateY(-2px); }
   </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col">
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-200">
 
   <!-- Header -->
-  <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+  <header class="bg-indigo-700 dark:bg-slate-800 text-white shadow-md sticky top-0 z-50 border-b border-indigo-600 dark:border-slate-700">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-        <!-- Header Logo (replaces bridge emoji) -->
         <img src="JWJoyBridgeLogo.png" alt="JW JoyBridge Logo" class="w-8 h-8 rounded-md object-contain bg-white/10 p-0.5">
         <div>
           <h1 class="text-xl font-bold tracking-tight">JW JoyBridge</h1>
-          <p class="text-xs text-indigo-200">2026 Eternal Happiness International Convention Language Helper</p>
+          <p class="text-xs text-indigo-200 dark:text-slate-300">2026 Eternal Happiness International Convention Language Helper</p>
         </div>
       </div>
-      <button id="homeBtn" onclick="goToHome()" class="hidden text-sm bg-indigo-800 hover:bg-indigo-900 px-3 py-1.5 rounded-lg border border-indigo-500 transition">
-        <i class="fa-solid fa-earth-americas mr-1"></i> Languages
-      </button>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-2">
+        <!-- Install App Button (Visible in Chrome when installable) -->
+        <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2.5 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1.5">
+          <i class="fa-solid fa-download"></i> Install
+        </button>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800 hover:bg-indigo-900 dark:bg-slate-700 dark:hover:bg-slate-600 px-2.5 py-1.5 rounded-lg border border-indigo-500 dark:border-slate-600 transition" title="Toggle theme">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Home Button -->
+        <button id="homeBtn" onclick="goToHome()" class="hidden text-sm bg-indigo-800 hover:bg-indigo-900 dark:bg-slate-700 dark:hover:bg-slate-600 px-3 py-1.5 rounded-lg border border-indigo-500 dark:border-slate-600 transition">
+          <i class="fa-solid fa-earth-americas mr-1"></i> Languages
+        </button>
+      </div>
     </div>
   </header>
 
@@ -41,71 +82,71 @@
     <!-- Screen 1: Language Selection -->
     <section id="languageScreen" class="space-y-6">
       <div class="text-center py-4">
-        <h2 class="text-2xl font-bold text-slate-900">Choose a Language</h2>
-        <p class="text-slate-600 mt-1">Select a delegate's language to begin communicating</p>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-1">Select a delegate's language to begin communicating</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
-        <button onclick="selectLanguage('dutch')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('dutch')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">Nederlands</span>
-            <span class="text-slate-500 font-medium ml-1">(Dutch)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">Nederlands</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Dutch)</span>
           </div>
           <span class="text-2xl">🇳🇱</span>
         </button>
 
-        <button onclick="selectLanguage('polish')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('polish')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">Polski</span>
-            <span class="text-slate-500 font-medium ml-1">(Polish)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">Polski</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Polish)</span>
           </div>
           <span class="text-2xl">🇵🇱</span>
         </button>
 
-        <button onclick="selectLanguage('german')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('german')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">Deutsch</span>
-            <span class="text-slate-500 font-medium ml-1">(German)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">Deutsch</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(German)</span>
           </div>
           <span class="text-2xl">🇩🇪</span>
         </button>
 
-        <button onclick="selectLanguage('kannada')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('kannada')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">ಕನ್ನಡ</span>
-            <span class="text-slate-500 font-medium ml-1">(Kannada)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">ಕನ್ನಡ</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Kannada)</span>
           </div>
           <span class="text-2xl">🇮🇳</span>
         </button>
 
-        <button onclick="selectLanguage('konkani')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('konkani')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">ಕೊಂಕಣಿ</span>
-            <span class="text-slate-500 font-medium ml-1">(Konkani)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">ಕೊಂಕಣಿ</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Konkani)</span>
           </div>
           <span class="text-2xl">🇮🇳</span>
         </button>
 
-        <button onclick="selectLanguage('korean')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('korean')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">한국어</span>
-            <span class="text-slate-500 font-medium ml-1">(Korean)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">한국어</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Korean)</span>
           </div>
           <span class="text-2xl">🇰🇷</span>
         </button>
 
-        <button onclick="selectLanguage('slovenian')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('slovenian')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">Slovenščina</span>
-            <span class="text-slate-500 font-medium ml-1">(Slovenian)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">Slovenščina</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(Slovenian)</span>
           </div>
           <span class="text-2xl">🇸🇮</span>
         </button>
 
-        <button onclick="selectLanguage('french')" class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
+        <button onclick="selectLanguage('french')" class="p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center justify-between group">
           <div>
-            <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600">Français</span>
-            <span class="text-slate-500 font-medium ml-1">(French)</span>
+            <span class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400">Français</span>
+            <span class="text-slate-500 dark:text-slate-400 font-medium ml-1">(French)</span>
           </div>
           <span class="text-2xl">🇫🇷</span>
         </button>
@@ -115,15 +156,15 @@
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-5">
       <!-- Top Language Banner -->
-      <div class="flex items-center justify-between bg-indigo-50 border border-indigo-100 p-4 rounded-xl">
+      <div class="flex items-center justify-between bg-indigo-50 dark:bg-slate-800/80 border border-indigo-100 dark:border-slate-700 p-4 rounded-xl">
         <div class="flex items-center space-x-3">
           <span id="detailFlag" class="text-3xl"></span>
           <div>
-            <h2 id="detailLangName" class="text-xl font-bold text-indigo-950"></h2>
-            <p id="detailLangSub" class="text-xs text-indigo-700"></p>
+            <h2 id="detailLangName" class="text-xl font-bold text-indigo-950 dark:text-white"></h2>
+            <p id="detailLangSub" class="text-xs text-indigo-700 dark:text-indigo-300"></p>
           </div>
         </div>
-        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 hover:text-indigo-900 bg-white px-3 py-1.5 rounded-lg border border-indigo-200 shadow-sm">
+        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-white dark:bg-slate-700 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-slate-600 shadow-sm">
           Change Language
         </button>
       </div>
@@ -132,17 +173,17 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="categoryContainer"></div>
 
       <!-- Mode Tabs -->
-      <div class="flex bg-slate-200 p-1 rounded-xl font-medium text-sm">
+      <div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl font-medium text-sm">
         <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
           <span id="tabNativeText"></span>
         </button>
-        <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-2.5 rounded-lg transition text-center text-slate-600">
+        <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-2.5 rounded-lg transition text-center text-slate-600 dark:text-slate-400">
           ENGLISH
         </button>
       </div>
 
       <!-- Quick Explanation Bar -->
-      <p id="modeDescription" class="text-xs text-slate-500 italic text-center px-2"></p>
+      <p id="modeDescription" class="text-xs text-slate-500 dark:text-slate-400 italic text-center px-2"></p>
 
       <!-- Phrase Cards List -->
       <div id="phrasesList" class="space-y-3 pb-8"></div>
@@ -151,6 +192,56 @@
   </main>
 
   <script>
+    // --- 1. DARK / LIGHT THEME LOGIC ---
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-sun';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeIcon').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      updateTabs(); // Refresh mode tabs styling
+      renderCategories(); // Refresh category button styling
+    }
+
+    initTheme();
+
+    // --- 2. PWA SERVICE WORKER & INSTALL PROMPT ---
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('installBtn');
+      if (installBtn) installBtn.classList.remove('hidden');
+    });
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          deferredPrompt = null;
+          document.getElementById('installBtn').classList.add('hidden');
+        });
+      }
+    }
+
+    // Register a minimal service worker to satisfy Chrome PWA install criteria
+    if ('serviceWorker' in navigator) {
+      const swCode = "self.addEventListener('install', e => self.skipWaiting()); self.addEventListener('fetch', () => {});";
+      const blob = new Blob([swCode], { type: 'application/javascript' });
+      navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(console.error);
+    }
+
+    // --- 3. APPLICATION DATA & STATE ---
     const database = {
       dutch: {
         name: "Nederlands",
@@ -364,7 +455,7 @@
         categories: {
           greetings: "ನಮಸ್ಕಾರ / Greetings",
           everyday: "ದಿನಚರಿ / Everyday",
-          getting_around: "ಭೊಂವ್ಡಿ / Getting Arround",
+          getting_around: "ಭೊಂವ್ಡಿ / Getting Around",
           ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ / Ministry Skills"
         },
         data: {
@@ -620,12 +711,12 @@
         btn.className = `p-3 rounded-xl border text-left flex flex-col justify-between transition ${
           isActive 
             ? 'bg-indigo-600 text-white border-indigo-600 shadow' 
-            : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-400'
+            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
         btn.innerHTML = `
           <div class="flex justify-between items-center w-full mb-1">
-            <i class="fa-solid ${cat.icon} text-sm ${isActive ? 'text-indigo-200' : 'text-slate-400'}"></i>
+            <i class="fa-solid ${cat.icon} text-sm ${isActive ? 'text-indigo-200' : 'text-slate-400 dark:text-slate-500'}"></i>
           </div>
           <span class="text-xs font-bold leading-tight">${lang.categories[cat.id]}</span>
         `;
@@ -645,13 +736,16 @@
       const desc = document.getElementById('modeDescription');
       const lang = database[currentLangKey];
 
+      const activeClass = 'flex-1 py-2.5 rounded-lg transition text-center shadow-sm bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 font-bold';
+      const inactiveClass = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+
       if (currentMode === 'native') {
-        tabNative.className = 'flex-1 py-2.5 rounded-lg transition text-center shadow-sm bg-white text-indigo-700 font-bold';
-        tabEnglish.className = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 hover:text-slate-900';
+        tabNative.className = activeClass;
+        tabEnglish.className = inactiveClass;
         desc.innerText = `Showing for ${lang.name} speakers: English is prominent with native phonetics.`;
       } else {
-        tabEnglish.className = 'flex-1 py-2.5 rounded-lg transition text-center shadow-sm bg-white text-indigo-700 font-bold';
-        tabNative.className = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 hover:text-slate-900';
+        tabEnglish.className = activeClass;
+        tabNative.className = inactiveClass;
         desc.innerText = `Showing for English speakers: ${lang.name} is prominent with English phonetics.`;
       }
     }
@@ -674,38 +768,30 @@
 
       list.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'phrase-card bg-white border border-slate-200 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
+        card.className = 'phrase-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
 
         if (currentMode === 'native') {
-          // Left Tab:
-          // 1. native language expression: smaller font, italicized
-          // 2. English expression: larger font, bold
-          // 3. English expression spelled phonetically in the chosen language
           card.innerHTML = `
             <div class="space-y-1">
-              <p class="text-xs text-slate-500 italic">${item.tr}</p>
-              <h3 class="text-lg font-bold text-slate-900">${item.en}</h3>
-              <p class="text-sm font-semibold text-indigo-600 tracking-wide">🗣️ [ ${item.phNative} ]</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.tr}</p>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.en}</h3>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phNative} ]</p>
             </div>
-            <div class="mt-3 pt-2 border-t border-slate-100 flex justify-end">
-              <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-3 py-1 rounded-md transition flex items-center gap-1">
+            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+              <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
                 <i class="fa-solid fa-volume-high"></i> Listen (EN)
               </button>
             </div>
           `;
         } else {
-          // Right Tab:
-          // 1. English expression: smaller font, italicized
-          // 2. native language expression: larger font, bold
-          // 3. chosen language expression spelled phonetically in English
           card.innerHTML = `
             <div class="space-y-1">
-              <p class="text-xs text-slate-500 italic">${item.en}</p>
-              <h3 class="text-lg font-bold text-slate-900">${item.tr}</h3>
-              <p class="text-sm font-semibold text-indigo-600 tracking-wide">🗣️ [ ${item.phEng} ]</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.en}</p>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.tr}</h3>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phEng} ]</p>
             </div>
-            <div class="mt-3 pt-2 border-t border-slate-100 flex justify-end">
-              <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-3 py-1 rounded-md transition flex items-center gap-1">
+            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+              <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
                 <i class="fa-solid fa-volume-high"></i> Listen (${lang.englishName})
               </button>
             </div>
