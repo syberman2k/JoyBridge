@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JoyBridge - International Convention Language Helper</title>
+  <title>NW JoyBridge - 2026 International Convention Language Helper</title>
+
+  <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
+  <link rel="icon" type="image/png" href="JWJoyBridgeLogo.png">
+  <link rel="apple-touch-icon" href="JWJoyBridgeLogo.png">
+  <meta name="theme-color" content="#4338ca">
+
+  <!-- Link to External Web App Manifest for Proper Chrome PWA Installation -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tailwind CSS with Dark Mode Class Strategy -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -12,21 +28,36 @@
     .phrase-card:hover { transform: translateY(-2px); }
   </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col">
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-200">
 
   <!-- Header -->
-  <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+  <header class="bg-indigo-700 dark:bg-slate-800 text-white shadow-md sticky top-0 z-50 border-b border-indigo-600 dark:border-slate-700">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-        <span class="text-2xl">🌉</span>
+        <img src="JWJoyBridgeLogo.png" alt="NW JoyBridge Logo" class="w-8 h-8 rounded-md object-contain bg-white/10 p-0.5">
         <div>
-          <h1 class="text-xl font-bold tracking-tight">JoyBridge</h1>
-          <p class="text-xs text-indigo-200">Eternal Happiness Convention Helper</p>
+          <h1 class="text-xl font-bold tracking-tight">NW JoyBridge</h1>
+          <p class="text-xs text-indigo-200 dark:text-slate-300">2026 Eternal Happiness International Convention Language Helper</p>
         </div>
       </div>
-      <button id="homeBtn" onclick="goToHome()" class="hidden text-sm bg-indigo-800 hover:bg-indigo-900 px-3 py-1.5 rounded-lg border border-indigo-500 transition">
-        <i class="fa-solid fa-earth-americas mr-1"></i> Languages
-      </button>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-2">
+        <!-- Install App Button (Visible in Chrome when installable) -->
+        <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2.5 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1.5">
+          <i class="fa-solid fa-download"></i> Install
+        </button>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800 hover:bg-indigo-900 dark:bg-slate-700 dark:hover:bg-slate-600 px-2.5 py-1.5 rounded-lg border border-indigo-500 dark:border-slate-600 transition" title="Toggle theme">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Home Button -->
+        <button id="homeBtn" onclick="goToHome()" class="hidden text-sm bg-indigo-800 hover:bg-indigo-900 dark:bg-slate-700 dark:hover:bg-slate-600 px-3 py-1.5 rounded-lg border border-indigo-500 dark:border-slate-600 transition">
+          <i class="fa-solid fa-earth-americas mr-1"></i> Languages
+        </button>
+      </div>
     </div>
   </header>
 
@@ -36,112 +67,138 @@
     <!-- Screen 1: Language Selection -->
     <section id="languageScreen" class="space-y-6">
       <div class="text-center py-4">
-        <h2 class="text-2xl font-bold text-slate-900">Choose a Language</h2>
-        <p class="text-slate-600 mt-1">Select a delegate's language to begin communicating</p>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-1">Select a delegate's language to begin communicating</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <!-- 1. Dutch -->
-        <button onclick="selectLanguage('dutch')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('dutch')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Dutch</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">Nederlands</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Dutch</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Nederlands</div>
           </div>
         </button>
 
         <!-- 2. Polish -->
-        <button onclick="selectLanguage('polish')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('polish')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Polish</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">polski</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Polish</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">polski</div>
           </div>
         </button>
 
         <!-- 3. German -->
-        <button onclick="selectLanguage('german')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('german')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">German</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">Deutsch</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">German</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Deutsch</div>
           </div>
         </button>
 
         <!-- 4. Konkani (Kannada) -->
-        <button onclick="selectLanguage('konkani')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('konkani')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Konkani (Kannada)</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">ಕೊಂಕಣಿ (ಕನ್ನಡ)</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Konkani (Kannada)</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕೊಂಕಣಿ (ಕನ್ನಡ)</div>
           </div>
         </button>
 
         <!-- 5. Kannada -->
-        <button onclick="selectLanguage('kannada')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('kannada')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Kannada</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">ಕನ್ನಡ</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Kannada</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕನ್ನಡ</div>
           </div>
         </button>
 
         <!-- 6. Korean -->
-        <button onclick="selectLanguage('korean')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('korean')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Korean</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">한국어</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Korean</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">한국어</div>
           </div>
         </button>
 
         <!-- 7. Slovenian -->
-        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">Slovenian</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">Slovenščina</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Slovenian</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Slovenščina</div>
           </div>
         </button>
 
         <!-- 8. French -->
-        <button onclick="selectLanguage('french')" class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-500 hover:shadow-md transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-lg">
+        <button onclick="selectLanguage('french')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <div class="text-sm text-slate-500 font-medium">French</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">Français</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">French</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Français</div>
+          </div>
+        </button>
+
+        <!-- 9. Tagalog -->
+        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Tagalog (Filipino)</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Tagalog</div>
+          </div>
+        </button>
+
+        <!-- 10. Simplified Chinese (Mandarin) -->
+        <button onclick="selectLanguage('chinese')" class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Chinese (Mandarin)</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">中文 (普通话)</div>
           </div>
         </button>
       </div>
@@ -150,19 +207,19 @@
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
       <!-- Top Language Banner -->
-      <div class="flex items-center justify-between bg-indigo-50 border border-indigo-100 p-4 rounded-xl">
+      <div class="flex items-center justify-between bg-indigo-50 dark:bg-slate-800/80 border border-indigo-100 dark:border-slate-700 p-4 rounded-xl">
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 text-indigo-700 rounded-lg">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
             </svg>
           </div>
           <div>
-            <h2 id="detailLangName" class="text-xl font-bold text-indigo-950 leading-tight"></h2>
-            <p id="detailLangSub" class="text-xs text-indigo-600 font-medium"></p>
+            <h2 id="detailLangName" class="text-xl font-bold text-indigo-950 dark:text-white leading-tight"></h2>
+            <p id="detailLangSub" class="text-xs text-indigo-700 dark:text-indigo-300 font-medium"></p>
           </div>
         </div>
-        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 hover:text-indigo-900 bg-white px-3 py-1.5 rounded-lg border border-indigo-200 shadow-sm">
+        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-white dark:bg-slate-700 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-slate-600 shadow-sm">
           Change Language
         </button>
       </div>
@@ -170,20 +227,20 @@
       <!-- Category Buttons -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="categoryContainer"></div>
 
-      <!-- STICKY TOP TABS BAR (Pinned during scrolling) -->
-      <div class="sticky top-[57px] z-40 bg-slate-50/95 backdrop-blur-sm pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/80">
-        <div class="flex bg-slate-200 p-1 rounded-xl font-medium text-sm shadow-sm">
+      <!-- STICKY TOP TABS BAR (Pinned during scrolling with blur & border) -->
+      <div class="sticky top-[57px] z-40 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+        <div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl font-medium text-sm shadow-sm">
           <!-- 1st TAB: Left Side (Native Language Name) -->
           <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
             <span id="tabNativeText"></span>
           </button>
           <!-- 2nd TAB: Right Side (ENGLISH) -->
-          <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-2.5 rounded-lg transition text-center text-slate-600">
+          <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-2.5 rounded-lg transition text-center">
             ENGLISH
           </button>
         </div>
         <!-- Quick Guidance Note -->
-        <p id="modeDescription" class="text-[11px] text-slate-500 italic text-center mt-1.5"></p>
+        <p id="modeDescription" class="text-[11px] text-slate-500 dark:text-slate-400 italic text-center mt-1.5"></p>
       </div>
 
       <!-- Phrase Cards List -->
@@ -193,16 +250,69 @@
   </main>
 
   <script>
+    // --- 1. DARK / LIGHT THEME LOGIC ---
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-sun';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeIcon').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      updateTabs();
+      renderCategories();
+    }
+
+    initTheme();
+
+    // --- 2. PWA SERVICE WORKER & INSTALL PROMPT LOGIC ---
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('installBtn');
+      if (installBtn) installBtn.classList.remove('hidden');
+    });
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          deferredPrompt = null;
+          const installBtn = document.getElementById('installBtn');
+          if (installBtn) installBtn.classList.add('hidden');
+        });
+      }
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered. Scope:', reg.scope))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+
+    // --- 3. APPLICATION DATA & STATE ---
     const database = {
       dutch: {
         name: "Nederlands",
         englishName: "Dutch",
         code: "nl-NL",
         categories: {
-          greetings: "Begroetingen",
-          everyday: "Dagelijks",
-          getting_around: "Onderweg",
-          ministry_skills: "Predikingsvaardigheden"
+          greetings: "Begroetingen / Greetings",
+          everyday: "Dagelijks / Everyday",
+          getting_around: "Onderweg / Getting Around",
+          ministry_skills: "Predikingsvaardigheden / Ministry Skills"
         },
         data: {
           greetings: [
@@ -249,10 +359,10 @@
         englishName: "Polish",
         code: "pl-PL",
         categories: {
-          greetings: "Powitania",
-          everyday: "Na co dzień",
-          getting_around: "W podróży",
-          ministry_skills: "Służba kaznodziejska"
+          greetings: "Powitania / Greetings",
+          everyday: "Na co dzień / Everyday",
+          getting_around: "W podróży / Getting Around",
+          ministry_skills: "Służba kaznodziejska / Ministry Skills"
         },
         data: {
           greetings: [
@@ -299,10 +409,10 @@
         englishName: "German",
         code: "de-DE",
         categories: {
-          greetings: "Begrüßungen",
-          everyday: "Alltag",
-          getting_around: "Unterwegs",
-          ministry_skills: "Predigtdienst"
+          greetings: "Begrüßungen / Greetings",
+          everyday: "Alltag / Everyday",
+          getting_around: "Unterwegs / Getting Around",
+          ministry_skills: "Predigtdienst / Ministry Skills"
         },
         data: {
           greetings: [
@@ -344,15 +454,65 @@
           ]
         }
       },
+      kannada: {
+        name: "ಕನ್ನಡ",
+        englishName: "Kannada",
+        code: "kn-IN",
+        categories: {
+          greetings: "ಶುಭಾಶಯಗಳು / Greetings",
+          everyday: "ದೈನಂದಿನ / Everyday",
+          getting_around: "ಪ್ರಯಾಣ / Getting Around",
+          ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು / Ministry Skills"
+        },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
+            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
+            { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
+            { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
+            { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
+            { en: "I'm fine, thank you", tr: "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ, ಧನ್ಯವಾದಗಳು", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "NAH-noo chen-nah-GEED-day-nay, dhuhn-yuh-VAH-duh-gul-oo" }
+          ],
+          everyday: [
+            { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
+            { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
+            { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
+            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
+            { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
+            { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌‌ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
+            { en: "How much is this?", tr: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "EE-duh-ruh BEH-lay ESH-too?" },
+            { en: "I would like...", tr: "ನನಗೆ ... ಬೇಕು", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "nuh-NUH-gay ... BAY-koo" },
+            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
+            { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
+            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
+            { en: "We’re inviting people to try a free Bible lesson.", tr: "ಉಚಿತ ಬೈಬಲ್ ಪಾಠವನ್ನು ಪ್ರಯತ್ನಿಸಲು ನಾವು ಜನರನ್ನು ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಇನ್ವೈಟಿಂಗ್ ಪೀಪಲ್ ಟು ಟ್ರೈ ಎ ಫ್ರೀ ಬೈಬಲ್ ಲೆಸನ್.", phEng: "oo-chee-tuh BY-buhl PAH-tuh-wuhn-noo pruh-yuht-nee-suhl-oo NAH-voo juh-nuh-RUHN-noo ah-wah-nee-soot-TEED-day-vay." },
+            { en: "Have you ever tried studying the Bible?", tr: "ನೀವು ಎಂದಾದರೂ ಬೈಬಲ್ ಕಲಿಯಲು ಪ್ರಯತ್ನಿಸಿದ್ದೀರಾ?", phNative: "ಹ್ಯಾವ್ ಯು ಎವರ್ ಟ್ರೈಡ್ ಸ್ಟಡಿಯಿಂಗ್ ದ ಬೈಬಲ್?", phEng: "NEE-voo en-dah-duh-ROO BY-buhl kuh-lee-yuhl-oo pruh-yuht-nee-seed-DEE-rah?" },
+            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
+            { en: "It answers important questions about life and the future.", tr: "ಇದು ಜೀವನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತದೆ.", phNative: "ಇಟ್ ಆನ್ಸರ್ಸ್ ಇಂಪಾರ್ಟೆಂಟ್ ಕ್ವೆಶ್ಚನ್ಸ್ ಅಬೌಟ್ ಲೈಫ್ ಅಂಡ್ ದ ಫ್ಯೂಚರ್.", phEng: "ee-DOO jee-vuh-nuh muht-too bhuh-VEESH-yuh-duh buhg-gay pruh-moo-khuh pruhsh-nay-gluh-GAY oot-tuh-ree-soot-tuh-day." },
+            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." },
+            { en: "You can choose the time and place.", tr: "ನೀವೇ ಸಮಯ ಮತ್ತು ಸ್ಥಳವನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.", phNative: "ಯು ಕ್ಯಾನ್ ಚೂಸ್ ದ ಟೈಮ್ ಅಂಡ್ ಪ್ಲೇಸ್.", phEng: "nee-VAY suh-muh-yuh muht-too sthl-wuhn-noo EYE-kay mah-duh-boo-doo." },
+            { en: "It can be done in person or by video call.", tr: "ಇದನ್ನು ನೇರವಾಗಿ ಅಥವಾ ವಿಡಿಯೋ ಕಾಲ್ ಮೂಲಕ ಮಾಡಬಹುದು.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "ee-duhn-noo NAY-ruh-wah-gee uh-thuh-wah VEE-dee-yoh kahl moo-luh-kuh mah-duh-boo-doo." },
+            { en: "Even a few minutes each week is fine.", tr: "ಪ್ರತಿ ವಾರ ಕೆಲವೇ ನಿಮಿಷಗಳು ಸಾಕು.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "pruh-tee VAH-ruh keh-luh-VAY nee-mee-shuh-gl-oo SAH-koo." },
+            { en: "May I show you how the course works?", tr: "ಕೋರ್ಸ್ ಹೇಗೆ ನಡೆಯುತ್ತದೆ ಎಂದು ನಾನು ನಿಮಗೆ ತೋರಿಸಲೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "kohrs hay-GAY nuh-dey-yoot-tuh-day en-doo NAH-noo nee-muh-gay toh-ree-suh-LAY?" },
+            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
+          ]
+        }
+      },
       konkani: {
         name: "ಕೊಂಕಣಿ (ಕನ್ನಡ)",
         englishName: "Konkani (Kannada)",
         code: "kok",
         categories: {
-          greetings: "ನಮಸ್ಕಾರ",
-          everyday: "ದಿನಚರಿ",
-          getting_around: "ಭೊಂವ್ಡಿ",
-          ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ"
+          greetings: "ನಮಸ್ಕಾರ / Greetings",
+          everyday: "ದಿನಚರಿ / Everyday",
+          getting_around: "ಭೊಂವ್ಡಿ / Getting Around",
+          ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ / Ministry Skills"
         },
         data: {
           greetings: [
@@ -394,65 +554,15 @@
           ]
         }
       },
-      kannada: {
-        name: "ಕನ್ನಡ",
-        englishName: "Kannada",
-        code: "kn-IN",
-        categories: {
-          greetings: "ಶುಭಾಶಯಗಳು",
-          everyday: "ದೈನಂದಿನ",
-          getting_around: "ಪ್ರಯಾಣ",
-          ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
-            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
-            { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
-            { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
-            { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
-            { en: "I'm fine, thank you", tr: "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ, ಧನ್ಯವಾದಗಳು", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "NAH-noo chen-nah-GEED-day-nay, dhuhn-yuh-VAH-duh-gul-oo" }
-          ],
-          everyday: [
-            { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
-            { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
-            { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
-            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
-            { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
-            { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
-            { en: "How much is this?", tr: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "EE-duh-ruh BEH-lay ESH-too?" },
-            { en: "I would like...", tr: "ನನಗೆ ... ಬೇಕು", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "nuh-NUH-gay ... BAY-koo" },
-            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
-            { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
-            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "ಉಚಿತ ಬೈಬಲ್ ಪಾಠವನ್ನು ಪ್ರಯತ್ನಿಸಲು ನಾವು ಜನರನ್ನು ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಇನ್ವೈಟಿಂಗ್ ಪೀಪಲ್ ಟು ಟ್ರೈ ಎ ಫ್ರೀ ಬೈಬಲ್ ಲೆಸನ್.", phEng: "oo-chee-tuh BY-buhl PAH-tuh-wuhn-noo pruh-yuht-nee-suhl-oo NAH-voo juh-nuh-RUHN-noo ah-wah-nee-soot-TEED-day-vay." },
-            { en: "Have you ever tried studying the Bible?", tr: "ನೀವು ಎಂದಾದರೂ ಬೈಬಲ್ ಕಲಿಯಲು ಪ್ರಯತ್ನಿಸಿದ್ದೀರಾ?", phNative: "ಹ್ಯಾವ್ ಯು ಎವರ್ ಟ್ರೈಡ್ ಸ್ಟಡಿಯಿಂಗ್ ದ ಬೈಬಲ್?", phEng: "NEE-voo en-dah-duh-ROO BY-buhl kuh-lee-yuhl-oo pruh-yuht-nee-seed-DEE-rah?" },
-            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
-            { en: "It answers important questions about life and the future.", tr: "ಇದು ಜೀವನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತದೆ.", phNative: "ಇಟ್ ಆನ್ಸರ್ಸ್ ಇಂಪಾರ್ಟೆಂಟ್ ಕ್ವೆಶ್ಚನ್ಸ್ ಅಬೌಟ್ ಲೈಫ್ ಅಂಡ್ ದ ಫ್ಯೂಚರ್.", phEng: "ee-DOO jee-vuh-nuh muht-too bhuh-VEESH-yuh-duh buhg-gay pruh-moo-khuh pruhsh-nay-gluh-GAY oot-tuh-ree-soot-tuh-day." },
-            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." },
-            { en: "You can choose the time and place.", tr: "ನೀವೇ ಸಮಯ ಮತ್ತು ಸ್ಥಳವನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.", phNative: "ಯು ಕ್ಯಾನ್ ಚೂಸ್ ದ ಟೈಮ್ ಅಂಡ್ ಪ್ಲೇಸ್.", phEng: "nee-VAY suh-muh-yuh muht-too sthl-wuhn-noo EYE-kay mah-duh-boo-doo." },
-            { en: "It can be done in person or by video call.", tr: "ಇದನ್ನು ನೇರವಾಗಿ ಅಥವಾ ವಿಡಿಯೋ ಕಾಲ್ ಮೂಲಕ ಮಾಡಬಹುದು.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "ee-duhn-noo NAY-ruh-wah-gee uh-thuh-wah VEE-dee-yoh kahl moo-luh-kuh mah-duh-boo-doo." },
-            { en: "Even a few minutes each week is fine.", tr: "ಪ್ರತಿ ವಾರ ಕೆಲವೇ ನಿಮಿಷಗಳು ಸಾಕು.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "pruh-tee VAH-ruh keh-luh-VAY nee-mee-shuh-gl-oo SAH-koo." },
-            { en: "May I show you how the course works?", tr: "ಕೋರ್ಸ್ ಹೇಗೆ ನಡೆಯುತ್ತದೆ ಎಂದು ನಾನು ನಿಮಗೆ ತೋರಿಸಲೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "kohrs hay-GAY nuh-dey-yoot-tuh-day en-doo NAH-noo nee-muh-gay toh-ree-suh-LAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
-          ]
-        }
-      },
       korean: {
         name: "한국어",
         englishName: "Korean",
         code: "ko-KR",
         categories: {
-          greetings: "인사말",
-          everyday: "일상 표현",
-          getting_around: "길 찾기 및 여행",
-          ministry_skills: "봉사 기술"
+          greetings: "인사말 / Greetings",
+          everyday: "일상 표현 / Everyday",
+          getting_around: "길 찾기 및 여행 / Getting Around",
+          ministry_skills: "봉사 기술 / Ministry Skills"
         },
         data: {
           greetings: [
@@ -499,10 +609,10 @@
         englishName: "Slovenian",
         code: "sl-SI",
         categories: {
-          greetings: "Pozdravi",
-          everyday: "Vsakdanji izrazi",
-          getting_around: "Na poti",
-          ministry_skills: "Oznanjevanje"
+          greetings: "Pozdravi / Greetings",
+          everyday: "Vsakdanji izrazi / Everyday",
+          getting_around: "Na poti / Getting Around",
+          ministry_skills: "Oznanjevanje / Ministry Skills"
         },
         data: {
           greetings: [
@@ -549,10 +659,10 @@
         englishName: "French",
         code: "fr-FR",
         categories: {
-          greetings: "Salutations",
-          everyday: "Tous les jours",
-          getting_around: "Se déplacer",
-          ministry_skills: "Techniques de prédication"
+          greetings: "Salutations / Greetings",
+          everyday: "Tous les jours / Everyday",
+          getting_around: "Se déplacer / Getting Around",
+          ministry_skills: "Techniques de prédication / Ministry Skills"
         },
         data: {
           greetings: [
@@ -593,12 +703,112 @@
             { en: "This demonstration will take only a few minutes.", tr: "Cette démonstration ne prendra que quelques minutes.", phNative: "Diss démonstréchone ouil téïk oneli e fiou minitce.", phEng: "set day-mohn-strah-SYOHN nuh prahn-DRAH kuh kel-kuh mee-NOOT." }
           ]
         }
+      },
+      tagalog: {
+        name: "Tagalog",
+        englishName: "Tagalog (Filipino)",
+        code: "fil-PH",
+        categories: {
+          greetings: "Pagbati / Greetings",
+          everyday: "Araw-araw / Everyday",
+          getting_around: "Pagbibiyahe / Getting Around",
+          ministry_skills: "Kasanayan sa Ministeryo / Ministry Skills"
+        },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Kumusta / Kamusta", phNative: "He-lo / Hay", phEng: "koo-moos-TAH" },
+            { en: "Good morning", tr: "Magandang umaga", phNative: "Gud mor-ning", phEng: "mah-gahn-DAHNG oo-MAH-gah" },
+            { en: "My name is...", tr: "Ang pangalan ko ay...", phNative: "May neym is...", phEng: "ahng pah-NGAH-lahn koh eye..." },
+            { en: "Nice to meet you", tr: "Ikinagagalak kitang makilala", phNative: "Nays tu mit yu", phEng: "ee-kee-nah-gah-gah-LAHK kee-tahng mah-kee-LAH-lah" },
+            { en: "How are you?", tr: "Kumusta ka?", phNative: "Haw ar yu?", phEng: "koo-moos-TAH kah?" },
+            { en: "I'm fine, thank you", tr: "Mabuti naman, salamat", phNative: "Aym fayn, tenk yu", phEng: "mah-BOO-tee nah-MAHN, sah-LAH-maht" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Pakiusap / Paki...", phNative: "Plis", phEng: "pah-kee-OO-sahp" },
+            { en: "Thank you", tr: "Salamat po", phNative: "Tenk yu", phEng: "sah-LAH-maht poh" },
+            { en: "You're welcome", tr: "Walang anuman", phNative: "Yur wel-kam", phEng: "wah-LAHNG ah-noo-MAHN" },
+            { en: "Excuse me", tr: "Ipagpaumanhin po / Paumanhin", phNative: "Eks-kyus mi", phEng: "ee-pahg-pow-mahn-HEEN poh" },
+            { en: "I'm sorry", tr: "Patawad po / Pasensya na", phNative: "Aym soh-ri", phEng: "pah-TAH-wahd poh / pah-SEN-syah nah" },
+            { en: "Can you help me?", tr: "Puwede mo ba akong tulungan?", phNative: "Ken yu help mi?", phEng: "PWEH-deh moh bah ah-KOHNG too-LOO-ngahn?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Nasaan po ang banyo (CR)?", phNative: "Wer is da bat-rum?", phEng: "nah-sah-AHN poh ahng BAHN-yoh?" },
+            { en: "How much is this?", tr: "Magkano po ito?", phNative: "Haw mats is dis?", phEng: "mahg-KAH-noh poh ee-TOH?" },
+            { en: "I would like...", tr: "Gusto ko po ng...", phNative: "Ay wud layk...", phEng: "GOOS-toh koh poh nahng..." },
+            { en: "I don't understand", tr: "Hindi ko po maintindihan", phNative: "Ay dont an-der-stend", phEng: "heen-DEE koh poh mah-een-teen-DEE-hahn" },
+            { en: "What time is it?", tr: "Anong oras na po?", phNative: "Wat taym is it?", phEng: "ah-NOHNG OH-rahs nah poh?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors dis mant.", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted in e fri Bay-bol sta-di?", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
+            { en: "We’re inviting people to try a free Bible lesson.", tr: "Inaanyayahan namin ang mga tao na subukan ang isang libreng aralin sa Bibliya.", phNative: "Wir in-vay-ting pi-pol tu tray e fri Bay-bol le-son.", phEng: "ee-nah-ahn-yah-YAH-hahn nah-MEEN ahng mah-NGAH TAH-oh nah soo-BOO-kahn ahng ee-SAHNG LEEG-breng ah-rah-LEEN sah beeb-LEE-yah." },
+            { en: "Have you ever tried studying the Bible?", tr: "Nasubukan mo na bang pag-aralan ang Bibliya?", phNative: "Hav yu e-ver trayd sta-di-ying da Bay-bol?", phEng: "nah-soo-BOO-kahn moh nah bahng pahg-ah-RAH-lahn ahng beeb-LEE-yah?" },
+            { en: "This course can help you understand the Bible.", tr: "Makakatulong ang kursong ito para mas maunawaan mo ang Bibliya.", phNative: "Dis kors ken help yu an-der-stend da Bay-bol.", phEng: "mah-kah-kah-TOO-lohng ahng KOOR-sohng ee-TOH PAH-rah mahs mah-oo-nah-wah-AHN moh ahng beeb-LEE-yah." },
+            { en: "It answers important questions about life and the future.", tr: "Sinasagot nito ang mahahalagang tanong tungkol sa buhay at hinaharap.", phNative: "It an-sers im-por-tant kwes-tsons a-bawt layf end da fyu-tsur.", phEng: "see-nah-SAH-goht NEE-toh ahng mah-hah-hah-lah-GAHNG TAH-nohng toong-KOHL sah BOO-hye aht hee-nah-HAH-rahp." },
+            { en: "There is no charge and no obligation.", tr: "Ito ay libre at walang anumang obligasyon.", phNative: "Der is no tsards end no ob-li-gey-syon.", phEng: "ee-TOH eye LEEG-breh aht wah-LAHNG ah-noo-MAHNG ohb-lee-gahs-YOHN." },
+            { en: "You can choose the time and place.", tr: "Maaari mong piliin ang oras at lugar.", phNative: "Yu ken tsus da taym end pleys.", phEng: "mah-ah-ah-REE mohng pee-LEE-een ahng OH-rahs aht loo-GAHR." },
+            { en: "It can be done in person or by video call.", tr: "Puwede itong gawin nang personal o sa pamamagitan ng video call.", phNative: "It ken bi dan in per-son or bay vid-yo kol.", phEng: "PWEH-deh ee-TOHNG GAH-ween nahng pair-soh-NAHL oh sah pah-mah-mah-gee-TAHN nahng VEE-dyoh kohl." },
+            { en: "Even a few minutes each week is fine.", tr: "Kahit ilang minuto lang bawat linggo ay sapat na.", phNative: "I-ven e fyu mi-nits its wik is fayn.", phEng: "KAH-heet ee-LAHNG mee-NOO-toh lahng BAH-waht leeng-GOH eye sah-PAHT nah." },
+            { en: "May I show you how the course works?", tr: "Puwede ko bang ipakita sa iyo kung paano ito ginagawa?", phNative: "Mey ay syo yu haw da kors werks?", phEng: "PWEH-deh koh bahng ee-pah-KEE-tah sah ee-YOH koong pah-AH-noh ee-TOH gee-nah-GAH-wah?" },
+            { en: "This demonstration will take only a few minutes.", tr: "Ilang minuto lamang ang kailangan sa maikling demonstrasyong ito.", phNative: "Dis de-mon-strey-syon wil teyk on-li e fyu mi-nits.", phEng: "ee-LAHNG mee-NOO-toh LAH-mahng ahng kye-LAH-ngahn sah mah-eek-LEENG deh-mohn-strahs-YOHNG ee-TOH." }
+          ]
+        }
+      },
+      chinese: {
+        name: "中文 (普通话)",
+        englishName: "Chinese (Mandarin)",
+        code: "zh-CN",
+        categories: {
+          greetings: "问候 / Greetings",
+          everyday: "日常 / Everyday",
+          getting_around: "出行 / Getting Around",
+          ministry_skills: "传道技能 / Ministry Skills"
+        },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "你好 / 嗨", phNative: "哈喽 / 嗨 (Hā-lóu / Hāi)", phEng: "NEE-HOW / HY" },
+            { en: "Good morning", tr: "早上好", phNative: "古德 摸宁 (Gǔ-dé mō-níng)", phEng: "DZOW-shuhng HOW" },
+            { en: "My name is...", tr: "我的名字是...", phNative: "麦 耐姆 伊兹 (Mài nài-mǔ yī-zī)", phEng: "WOH-duh MING-zuh SHUH..." },
+            { en: "Nice to meet you", tr: "很高兴认识你", phNative: "耐斯 吐 密特 尤 (Nài-sī tǔ mì-tè yóu)", phEng: "HUHN gow-SHING RUHN-shuh NEE" },
+            { en: "How are you?", tr: "你好吗？", phNative: "豪 阿 尤 (Háo ā yóu)", phEng: "NEE HOW MAH?" },
+            { en: "I'm fine, thank you", tr: "我很好，谢谢你", phNative: "艾姆 放，三克 尤 (Ài-mǔ fàng, sān-kè yóu)", phEng: "WOH HUHN HOW, SHYEH-shyeh NEE" }
+          ],
+          everyday: [
+            { en: "Please", tr: "请", phNative: "普利兹 (Pǔ-lì-zī)", phEng: "CHEENG" },
+            { en: "Thank you", tr: "谢谢", phNative: "三克 尤 (Sān-kè yóu)", phEng: "SHYEH-shyeh" },
+            { en: "You're welcome", tr: "不客气", phNative: "尤尔 威尔康 (Yóu-ěr wēi-ěr-kāng)", phEng: "BOO KUH-CHEE" },
+            { en: "Excuse me", tr: "不好意思 / 打扰一下", phNative: "益克斯克尤兹 密 (Yì-kè-sī-kè-yóu-zī mì)", phEng: "BOO HOW YEE-suh / DAH ROW YEE-SYAH" },
+            { en: "I'm sorry", tr: "对不起", phNative: "艾姆 索瑞 (Ài-mǔ suǒ-ruì)", phEng: "DWAY-boo-CHEE" },
+            { en: "Can you help me?", tr: "你能帮我吗？", phNative: "看 尤 帮我 密 (Kàn yóu hǎi-pǔ mì)", phEng: "NEE NUNG BAHNG WOH MAH?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "洗手间在哪里？", phNative: "威尔 伊兹 泽 巴斯如姆 (Wēi-ěr yī-zī zé bā-sī-rú-mǔ)", phEng: "SHEE-SHOW-JYEHN DZYE NAH-LEE?" },
+            { en: "How much is this?", tr: "这个多少钱？", phNative: "豪 玛驰 伊兹 迪斯 (Háo mǎ-chí yī-zī dí-sī)", phEng: "JHAY-guh DWOH-SHAOW CHYEHN?" },
+            { en: "I would like...", tr: "我想要...", phNative: "艾 乌德 莱克 (Ài wū-dé lái-kè)", phEng: "WOH SHYAHNG YOW..." },
+            { en: "I don't understand", tr: "我听不懂 / 我不明白", phNative: "艾 懂特 安德斯坦德 (Ài dǒng-tè ān-dé-sī-tǎn-dé)", phEng: "WOH TEENG BOO DOONG / WOH BOO MING-BY" },
+            { en: "What time is it?", tr: "现在几点？", phNative: "瓦特 泰姆 伊兹 伊特 (Wǎ-tè tài-mǔ yī-zī yī-tè)", phEng: "SHYEN-DZYE JEE DYEHN?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "我们这个月提供免费的圣经课程。", phNative: "威尔 奥弗令 额 弗瑞 拜伯 阔斯 迪斯 忙斯", phEng: "WOH-muhn JHAY-guh YWEH TEE-goong MYEN-fay duh SHUNG-jeeng KUH-chuhng." },
+            { en: "Would you be interested in a free Bible study?", tr: "你对免费学习圣经感兴趣吗？", phNative: "乌德 尤 必 因特瑞斯提德 因 额 弗瑞 拜伯 斯塔迪", phEng: "NEE DWAY MYEN-fay SHYWEH-shee SHUNG-jeeng GAHN SHING-chyoo MAH?" },
+            { en: "We’re inviting people to try a free Bible lesson.", tr: "我们邀请人体验一堂免费的圣经课。", phNative: "威尔 因歪廷 批剖 吐 揣 额 弗瑞 拜伯 来森", phEng: "WOH-muhn YOW-cheeng RUHN TEE-yehn YEE-tahng MYEN-fay duh SHUNG-jeeng KUH." },
+            { en: "Have you ever tried studying the Bible?", tr: "你以前有学习过圣经吗？", phNative: "汉夫 尤 挨窝 揣德 斯塔迪硬 泽 拜伯", phEng: "NEE YEE-chyehn YOH SHYWEH-shee GWOH SHUNG-jeeng MAH?" },
+            { en: "This course can help you understand the Bible.", tr: "这个课程能帮助你明白圣经。", phNative: "迪斯 阔斯 看 海普 尤 安德斯坦德 泽 拜伯", phEng: "JHAY-guh KUH-chuhng NUNG BAHNG-joo NEE MING-by SHUNG-jeeng." },
+            { en: "It answers important questions about life and the future.", tr: "它能解答关于人生和未来的重要问题。", phNative: "伊特 安瑟斯 音剖特恩特 阔斯臣斯 阿包特 来福 恩德 泽 퓨처", phEng: "TAH NUNG JYEH-dah GWAHN-yoo RUHN-shuhng HUH WAY-lye duh JOONG-yow WUN-tee." },
+            { en: "There is no charge and no obligation.", tr: "完全免费，没有任何约束。", phNative: "泽尔 伊兹 诺 恰芝 恩德 诺 欧伯利给讯", phEng: "WAHN-chywen MYEN-fay, MAY-yoh RUHN-huh YWEH-shoo." },
+            { en: "You can choose the time and place.", tr: "你可以自由选择时间和地点。", phNative: "尤 看 丘兹 泽 泰姆 恩德 普雷斯", phEng: "NEE KEE-yee DZU-yoh SHYWEN-zuh SHUH-jyehn HUH DEE-dyehn." },
+            { en: "It can be done in person or by video call.", tr: "可以通过面对面或视频通话来进行。", phNative: "伊特 看 必 当 因 剖森 或 拜 威第欧 靠", phEng: "KEE-yee TOONG-gwoh MYEN-dway-MYEN HWOH SHUH-peen TOONG-hwah LYEE JEEN-sheeng." },
+            { en: "Even a few minutes each week is fine.", tr: "每周即使只花几分钟也可以。", phNative: "依温 额 퓨 迷你茨 一起 威克 伊兹 放", phEng: "MAY-joh JEE-shuh JHUR HWAH JEE FUN-joong YEH KEE-yee." },
+            { en: "May I show you how the course works?", tr: "我可以向你示范一下课程是怎么进行的吗？", phNative: "妹 艾 秀 尤 豪 泽 阔斯 沃克斯", phEng: "WOH KEE-yee SHYAHNG NEE SHUH-fahn YEE-syah KUH-chuhng SHUH DZEN-muh JEEN-sheeng duh MAH?" },
+            { en: "This demonstration will take only a few minutes.", tr: "这个示范只需要几分钟时间。", phNative: "迪斯 德蒙斯特雷讯 威尔 忒克 欧恩利 额 퓨 迷你茨", phEng: "JHAY-guh SHUH-fahn JHEE SHYEE-yow JEE FUN-joong SHUH-jyehn." }
+          ]
+        }
       }
     };
 
     let currentLangKey = 'german';
     let currentCategory = 'greetings';
-    let currentMode = 'native'; // 'native' = Left Tab, 'english' = Right Tab
+    let currentMode = 'native';
 
     function goToHome() {
       document.getElementById('languageScreen').classList.remove('hidden');
@@ -614,7 +824,7 @@
 
       const langData = database[langKey];
       document.getElementById('detailLangName').innerText = langData.name;
-      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Helper`;
+      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
 
       // Set Tab Left Title
       document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
@@ -653,12 +863,12 @@
         btn.className = `p-3 rounded-xl border text-left flex flex-col justify-between transition ${
           isActive 
             ? 'bg-indigo-600 text-white border-indigo-600 shadow' 
-            : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-400'
+            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
         btn.innerHTML = `
           <div class="flex justify-between items-center w-full mb-1">
-            <i class="fa-solid ${cat.icon} text-sm ${isActive ? 'text-indigo-200' : 'text-slate-400'}"></i>
+            <i class="fa-solid ${cat.icon} text-sm ${isActive ? 'text-indigo-200' : 'text-slate-400 dark:text-slate-500'}"></i>
           </div>
           <span class="text-xs font-bold leading-tight">${lang.categories[cat.id]}</span>
         `;
@@ -678,13 +888,16 @@
       const desc = document.getElementById('modeDescription');
       const lang = database[currentLangKey];
 
+      const activeClass = 'flex-1 py-2.5 rounded-lg transition text-center shadow-sm bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 font-bold';
+      const inactiveClass = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+
       if (currentMode === 'native') {
-        tabNative.className = 'flex-1 py-2.5 rounded-lg transition text-center shadow bg-white text-indigo-700 font-bold';
-        tabEnglish.className = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 hover:text-slate-900';
+        tabNative.className = activeClass;
+        tabEnglish.className = inactiveClass;
         desc.innerText = `Showing for ${lang.name} speakers: English is prominent with native phonetics.`;
       } else {
-        tabEnglish.className = 'flex-1 py-2.5 rounded-lg transition text-center shadow bg-white text-indigo-700 font-bold';
-        tabNative.className = 'flex-1 py-2.5 rounded-lg transition text-center text-slate-600 hover:text-slate-900';
+        tabEnglish.className = activeClass;
+        tabNative.className = inactiveClass;
         desc.innerText = `Showing for English speakers: ${lang.name} is prominent with English phonetics.`;
       }
     }
@@ -707,38 +920,30 @@
 
       list.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'phrase-card bg-white border border-slate-200 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
+        card.className = 'phrase-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm relative flex flex-col justify-between';
 
         if (currentMode === 'native') {
-          // Left Tab:
-          // 1. native language expression: smaller font, italicized
-          // 2. English expression: larger font, bold
-          // 3. English expression spelled phonetically in the chosen language
           card.innerHTML = `
             <div class="space-y-1">
-              <p class="text-xs text-slate-500 italic">${item.tr}</p>
-              <h3 class="text-lg font-bold text-slate-900">${item.en}</h3>
-              <p class="text-sm font-semibold text-indigo-600 tracking-wide">🗣️ [ ${item.phNative} ]</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.tr}</p>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.en}</h3>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phNative} ]</p>
             </div>
-            <div class="mt-3 pt-2 border-t border-slate-100 flex justify-end">
-              <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-3 py-1 rounded-md transition flex items-center gap-1">
+            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+              <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
                 <i class="fa-solid fa-volume-high"></i> Listen (EN)
               </button>
             </div>
           `;
         } else {
-          // Right Tab:
-          // 1. English expression: smaller font, italicized
-          // 2. native language expression: larger font, bold
-          // 3. chosen language expression spelled phonetically in English
           card.innerHTML = `
             <div class="space-y-1">
-              <p class="text-xs text-slate-500 italic">${item.en}</p>
-              <h3 class="text-lg font-bold text-slate-900">${item.tr}</h3>
-              <p class="text-sm font-semibold text-indigo-600 tracking-wide">🗣️ [ ${item.phEng} ]</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.en}</p>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.tr}</h3>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phEng} ]</p>
             </div>
-            <div class="mt-3 pt-2 border-t border-slate-100 flex justify-end">
-              <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 px-3 py-1 rounded-md transition flex items-center gap-1">
+            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+              <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
                 <i class="fa-solid fa-volume-high"></i> Listen (${lang.englishName})
               </button>
             </div>
