@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- NW JoyBridge App Version .061 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
 
-  <!-- NW JoyBridge App Version .06 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
   <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
   <link rel="icon" type="image/png" href="NWJoyBridge.png">
   <link rel="apple-touch-icon" href="NWJoyBridge.png">
   <meta name="theme-color" content="#4338ca">
 
-  <!-- Link to External Web App Manifest for Proper Chrome PWA Installation -->
+  <!-- Web App Manifest for PWA Installation -->
   <link rel="manifest" href="manifest.json">
 
   <!-- Tailwind CSS with Dark Mode Class Strategy -->
@@ -27,6 +27,9 @@
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .phrase-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .phrase-card:hover { transform: translateY(-2px); }
+    /* Custom clean scrollbar for horizontal language strip */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200">
@@ -35,14 +38,14 @@
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
     <!-- Base Wallpaper -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('AppBKGrnd.jpg');"></div>
-    <!-- Bright translucent white wash in Light Mode, deep 85% dim wash in Dark Mode -->
-    <div class="absolute inset-0 bg-white/90 dark:bg-slate-950/85 backdrop-blur-[1px] transition-colors duration-200"></div>
+    <!-- Barely faded (15% white) overlay in Light Mode, deep 85% dim in Dark Mode -->
+    <div class="absolute inset-0 bg-white/15 dark:bg-slate-950/85 transition-colors duration-200"></div>
   </div>
 
   <!-- Header -->
   <header class="bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/60 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="goToWelcome()">
         <!-- Logo with SVG/Icon Fallback -->
         <div class="w-8 h-8 rounded-md overflow-hidden bg-white/20 p-0.5 flex items-center justify-center flex-shrink-0">
           <img src="NWJoyBridge.png" alt="NW JoyBridge Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
@@ -50,15 +53,20 @@
         </div>
         <div>
           <h1 class="text-xl font-bold tracking-tight">NW JoyBridge</h1>
-          <p class="text-xs text-indigo-200 dark:text-slate-300">2026 Eternal Happiness International Convention Language Helper</p>
+          <p class="text-xs text-indigo-200 dark:text-slate-300">2026 Eternal Happiness International Convention Helper</p>
         </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center space-x-2">
+      <!-- Action Buttons in Top Right -->
+      <div class="flex items-center space-x-1.5 sm:space-x-2">
         <!-- Install App Button (Visible in Chrome when installable) -->
-        <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2.5 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1.5">
-          <i class="fa-solid fa-download"></i> Install
+        <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1">
+          <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install</span>
+        </button>
+
+        <!-- Greeting / Welcome Page Button -->
+        <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1.5" title="Greeting & Welcome Page">
+          <i class="fa-solid fa-heart text-pink-300"></i> <span class="font-medium">Welcome</span>
         </button>
 
         <!-- Dark / Light Mode Toggle Button -->
@@ -66,8 +74,8 @@
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Home Button -->
-        <button id="homeBtn" onclick="goToHome()" class="hidden text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition">
+        <!-- Languages Button (Visible when on Detail screen) -->
+        <button id="homeBtn" onclick="goToHome()" class="hidden text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition">
           <i class="fa-solid fa-earth-americas mr-1"></i> Languages
         </button>
       </div>
@@ -82,16 +90,131 @@
   <!-- Main Container -->
   <main class="flex-grow max-w-4xl mx-auto w-full p-4 md:p-6 relative z-10">
 
+    <!-- Screen 0: Welcome & Greeting Page (Shows on first launch) -->
+    <section id="welcomeScreen" class="space-y-5">
+
+      <!-- TOP LANGUAGE SELECTOR STRIP FOR GREETINGS -->
+      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-3 border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-2">
+        <div class="flex items-center justify-between px-1">
+          <span class="text-xs font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+            <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400"></i>
+            <span>Select Greeting Language / 语言 / 언어:</span>
+          </span>
+          <span id="currentGreetingLangBadge" class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
+            English
+          </span>
+        </div>
+        <!-- Scrollable buttons row -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="greetingLangBar"></div>
+      </div>
+
+      <!-- Heartfelt Welcome Hero Banner -->
+      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-200/90 dark:border-slate-800 shadow-lg text-center space-y-4">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 text-3xl shadow-inner">
+          <i class="fa-solid fa-hands-holding-heart"></i>
+        </div>
+        <div class="space-y-2">
+          <span id="welcomeBadge" class="inline-block px-3 py-1 bg-indigo-50 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider rounded-full">
+            San Diego, California • 2026
+          </span>
+          <h2 id="welcomeTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Welcome, Dear International Delegates!
+          </h2>
+          <p id="welcomeBody" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            We open our hearts and arms in warm Christian love as we welcome you to the <strong class="text-indigo-700 dark:text-indigo-400">“Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego!
+          </p>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button onclick="launchLanguageHelperFromWelcome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition-all text-sm sm:text-base">
+            <i class="fa-solid fa-language text-lg"></i>
+            <span id="welcomeActionBtnText">Open Language Helper</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+          <button onclick="goToHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm transition">
+            <i class="fa-solid fa-list-ul"></i>
+            <span>All 10 Languages</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Postcard Section -->
+      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 flex-wrap gap-2">
+          <div class="flex items-center space-x-2.5">
+            <i class="fa-solid fa-film text-indigo-600 dark:text-indigo-400 text-lg"></i>
+            <h3 id="videoSectionHeading" class="font-bold text-slate-900 dark:text-white text-base sm:text-lg">Convention Welcome & Postcard</h3>
+          </div>
+          <!-- Video selector tabs -->
+          <div class="flex gap-1.5 text-xs">
+            <button id="btnVidPostcard" onclick="switchVideo('postcard')" class="px-2.5 py-1 rounded-md font-semibold bg-indigo-600 text-white transition">Video Postcard</button>
+            <button id="btnVidPrep" onclick="switchVideo('prep')" class="px-2.5 py-1 rounded-md font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Convention Prep</button>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center">
+          <video id="conventionVideoPlayer" controls playsinline preload="metadata" class="w-full h-full object-contain">
+            <source src="videopostcard.mp4" type="video/mp4">
+            Your browser does not support HTML5 video streaming.
+          </video>
+        </div>
+        <p id="videoCaption" class="text-xs text-slate-500 dark:text-slate-400 italic text-center">
+          Warm greetings and postcard memories from your hosts in San Diego.
+        </p>
+      </div>
+
+      <!-- Quick Delegate Links: JW.ORG & WhatsApp Support -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- JW.ORG Link Card -->
+        <a href="https://jw.org" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
+            JW
+          </div>
+          <div class="flex-grow">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">Official JW.ORG</h4>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-indigo-500"></i>
+            </div>
+            <p id="jwOrgCardDesc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+              Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.
+            </p>
+          </div>
+        </a>
+
+        <!-- WhatsApp Support Card -->
+        <a href="https://chat.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-emerald-500 dark:hover:border-emerald-400 transition flex items-start space-x-4 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="flex-grow">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">ESMCHDelegatesSupport</h4>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-emerald-500"></i>
+            </div>
+            <p id="whatsappCardDesc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+              Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship.
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- Screen 1: Language Selection -->
-    <section id="languageScreen" class="space-y-6">
-      <div class="text-center py-4 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800/60 shadow-sm">
-        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
-        <p class="text-slate-600 dark:text-slate-300 mt-1">Select a delegate's language to begin communicating</p>
+    <section id="languageScreen" class="hidden space-y-6">
+      <div class="text-center py-4 bg-white/90 dark:bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800/60 shadow-md flex items-center justify-between">
+        <button onclick="goToWelcome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-indigo-50 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200/80 dark:border-slate-700 transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Welcome Page
+        </button>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Select a delegate's language to begin communicating</p>
+        </div>
+        <div class="w-16"></div> <!-- Balance placeholder -->
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <!-- 1. Dutch -->
-        <button onclick="selectLanguage('dutch')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('dutch')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -104,7 +227,7 @@
         </button>
 
         <!-- 2. Polish -->
-        <button onclick="selectLanguage('polish')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('polish')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -117,7 +240,7 @@
         </button>
 
         <!-- 3. German -->
-        <button onclick="selectLanguage('german')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('german')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -130,7 +253,7 @@
         </button>
 
         <!-- 4. Konkani (Kannada) -->
-        <button onclick="selectLanguage('konkani')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('konkani')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -143,7 +266,7 @@
         </button>
 
         <!-- 5. Kannada -->
-        <button onclick="selectLanguage('kannada')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('kannada')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -156,7 +279,7 @@
         </button>
 
         <!-- 6. Korean -->
-        <button onclick="selectLanguage('korean')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('korean')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -169,7 +292,7 @@
         </button>
 
         <!-- 7. Slovenian -->
-        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -182,7 +305,7 @@
         </button>
 
         <!-- 8. French -->
-        <button onclick="selectLanguage('french')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('french')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -195,7 +318,7 @@
         </button>
 
         <!-- 9. Tagalog -->
-        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -208,7 +331,7 @@
         </button>
 
         <!-- 10. Simplified Chinese (Mandarin) -->
-        <button onclick="selectLanguage('chinese')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition text-left flex items-center space-x-4">
+        <button onclick="selectLanguage('chinese')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
@@ -225,7 +348,7 @@
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
       <!-- Top Language Banner -->
-      <div class="flex items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-md">
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -237,7 +360,7 @@
             <p id="detailLangSub" class="text-xs text-indigo-700 dark:text-indigo-300 font-medium"></p>
           </div>
         </div>
-        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-white/90 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-slate-600 shadow-sm transition">
+        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-slate-600 shadow-sm transition">
           Change Language
         </button>
       </div>
@@ -291,7 +414,260 @@
 
     initTheme();
 
-    // --- 2. PWA SERVICE WORKER & OFFLINE LOGIC ---
+    // --- 2. MULTI-LANGUAGE GREETINGS DATA & LOGIC ---
+    const greetingTranslations = {
+      english: {
+        badge: "San Diego, California • 2026",
+        title: "Welcome, Dear International Delegates!",
+        body: "We open our hearts and arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego!",
+        actionBtn: "Open Language Helper",
+        videoHeading: "Convention Welcome & Postcard",
+        videoCaptionPostcard: "Warm greetings and postcard memories from your hosts in San Diego.",
+        videoCaptionPrep: "San Diego International Convention Preparation & Highlights.",
+        jwOrgDesc: "Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.",
+        whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship."
+      },
+      dutch: {
+        badge: "San Diego, Californië • 2026",
+        title: "Welkom, Lieve Internationale Afgevaardigden!",
+        body: "Met warme christelijke liefde heten wij u van harte welkom op het internationale congres <strong class=\"text-indigo-700 dark:text-indigo-400\">„Eeuwige vreugde”</strong>. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben!",
+        actionBtn: "Open Taalhulp (Nederlands)",
+        videoHeading: "Welkom & Videopostkaart",
+        videoCaptionPostcard: "Hartelijke groeten en videopostkaarten van uw gastbroeders en -zusters in San Diego.",
+        videoCaptionPrep: "Voorbereidingen en hoogtepunten van het internationale congres in San Diego.",
+        jwOrgDesc: "Bekijk congrespublicaties, dagprogramma's, muziek en geestelijke aanmoediging in honderden talen.",
+        whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang."
+      },
+      polish: {
+        badge: "San Diego, Kalifornia • 2026",
+        title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
+        body: "Z gorącą chrześcijańską miłością witamy Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego!",
+        actionBtn: "Otwórz pomoc językową (Polski)",
+        videoHeading: "Powitanie kongresowe i wideo-pocztówka",
+        videoCaptionPostcard: "Ciepłe pozdrowienia i wspomnienia na wideo od Waszych gospodarzy w San Diego.",
+        videoCaptionPrep: "Przygotowania i najważniejsze momenty kongresu międzynarodowego w San Diego.",
+        jwOrgDesc: "Korzystaj z materiałów kongresowych, programu dziennego, pieśni i duchowych zachęt w setkach języków.",
+        whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą."
+      },
+      german: {
+        badge: "San Diego, Kalifornien • 2026",
+        title: "Herzlich willkommen, liebe internationale Delegierte!",
+        body: "Mit herzlicher christlicher Liebe heißen wir Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„Ewige Freude“</strong> willkommen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben!",
+        actionBtn: "Sprachhelfer öffnen (Deutsch)",
+        videoHeading: "Kongress-Willkommen & Video-Postkarte",
+        videoCaptionPostcard: "Herzliche Grüße und Postkarten-Impressionen von Ihren Gastgebern in San Diego.",
+        videoCaptionPrep: "Vorbereitungen und Höhepunkte des Internationalen Kongresses in San Diego.",
+        jwOrgDesc: "Zugang zu Kongressveröffentlichungen, Tagesprogrammen, Musik und geistiger Ermunterung in Hunderten von Sprachen.",
+        whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten."
+      },
+      kannada: {
+        badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
+        title: "ಆತ್ಮೀಯ ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ, ನಿಮಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ!",
+        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಪ್ರೀತಿಯಿಂದ ಸ್ವಾಗತಿಸುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ!",
+        actionBtn: "ಭಾಷಾ ಸಹಾಯ ತೆರೆಯಿರಿ (ಕನ್ನಡ)",
+        videoHeading: "ಸಮಾವೇಶ ಸ್ವಾಗತ & ವೀಡಿಯೊ ಪೋಸ್ಟ್‌ಕಾರ್ಡ್",
+        videoCaptionPostcard: "ಸ್ಯಾನ್ ಡಿಯಾಗೋದ ನಿಮ್ಮ ಆತಿಥೇಯರಿಂದ ಪ್ರೀತಿಯ ಶುಭಾಶಯಗಳು ಮತ್ತು ವೀಡಿಯೊ ನೆನಪುಗಳು.",
+        videoCaptionPrep: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಸಿದ್ಧತೆಗಳು ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳು.",
+        jwOrgDesc: "ನೂರಾರು ಭಾಷೆಗಳಲ್ಲಿ ಸಮಾವೇಶದ ಬಿಡುಗಡೆಗಳು, ದಿನಚರಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಂಗೀತವನ್ನು ಪಡೆಯಿರಿ.",
+        whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ."
+      },
+      konkani: {
+        badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
+        title: "ಮೊಗಾಚ್ಯಾ ಅಂತರ್‌ರಾಷ್ಟ್ರೀಯ ಡೆಲಿಗೇಟ್ಸ್, ತುಮ್ಕಾಂ ಬರೆಂ ಸ್ವಾಗತ್!",
+        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"ಸದಾಕಾಳಾಚೊ ಸಂತೊಸ್\"</strong> ಅಂತರ್‌ರಾಷ್ಟ್ರೀಯ ಅಧಿವೇಶನಾಕ್ ಆಮಿ ತುಮ್ಕಾಂ ಕ್ರಿಸ್ತಿ ಮೊಗಾನ್ ಸ್ವಾಗತ್ ಕರ್ತಾಂವ್. ತುಮಿ ಸಾಗೊರ್ ವಾ ಖಂಡಾಂ ಉತರುನ್ ಆಯ್ಲಾತ್, ಹ್ಯಾ ಸೊಭಿತ್ ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಶಾರಾಂತ್ ತುಮ್ಚೆ ಸಾಂಗಾತಾ ಆಸೊಂಕ್ ಆಮ್ಕಾಂ ವ್ಹಡ್ ಸಂತೊಸ್ ಜಾತಾ!",
+        actionBtn: "ಭಾಷಾ ಕುಮೊಕ್ ಉಗ್ತೆಂ ಕರಾ (ಕೊಂಕಣಿ)",
+        videoHeading: "ಅಧಿವೇಶನ್ ಸ್ವಾಗತ್ & ವೀಡಿಯೊ ಪೋಸ್ಟ್‌ಕಾರ್ಡ್",
+        videoCaptionPostcard: "ಸ್ಯಾನ್ ಡಿಯಾಗೋಚ್ಯಾ ತುಮ್ಚ್ಯಾ ಭಾವ್-ಭಯ್ಣಿಂ ತರ್ಫೆನ್ ಮೊಗಾಚೆ ನಮಸ್ಕಾರ್ ಆನಿ ಯಾದಿಕಾ.",
+        videoCaptionPrep: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಅಂತರ್‌ರಾಷ್ಟ್ರೀಯ ಅಧಿವೇಶನಾಚಿ ತಯಾರಿ ಆನಿ ಮುಖೆಲ್ ಝಳಕ್.",
+        jwOrgDesc: "ಶೆಂಕ್ಡ್ಯಾನಿ ಭಾಷಾಂನಿ ಅಧಿವೇಶನಾಚೆ ಸಾಹಿತ್ಯ್, ದಿಸಾಚೆ ಕಾರ್ಯಕ್ರಮ್ ಆನಿ ಆಧ್ಯಾತ್ಮಿಕ್ ಸಮಾಧಾನ್ ಜೊಡಾ.",
+        whatsAppDesc: "ಕುಮೊಕ್ ಆನಿ ತಾಜೆಂ ವಿವರ್ ಮೆಳೊಂಕ್ ಆಮ್ಚ್ಯಾ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗ್ರೂಪಾಕ್ ಸಾಂಗಾತ್ ದಿಯಾ."
+      },
+      korean: {
+        badge: "캘리포니아주 샌디에이고 • 2026",
+        title: "국제 대표자 여러분을 따뜻한 사랑으로 환영합니다!",
+        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"영원한 행복\"</strong> 국제대회에 참석하신 여러분을 그리스도인 사랑으로 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다!",
+        actionBtn: "언어 도우미 열기 (한국어)",
+        videoHeading: "대회 환영 및 영상 엽서",
+        videoCaptionPostcard: "샌디에이고의 형제 자매들이 전하는 따뜻한 인사와 영상 엽서입니다.",
+        videoCaptionPrep: "샌디에이고 국제대회 준비 과정과 주요 하이라이트 영상.",
+        jwOrgDesc: "수백 개 언어로 제공되는 대회 발표물, 일일 프로그램, 성악곡 및 영적 격려를 확인해 보세요.",
+        whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요."
+      },
+      slovenian: {
+        badge: "San Diego, Kalifornija • 2026",
+        title: "Dobrodošli, dragi mednarodni delegati!",
+        body: "S toplo krščansko ljubeznijo vas odprtih rok pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu!",
+        actionBtn: "Odpri jezikovni pripomoček (Slovenščina)",
+        videoHeading: "Dobrodošlica in video razglednica",
+        videoCaptionPostcard: "Topli pozdravi in spomini na video razglednici vaših gostiteljev v San Diegu.",
+        videoCaptionPrep: "Priprave in vrhunci mednarodnega zborovanja v San Diegu.",
+        jwOrgDesc: "Dostopajte do zborovalnih izdaj, dnevnih programov, glasbe in duhovne spodbude v stotinah jezikov.",
+        whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje."
+      },
+      french: {
+        badge: "San Diego, Californie • 2026",
+        title: "Bienvenue, chers délégués internationaux !",
+        body: "C'est avec un amour fraternel chaleureux que nous vous accueillons à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego !",
+        actionBtn: "Ouvrir l'aide linguistique (Français)",
+        videoHeading: "Bienvenue à l'assemblée & Carte postale vidéo",
+        videoCaptionPostcard: "Salutations chaleureuses et souvenirs en vidéo de la part de vos hôtes de San Diego.",
+        videoCaptionPrep: "Préparatifs et moments forts de l'assemblée internationale de San Diego.",
+        jwOrgDesc: "Accédez aux parutions de l'assemblée, aux programmes quotidiens, à la musique et aux encouragements en des centaines de langues.",
+        whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange."
+      },
+      tagalog: {
+        badge: "San Diego, California • 2026",
+        title: "Maligayang Pagdating, Mahal naming mga Internasyonal na Delegado!",
+        body: "Buong puso at may mainit na Kristiyanong pag-ibig kaming sumasalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego!",
+        actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
+        videoHeading: "Pagbati sa Kombensiyon & Video Postcard",
+        videoCaptionPostcard: "Mainit na pagbati at magagandang alaala mula sa inyong mga punong-abala sa San Diego.",
+        videoCaptionPrep: "Paghahanda at mahahalagang tampok sa San Diego International Convention.",
+        jwOrgDesc: "Tingnan ang mga inilabas sa kombensiyon, pang-araw-araw na programa, musika, at pampatibay sa daan-daang wika.",
+        whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama."
+      },
+      chinese: {
+        badge: "加利福尼亚州圣迭戈 • 2026",
+        title: "热烈欢迎亲爱的国际代表们！",
+        body: "我们怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！",
+        actionBtn: "开启语言交流助手 (普通话)",
+        videoHeading: "大会欢迎致辞与视频明信片",
+        videoCaptionPostcard: "圣迭戈东道主弟兄姊妹为您送上的温馨问候与视频明信片。",
+        videoCaptionPrep: "圣迭戈国际大会筹备花絮与精彩亮点回顾。",
+        jwOrgDesc: "浏览数百种语言的大会发行物、每日节目单、音乐与宝贵的属灵鼓励。",
+        whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。"
+      }
+    };
+
+    const greetingLanguages = [
+      { key: "english", label: "English", display: "English" },
+      { key: "dutch", label: "Dutch", display: "Nederlands" },
+      { key: "polish", label: "Polish", display: "polski" },
+      { key: "german", label: "German", display: "Deutsch" },
+      { key: "kannada", label: "Kannada", display: "ಕನ್ನಡ" },
+      { key: "konkani", label: "Konkani", display: "ಕೊಂಕಣಿ" },
+      { key: "korean", label: "Korean", display: "한국어" },
+      { key: "slovenian", label: "Slovenian", display: "Slovenščina" },
+      { key: "french", label: "French", display: "Français" },
+      { key: "tagalog", label: "Tagalog", display: "Tagalog" },
+      { key: "chinese", label: "Chinese", display: "中文" }
+    ];
+
+    let currentGreetingLang = "english";
+
+    function renderGreetingLangBar() {
+      const container = document.getElementById('greetingLangBar');
+      container.innerHTML = '';
+
+      greetingLanguages.forEach(lang => {
+        const isActive = currentGreetingLang === lang.key;
+        const btn = document.createElement('button');
+        btn.onclick = () => selectGreetingLanguage(lang.key);
+        btn.className = `px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 shadow-sm ${
+          isActive
+            ? 'bg-indigo-600 text-white border border-indigo-600 shadow'
+            : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+        }`;
+        btn.innerHTML = `<span>${lang.display}</span><span class="text-[10px] opacity-75 font-normal">(${lang.label})</span>`;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectGreetingLanguage(langKey) {
+      currentGreetingLang = langKey;
+      renderGreetingLangBar();
+      applyGreetingLanguage(langKey);
+    }
+
+    function applyGreetingLanguage(langKey) {
+      const data = greetingTranslations[langKey] || greetingTranslations.english;
+      const langMeta = greetingLanguages.find(l => l.key === langKey);
+
+      document.getElementById('currentGreetingLangBadge').innerText = langMeta ? `${langMeta.display} (${langMeta.label})` : 'English';
+      document.getElementById('welcomeBadge').innerText = data.badge;
+      document.getElementById('welcomeTitle').innerHTML = data.title;
+      document.getElementById('welcomeBody').innerHTML = data.body;
+      document.getElementById('welcomeActionBtnText').innerText = data.actionBtn;
+      document.getElementById('videoSectionHeading').innerText = data.videoHeading;
+      document.getElementById('jwOrgCardDesc').innerText = data.jwOrgDesc;
+      document.getElementById('whatsappCardDesc').innerHTML = data.whatsAppDesc;
+
+      // Update caption based on currently active video
+      const isPostcard = document.getElementById('btnVidPostcard').classList.contains('bg-indigo-600');
+      document.getElementById('videoCaption').innerText = isPostcard ? data.videoCaptionPostcard : data.videoCaptionPrep;
+    }
+
+    function launchLanguageHelperFromWelcome() {
+      if (currentGreetingLang !== 'english' && database[currentGreetingLang]) {
+        selectLanguage(currentGreetingLang);
+      } else {
+        goToHome();
+      }
+    }
+
+    // --- 3. VIDEO SWITCHING LOGIC ---
+    function switchVideo(type) {
+      const player = document.getElementById('conventionVideoPlayer');
+      const caption = document.getElementById('videoCaption');
+      const btnPostcard = document.getElementById('btnVidPostcard');
+      const btnPrep = document.getElementById('btnVidPrep');
+      const gData = greetingTranslations[currentGreetingLang] || greetingTranslations.english;
+
+      if (type === 'postcard') {
+        player.src = 'videopostcard.mp4';
+        caption.innerText = gData.videoCaptionPostcard;
+        btnPostcard.className = 'px-2.5 py-1 rounded-md font-semibold bg-indigo-600 text-white transition';
+        btnPrep.className = 'px-2.5 py-1 rounded-md font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition';
+      } else {
+        player.src = 'VIDEO_SanDiegoConventionPrep.mp4';
+        caption.innerText = gData.videoCaptionPrep;
+        btnPrep.className = 'px-2.5 py-1 rounded-md font-semibold bg-indigo-600 text-white transition';
+        btnPostcard.className = 'px-2.5 py-1 rounded-md font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition';
+      }
+      player.load();
+    }
+
+    // --- 4. SCREEN NAVIGATION LOGIC ---
+    function goToWelcome() {
+      document.getElementById('welcomeScreen').classList.remove('hidden');
+      document.getElementById('languageScreen').classList.add('hidden');
+      document.getElementById('detailScreen').classList.add('hidden');
+      document.getElementById('homeBtn').classList.add('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function goToHome() {
+      document.getElementById('welcomeScreen').classList.add('hidden');
+      document.getElementById('languageScreen').classList.remove('hidden');
+      document.getElementById('detailScreen').classList.add('hidden');
+      document.getElementById('homeBtn').classList.add('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function selectLanguage(langKey) {
+      currentLangKey = langKey;
+      currentCategory = 'greetings';
+      currentMode = 'native';
+
+      const langData = database[langKey];
+      document.getElementById('detailLangName').innerText = langData.name;
+      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
+
+      // Set Tab Left Title
+      document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
+
+      renderCategories();
+      updateTabs();
+      renderPhrases();
+
+      document.getElementById('welcomeScreen').classList.add('hidden');
+      document.getElementById('languageScreen').classList.add('hidden');
+      document.getElementById('detailScreen').classList.remove('hidden');
+      document.getElementById('homeBtn').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    // --- 5. PWA SERVICE WORKER & OFFLINE LOGIC ---
     let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -333,7 +709,7 @@
       });
     }
 
-    // --- 3. APPLICATION DATA & STATE ---
+    // --- 6. PHRASE DATABASE & EXPRESSION LOGIC ---
     const database = {
       dutch: {
         name: "Nederlands",
@@ -531,7 +907,7 @@
             { en: "It can be done in person or by video call.", tr: "ಇದನ್ನು ನೇರವಾಗಿ ಅಥವಾ ವಿಡಿಯೋ ಕಾಲ್ ಮೂಲಕ ಮಾಡಬಹುದು.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "ee-duhn-noo NAY-ruh-wah-gee uh-thuh-wah VEE-dee-yoh kahl moo-luh-kuh mah-duh-boo-doo." },
             { en: "Even a few minutes each week is fine.", tr: "ಪ್ರತಿ ವಾರ ಕೆಲವೇ ನಿಮಿಷಗಳು ಸಾಕು.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "pruh-tee VAH-ruh keh-luh-VAY nee-mee-shuh-gl-oo SAH-koo." },
             { en: "May I show you how the course works?", tr: "ಕೋರ್ಸ್ ಹೇಗೆ ನಡೆಯುತ್ತದೆ ಎಂದು ನಾನು ನಿಮಗೆ ತೋರಿಸಲೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "kohrs hay-GAY nuh-dey-yoot-tuh-day en-doo NAH-noo nee-muh-gay toh-ree-suh-LAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
+            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
           ]
         }
       },
@@ -841,35 +1217,6 @@
     let currentCategory = 'greetings';
     let currentMode = 'native';
 
-    function goToHome() {
-      document.getElementById('languageScreen').classList.remove('hidden');
-      document.getElementById('detailScreen').classList.add('hidden');
-      document.getElementById('homeBtn').classList.add('hidden');
-      window.scrollTo(0, 0);
-    }
-
-    function selectLanguage(langKey) {
-      currentLangKey = langKey;
-      currentCategory = 'greetings';
-      currentMode = 'native';
-
-      const langData = database[langKey];
-      document.getElementById('detailLangName').innerText = langData.name;
-      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
-
-      // Set Tab Left Title
-      document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
-
-      renderCategories();
-      updateTabs();
-      renderPhrases();
-
-      document.getElementById('languageScreen').classList.add('hidden');
-      document.getElementById('detailScreen').classList.remove('hidden');
-      document.getElementById('homeBtn').classList.remove('hidden');
-      window.scrollTo(0, 0);
-    }
-
     function renderCategories() {
       const lang = database[currentLangKey];
       const container = document.getElementById('categoryContainer');
@@ -984,6 +1331,10 @@
         container.appendChild(card);
       });
     }
+
+    // --- INITIALIZE GREETINGS ON FIRST LOAD ---
+    renderGreetingLangBar();
+    applyGreetingLanguage('english');
   </script>
 </body>
 </html>
