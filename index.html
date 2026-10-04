@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 1.01 (Beta) by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 1.07 (Beta) by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
@@ -27,9 +27,6 @@
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .phrase-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .phrase-card:hover { transform: translateY(-2px); }
-    /* Custom clean scrollbar for horizontal language strip */
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200">
@@ -69,7 +66,7 @@
           <i class="fa-solid fa-heart text-pink-300"></i> <span class="font-medium">Welcome</span>
         </button>
 
-        <!-- Dark / Light Mode Toggle Button -->
+        <!-- Dark / Light Mode Toggle Button with Yellow Sun Icon -->
         <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
@@ -81,9 +78,9 @@
       </div>
     </div>
 
-    <!-- Small Version Indicator on the lower right of the top banner -->
+    <!-- Version Indicator (1.07 Beta) on lower right of header -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none">
-      <span class="text-[10px] text-indigo-200/70 dark:text-slate-400/70 font-mono tracking-wider">v1.01 (Beta)</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v1.07 (Beta)</span>
     </div>
   </header>
 
@@ -98,26 +95,41 @@
     <!-- Screen 0: Welcome & Greeting Page (Shows on first launch) -->
     <section id="welcomeScreen" class="space-y-5">
 
-      <!-- TOP LANGUAGE SELECTOR STRIP FOR GREETINGS -->
-      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-3 border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-2">
-        <div class="flex items-center justify-between px-1">
-          <span class="text-xs font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
-            <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400"></i>
-            <span>Select Greeting Language / 语言 / 언어:</span>
-          </span>
-          <span id="currentGreetingLangBadge" class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
-            English
-          </span>
+      <!-- TOP LANGUAGE SELECTOR DROPDOWN FOR GREETINGS -->
+      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 border border-slate-200/90 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <label for="greetingLangSelect" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 uppercase tracking-wide">
+          <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400 text-base"></i>
+          <span>Select Greeting Language / 语言 / 언어:</span>
+        </label>
+        <div class="relative w-full sm:w-72">
+          <select id="greetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 pr-9 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
+            <option value="english">English (English)</option>
+            <option value="dutch">Nederlands (Dutch)</option>
+            <option value="polish">polski (Polish)</option>
+            <option value="german">Deutsch (German)</option>
+            <option value="kannada">ಕನ್ನಡ (Kannada)</option>
+            <option value="konkani">ಕೊಂಕಣಿ (Konkani)</option>
+            <option value="korean">한국어 (Korean)</option>
+            <option value="slovenian">Slovenščina (Slovenian)</option>
+            <option value="french">Français (French)</option>
+            <option value="tagalog">Tagalog (Filipino)</option>
+            <option value="chinese">中文 (Chinese)</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+            <i class="fa-solid fa-chevron-down text-xs"></i>
+          </div>
         </div>
-        <!-- Scrollable buttons row -->
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1" id="greetingLangBar"></div>
       </div>
 
       <!-- Heartfelt Welcome Hero Banner -->
       <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-200/90 dark:border-slate-800 shadow-lg text-center space-y-4">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 text-3xl shadow-inner">
-          <i class="fa-solid fa-hands-holding-heart"></i>
+        
+        <!-- Round Circular Badge using GreetingsLogo.png -->
+        <div class="inline-flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white dark:bg-slate-800 border-2 border-indigo-100 dark:border-indigo-900/60 shadow-md p-1.5 overflow-hidden mx-auto">
+          <img src="GreetingsLogo.png" alt="San Diego 2026 Convention Emblem" class="w-full h-full object-contain rounded-full" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+          <span class="hidden text-3xl">⛵</span>
         </div>
+
         <div class="space-y-2">
           <span id="welcomeBadge" class="inline-block px-3 py-1 bg-indigo-50 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider rounded-full">
             San Diego, California • 2026
@@ -345,8 +357,8 @@
         </button>
       </div>
 
-      <!-- Category Buttons -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-2" id="categoryContainer"></div>
+      <!-- 4 Option Selectors (Icons 50% larger with Bold Native on top & Italics English below) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5" id="categoryContainer"></div>
 
       <!-- STICKY TOP TABS BAR (Pinned during scrolling with blur & border) -->
       <div class="sticky top-[57px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
@@ -377,19 +389,29 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         document.documentElement.classList.add('dark');
-        document.getElementById('themeIcon').className = 'fa-solid fa-sun';
+        applyThemeIcon(true);
       } else {
         document.documentElement.classList.remove('dark');
-        document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+        applyThemeIcon(false);
       }
     }
 
     function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      document.getElementById('themeIcon').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      applyThemeIcon(isDark);
       updateTabs();
       renderCategories();
+    }
+
+    function applyThemeIcon(isDark) {
+      const icon = document.getElementById('themeIcon');
+      if (isDark) {
+        // Yellow Sun icon for Dark mode toggle to return to light
+        icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+      } else {
+        icon.className = 'fa-solid fa-moon text-indigo-100 text-sm';
+      }
     }
 
     initTheme();
@@ -486,51 +508,18 @@
       }
     };
 
-    const greetingLanguages = [
-      { key: "english", label: "English", display: "English" },
-      { key: "dutch", label: "Dutch", display: "Nederlands" },
-      { key: "polish", label: "Polish", display: "polski" },
-      { key: "german", label: "German", display: "Deutsch" },
-      { key: "kannada", label: "Kannada", display: "ಕನ್ನಡ" },
-      { key: "konkani", label: "Konkani", display: "ಕೊಂಕಣಿ" },
-      { key: "korean", label: "Korean", display: "한국어" },
-      { key: "slovenian", label: "Slovenian", display: "Slovenščina" },
-      { key: "french", label: "French", display: "Français" },
-      { key: "tagalog", label: "Tagalog", display: "Tagalog" },
-      { key: "chinese", label: "Chinese", display: "中文" }
-    ];
-
     let currentGreetingLang = "english";
-
-    function renderGreetingLangBar() {
-      const container = document.getElementById('greetingLangBar');
-      container.innerHTML = '';
-
-      greetingLanguages.forEach(lang => {
-        const isActive = currentGreetingLang === lang.key;
-        const btn = document.createElement('button');
-        btn.onclick = () => selectGreetingLanguage(lang.key);
-        btn.className = `px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 shadow-sm ${
-          isActive
-            ? 'bg-indigo-600 text-white border border-indigo-600 shadow'
-            : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
-        }`;
-        btn.innerHTML = `<span>${lang.display}</span><span class="text-[10px] opacity-75 font-normal">(${lang.label})</span>`;
-        container.appendChild(btn);
-      });
-    }
 
     function selectGreetingLanguage(langKey) {
       currentGreetingLang = langKey;
-      renderGreetingLangBar();
+      const select = document.getElementById('greetingLangSelect');
+      if (select) select.value = langKey;
       applyGreetingLanguage(langKey);
     }
 
     function applyGreetingLanguage(langKey) {
       const data = greetingTranslations[langKey] || greetingTranslations.english;
-      const langMeta = greetingLanguages.find(l => l.key === langKey);
 
-      document.getElementById('currentGreetingLangBadge').innerText = langMeta ? `${langMeta.display} (${langMeta.label})` : 'English';
       document.getElementById('welcomeBadge').innerText = data.badge;
       document.getElementById('welcomeTitle').innerHTML = data.title;
       document.getElementById('welcomeBody').innerHTML = data.body;
@@ -636,10 +625,10 @@
         englishName: "Dutch",
         code: "nl-NL",
         categories: {
-          greetings: "Begroetingen / Greetings",
-          everyday: "Dagelijks / Everyday",
-          getting_around: "Onderweg / Getting Around",
-          ministry_skills: "Predikingsvaardigheden / Ministry Skills"
+          greetings: "Begroetingen",
+          everyday: "Dagelijks",
+          getting_around: "Onderweg",
+          ministry_skills: "Predikingsvaardigheden"
         },
         data: {
           greetings: [
@@ -686,10 +675,10 @@
         englishName: "Polish",
         code: "pl-PL",
         categories: {
-          greetings: "Powitania / Greetings",
-          everyday: "Na co dzień / Everyday",
-          getting_around: "W podróży / Getting Around",
-          ministry_skills: "Służba kaznodziejska / Ministry Skills"
+          greetings: "Powitania",
+          everyday: "Na co dzień",
+          getting_around: "W podróży",
+          ministry_skills: "Służba kaznodziejska"
         },
         data: {
           greetings: [
@@ -736,10 +725,10 @@
         englishName: "German",
         code: "de-DE",
         categories: {
-          greetings: "Begrüßungen / Greetings",
-          everyday: "Alltag / Everyday",
-          getting_around: "Unterwegs / Getting Around",
-          ministry_skills: "Predigtdienst / Ministry Skills"
+          greetings: "Begrüßungen",
+          everyday: "Alltag",
+          getting_around: "Unterwegs",
+          ministry_skills: "Predigtdienst"
         },
         data: {
           greetings: [
@@ -786,10 +775,10 @@
         englishName: "Kannada",
         code: "kn-IN",
         categories: {
-          greetings: "ಶುಭಾಶಯಗಳು / Greetings",
-          everyday: "ದೈನಂದಿನ / Everyday",
-          getting_around: "ಪ್ರಯಾಣ / Getting Around",
-          ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು / Ministry Skills"
+          greetings: "ಶುಭಾಶಯಗಳು",
+          everyday: "ದೈನಂದಿನ",
+          getting_around: "ಪ್ರಯಾಣ",
+          ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು"
         },
         data: {
           greetings: [
@@ -820,14 +809,14 @@
             { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
             { en: "We’re inviting people to try a free Bible lesson.", tr: "ಉಚಿತ ಬೈಬಲ್ ಪಾಠವನ್ನು ಪ್ರಯತ್ನಿಸಲು ನಾವು ಜನರನ್ನು ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಇನ್ವೈಟಿಂಗ್ ಪೀಪಲ್ ಟು ಟ್ರೈ ಎ ಫ್ರೀ ಬೈಬಲ್ ಲೆಸನ್.", phEng: "oo-chee-tuh BY-buhl PAH-tuh-wuhn-noo pruh-yuht-nee-suhl-oo NAH-voo juh-nuh-RUHN-noo ah-wah-nee-soot-TEED-day-vay." },
             { en: "Have you ever tried studying the Bible?", tr: "ನೀವು ಎಂದಾದರೂ ಬೈಬಲ್ ಕಲಿಯಲು ಪ್ರಯತ್ನಿಸಿದ್ದೀರಾ?", phNative: "ಹ್ಯಾವ್ ಯು ಎವರ್ ಟ್ರೈಡ್ ಸ್ಟಡಿಯಿಂಗ್ ದ ಬೈಬಲ್?", phEng: "NEE-voo en-dah-duh-ROO BY-buhl kuh-lee-yuhl-oo pruh-yuht-nee-seed-DEE-rah?" },
-            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
+            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
             { en: "It answers important questions about life and the future.", tr: "ಇದು ಜೀವನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತದೆ.", phNative: "ಇಟ್ ಆನ್ಸರ್ಸ್ ಇಂಪಾರ್ಟೆಂಟ್ ಕ್ವೆಶ್ಚನ್ಸ್ ಅಬೌಟ್ ಲೈಫ್ ಅಂಡ್ ದ ಫ್ಯೂಚರ್.", phEng: "ee-DOO jee-vuh-nuh muht-too bhuh-VEESH-yuh-duh buhg-gay pruh-moo-khuh pruhsh-nay-gluh-GAY oot-tuh-ree-soot-tuh-day." },
             { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." },
             { en: "You can choose the time and place.", tr: "ನೀವೇ ಸಮಯ ಮತ್ತು ಸ್ಥಳವನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.", phNative: "ಯು ಕ್ಯಾನ್ ಚೂಸ್ ದ ಟೈಮ್ ಅಂಡ್ ಪ್ಲೇಸ್.", phEng: "nee-VAY suh-muh-yuh muht-too sthl-wuhn-noo EYE-kay mah-duh-boo-doo." },
             { en: "It can be done in person or by video call.", tr: "ಇದನ್ನು ನೇರವಾಗಿ ಅಥವಾ ವಿಡಿಯೋ ಕಾಲ್ ಮೂಲಕ ಮಾಡಬಹುದು.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "ee-duhn-noo NAY-ruh-wah-gee uh-thuh-wah VEE-dee-yoh kahl moo-luh-kuh mah-duh-boo-doo." },
             { en: "Even a few minutes each week is fine.", tr: "ಪ್ರತಿ ವಾರ ಕೆಲವೇ ನಿಮಿಷಗಳು ಸಾಕು.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "pruh-tee VAH-ruh keh-luh-VAY nee-mee-shuh-gl-oo SAH-koo." },
             { en: "May I show you how the course works?", tr: "ಕೋರ್ಸ್ ಹೇಗೆ ನಡೆಯುತ್ತದೆ ಎಂದು ನಾನು ನಿಮಗೆ ತೋರಿಸಲೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "kohrs hay-GAY nuh-dey-yoot-tuh-day en-doo NAH-noo nee-muh-gay toh-ree-suh-LAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
+            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
           ]
         }
       },
@@ -836,10 +825,10 @@
         englishName: "Konkani (Kannada)",
         code: "kok",
         categories: {
-          greetings: "ನಮಸ್ಕಾರ / Greetings",
-          everyday: "ದಿನಚರಿ / Everyday",
-          getting_around: "ಭೊಂವ್ಡಿ / Getting Around",
-          ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ / Ministry Skills"
+          greetings: "ನಮಸ್ಕಾರ",
+          everyday: "ದಿನಚರಿ",
+          getting_around: "ಭೊಂವ್ಡಿ",
+          ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ"
         },
         data: {
           greetings: [
@@ -877,7 +866,7 @@
             { en: "It can be done in person or by video call.", tr: "ಹೆಂ ಖುದ್ದ್ ಮೆಳುನ್ ವಾ ವಿಡಿಯೋ ಕೊಲ್ ಮುಖಾಂತ್ರ್ ಕರ್ಯೆತ್.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "hem KHOOD-doo meh-WOON vah VEE-dee-yoh kohl moo-KHAHN-truh kur-yet." },
             { en: "Even a few minutes each week is fine.", tr: "ಹರ್ಯೆಕಾ ಸಪ್ತ್ಯಾಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಪುರೊ.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "hur-yay-KAH suhp-TYAHK kay-VUHL thoh-deemch mee-noo-TAHM poo-ROH." },
             { en: "May I show you how the course works?", tr: "ಹೊ ಕೋರ್ಸ್ ಕಸೊ ಚಲ್ತಾ ಮ್ಹಣ್ ಹಾಂವ್ ತುಮ್ಕಾಂ ದಾಕಂವ್ವೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "hoh kohrs kuh-SOH chuhl-TAH mhun HAHMV toom-KAHM dah-kuhmv-VAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಹೆಂ ದಾಕಂವ್ಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಲಾಗ್ತೆಲಿಂ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "hem dah-kuhmvk kay-VUHL thoh-deemch mee-noo-TAHM lahg-teh-LEEM." }
+            { en: "This demonstration will take only a few minutes.", tr: "ಹೆಂ ದಾಕಂವ್ಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಲಾಗ್ತೆಲಿಂ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್.", phEng: "hem dah-kuhmvk kay-VUHL thoh-deemch mee-noo-TAHM lahg-teh-LEEM." }
           ]
         }
       },
@@ -886,10 +875,10 @@
         englishName: "Korean",
         code: "ko-KR",
         categories: {
-          greetings: "인사말 / Greetings",
-          everyday: "일상 표현 / Everyday",
-          getting_around: "길 찾기 및 여행 / Getting Around",
-          ministry_skills: "봉사 기술 / Ministry Skills"
+          greetings: "인사말",
+          everyday: "일상 표현",
+          getting_around: "길 찾기 및 여행",
+          ministry_skills: "봉사 기술"
         },
         data: {
           greetings: [
@@ -936,10 +925,10 @@
         englishName: "Slovenian",
         code: "sl-SI",
         categories: {
-          greetings: "Pozdravi / Greetings",
-          everyday: "Vsakdanji izrazi / Everyday",
-          getting_around: "Na poti / Getting Around",
-          ministry_skills: "Oznanjevanje / Ministry Skills"
+          greetings: "Pozdravi",
+          everyday: "Vsakdanji izrazi",
+          getting_around: "Na poti",
+          ministry_skills: "Oznanjevanje"
         },
         data: {
           greetings: [
@@ -986,10 +975,10 @@
         englishName: "French",
         code: "fr-FR",
         categories: {
-          greetings: "Salutations / Greetings",
-          everyday: "Tous les jours / Everyday",
-          getting_around: "Se déplacer / Getting Around",
-          ministry_skills: "Techniques de prédication / Ministry Skills"
+          greetings: "Salutations",
+          everyday: "Tous les jours",
+          getting_around: "Se déplacer",
+          ministry_skills: "Techniques de prédication"
         },
         data: {
           greetings: [
@@ -1036,10 +1025,10 @@
         englishName: "Tagalog (Filipino)",
         code: "fil-PH",
         categories: {
-          greetings: "Pagbati / Greetings",
-          everyday: "Araw-araw / Everyday",
-          getting_around: "Pagbibiyahe / Getting Around",
-          ministry_skills: "Kasanayan sa Ministeryo / Ministry Skills"
+          greetings: "Pagbati",
+          everyday: "Araw-araw",
+          getting_around: "Pagbibiyahe",
+          ministry_skills: "Kasanayan sa Ministeryo"
         },
         data: {
           greetings: [
@@ -1086,10 +1075,10 @@
         englishName: "Chinese (Mandarin)",
         code: "zh-CN",
         categories: {
-          greetings: "问候 / Greetings",
-          everyday: "日常 / Everyday",
-          getting_around: "出行 / Getting Around",
-          ministry_skills: "传道技能 / Ministry Skills"
+          greetings: "问候",
+          everyday: "日常",
+          getting_around: "出行",
+          ministry_skills: "传道技能"
         },
         data: {
           greetings: [
@@ -1137,6 +1126,14 @@
     let currentCategory = 'greetings';
     let currentMode = 'native';
 
+    // English labels mapped for each category
+    const categoryEnglishNames = {
+      greetings: "Greetings",
+      everyday: "Everyday",
+      getting_around: "Getting Around",
+      ministry_skills: "Ministry Skills"
+    };
+
     function renderCategories() {
       const lang = database[currentLangKey];
       const container = document.getElementById('categoryContainer');
@@ -1158,17 +1155,22 @@
           renderPhrases();
         };
 
-        btn.className = `p-3 rounded-xl border text-left flex flex-col justify-between transition ${
+        btn.className = `p-3 rounded-xl border text-left flex flex-col justify-between transition-all shadow-sm ${
           isActive 
-            ? 'bg-indigo-600 text-white border-indigo-600 shadow' 
+            ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-400/30' 
             : 'bg-white/95 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
+        // Icons are now text-xl (50% larger than previous text-sm)
+        // Stack format: Bold selected language title on top, italicized English subtitle below
         btn.innerHTML = `
-          <div class="flex justify-between items-center w-full mb-1">
-            <i class="fa-solid ${cat.icon} text-sm ${isActive ? 'text-indigo-200' : 'text-slate-400 dark:text-slate-500'}"></i>
+          <div class="flex justify-between items-center w-full mb-2">
+            <i class="fa-solid ${cat.icon} text-xl ${isActive ? 'text-indigo-200' : 'text-indigo-600 dark:text-indigo-400'}"></i>
           </div>
-          <span class="text-xs font-bold leading-tight">${lang.categories[cat.id]}</span>
+          <div>
+            <div class="text-xs sm:text-sm font-bold leading-tight">${lang.categories[cat.id]}</div>
+            <div class="text-[11px] italic leading-tight mt-0.5 ${isActive ? 'text-indigo-200' : 'text-slate-500 dark:text-slate-400'}">${categoryEnglishNames[cat.id]}</div>
+          </div>
         `;
         container.appendChild(btn);
       });
@@ -1253,7 +1255,6 @@
     }
 
     // --- INITIALIZE GREETINGS ON FIRST LOAD ---
-    renderGreetingLangBar();
     applyGreetingLanguage('english');
   </script>
 </body>
