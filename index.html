@@ -33,9 +33,7 @@
 
   <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-    <!-- Base Wallpaper -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('AppBKGrnd.jpg');"></div>
-    <!-- Barely faded (15% white) overlay in Light Mode, deep 85% dim in Dark Mode -->
     <div class="absolute inset-0 bg-white/15 dark:bg-slate-950/85 transition-colors duration-200"></div>
   </div>
 
@@ -43,7 +41,6 @@
   <header class="bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/60 dark:border-slate-800 relative">
     <div class="max-w-4xl mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between pb-4 sm:pb-4">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="goToWelcome()">
-        <!-- Logo with SVG/Icon Fallback -->
         <div class="w-8 h-8 rounded-md overflow-hidden bg-white/20 p-0.5 flex items-center justify-center flex-shrink-0">
           <img src="NWJoyBridge.png" alt="NW JoyBridge Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
           <span class="hidden text-lg">🌉</span>
@@ -56,29 +53,25 @@
 
       <!-- Action Buttons in Top Right -->
       <div class="flex items-center space-x-1.5 sm:space-x-2">
-        <!-- Install App Button (Visible in Chrome when installable) -->
         <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1">
           <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install</span>
         </button>
 
-        <!-- Greeting / Welcome Page Button -->
         <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1.5" title="Greeting & Welcome Page">
           <i class="fa-solid fa-heart text-pink-300"></i> <span class="font-medium">Welcome</span>
         </button>
 
-        <!-- Dark / Light Mode Toggle Button with Yellow Sun Icon -->
         <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Languages Button (Visible when on Detail screen) -->
         <button id="homeBtn" onclick="goToHome()" class="hidden text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition">
           <i class="fa-solid fa-earth-americas mr-1"></i> Languages
         </button>
       </div>
     </div>
 
-    <!-- Version Indicator (v2.0) on lower right of header -->
+    <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none">
       <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.0</span>
     </div>
@@ -92,7 +85,7 @@
   <!-- Main Container -->
   <main class="flex-grow max-w-4xl mx-auto w-full p-4 md:p-6 relative z-10">
 
-    <!-- Screen 0: Welcome & Greeting Page (Shows on first launch) -->
+    <!-- Screen 0: Welcome & Greeting Page -->
     <section id="welcomeScreen" class="space-y-6">
 
       <!-- TOP LANGUAGE SELECTOR DROPDOWN FOR GREETINGS -->
@@ -125,10 +118,8 @@
         </div>
       </div>
 
-      <!-- Heartfelt Welcome Hero Banner -->
+      <!-- Welcome Hero Banner -->
       <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-200/90 dark:border-slate-800 shadow-lg text-center space-y-4">
-        
-        <!-- Round Circular Badge using GreetingsLogo.png -->
         <div class="inline-flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white dark:bg-slate-800 border-2 border-indigo-100 dark:border-indigo-900/60 shadow-md p-1.5 overflow-hidden mx-auto">
           <img src="GreetingsLogo.png" alt="San Diego 2026 Convention Emblem" class="w-full h-full object-contain rounded-full" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
           <span class="hidden text-3xl">⛵</span>
@@ -161,7 +152,6 @@
 
       <!-- Quick Delegate Links: JW.ORG & WhatsApp Support -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- JW.ORG Link Card -->
         <a href="https://jw.org" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
           <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
             JW
@@ -177,7 +167,6 @@
           </div>
         </a>
 
-        <!-- WhatsApp Support Card with direct group invite -->
         <a href="https://chat.whatsapp.com/EXAw5uBTpJL5WQv4Ke90HI" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-emerald-500 dark:hover:border-emerald-400 transition flex items-start space-x-4 group">
           <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
             <i class="fa-brands fa-whatsapp"></i>
@@ -194,9 +183,8 @@
         </a>
       </div>
 
-      <!-- VIDEO SECTION AT BOTTOM OF GREETINGS PAGE -->
+      <!-- VIDEO SECTION -->
       <div class="space-y-4 pt-2">
-        <!-- Video 1: Welcome to San Diego -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
             <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-lg"></i>
@@ -216,7 +204,6 @@
           </p>
         </div>
 
-        <!-- Video 2: San Marcos Video Postcard (Coming Soon Placeholder) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
             <i class="fa-solid fa-film text-indigo-600 dark:text-indigo-400 text-lg"></i>
@@ -238,10 +225,9 @@
           </p>
         </div>
       </div>
-
     </section>
 
-    <!-- Screen 1: Language Selection (All 14 Languages Alphabetically Sorted) -->
+    <!-- Screen 1: Language Selection -->
     <section id="languageScreen" class="hidden space-y-6">
       <div class="text-center py-4 bg-white/90 dark:bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800/60 shadow-md flex items-center justify-between">
         <button onclick="goToWelcome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-indigo-50 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200/80 dark:border-slate-700 transition">
@@ -254,14 +240,11 @@
         <div class="w-16"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="languageButtonsGrid">
-        <!-- Rendered dynamically in sorted alphabetical order -->
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="languageButtonsGrid"></div>
     </section>
 
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
-      <!-- Top Language Banner with In-Screen Dropdown Selector -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-md gap-3">
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg">
@@ -275,44 +258,34 @@
           </div>
         </div>
 
-        <!-- In-Screen Dropdown Selector -->
         <div class="relative w-full sm:w-64">
-          <select id="detailLangDropdown" onchange="selectLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 pr-9 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
-            <!-- Populated dynamically -->
-          </select>
+          <select id="detailLangDropdown" onchange="selectLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 pr-9 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition"></select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
             <i class="fa-solid fa-chevron-down text-xs"></i>
           </div>
         </div>
       </div>
 
-      <!-- 4 Option Selectors (Icons 50% larger with Bold Native on top & Italics English below) -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5" id="categoryContainer"></div>
 
-      <!-- STICKY TOP TABS BAR (Pinned during scrolling with blur & border) -->
       <div class="sticky top-[57px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
         <div class="flex bg-slate-200/90 dark:bg-slate-800/90 p-1 rounded-xl font-medium text-sm shadow-sm">
-          <!-- 1st TAB: Left Side (Native Language Name) -->
           <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
             <span id="tabNativeText"></span>
           </button>
-          <!-- 2nd TAB: Right Side (ENGLISH) -->
           <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-2.5 rounded-lg transition text-center">
             ENGLISH
           </button>
         </div>
-        <!-- Quick Guidance Note -->
         <p id="modeDescription" class="text-[11px] text-slate-600 dark:text-slate-400 italic text-center mt-1.5"></p>
       </div>
 
-      <!-- Phrase Cards List -->
       <div id="phrasesList" class="space-y-3 pb-8 pt-1"></div>
     </section>
 
   </main>
 
   <script>
-    // --- 1. DARK / LIGHT THEME LOGIC ---
     function initTheme() {
       const savedTheme = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -344,7 +317,6 @@
 
     initTheme();
 
-    // --- 2. MULTI-LANGUAGE GREETINGS DATA ---
     const greetingTranslations = {
       english: {
         badge: "San Diego, California • 2026",
@@ -495,7 +467,6 @@
       }
     }
 
-    // --- 3. SCREEN NAVIGATION LOGIC ---
     function goToWelcome() {
       document.getElementById('welcomeScreen').classList.remove('hidden');
       document.getElementById('languageScreen').classList.add('hidden');
@@ -521,11 +492,9 @@
       document.getElementById('detailLangName').innerText = langData.name;
       document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
 
-      // Update In-Screen Dropdown Selection
       const detailDropdown = document.getElementById('detailLangDropdown');
       if (detailDropdown) detailDropdown.value = langKey;
 
-      // Set Tab Left Title
       document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
 
       renderCategories();
@@ -539,7 +508,6 @@
       window.scrollTo(0, 0);
     }
 
-    // --- 4. PWA SERVICE WORKER & OFFLINE LOGIC ---
     let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -581,7 +549,7 @@
       });
     }
 
-    // --- 5. COMPLETE PHRASE DATABASE (14 LANGUAGES) ---
+    // --- 5. COMPLETE PHRASE DATABASE WITH UPDATED MINISTRY SKILLS ---
     const database = {
       arabic: {
         name: "العربية",
@@ -613,6 +581,9 @@
             { en: "What time is it?", tr: "كم الساعة؟", phNative: "Wat taym iz it?", phEng: "kam ahl-SAH-ah?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "يسعدني جداً أن أراك في سان دييغو.", phNative: "Aym hap-pee tu see yu in San Dee-ay-go.", phEng: "yoos-ee-DOO-nee JID-dan an ah-RAH-ka fee San Dee-EH-go." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "أنا هنا لأدعوك أنت وعائلتك لحضور محفلنا بعنوان «السعادة الأبدية» في 27 نوفمبر في سان دييغو، تفضل دعوتك الشخصية.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "AH-nah HOON-ah li-ad-OO-wah-ka wa ah-ee-LAH-took li-hoo-DOOR mahf-lee-NAH bee-oon-WAHN as-sah-AH-dah al-ab-ah-DEE-yah fee sah-bah-ah wa eesh-REEN no-VEM-bar fee San Dee-EH-go, tah-FAD-dal dah-wah-TOOK ash-shakh-SEE-yah." },
+            { en: "I am visiting from ...(country)", tr: "أنا زائر من ...(البلد)", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "AH-nah ZAH-eer min ...(al-BAH-lad)" },
             { en: "We’re offering a free Bible course this month.", tr: "نحن نقدم دورة مجانية في دراسة الكتاب المقدس هذا الشهر.", phNative: "Weer of-fer-ing a free Bay-bol kors.", phEng: "NAH-noo noo-QAD-dim DOW-rah moo-JAH-nee-yah feel kee-TAHB ahl-moo-QAD-dahs." },
             { en: "Would you be interested in a free Bible study?", tr: "هل ترغب في تجربة درس مجاني في الكتاب المقدس؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "hal TAR-ghab fee taj-REE-bah DARS moo-JAH-nee?" },
             { en: "This course can help you understand the Bible.", tr: "هذه الدورة تساعدك على فهم الكتاب المقدس.", phNative: "Dis kors ken help yu...", phEng: "HAH-zee-hee ahd-DOW-rah too-SAH-ee-dook ah-lah FAHM ahl-kee-TAHB." },
@@ -650,6 +621,9 @@
             { en: "What time is it?", tr: "现在几点？", phNative: "瓦特 泰姆 伊兹 伊特 (Wǎ-tè tài-mǔ yī-zī yī-tè)", phEng: "SHYEN-DZYE JEE DYEHN?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "很高兴在圣迭戈见到你！", phNative: "艾 姆 哈皮 吐 西 尤 因 圣迭戈", phEng: "HUHN gow-SHING dzye SHUNG-dyeh-guh JYEHN-dow NEE!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "我来这里是想邀请你和你的家人参加11月27日在圣迭戈举行的大会，主题是“永恒的幸福”。这是送给您的邀请函。", phNative: "艾 姆 希尔 吐 因歪特 尤...", phEng: "WOH LYE JHAY-lee SHUH SHYAHNG YOW-cheeng NEE HUH NEE-duh JYAH-ruhn TSAHN-jyah SHEE-yee yweh AR-shuh-chee dzye SHUNG-dyeh-guh JYOO-sheeng duh DAH-hway, JOO-tee SHUH “YOONG-hung duh SHING-foo”. JHAY SHUH SOHNG gay NEEN duh YOW-cheeng-hahn." },
+            { en: "I am visiting from ...(country)", tr: "我是从……（国家）来这里访问的。", phNative: "艾 姆 维兹廷 弗朗姆 ...(国家)", phEng: "WOH SHUH TSOONG ...(GWOH-jyah) LYE JHAY-lee FAHNG-wun duh." },
             { en: "We’re offering a free Bible course this month.", tr: "我们这个月提供免费的圣经课程。", phNative: "威尔 奥弗令 额 弗瑞 拜伯 阔斯 迪斯 忙斯", phEng: "WOH-muhn JHAY-guh YWEH TEE-goong MYEN-fay duh SHUNG-jeeng KUH-chuhng." },
             { en: "Would you be interested in a free Bible study?", tr: "你对免费学习圣经感兴趣吗？", phNative: "乌德 尤 必 因特瑞斯提德 因 额 弗瑞 拜伯 斯塔迪", phEng: "NEE DWAY MYEN-fay SHYWEH-shee SHUNG-jeeng GAHN SHING-chyoo MAH?" },
             { en: "This course can help you understand the Bible.", tr: "这个课程能帮助你明白圣经。", phNative: "迪斯 阔斯 看 海普 尤 安德斯坦德 泽 拜伯", phEng: "JHAY-guh KUH-chuhng NUNG BAHNG-joo NEE MING-by SHUNG-jeeng." },
@@ -687,6 +661,9 @@
             { en: "What time is it?", tr: "Hoe laat is het?", phNative: "Wat taaim is it?", phEng: "HOO LAHT ISS HET?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Fijn u te zien hier in San Diego!", phNative: "Aaim hèp-pie toe sie joe in Sèn Die-ee-goo.", phEng: "FAYN oo tuh ZEEN heer in Sahn Dee-AY-goh!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ik nodig u en uw gezin graag uit voor ons congres met het thema 'Eeuwige vreugde' op 27 november in San Diego. Hier is uw persoonlijke uitnodiging.", phNative: "Aaim hier toe in-vaait joe ènd joer fem-mie-lie...", phEng: "IK NOH-duhk oo en ew khuh-ZIN khrahkh OYT voor ons kon-GRES met het TAY-mah AY-wuh-khuh VREUKH-duh op ZAY-vun-en-TVIN-tukh noh-VEM-ber in Sahn Dee-AY-goh. HEER iss ew per-SOHN-luh-kuh OYT-noh-duh-khing." },
+            { en: "I am visiting from ...(country)", tr: "Ik ben op bezoek uit ...(land)", phNative: "Aaim vi-zi-ting from ...(kun-trie)", phEng: "IK ben op buh-ZOOK oyt ...(LAHNT)" },
             { en: "We’re offering a free Bible course this month.", tr: "We bieden deze maand een gratis Bijbelcursus aan.", phNative: "Wier of-fe-ring e frie Baai-bel koors dis munth.", phEng: "Vay BEE-dun DAY-zuh MAHNT un KHRAH-tis BY-buhl-koor-soos ahn." },
             { en: "Would you be interested in a free Bible study?", tr: "Zou u geïnteresseerd zijn in een gratis Bijbelcursus?", phNative: "Woed joe bie in-tres-ted in e frie Baai-bel stoe-die?", phEng: "ZOW oo khuh-IN-tuh-reh-SAYRT zayn in un KHRAH-tis BY-buhl-koor-soos?" },
             { en: "This course can help you understand the Bible.", tr: "Deze cursus kan u helpen de Bijbel te begrijpen.", phNative: "Dis koors kèn hèlp joe un-der-stènd de Baai-bel.", phEng: "DAY-zuh KOOR-soos kahn oo HEL-pun duh BY-buhl tuh buh-KHRAY-pun." },
@@ -724,6 +701,9 @@
             { en: "What time is it?", tr: "Quelle heure est-il ?", phNative: "Ouate taïme iz ite ?", phEng: "kel UHR ay-TEEL?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Je suis très heureux(se) de vous voir à San Diego.", phNative: "Aïm hapi tou si you in San Diego.", phEng: "zhuh swee trayz uh-RUH / uh-RUHZ duh voo VWAHR ah San Diego." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Je viens vous inviter, vous et votre famille, à notre assemblée intitulée « Le bonheur éternel », le 27 novembre à San Diego. Voici votre invitation personnelle.", phNative: "Aïm hir tou invaït you and your famili...", phEng: "zhuh vyan vooz an-vee-TAY, vooz ay VOT-ruh fah-MEE-yuh, ah NOT-ruh ah-sahm-BLAY an-tee-tew-LAY « Luh boh-NUHR ay-tair-NEL », luh van-SET noh-VAHM-bruh ah San Diego. vwah-SEE VOT-ruh an-vee-tah-SYOHN pair-sohn-NEL." },
+            { en: "I am visiting from ...(country)", tr: "Je viens de ... (pays).", phNative: "Aïm vizitingue from ... (kountri)", phEng: "zhuh VYAN duh ... (pay-EE)." },
             { en: "We’re offering a free Bible course this month.", tr: "Ce mois-ci, nous proposons un cours biblique gratuit.", phNative: "Ouir ofeurigne e fri Baïbeul cors diss meunts.", phEng: "suh MWAH-see, noo proh-poh-ZOHN un koor BEE-bleek grah-TWEE." },
             { en: "Would you be interested in a free Bible study?", tr: "Seriez-vous intéressé(e) par un cours biblique gratuit ?", phNative: "Woud you bi intéréstide in e fri Baïbeul steudi ?", phEng: "suh-ree-AY vooz an-tay-ray-SAY pahr un koor BEE-bleek grah-TWEE?" },
             { en: "This course can help you understand the Bible.", tr: "Ce cours peut vous aider à comprendre la Bible.", phNative: "Diss cors kèn hèlp you eunder-stènde ze Baïbeul.", phEng: "suh KOOR puh vooz ay-DAY ah kohm-PRAHN-druh lah BEE-bluh." },
@@ -761,6 +741,9 @@
             { en: "What time is it?", tr: "Wie spät ist es?", phNative: "Wott teim is itt?", phEng: "VEE SHPAYT ist ess?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Ich freue mich sehr, Sie in San Diego zu sehen!", phNative: "Ei ämm häppi tu sie ju in Sän Diego.", phEng: "Ikh FROY-uh mikh zair, zee in San Diego tsoo ZAY-en!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ich möchte Sie und Ihre Familie herzlich zu unserem Kongress „Ewige Freude“ am 27. November in San Diego einladen. Hier ist Ihre persönliche Einladung.", phNative: "Ei ämm hier tu inweyt ju änd juhr fämili...", phEng: "Ikh MERKH-tuh zee oont EE-ruh fah-MEE-lyuh HAIRTS-likh tsoo OON-zuh-rem kohn-GRESS „AY-vee-guh FROY-duh“ ahm ZEE-ben-oond-TSVAHN-tsikh-sten noh-VEM-ber in San Diego EYN-lah-den. Heer ist EE-ruh pair-ZERN-likh-uh EYN-lah-doong." },
+            { en: "I am visiting from ...(country)", tr: "Ich bin zu Besuch aus ...(Land).", phNative: "Ei ämm wisiting from ...(kantry)", phEng: "Ikh bin tsoo buh-ZOOKH ows ...(LAHNT)." },
             { en: "We’re offering a free Bible course this month.", tr: "Wir bieten diesen Monat einen kostenlosen Bibelkurs an.", phNative: "Wihr offering e frih Beibel kohrs sis manfs.", phEng: "Veer BEE-ten DEE-zen MOH-naht EYE-nen KOSS-ten-loh-zen BEE-bel-koors ahn." },
             { en: "Would you be interested in a free Bible study?", tr: "Hätten Sie Interesse an einem kostenlosen Bibelkurs?", phNative: "Wudd ju bi intrested in e frih Beibel staddi?", phEng: "HET-ten zee in-ter-ESS-uh ahn EYE-nem KOSS-ten-loh-zen BEE-bel-koors?" },
             { en: "This course can help you understand the Bible.", tr: "Dieser Kurs kann Ihnen helfen, die Bibel zu verstehen.", phNative: "Siss kohrs känn hälp ju an-der-stähnd se Beibel.", phEng: "DEE-zer koors kahn EE-nen HEL-fen, dee BEE-bel tsoo fair-SHTAY-en." },
@@ -786,7 +769,7 @@
             { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
             { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
             { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
-            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
+            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
             { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
             { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
           ],
@@ -798,6 +781,9 @@
             { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನಿಮ್ಮನ್ನು ನೋಡಿ ನನಗೆ ತುಂಬಾ ಸಂತೋಷವಾಗಿದೆ.", phNative: "ಐ ಆಮ್ ಹ್ಯಾಪಿ ಟು ಸೀ ಯು ಇನ್ ಸ್ಯಾನ್ ಡಿಯಾಗೋ.", phEng: "San Diego-duhl-lee neem-MAHN-noo noh-DEE nuh-nuh-GAY toom-BAH sahn-TOH-shuh-vah-gee-day." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "ನವೆಂಬರ್ 27 ರಂದು ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನಡೆಯುವ 'ಶಾಶ್ವತ ಸಂತೋಷ' ಎಂಬ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬವನ್ನು ಆಹ್ವಾನಿಸಲು ನಾನು ಬಂದಿದ್ದೇನೆ, ಇದು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಆಮಂತ್ರಣ ಪತ್ರಿಕೆ.", phNative: "ಐ ಆಮ್ ಹಿಯರ್ ಟು ಇನ್ವೈಟ್ ಯು ಅಂಡ್ ಯುವರ್ ಫ್ಯಾಮಿಲಿ...", phEng: "November eeppath-EHL-rohn-doo San Diego-duhl-lee nuh-duh-YOO-wah 'Shahsh-wuh-tuh Sahn-TOH-shuh' em-bah suh-mah-vay-SHUK-kay neem-MAHN-noo muht-too neem-muh koo-toom-buh-wuhn-noo ah-wah-nee-suhl-oo NAH-noo buhn-deed-DAY-nay, ee-DOO neem-muh vye-yuhk-tee-kuh ah-muhn-truh-nuh puht-ree-kay." },
+            { en: "I am visiting from ...(country)", tr: "ನಾನು ...(ದೇಶ)ದಿಂದ ಭೇಟಿ ನೀಡುತ್ತಿದ್ದೇನೆ.", phNative: "ಐ ಆಮ್ ವಿಸಿಟಿಂಗ್ ಫ್ರಮ್ ...(ಕಂಟ್ರಿ)", phEng: "NAH-noo ...(DAY-shuh)-dihn-duh bhay-TEE nee-doot-TEED-day-nay." },
             { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
             { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
             { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
@@ -835,6 +821,9 @@
             { en: "What time is it?", tr: "Kitle vazle?", phNative: "Wat taym iz it?", phEng: "keet-LAY vahz-LAY?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "San Diego xarant tumkam pollovn mhaka khub khuxi bhogli.", phNative: "Aym hap-pee tu see yu in San Diego.", phEng: "San Diego shah-RAHNT toom-KAHM poh-LOHV-n mhah-KAH khoob khoo-SHEE bhog-LEE." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Novembrache 27-ver San Diego zatelea 'Sodankalchem Dhadosponn' hea Mellak tumkam ani tumchea kuttumbak amontronn diunk hanv aila(m), hem tumchem khas amontronn-potr.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "Noh-vem-BRAH-chay vees-tah-SATH-ver San Diego zah-TEH-lyah 'Soh-dahn-KAHL-chem Dhah-dohs-PONN' hyah MEL-lahk toom-KAHM ah-NEE toom-CHYAH koot-TOOM-bahk ah-mohn-TROHN dyoonk HAHMV eye-LAH, hem toom-CHEM khahs ah-mohn-TROHN-poh-truh." },
+            { en: "I am visiting from ...(country)", tr: "Hanv ...(desh) thaun bhett diunk aila(m).", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "HAHMV ...(daysh) thah-OON bhaytt dyoonk eye-LAH." },
             { en: "We’re offering a free Bible course this month.", tr: "Hea mhoineant ami fukot Baibl obheas korunk manddunk haddtat.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "hyah moy-NEHN-aht AH-mee foo-KOHT BYE-buhl ob-HYAHS koh-ROONK mahnd-DOONK hahd-TAHT." },
             { en: "Would you be interested in a free Bible study?", tr: "Tumkam fukot Baibl obheas korunk khuxi asa?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "toom-KAHM foo-KOHT BYE-buhl ob-HYAHS koh-ROONK khoo-SHEE ah-SAH?" },
             { en: "This course can help you understand the Bible.", tr: "Hea obheasa udexim tumkam Baibl somzunk adhar melltolem.", phNative: "Dis kors ken help yu...", phEng: "hyah ob-hya-SAH oo-DAY-sheem toom-KAHM BYE-buhl sohm-ZOONK ah-DHAR mel-toh-LEM." },
@@ -872,6 +861,9 @@
             { en: "What time is it?", tr: "지금 몇 시예요?", phNative: "왓 타임 이즈 잇?", phEng: "jee-geum myut shee-yeh-yoh?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "샌디에이고에서 뵙게 되어 정말 기쁩니다.", phNative: "아임 해피 투 씨 유 인 샌디에이고.", phEng: "San Diego-eh-suh bwehp-geh dweh-uh juhng-mahl geep-peum-nee-dah." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "11월 27일 샌디에이고에서 열리는 \"영원한 행복\" 대회의 초대장을 전해 드리고자 합니다. 가족과 함께 꼭 참석해 보세요.", phNative: "아임 히어 투 인바이트 유...", phEng: "sheeb-eel-wahl ee-sheeb-cheel-eel San Diego-eh-suh yuhl-lee-neun \"young-won-hahn heng-bohk\" deh-hweh-eui choh-deh-jahng-eul juhn-heh deu-ree-goh-jah hahm-nee-dah. gah-johk-gwah hahm-kkeh kkok chahm-suhk-heh boh-seh-yoh." },
+            { en: "I am visiting from ...(country)", tr: "저는 ...(국가)에서 방문했습니다.", phNative: "아임 비지팅 프롬 ...(컨트리)", phEng: "juh-neun ...(gook-kkah)-eh-suh bahng-moon-haess-seum-nee-dah." },
             { en: "We’re offering a free Bible course this month.", tr: "이번 달에 무료 성경 공부 과정을 제공하고 있습니다.", phNative: "위어 오퍼링 어 프리 바이블 코스...", phEng: "ee-bun dahl-eh moo-ryoh suhng-gyung gohng-boo gwah-jung-eul jeh-gohng-hah-goh eess-seum-nee-dah." },
             { en: "Would you be interested in a free Bible study?", tr: "무료 성경 공부에 관심이 있으신가요?", phNative: "우드 유 비 인터레스티드...", phEng: "moo-ryoh suhng-gyung gohng-boo-eh gwahn-sheem-ee eess-euh-sheen-gah-yoh?" },
             { en: "This course can help you understand the Bible.", tr: "이 과정은 성경을 이해하는 데 큰 도움이 됩니다.", phNative: "디스 코스 캔 헬프 유...", phEng: "ee gwah-jung-eun suhng-gyung-eul ee-heh-hah-neun deh keun doh-oom-ee dwehm-nee-dah." },
@@ -904,11 +896,14 @@
           getting_around: [
             { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "Wer iz da baht-room?", phEng: "dast-SHOO-yee koh-JAHST?" },
             { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "Haw mach iz dis?", phEng: "ghey-MAH-teh een cheh-GHADR ast?" },
-            { en: "I would like...", tr: "من می‌‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
+            { en: "I would like...", tr: "من می‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
             { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "Ay dont an-der-stend", phEng: "moh-tah-VAJ-jeh neh-mee-SHOH-vam" },
             { en: "What time is it?", tr: "ساعت چند است؟", phNative: "Wat taym iz it?", phEng: "sah-AT chand ast?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "Aym hap-pee tu see yu in San Diego.", phEng: "az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-MAH-yeed, een dah-vat-NAH-meh-yeh shakh-SEE-yeh shoh-mahst." },
+            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam." },
             { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem." },
             { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?" },
             { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "Dis kors ken help yu...", phEng: "een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED." },
@@ -946,6 +941,9 @@
             { en: "What time is it?", tr: "Która jest godzina?", phNative: "Łot tajm yz yt?", phEng: "KTOO-rah yest gohd-ZEE-nah?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Cieszę się, że widzę Cię w San Diego!", phNative: "Ajm hepi tu si ju in San Dijego.", phEng: "CHYEH-sheh shyeh, zheh VEE-dzeh chyeh v San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Chciał(a)bym serdecznie zaprosić Ciebie i Twoją rodzinę na kongres pod hasłem „Wieczne szczęście”, który odbędzie się 27 listopada w San Diego. Oto Twoje osobiste zaproszenie.", phNative: "Ajm hir tu inwajt ju and jur femili...", phEng: "KHY-chow(ah)bym sair-DETCH-nyeh zah-PROH-sheetch CHYEH-byeh ee TVOH-yoh roh-JEE-neh nah KOHN-gres pohd KHAH-swem „VYECH-neh SHCHAYN-shchyeh”, KTOO-ry ohd-BEN-jeh shyeh dwah-JEE-shchya shehd-MEH-goh lees-toh-PAH-dah v San Diego. OH-toh TVOH-yeh oh-soh-BEES-teh zah-proh-SHEH-nyeh." },
+            { en: "I am visiting from ...(country)", tr: "Przyjechałem / Przyjechałam w odwiedziny z ...(kraj).", phNative: "Ajm wiziting from ...(kantri)", phEng: "pshy-yeh-KHAH-wem / pshy-yeh-KHAH-wahm v ohd-vyeh-JEE-ny z ...(KRY)." },
             { en: "We’re offering a free Bible course this month.", tr: "W tym miesiącu proponujemy bezpłatny kurs biblijny.", phNative: "Łir ofering e fri bajbl kors...", phEng: "V tym myeh-SHOHN-tsoo proh-poh-NOO-yeh-my bez-PWAHT-ny koors beeb-LEEY-ny." },
             { en: "Would you be interested in a free Bible study?", tr: "Czy chciałbyś spróbować bezpłatnego kursu biblijnego?", phNative: "Łud ju bi interestyd...", phEng: "Chy khy-chow-BYSH sproo-BOH-vahch bez-pwaht-NEH-goh KOOR-soo beeb-LEEY-neh-goh?" },
             { en: "This course can help you understand the Bible.", tr: "Ten kurs może ci pomóc zrozumieć Biblię.", phNative: "Dys kors ken help ju...", phEng: "Ten koors MOH-zheh chee POH-moots zroh-ZOO-myech BEEB-lyeh." },
@@ -983,6 +981,9 @@
             { en: "What time is it?", tr: "Который час?", phNative: "Wat taym iz it?", phEng: "kah-TOH-ry CHYHS?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Я очень рад(а) видеть вас в Сан-Диего!", phNative: "Aym khe-pi tu si yu in San Di-ye-go.", phEng: "yah OH-cheen RAHD(ah) VEE-deet' vahs v Sahn-Dee-EH-guh!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Я приглашаю вас и вашу семью на наш конгресс под названием «Вечное счастье», который пройдет 27 ноября в Сан-Диего. Вот ваше личное приглашение.", phNative: "Aym kheer tu in-vayt yu end yur fe-mi-li...", phEng: "yah pree-glah-SHAH-yoo vahs ee VAH-shoo syem-YOO nah nahsh kohn-GRESS pohd nahz-VAH-nee-yem «VYECH-nuh-yeh SCHYAHST-yeh», kah-TOH-ry prohy-DYOT dvad-tsaht' sed'-MOH-vuh nah-yahb-RYAH v Sahn-Dee-EH-guh. voht VAH-sheh LEETCH-nuh-yeh pree-glah-SHEH-nee-yeh." },
+            { en: "I am visiting from ...(country)", tr: "Я приехал(а) в гости из ...(страна).", phNative: "Aym vi-zi-ting from ...(kan-tri)", phEng: "yah pree-YEH-khuhl(ah) v GOHS-tee eez ...(strah-NAH)." },
             { en: "We’re offering a free Bible course this month.", tr: "В этом месяце мы предлагаем бесплатный библейский курс.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "V EH-tahm MYE-sya-tseh my preed-lah-GAH-yem byez-PLAHT-ny beeb-LYEY-sky koors." },
             { en: "Would you be interested in a free Bible study?", tr: "Хотели бы вы попробовать бесплатный библейский курс?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "khah-TYEH-lee by vy pah-PROH-bah-vaht byez-PLAHT-ny beeb-LYEY-sky koors?" },
             { en: "This course can help you understand the Bible.", tr: "Этот курс поможет вам лучше понять Библию.", phNative: "Dis kors ken help yu...", phEng: "EH-tat koors pah-MOH-zhet vahm LOOT-sheh pah-NYAHT BEEB-lee-yoo." },
@@ -1020,6 +1021,9 @@
             { en: "What time is it?", tr: "Koliko je ura?", phNative: "Vot tajm iz it?", phEng: "KOH-lee-koh yeh OO-rah?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Zelo sem vesel(a), da vas vidim v San Diegu!", phNative: "Ajm hepi tu si ju in San Dijego.", phEng: "ZEH-loh sem veh-SEL(ah), dah vahs VEE-deem v San Diegu!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tukaj sem, da vas in vašo družino povabim na naše zborovanje z naslovom »Večna sreča«, ki bo 27. novembra v San Diegu. Tukaj je vaše osebno vabilo.", phNative: "Ajm hir tu invajt ju end jur femili...", phEng: "TOO-kye sem, dah vahs een VAH-shoh droo-ZHEE-noh poh-VAH-beem nah NAH-sheh zboh-roh-VAHN-yeh z nahs-LOH-vohm »VECH-nah SREH-chah«, kee boh sed-em-een-DVAH-seht-eh-gah noh-VEM-brah v San Diegu. TOO-kye yeh VAH-sheh oh-SEB-noh vah-BEE-loh." },
+            { en: "I am visiting from ...(country)", tr: "Na obisku sem iz ...(država).", phNative: "Ajm viziting from ...(kantri)", phEng: "nah oh-BEES-koo sem eez ...(duhr-ZHAH-vah)." },
             { en: "We’re offering a free Bible course this month.", tr: "Ta mesec ponujamo brezplačen svetopisemski tečaj.", phNative: "Vir offering e fri bajbl kors...", phEng: "tah MEH-sets poh-NOO-yah-moh brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
             { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested...", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY?" },
             { en: "This course can help you understand the Bible.", tr: "Ta tečaj vam lahko pomaga razumeti Sveto pismo.", phNative: "Dis kors ken help ju...", phEng: "tah teh-CHEY vahm LAH-hkoh poh-MAH-gah rah-ZOO-meh-tee SVEH-toh PEES-moh." },
@@ -1057,6 +1061,9 @@
             { en: "What time is it?", tr: "¿Qué hora es?", phNative: "Guat taim is it?", phEng: "keh OH-rah ess?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "¡Qué alegría verle aquí en San Diego!", phNative: "Aim japi tu si iu in San Diego.", phEng: "kay ah-leh-GREE-ah VEHR-leh ah-KEE en San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Estoy aquí para invitarle a usted y a su familia a nuestra asamblea titulada “Felicidad eterna”, el 27 de noviembre en San Diego. Aquí tiene su invitación personal.", phNative: "Aim jir tu invait iu and iur famili...", phEng: "ess-TOY ah-KEE PAH-rah een-vee-TAHR-leh ah oos-TED ee ah soo fah-MEE-lyah ah NWEHS-trah ah-sahm-BLEH-ah tee-too-LAH-dah “Feh-lee-see-DAHD eh-TEHR-nah”, ehl veyn-tee-SYEH-teh deh noh-VYEHM-breh en San Diego. ah-KEE TYEH-neh soo een-vee-tah-SYOHN pehr-soh-NAHL." },
+            { en: "I am visiting from ...(country)", tr: "Estoy de visita desde ...(país).", phNative: "Aim visiting from ...(kantri)", phEng: "ess-TOY deh vee-SEE-tah DEHS-deh ...(pah-EES)." },
             { en: "We’re offering a free Bible course this month.", tr: "Este mes estamos ofreciendo un curso bíblico gratuito.", phNative: "Uir ofering a fri baibol kors...", phEng: "ESS-teh mehs ess-TAH-mos oh-freh-SYEHN-doh oon KOOR-soh BEE-blee-koh grah-TWEE-toh." },
             { en: "Would you be interested in a free Bible study?", tr: "¿Le gustaría probar nuestras clases bíblicas gratuitas?", phNative: "Gud iu bi intrested in...", phEng: "leh goos-tah-REE-ah proh-BAHR NWEHS-tras KLAH-sehs BEE-blee-kas grah-TWEE-tas?" },
             { en: "This course can help you understand the Bible.", tr: "Este curso le ayudará a comprender mejor la Biblia.", phNative: "Dis kors ken jelp iu...", phEng: "ESS-teh KOOR-soh leh ah-yoo-dah-RAH ah kohm-prehn-DEHR meh-HOR lah BEE-blyah." },
@@ -1094,6 +1101,9 @@
             { en: "What time is it?", tr: "Anong oras na po?", phNative: "Wat taym is it?", phEng: "ah-NOHNG OH-rahs nah poh?" }
           ],
           ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Masaya akong makita ka rito sa San Diego!", phNative: "Aym hapi tu si yu in San Diego.", phEng: "mah-sah-YAH ah-KOHNG mah-KEE-tah kah REE-toh sah San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Nandito po ako para anyayahan kayo at ang inyong pamilya sa aming kombensiyon na may temang “Walang-Hanggang Kaligayahan” sa Nobyembre 27 sa San Diego. Narito po ang inyong personal na imbitasyon.", phNative: "Aym hir tu invayt yu end yur famili...", phEng: "nahn-DEE-toh poh ah-KOH PAH-rah ahn-yah-YAH-hahn kah-YOH aht ahng een-YOHNG pah-MEEL-yah sah AH-meeng kohm-ben-shon nah may TAY-mah “Wah-lahng-Hahng-gahng Kah-lee-gah-YAH-hahn” sah nohb-YEM-breh dwah-leem-PAHT-sah-PEE-toh sah San Diego. nah-REE-toh poh ahng een-YOHNG pair-soh-NAHL nah eem-bee-tahs-YOHN." },
+            { en: "I am visiting from ...(country)", tr: "Bumisita po ako mula sa ...(bansa).", phNative: "Aym visiting from ...(kantri)", phEng: "boo-mee-SEE-tah poh ah-KOH MOO-lah sah ...(bahn-SAH)." },
             { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors...", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
             { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted...", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
             { en: "This course can help you understand the Bible.", tr: "Makakatulong ang kursong ito para mas maunawaan mo ang Bibliya.", phNative: "Dis kors ken help yu...", phEng: "mah-kah-kah-TOO-lohng ahng KOOR-sohng ee-TOH PAH-rah mahs mah-oo-nah-wah-AHN moh ahng beeb-LEE-yah." },
@@ -1107,7 +1117,6 @@
     let currentCategory = 'greetings';
     let currentMode = 'native';
 
-    // English labels mapped for each category
     const categoryEnglishNames = {
       greetings: "Greetings",
       everyday: "Everyday",
@@ -1115,7 +1124,6 @@
       ministry_skills: "Ministry Skills"
     };
 
-    // Render the language buttons grid on Screen 1 alphabetically
     function renderLanguageGrid() {
       const grid = document.getElementById('languageButtonsGrid');
       grid.innerHTML = '';
@@ -1143,7 +1151,6 @@
         grid.appendChild(btn);
       });
 
-      // Populate detail screen dropdown
       const detailDropdown = document.getElementById('detailLangDropdown');
       detailDropdown.innerHTML = '';
       sortedKeys.forEach(key => {
@@ -1182,7 +1189,6 @@
             : 'bg-white/95 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
-        // Stack format: Bold selected language title on top, italicized English subtitle below
         btn.innerHTML = `
           <div class="flex justify-between items-center w-full mb-2">
             <i class="fa-solid ${cat.icon} text-xl ${isActive ? 'text-indigo-200' : 'text-indigo-600 dark:text-indigo-400'}"></i>
@@ -1247,7 +1253,7 @@
             <div class="space-y-1">
               <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.tr}</p>
               <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.en}</h3>
-              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phNative} ]</p>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️️ [ ${item.phNative} ]</p>
             </div>
             <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
               <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
@@ -1274,7 +1280,6 @@
       });
     }
 
-    // --- INITIALIZATION ---
     renderLanguageGrid();
     applyGreetingLanguage('english');
   </script>
