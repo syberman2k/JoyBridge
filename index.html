@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 1.082 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 2.0 by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
@@ -78,9 +78,9 @@
       </div>
     </div>
 
-    <!-- Version Indicator (v1.082) on lower right of header -->
+    <!-- Version Indicator (v2.0) on lower right of header -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none">
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v1.082</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.0</span>
     </div>
   </header>
 
@@ -110,7 +110,7 @@
             <option value="french">Français (French)</option>
             <option value="german">Deutsch (German)</option>
             <option value="kannada">ಕನ್ನಡ (Kannada)</option>
-            <option value="konkani">ಕೊಂಕಣಿ (Konkani)</option>
+            <option value="konkani_romi">Konknni Romi (Konkani)</option>
             <option value="korean">한국어 (Korean)</option>
             <option value="persian">فارسی (Persian)</option>
             <option value="polish">polski (Polish)</option>
@@ -216,18 +216,18 @@
           </p>
         </div>
 
-        <!-- Video 2: East San Marcos Congregation Video Postcard (Coming Soon Placeholder) -->
+        <!-- Video 2: San Marcos Video Postcard (Coming Soon Placeholder) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
             <i class="fa-solid fa-film text-indigo-600 dark:text-indigo-400 text-lg"></i>
             <div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">East San Marcos Congregation Video Postcard</h3>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">San Marcos Video Postcard</h3>
               <p class="text-xs text-slate-500 dark:text-slate-400">Local Area Memories & Greetings</p>
             </div>
           </div>
           <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center relative">
             <video controls playsinline preload="metadata" 
-                   poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'><rect width='800' height='450' fill='%231e1b4b'/><circle cx='400' cy='200' r='60' fill='%23312e81'/><polygon points='385,175 425,200 385,225' fill='%23818cf8'/><text x='400' y='300' font-family='system-ui,-apple-system,sans-serif' font-size='32' font-weight='bold' fill='%23ffffff' text-anchor='middle'>Coming Soon</text><text x='400' y='335' font-family='system-ui,-apple-system,sans-serif' font-size='18' fill='%23c7d2fe' text-anchor='middle'>East San Marcos Congregation Video Postcard</text></svg>" 
+                   poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'><rect width='800' height='450' fill='%231e1b4b'/><circle cx='400' cy='200' r='60' fill='%23312e81'/><polygon points='385,175 425,200 385,225' fill='%23818cf8'/><text x='400' y='300' font-family='system-ui,-apple-system,sans-serif' font-size='32' font-weight='bold' fill='%23ffffff' text-anchor='middle'>Coming Soon</text><text x='400' y='335' font-family='system-ui,-apple-system,sans-serif' font-size='18' fill='%23c7d2fe' text-anchor='middle'>San Marcos Video Postcard</text></svg>" 
                    class="w-full h-full object-contain">
               <source src="VIDEO_SanMarcosVideoPostcard.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
@@ -276,7 +276,7 @@
         </div>
 
         <!-- In-Screen Dropdown Selector -->
-        <div class="relative w-full sm:w-56">
+        <div class="relative w-full sm:w-64">
           <select id="detailLangDropdown" onchange="selectLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 pr-9 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
             <!-- Populated dynamically -->
           </select>
@@ -402,13 +402,13 @@
         jwOrgDesc: "ನೂರಾರು ಭಾಷೆಗಳಲ್ಲಿ ಸಮಾವೇಶದ ಬಿಡುಗಡೆಗಳು, ದಿನಚರಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಂಗೀತವನ್ನು ಪಡೆಯಿರಿ.",
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ."
       },
-      konkani: {
-        badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
-        title: "ಮೊಗಾಚ್ಯಾ ಅಂತರ್‌ರಾಷ್ಟ್ರೀಯ ಡೆಲಿಗೇಟ್ಸ್, ತುಮ್ಕಾಂ ಬರೆಂ ಸ್ವಾಗತ್!",
-        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"ಸದಾಕಾಳಾಚೊ ಸಂತೊಸ್\"</strong> ಅಂತರ್‌ರಾಷ್ಟ್ರೀಯ ಅಧಿವೇಶನಾಕ್ ಆಮಿ ತುಮ್ಕಾಂ ಕ್ರಿಸ್ತಿ ಮೊಗಾನ್ ಸ್ವಾಗತ್ ಕರ್ತಾಂವ್. ತುಮಿ ಸಾಗೊರ್ ವಾ ಖಂಡಾಂ ಉತರುನ್ ಆಯ್ಲಾತ್, ಹ್ಯಾ ಸೊಭಿತ್ ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಶಾರಾಂತ್ ತುಮ್ಚೆ ಸಾಂಗಾತಾ ಆಸೊಂಕ್ ಆಮ್ಕಾಂ ವ್ಹಡ್ ಸಂತೊಸ್ ಜಾತಾ!",
-        actionBtn: "ಭಾಷಾ ಕುಮೊಕ್ ಉಗ್ತೆಂ ಕರಾ (ಕೊಂಕಣಿ)",
-        jwOrgDesc: "ಶೆಂಕ್ಡ್ಯಾನಿ ಭಾಷಾಂನಿ ಅಧಿವೇಶನಾಚೆ ಸಾಹಿತ್ಯ್, ದಿಸಾಚೆ ಕಾರ್ಯಕ್ರಮ್ ಆನಿ ಆಧ್ಯಾತ್ಮಿಕ್ ಸಮಾಧಾನ್ ಜೊಡಾ.",
-        whatsAppDesc: "ಕುಮೊಕ್ ಆನಿ ತಾಜೆಂ ವಿವರ್ ಮೆಳೊಂಕ್ ಆಮ್ಚ್ಯಾ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗ್ರೂಪಾಕ್ ಸಾಂಗಾತ್ ದಿಯಾ."
+      konkani_romi: {
+        badge: "San Diego, California • 2026",
+        title: "Mogachea Sonvsarik Pratinidhimno, Tumkam Borem Yeukor!",
+        body: "Kristi mogan ami tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta!",
+        actionBtn: "Bhas Adar Ugtto Korat (Konknni Romi)",
+        jwOrgDesc: "Xenkddeamni bhasamni zomeache uzvaddavnneo, disachem kareakrom ani bhavartik sfurti melloiat.",
+        whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat."
       },
       korean: {
         badge: "캘리포니아주 샌디에이고 • 2026",
@@ -805,40 +805,40 @@
           ]
         }
       },
-      konkani: {
-        name: "ಕೊಂಕಣಿ (ಕನ್ನಡ)",
-        englishName: "Konkani (Kannada)",
+      konkani_romi: {
+        name: "Konknni Romi",
+        englishName: "Konkani (Romi)",
         code: "kok",
-        categories: { greetings: "ನಮಸ್ಕಾರ", everyday: "ದಿನಚರಿ", getting_around: "ಭೊಂವ್ಡಿ", ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ" },
+        categories: { greetings: "Maneavoll", everyday: "Dispod’ddim", getting_around: "Bhunvddi", ministry_skills: "Seva Kusholtai" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ್ / ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAHR / dev buh-REM kuh-ROOM" },
-            { en: "Good morning", tr: "ದೇವ್ ಬರೆಂ ಕಾಲ್ ದಿವಂ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "dev buh-REM kahl dee-VUM" },
-            { en: "My name is...", tr: "ಮ್ಹಜೆಂ ನಾಂವ್...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "mhuh-JEM NAHMV..." },
-            { en: "Nice to meet you", tr: "ತುಮ್ಕಾಂ ಭೆಟುನ್ ಸಂತೊಸ್ ಜಾಲೊ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "toom-KAHM bhay-TOON sahn-TOHS jah-LOH" },
-            { en: "How are you?", tr: "ತುಮಿ ಕಶೆ ಆಸಾತ್?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "too-MEE kuh-SHAY ah-SAHT?" },
-            { en: "I'm fine, thank you", tr: "ಹಾಂವ್ ಬರೊ ಆಸಾಂ, ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "HAHMV buh-ROH ah-SAHM, dev buh-REM kuh-ROOM" }
+            { en: "Hello / Hi", tr: "Deo boro dis dium / Nomoskar", phNative: "Hel-lo / Hay", phEng: "DEH-oh BOH-roh DEES dyoom / noh-mohs-KAHR" },
+            { en: "Good morning", tr: "Boro sokall", phNative: "Gud mor-ning", phEng: "BOH-roh soh-KAHL" },
+            { en: "My name is...", tr: "Mhojem nanv...", phNative: "May neym iz...", phEng: "mhoh-JEM NAHMV..." },
+            { en: "Nice to meet you", tr: "Tumkam bhettun khuxalkai bhogli", phNative: "Nays tu mit yu", phEng: "toom-KAHM bhay-TOON khoo-shahl-KYE bhog-LEE" },
+            { en: "How are you?", tr: "Tumi koxe asat?", phNative: "Haw ar yu?", phEng: "too-MEE koh-SHAY ah-SAHT?" },
+            { en: "I'm fine, thank you", tr: "Hanv boro asam, Dev borem korum", phNative: "Aym fayn, thenk yu", phEng: "HAHMV boh-ROH ah-SAHM, DEV boh-REM koh-ROOM" }
           ],
           everyday: [
-            { en: "Please", tr: "ದಯಾ ಕರುನ್", phNative: "ಪ್ಲೀಸ್", phEng: "duh-YAH kuh-ROON" },
-            { en: "Thank you", tr: "ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dev buh-REM kuh-ROOM" },
-            { en: "You're welcome", tr: "ಕಾಂಯ್ ಪರವಾ ನಾ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "KAHNY puh-ruh-wah NAH" },
-            { en: "Excuse me", tr: "ಮಾಫ್ ಕರಾ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "MAHF kuh-RAH" },
-            { en: "I'm sorry", tr: "ಮ್ಹಾಕಾ ಭೊಗ್ಶಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "mhah-KAH bhog-SHEE" },
-            { en: "Can you help me?", tr: "ಮ್ಹಾಕಾ ಕಾಂಯ್ ಕುಮೊಕ್ ಕರ್ತೆಲೆಂವೇ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "mhah-KAH kahny koo-MOHK kur-tay-lem-VAY?" }
+            { en: "Please", tr: "Upkar korun", phNative: "Pleez", phEng: "oop-KAHR koh-ROON" },
+            { en: "Thank you", tr: "Dev borem korum", phNative: "Thenk yu", phEng: "DEV boh-REM koh-ROOM" },
+            { en: "You're welcome", tr: "Kai porva na", phNative: "Yur wel-kam", phEng: "KYE por-VAH NAH" },
+            { en: "Excuse me", tr: "Mafi asum", phNative: "Eks-kyuz mi", phEng: "MAH-fee ah-SOOM" },
+            { en: "I'm sorry", tr: "Mhaka bhogxik", phNative: "Aym sah-ree", phEng: "mhah-KAH bhog-SHEEK" },
+            { en: "Can you help me?", tr: "Tumi mhaka adhar diunk xoktat?", phNative: "Ken yu help mi?", phEng: "too-MEE mhah-KAH ah-DHAR dyoonk shohk-TAHT?" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "ಭಾಂದ್ವೊ / ಸಂಧು ಖಂಯ್ ಆಸಾ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌ರೂಮ್?", phEng: "bhahn-DVOH khuhny ah-SAH?" },
-            { en: "How much is this?", tr: "ಹಾಚೆ ಮೋಲ್ ಕಿತ್ಲೆಂ?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "HAH-chay MOHL keet-LEM?" },
-            { en: "I would like...", tr: "ಮ್ಹಾಕಾ ... ಜಾಯ್ ಆಸ್ಲೆಂ", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "mhah-KAH ... JAHY ahs-LEM" },
-            { en: "I don't understand", tr: "ಮ್ಹಾಕಾ ಸಮ್ಜನಾ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "mhah-KAH sum-juh-NAH" },
-            { en: "What time is it?", tr: "ಕಿತ್ಲೆ ವೊರಾಂ ಜಾಲಿಂ?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "keet-LAY voh-RAHM jah-LEEM?" }
+            { en: "Where is the bathroom?", tr: "Sandas khoim asa?", phNative: "Wer iz da baht-room?", phEng: "sahn-DAHS khoym ah-SAH?" },
+            { en: "How much is this?", tr: "Hachem mol kitlem?", phNative: "Haw mach iz dis?", phEng: "HAH-chem MOHL keet-LEM?" },
+            { en: "I would like...", tr: "Mhaka ... zai aslem", phNative: "Ay wud layk...", phEng: "mhah-KAH ... ZYE ahs-LEM" },
+            { en: "I don't understand", tr: "Mhaka somzunk na", phNative: "Ay dont an-der-stend", phEng: "mhah-KAH sohm-ZOONK NAH" },
+            { en: "What time is it?", tr: "Kitle vazle?", phNative: "Wat taym iz it?", phEng: "keet-LAY vahz-LAY?" }
           ],
           ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "ಆಮಿ ಹ್ಯಾ ಮಹಿನಾಂತ್ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಕೋರ್ಸ್ ಭೆಟಯ್ತಾಂವ್.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್...", phEng: "AH-mee hyah muh-hee-NAHNT pook-KUHT BY-buhl kohrs bhay-toy-TAHMV." },
-            { en: "Would you be interested in a free Bible study?", tr: "ತುಮ್ಕಾಂ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಶಿಕೊಂಕ್ ಆಸಕ್ತ್ ಆಸಾವೇ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್...", phEng: "toom-KAHM pook-KUHT BY-buhl shee-KONK ah-suhkt ah-sah-VAY?" },
-            { en: "This course can help you understand the Bible.", tr: "ಹ್ಯಾ ಕೋರ್ಸಾ ವರ್ವಿಂ ತುಮ್ಕಾಂ ಬೈಬಲ್ ಸಮ್ಜೊಂಕ್ ಕುಮೊಕ್ ಮೆಳ್ತಲಿ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು...", phEng: "hyah kohr-SAH vur-VEEM toom-KAHM BY-buhl sum-JONK koo-mohk mel-TUH-lee." },
-            { en: "There is no charge and no obligation.", tr: "ಹಾಕಾ ಕಾಂಯ್ ಖರ್ಚ್ ನಾ ಆನಿ ಕಸಲೆಂಯ್ ಬಂಧನ್ ನಾ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್...", phEng: "HAH-kah kahny KHURCH nah ah-nee kuh-suh-lemy bun-DHUN nah." }
+            { en: "We’re offering a free Bible course this month.", tr: "Hea mhoineant ami fukot Baibl obheas korunk manddunk haddtat.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "hyah moy-NEHN-aht AH-mee foo-KOHT BYE-buhl ob-HYAHS koh-ROONK mahnd-DOONK hahd-TAHT." },
+            { en: "Would you be interested in a free Bible study?", tr: "Tumkam fukot Baibl obheas korunk khuxi asa?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "toom-KAHM foo-KOHT BYE-buhl ob-HYAHS koh-ROONK khoo-SHEE ah-SAH?" },
+            { en: "This course can help you understand the Bible.", tr: "Hea obheasa udexim tumkam Baibl somzunk adhar melltolem.", phNative: "Dis kors ken help yu...", phEng: "hyah ob-hya-SAH oo-DAY-sheem toom-KAHM BYE-buhl sohm-ZOONK ah-DHAR mel-toh-LEM." },
+            { en: "There is no charge and no obligation.", tr: "Hea khatir kainch duddvanchi goroz na ani bondhon na.", phNative: "Der iz no charj...", phEng: "hyah KHAH-teer kye-EENCH dood-VAHN-chee GOH-rohz NAH ah-nee bondh-HON NAH." }
           ]
         }
       },
@@ -904,7 +904,7 @@
           getting_around: [
             { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "Wer iz da baht-room?", phEng: "dast-SHOO-yee koh-JAHST?" },
             { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "Haw mach iz dis?", phEng: "ghey-MAH-teh een cheh-GHADR ast?" },
-            { en: "I would like...", tr: "من می‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
+            { en: "I would like...", tr: "من می‌‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
             { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "Ay dont an-der-stend", phEng: "moh-tah-VAJ-jeh neh-mee-SHOH-vam" },
             { en: "What time is it?", tr: "ساعت چند است؟", phNative: "Wat taym iz it?", phEng: "sah-AT chand ast?" }
           ],
@@ -1182,6 +1182,7 @@
             : 'bg-white/95 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
+        // Stack format: Bold selected language title on top, italicized English subtitle below
         btn.innerHTML = `
           <div class="flex justify-between items-center w-full mb-2">
             <i class="fa-solid ${cat.icon} text-xl ${isActive ? 'text-indigo-200' : 'text-indigo-600 dark:text-indigo-400'}"></i>
@@ -1234,7 +1235,7 @@
     function renderPhrases() {
       const container = document.getElementById('phrasesList');
       container.innerHTML = '';
-      const list = database[currentLangKey].data[currentCategory];
+      const list = database[currentLangKey].data[currentCategory] || [];
       const lang = database[currentLangKey];
 
       list.forEach(item => {
@@ -1246,7 +1247,7 @@
             <div class="space-y-1">
               <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.tr}</p>
               <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.en}</h3>
-              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️️ [ ${item.phNative} ]</p>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phNative} ]</p>
             </div>
             <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
               <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
