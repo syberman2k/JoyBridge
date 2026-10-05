@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 1.071 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 1.081 by syberman2k@gmail.com. Comments and suggestions welcomed!  Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
@@ -78,9 +78,9 @@
       </div>
     </div>
 
-    <!-- Version Indicator (1.071) on lower right of header -->
+    <!-- Version Indicator (v1.081) on lower right of header -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none">
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v1.071</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v1.081</span>
     </div>
   </header>
 
@@ -93,27 +93,31 @@
   <main class="flex-grow max-w-4xl mx-auto w-full p-4 md:p-6 relative z-10">
 
     <!-- Screen 0: Welcome & Greeting Page (Shows on first launch) -->
-    <section id="welcomeScreen" class="space-y-5">
+    <section id="welcomeScreen" class="space-y-6">
 
       <!-- TOP LANGUAGE SELECTOR DROPDOWN FOR GREETINGS -->
       <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 border border-slate-200/90 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <label for="greetingLangSelect" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 uppercase tracking-wide">
           <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400 text-base"></i>
-          <span>Select Greeting Language / 语言 / 언어:</span>
+          <span>Select Greeting Language / 语言 / لغة:</span>
         </label>
         <div class="relative w-full sm:w-72">
           <select id="greetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 pr-9 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
             <option value="english">English (English)</option>
+            <option value="arabic">العربية (Arabic)</option>
+            <option value="chinese">中文 (Chinese)</option>
             <option value="dutch">Nederlands (Dutch)</option>
-            <option value="polish">polski (Polish)</option>
+            <option value="french">Français (French)</option>
             <option value="german">Deutsch (German)</option>
             <option value="kannada">ಕನ್ನಡ (Kannada)</option>
             <option value="konkani">ಕೊಂಕಣಿ (Konkani)</option>
             <option value="korean">한국어 (Korean)</option>
+            <option value="persian">فارسی (Persian)</option>
+            <option value="polish">polski (Polish)</option>
+            <option value="russian">Русский (Russian)</option>
             <option value="slovenian">Slovenščina (Slovenian)</option>
-            <option value="french">Français (French)</option>
+            <option value="spanish">Español (Spanish)</option>
             <option value="tagalog">Tagalog (Filipino)</option>
-            <option value="chinese">中文 (Chinese)</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
             <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -150,7 +154,7 @@
           </button>
           <button onclick="goToHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm transition">
             <i class="fa-solid fa-list-ul"></i>
-            <span>All 10 Languages</span>
+            <span>All 14 Languages</span>
           </button>
         </div>
       </div>
@@ -189,9 +193,55 @@
           </div>
         </a>
       </div>
+
+      <!-- VIDEO SECTION AT BOTTOM OF GREETINGS PAGE -->
+      <div class="space-y-4 pt-2">
+        <!-- Video 1: Welcome to San Diego -->
+        <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
+          <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-lg"></i>
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">Welcome to San Diego</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Convention Preparation & Highlights</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center">
+            <video controls playsinline preload="metadata" class="w-full h-full object-contain">
+              <source src="VIDEO_SanDiegoConventionPrep.mp4" type="video/mp4">
+              Your browser does not support HTML5 video streaming.
+            </video>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 italic text-center">
+            San Diego International Convention Preparation & Highlights video.
+          </p>
+        </div>
+
+        <!-- Video 2: San Marcos Video Postcard (Coming Soon Placeholder) -->
+        <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
+          <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <i class="fa-solid fa-film text-indigo-600 dark:text-indigo-400 text-lg"></i>
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">San Marcos Video Postcard</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Local Area Memories & Greetings</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center relative">
+            <video controls playsinline preload="metadata" 
+                   poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'><rect width='800' height='450' fill='%231e1b4b'/><circle cx='400' cy='200' r='60' fill='%23312e81'/><polygon points='385,175 425,200 385,225' fill='%23818cf8'/><text x='400' y='300' font-family='system-ui,-apple-system,sans-serif' font-size='32' font-weight='bold' fill='%23ffffff' text-anchor='middle'>Coming Soon</text><text x='400' y='335' font-family='system-ui,-apple-system,sans-serif' font-size='18' fill='%23c7d2fe' text-anchor='middle'>San Marcos Video Postcard</text></svg>" 
+                   class="w-full h-full object-contain">
+              <source src="VIDEO_SanMarcosVideoPostcard.mp4" type="video/mp4">
+              Your browser does not support HTML5 video streaming.
+            </video>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 italic text-center">
+            A special video postcard presentation from San Marcos — Coming soon!
+          </p>
+        </div>
+      </div>
+
     </section>
 
-    <!-- Screen 1: Language Selection -->
+    <!-- Screen 1: Language Selection (All 14 Languages Alphabetically Sorted) -->
     <section id="languageScreen" class="hidden space-y-6">
       <div class="text-center py-4 bg-white/90 dark:bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 border border-slate-200/80 dark:border-slate-800/60 shadow-md flex items-center justify-between">
         <button onclick="goToWelcome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-indigo-50 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200/80 dark:border-slate-700 transition">
@@ -201,146 +251,18 @@
           <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Choose a Language</h2>
           <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Select a delegate's language to begin communicating</p>
         </div>
-        <div class="w-16"></div> <!-- Balance placeholder -->
+        <div class="w-16"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- 1. Dutch -->
-        <button onclick="selectLanguage('dutch')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Dutch</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Nederlands</div>
-          </div>
-        </button>
-
-        <!-- 2. Polish -->
-        <button onclick="selectLanguage('polish')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Polish</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">polski</div>
-          </div>
-        </button>
-
-        <!-- 3. German -->
-        <button onclick="selectLanguage('german')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">German</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Deutsch</div>
-          </div>
-        </button>
-
-        <!-- 4. Konkani (Kannada) -->
-        <button onclick="selectLanguage('konkani')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Konkani (Kannada)</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕೊಂಕಣಿ (ಕನ್ನಡ)</div>
-          </div>
-        </button>
-
-        <!-- 5. Kannada -->
-        <button onclick="selectLanguage('kannada')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Kannada</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">ಕನ್ನಡ</div>
-          </div>
-        </button>
-
-        <!-- 6. Korean -->
-        <button onclick="selectLanguage('korean')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Korean</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">한국어</div>
-          </div>
-        </button>
-
-        <!-- 7. Slovenian -->
-        <button onclick="selectLanguage('slovenian')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Slovenian</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Slovenščina</div>
-          </div>
-        </button>
-
-        <!-- 8. French -->
-        <button onclick="selectLanguage('french')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">French</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Français</div>
-          </div>
-        </button>
-
-        <!-- 9. Tagalog -->
-        <button onclick="selectLanguage('tagalog')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Tagalog (Filipino)</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Tagalog</div>
-          </div>
-        </button>
-
-        <!-- 10. Simplified Chinese (Mandarin) -->
-        <button onclick="selectLanguage('chinese')" class="p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4">
-          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Chinese (Mandarin)</div>
-            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">中文 (普通话)</div>
-          </div>
-        </button>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="languageButtonsGrid">
+        <!-- Rendered dynamically in sorted alphabetical order -->
       </div>
     </section>
 
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
-      <!-- Top Language Banner -->
-      <div class="flex items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-md">
+      <!-- Top Language Banner with In-Screen Dropdown Selector -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 p-4 rounded-xl shadow-md gap-3">
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -352,9 +274,16 @@
             <p id="detailLangSub" class="text-xs text-indigo-700 dark:text-indigo-300 font-medium"></p>
           </div>
         </div>
-        <button onclick="goToHome()" class="text-xs font-semibold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-slate-600 shadow-sm transition">
-          Change Language
-        </button>
+
+        <!-- In-Screen Dropdown Selector -->
+        <div class="relative w-full sm:w-56">
+          <select id="detailLangDropdown" onchange="selectLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 pr-9 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
+            <!-- Populated dynamically -->
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+            <i class="fa-solid fa-chevron-down text-xs"></i>
+          </div>
+        </div>
       </div>
 
       <!-- 4 Option Selectors (Icons 50% larger with Bold Native on top & Italics English below) -->
@@ -407,7 +336,6 @@
     function applyThemeIcon(isDark) {
       const icon = document.getElementById('themeIcon');
       if (isDark) {
-        // Yellow Sun icon for Dark mode toggle to return to light
         icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
       } else {
         icon.className = 'fa-solid fa-moon text-indigo-100 text-sm';
@@ -416,7 +344,7 @@
 
     initTheme();
 
-    // --- 2. MULTI-LANGUAGE GREETINGS DATA & LOGIC ---
+    // --- 2. MULTI-LANGUAGE GREETINGS DATA ---
     const greetingTranslations = {
       english: {
         badge: "San Diego, California • 2026",
@@ -426,6 +354,22 @@
         jwOrgDesc: "Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.",
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship."
       },
+      arabic: {
+        badge: "سان دييغو، كاليفورنيا • 2026",
+        title: "أهلاً وسهلاً بكم، أيها المندوبون الدوليون الأعزاء!",
+        body: "نفتح قلوبنا وأذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة!",
+        actionBtn: "افتح المساعد اللغوي (العربية)",
+        jwOrgDesc: "اطّلع على إصدارات المحفل، البرامج اليومية، الترانيم، والتشجيع الروحي بمئات اللغات.",
+        whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية."
+      },
+      chinese: {
+        badge: "加利福尼亚州圣迭戈 • 2026",
+        title: "热烈欢迎亲爱的国际代表们！",
+        body: "我们怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！",
+        actionBtn: "开启语言交流助手 (普通话)",
+        jwOrgDesc: "浏览数百种语言的大会发行物、每日节目单、音乐与宝贵的属灵鼓励。",
+        whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。"
+      },
       dutch: {
         badge: "San Diego, Californië • 2026",
         title: "Welkom, Lieve Internationale Afgevaardigden!",
@@ -434,13 +378,13 @@
         jwOrgDesc: "Bekijk congrespublicaties, dagprogramma's, muziek en geestelijke aanmoediging in honderden talen.",
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang."
       },
-      polish: {
-        badge: "San Diego, Kalifornia • 2026",
-        title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
-        body: "Z gorącą chrześcijańską miłością witamy Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego!",
-        actionBtn: "Otwórz pomoc językową (Polski)",
-        jwOrgDesc: "Korzystaj z materiałów kongresowych, programu dziennego, pieśni i duchowych zachęt w setkach języków.",
-        whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą."
+      french: {
+        badge: "San Diego, Californie • 2026",
+        title: "Bienvenue, chers délégués internationaux !",
+        body: "C'est avec un amour fraternel chaleureux que nous vous accueillons à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego !",
+        actionBtn: "Ouvrir l'aide linguistique (Français)",
+        jwOrgDesc: "Accédez aux parutions de l'assemblée, aux programmes quotidiens, à la musique et aux encouragements en des centaines de langues.",
+        whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange."
       },
       german: {
         badge: "San Diego, Kalifornien • 2026",
@@ -474,6 +418,30 @@
         jwOrgDesc: "수백 개 언어로 제공되는 대회 발표물, 일일 프로그램, 성악곡 및 영적 격려를 확인해 보세요.",
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요."
       },
+      persian: {
+        badge: "سن دیگو، کالیفرنیا • 2026",
+        title: "به گرمی به شما نمایندگان گرامی بین‌المللی خوش‌آمد می‌گوییم!",
+        body: "با محبت گرم مسیحی ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی»</strong> گرامی می‌داریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم!",
+        actionBtn: "باز کردن راهنمای زبان (فارسی)",
+        jwOrgDesc: "دسترسی به نشریات مجمع، برنامه‌های روزانه، سرودها و تشویق‌های روحانی به صدها زبان.",
+        whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید."
+      },
+      polish: {
+        badge: "San Diego, Kalifornia • 2026",
+        title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
+        body: "Z gorącą chrześcijańską miłością witamy Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego!",
+        actionBtn: "Otwórz pomoc językową (Polski)",
+        jwOrgDesc: "Korzystaj z materiałów kongresowych, programu dziennego, pieśni i duchowych zachęt w setkach języków.",
+        whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą."
+      },
+      russian: {
+        badge: "Сан-Диего, Калифорния • 2026",
+        title: "Добро пожаловать, дорогие международные делегаты!",
+        body: "С теплой христианской любовью мы приветствуем вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего!",
+        actionBtn: "Открыть языковой помощник (Русский)",
+        jwOrgDesc: "Получите доступ к публикациям конгресса, ежедневной программе, музыке и духовному ободрению на сотнях языков.",
+        whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения."
+      },
       slovenian: {
         badge: "San Diego, Kalifornija • 2026",
         title: "Dobrodošli, dragi mednarodni delegati!",
@@ -482,13 +450,13 @@
         jwOrgDesc: "Dostopajte do zborovalnih izdaj, dnevnih programov, glasbe in duhovne spodbude v stotinah jezikov.",
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje."
       },
-      french: {
-        badge: "San Diego, Californie • 2026",
-        title: "Bienvenue, chers délégués internationaux !",
-        body: "C'est avec un amour fraternel chaleureux que nous vous accueillons à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego !",
-        actionBtn: "Ouvrir l'aide linguistique (Français)",
-        jwOrgDesc: "Accédez aux parutions de l'assemblée, aux programmes quotidiens, à la musique et aux encouragements en des centaines de langues.",
-        whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange."
+      spanish: {
+        badge: "San Diego, California • 2026",
+        title: "¡Bienvenidos, queridos delegados internacionales!",
+        body: "Con cálido amor cristiano les damos la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego!",
+        actionBtn: "Abrir ayuda de idiomas (Español)",
+        jwOrgDesc: "Acceda a publicaciones de la asamblea, programas diarios, canciones y ánimo espiritual en cientos de idiomas.",
+        whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal."
       },
       tagalog: {
         badge: "San Diego, California • 2026",
@@ -497,14 +465,6 @@
         actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
         jwOrgDesc: "Tingnan ang mga inilabas sa kombensiyon, pang-araw-araw na programa, musika, at pampatibay sa daan-daang wika.",
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama."
-      },
-      chinese: {
-        badge: "加利福尼亚州圣迭戈 • 2026",
-        title: "热烈欢迎亲爱的国际代表们！",
-        body: "我们怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！",
-        actionBtn: "开启语言交流助手 (普通话)",
-        jwOrgDesc: "浏览数百种语言的大会发行物、每日节目单、音乐与宝贵的属灵鼓励。",
-        whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。"
       }
     };
 
@@ -519,7 +479,6 @@
 
     function applyGreetingLanguage(langKey) {
       const data = greetingTranslations[langKey] || greetingTranslations.english;
-
       document.getElementById('welcomeBadge').innerText = data.badge;
       document.getElementById('welcomeTitle').innerHTML = data.title;
       document.getElementById('welcomeBody').innerHTML = data.body;
@@ -561,6 +520,10 @@
       const langData = database[langKey];
       document.getElementById('detailLangName').innerText = langData.name;
       document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
+
+      // Update In-Screen Dropdown Selection
+      const detailDropdown = document.getElementById('detailLangDropdown');
+      if (detailDropdown) detailDropdown.value = langKey;
 
       // Set Tab Left Title
       document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
@@ -618,455 +581,42 @@
       });
     }
 
-    // --- 5. PHRASE DATABASE & EXPRESSION LOGIC ---
+    // --- 5. COMPLETE PHRASE DATABASE (14 LANGUAGES) ---
     const database = {
-      dutch: {
-        name: "Nederlands",
-        englishName: "Dutch",
-        code: "nl-NL",
-        categories: {
-          greetings: "Begroetingen",
-          everyday: "Dagelijks",
-          getting_around: "Onderweg",
-          ministry_skills: "Predikingsvaardigheden"
-        },
+      arabic: {
+        name: "العربية",
+        englishName: "Arabic",
+        code: "ar-SA",
+        categories: { greetings: "التحيات", everyday: "الحياة اليومية", getting_around: "التنقل", ministry_skills: "مهارات الخدمة" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "Hallo / Hoi", phNative: "Hè-lo / Haai", phEng: "HAH-loh / HOY" },
-            { en: "Good morning", tr: "Goedemorgen", phNative: "Goed mor-ning", phEng: "KHOO-duh-MOR-khun" },
-            { en: "My name is...", tr: "Mijn naam is...", phNative: "Maai neem is...", phEng: "MAYN NAHM ISS..." },
-            { en: "Nice to meet you", tr: "Aangenaam kennis te maken", phNative: "Nais toe miet joe", phEng: "AHN-khuh-NAHM KEH-nis tuh MAH-kun" },
-            { en: "How are you?", tr: "Hoe gaat het?", phNative: "Hauw aar joe?", phEng: "HOO KHAHT HET?" },
-            { en: "I'm fine, thank you", tr: "Goed, dank je wel", phNative: "Aaim faain, thènk joe", phEng: "KHOOT, DAHN-kyuh-VEL" }
+            { en: "Hello / Hi", tr: "مرحباً / أهلاً", phNative: "Mahr-hah-ban / Ah-lan", phEng: "MAR-hah-bahn / AH-lan" },
+            { en: "Good morning", tr: "صباح الخير", phNative: "Gud mor-ning", phEng: "sah-BAHH al-KHAYR" },
+            { en: "My name is...", tr: "اسمي...", phNative: "May neym iz...", phEng: "IS-mee..." },
+            { en: "Nice to meet you", tr: "تشرفت بمعرفتك", phNative: "Nays tu mit yu", phEng: "tah-SHAR-raf-too bee-mah-ree-FAH-tik" },
+            { en: "How are you?", tr: "كيف حالك؟", phNative: "Haw ar yu?", phEng: "KAY-fah HAH-look?" },
+            { en: "I'm fine, thank you", tr: "أنا بخير، شكراً لك", phNative: "Aym fayn, thenk yu", phEng: "AH-nah bee-KHAYR, SHOOK-ran lak" }
           ],
           everyday: [
-            { en: "Please", tr: "Alstublieft", phNative: "Pliez", phEng: "AHL-stoo-BLEEFT" },
-            { en: "Thank you", tr: "Dank u wel", phNative: "Thènk joe", phEng: "DAHNK-oo-VEL" },
-            { en: "You're welcome", tr: "Graag gedaan", phNative: "Joer wel-kom", phEng: "KHRAHKH khuh-DAHN" },
-            { en: "Excuse me", tr: "Pardon / Neem me niet kwalijk", phNative: "Eks-kjuus mie", phEng: "par-DOHN" },
-            { en: "I'm sorry", tr: "Het spijt me", phNative: "Aaim sor-rie", phEng: "HET SPYT MUH" },
-            { en: "Can you help me?", tr: "Kunt u mij helpen?", phNative: "Kèn joe hèlp mie?", phEng: "KOONT oo may HEL-pun?" }
+            { en: "Please", tr: "من فضلك", phNative: "Pleez", phEng: "min FAD-lak" },
+            { en: "Thank you", tr: "شكراً لك", phNative: "Thenk yu", phEng: "SHOOK-ran lak" },
+            { en: "You're welcome", tr: "عفواً", phNative: "Yur wel-kam", phEng: "AHF-wan" },
+            { en: "Excuse me", tr: "عذراً / المعذرة", phNative: "Eks-kyuz mi", phEng: "OOTH-ran / ahl-MAH-zee-rah" },
+            { en: "I'm sorry", tr: "أنا آسف", phNative: "Aym sah-ree", phEng: "AH-nah AH-sif" },
+            { en: "Can you help me?", tr: "هل يمكنك مساعدتي؟", phNative: "Ken yu help mi?", phEng: "hal YOOM-kee-nook moo-SAH-ah-dah-tee?" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "Waar is het toilet?", phNative: "Wèèr is de bath-roem?", phEng: "VAHR ISS het twah-LET?" },
-            { en: "How much is this?", tr: "Hoeveel kost dit?", phNative: "Hauw matsj is dis?", phEng: "HOO-vayl KOST DIT?" },
-            { en: "I would like...", tr: "Ik wil graag...", phNative: "Aai woed laaik...", phEng: "IK VIL KHRAHKH..." },
-            { en: "I don't understand", tr: "Ik begrijp het niet", phNative: "Aai doont un-der-stènd", phEng: "IK buh-KHRAYP HET NEET" },
-            { en: "What time is it?", tr: "Hoe laat is het?", phNative: "Wat taaim is it?", phEng: "HOO LAHT ISS HET?" }
+            { en: "Where is the bathroom?", tr: "أين دورة المياه؟", phNative: "Wer iz da baht-room?", phEng: "AY-nah DOW-rat ahl-mee-YAH?" },
+            { en: "How much is this?", tr: "كم ثمن هذا؟", phNative: "Haw mach iz dis?", phEng: "kam THAH-man HAH-thah?" },
+            { en: "I would like...", tr: "أود أن...", phNative: "Ay wud layk...", phEng: "oo-WAD-doo an..." },
+            { en: "I don't understand", tr: "لا أفهم", phNative: "Ay dont an-der-stend", phEng: "LAH AF-ham" },
+            { en: "What time is it?", tr: "كم الساعة؟", phNative: "Wat taym iz it?", phEng: "kam ahl-SAH-ah?" }
           ],
           ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "We bieden deze maand een gratis Bijbelcursus aan.", phNative: "Wier of-fe-ring e frie Baai-bel koors dis munth.", phEng: "Vay BEE-dun DAY-zuh MAHNT un KHRAH-tis BY-buhl-koor-soos ahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Zou u geïnteresseerd zijn in een gratis Bijbelcursus?", phNative: "Woed joe bie in-tres-ted in e frie Baai-bel stoe-die?", phEng: "ZOW oo khuh-IN-tuh-reh-SAYRT zayn in un KHRAH-tis BY-buhl-koor-soos?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "We nodigen mensen uit om een gratis Bijbelles te proberen.", phNative: "Wier in-vaai-ting pie-pel toe traai e frie Baai-bel les-sen.", phEng: "Vay NOH-duh-khun MEN-sun OYT om un KHRAH-tis BY-buhl-les tuh proh-BAY-run." },
-            { en: "Have you ever tried studying the Bible?", tr: "Heeft u ooit geprobeerd de Bijbel te bestuderen?", phNative: "Hèf joe ev-ver traaid stoe-die-jing de Baai-bel?", phEng: "HAYFT oo OYT khuh-proh-BAYRT duh BY-buhl tuh buh-stoo-DAY-run?" },
-            { en: "This course can help you understand the Bible.", tr: "Deze cursus kan u helpen de Bijbel te begrijpen.", phNative: "Dis koors kèn hèlp joe un-der-stènd de Baai-bel.", phEng: "DAY-zuh KOOR-soos kahn oo HEL-pun duh BY-buhl tuh buh-KHRAY-pun." },
-            { en: "It answers important questions about life and the future.", tr: "Het beantwoordt belangrijke levensvragen over de toekomst.", phNative: "It an-sers im-por-tent kwes-tjuns e-baut laaif ènd de fjuu-tsjur.", phEng: "HET buh-AHNT-vohrt buh-LAHNG-ray-kuh LAY-vuns-vrah-khun OH-vur duh TOO-komst." },
-            { en: "There is no charge and no obligation.", tr: "Het is helemaal gratis en vrijblijvend.", phNative: "Dèr is noo tsjaardsj ènd noo ob-li-gee-sjun.", phEng: "HET ISS HAY-luh-mahl KHRAH-tis en VRAY-blay-vunt." },
-            { en: "You can choose the time and place.", tr: "U kunt zelf de tijd en plaats kiezen.", phNative: "Joe kèn tsjoes de taaim ènd plees.", phEng: "OO KOONT zelf duh TAYT en PLAHTS KEE-zun." },
-            { en: "It can be done in person or by video call.", tr: "Het kan persoonlijk of via videobellen.", phNative: "It kèn bie dun in pur-sun or baai vie-die-joo kol.", phEng: "HET kahn per-SOHN-luhk of VEE-ah VEE-dee-yoh-beh-lun." },
-            { en: "Even a few minutes each week is fine.", tr: "Zelfs een paar minuten per week is al prima.", phNative: "Ie-ven e fjuu min-noets ietsj wiek is faain.", phEng: "ZELFS ayn PAHR mee-NOO-tun per VAYK iss ahl PREE-mah." },
-            { en: "May I show you how the course works?", tr: "Mag ik u laten zien hoe de cursus werkt?", phNative: "Mee aai sjoo joe hauw de koors wurks?", phEng: "MAHKH ik oo LAH-tun ZEEN hoo duh KOOR-soos VEHRKT?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Deze demonstratie duurt maar een paar minuten.", phNative: "Dis de-mon-stree-sjun wil teek oon-lie e fjuu min-noets.", phEng: "DAY-zuh deh-mon-STRAH-tsee DEERT mahr ayn PAHR mee-NOO-tun." }
-          ]
-        }
-      },
-      polish: {
-        name: "polski",
-        englishName: "Polish",
-        code: "pl-PL",
-        categories: {
-          greetings: "Powitania",
-          everyday: "Na co dzień",
-          getting_around: "W podróży",
-          ministry_skills: "Służba kaznodziejska"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "Cześć / Dzień dobry", phNative: "Helo / Haj", phEng: "CHESHTCH / Jyen DOH-bry" },
-            { en: "Good morning", tr: "Dzień dobry", phNative: "Gud morning", phEng: "Jyen DOH-bry" },
-            { en: "My name is...", tr: "Nazywam się...", phNative: "Maj nejm yz...", phEng: "nah-ZY-vahm SHYEH..." },
-            { en: "Nice to meet you", tr: "Miło cię poznać", phNative: "Najs tu mit ju", phEng: "MEE-woh chyeh POHZ-nahch" },
-            { en: "How are you?", tr: "Jak się masz?", phNative: "Hał ar ju?", phEng: "YAHK shyeh MAHSH?" },
-            { en: "I'm fine, thank you", tr: "Dziękuję, dobrze", phNative: "Ajm fajn, fenk ju", phEng: "jyen-KOO-yeh, DOHB-zheh" }
-          ],
-          everyday: [
-            { en: "Please", tr: "Proszę", phNative: "Pliz", phEng: "PROH-sheh" },
-            { en: "Thank you", tr: "Dziękuję", phNative: "Tenk ju", phEng: "jyen-KOO-yeh" },
-            { en: "You're welcome", tr: "Nie ma za co", phNative: "Jur wełkam", phEng: "NYEH mah ZAH TSO" },
-            { en: "Excuse me", tr: "Przepraszam", phNative: "Eksk juz mi", phEng: "psheh-PRAH-shahm" },
-            { en: "I'm sorry", tr: "Przepraszam", phNative: "Ajm sori", phEng: "psheh-PRAH-shahm" },
-            { en: "Can you help me?", tr: "Czy możesz mi pomóc?", phNative: "Ken ju help mi?", phEng: "chy MOH-zhesh mee POH-moots?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "Gdzie jest toaleta?", phNative: "Łer yz de bat-rum?", phEng: "GDZYEH yest twah-LEH-tah?" },
-            { en: "How much is this?", tr: "Ile to kosztuje?", phNative: "Hał macz yz dys?", phEng: "EE-leh toh kosh-TOO-yeh?" },
-            { en: "I would like...", tr: "Chciałbym / Chciałabym...", phNative: "Aj łud lajk...", phEng: "KHY-chow-bym / KHY-ah-wah-bym..." },
-            { en: "I don't understand", tr: "Nie rozumiem", phNative: "Aj dont ander-stend", phEng: "NYEH roh-ZOO-myem" },
-            { en: "What time is it?", tr: "Która jest godzina?", phNative: "Łot tajm yz yt?", phEng: "KTOO-rah yest gohd-ZEE-nah?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "W tym miesiącu proponujemy bezpłatny kurs biblijny.", phNative: "Łir ofering e fri bajbl kors dys mant.", phEng: "V tym myeh-SHOHN-tsoo proh-poh-NOO-yeh-my bez-PWAHT-ny koors beeb-LEEY-ny." },
-            { en: "Would you be interested in a free Bible study?", tr: "Czy chciałbyś spróbować bezpłatnego kursu biblijnego?", phNative: "Łud ju bi interestyd yn e fri bajbl stadi?", phEng: "Chy khy-chow-BYSH sproo-BOH-vahch bez-pwaht-NEH-goh KOOR-soo beeb-LEEY-neh-goh?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "Zapraszamy do wypróbowania bezpłatnej lekcji biblijnej.", phNative: "Łir inwajtyng pipul tu traj e fri bajbl lesyn.", phEng: "zah-prah-SHAH-my doh vy-proo-boh-VAH-nyah bez-PWAHT-ney LEK-tsyi beeb-LEEY-ney." },
-            { en: "Have you ever tried studying the Bible?", tr: "Czy próbowałeś kiedyś poznawać Biblię?", phNative: "Hew ju ewer trajd stadying de bajbl?", phEng: "Chy proo-boh-VAH-wesh KYEH-dyshpohz-NAH-vahch BEEB-lyeh?" },
-            { en: "This course can help you understand the Bible.", tr: "Ten kurs może ci pomóc zrozumieć Biblię.", phNative: "Dys kors ken help ju ander-stend de bajbl.", phEng: "Ten koors MOH-zheh chee POH-moots zroh-ZOO-myech BEEB-lyeh." },
-            { en: "It answers important questions about life and the future.", tr: "Odpowiada na ważne pytania dotyczące życia i przyszłości.", phNative: "Yt ansers importynt kłeszczyns ebałt lajf end de fiuczer.", phEng: "Oht-poh-VYAH-dah nah VAHZH-neh py-TAH-nyah doh-ty-CHOHN-tseh ZHY-chyah ee pshy-SHWOHSH-chee." },
-            { en: "There is no charge and no obligation.", tr: "Kurs jest bezpłatny i do niczego nie zobowiązuje.", phNative: "Der yz noł czardż end noł obligejszyn.", phEng: "Koors yest bez-PWAHT-ny ee doh nee-CHEH-goh nyeh zoh-boh-vyon-ZOO-yeh." },
-            { en: "You can choose the time and place.", tr: "Możesz sam wybrać czas i miejsce.", phNative: "Ju ken czuz de tajm end plejs.", phEng: "MOH-zhesh sahm VY-brahch chahs ee MYEY-stseh." },
-            { en: "It can be done in person or by video call.", tr: "Może odbywać się osobiście lub przez wideorozmowę.", phNative: "Yt ken bi dan yn persyn or baj widijo kol.", phEng: "MOH-zheh oht-by-VAHCH shyeh oh-soh-BEESH-chyeh loob pshez vee-deh-oh-rohz-MOH-veh." },
-            { en: "Even a few minutes each week is fine.", tr: "Wystarczy nawet kilka minut w tygodniu.", phNative: "Iwen e fiu mynyts icz łik yz fajn.", phEng: "vys-TAHR-chy NAH-vet KEEL-kah MEE-noot v ty-GOHD-nyoo." },
-            { en: "May I show you how the course works?", tr: "Czy mogę ci pokazać, jak wygląda ten kurs?", phNative: "Mej aj szoł ju hał de kors łerks?", phEng: "Chy MOH-geh chee poh-KAH-zahch, yahk vy-GLOHN-dah ten koors?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Zajmie to tylko kilka minut.", phNative: "Dys demonstrejszyn łyl tejk onli e fiu mynyts.", phEng: "ZAY-myeh toh TYL-koh KEEL-kah MEE-noot." }
-          ]
-        }
-      },
-      german: {
-        name: "Deutsch",
-        englishName: "German",
-        code: "de-DE",
-        categories: {
-          greetings: "Begrüßungen",
-          everyday: "Alltag",
-          getting_around: "Unterwegs",
-          ministry_skills: "Predigtdienst"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "Hallo", phNative: "Hällo / Hai", phEng: "HAH-loh" },
-            { en: "Good morning", tr: "Guten Morgen", phNative: "Gud mourning", phEng: "GOO-ten MOR-gen" },
-            { en: "My name is...", tr: "Ich heiße... / Mein Name ist...", phNative: "Mei nehm is...", phEng: "Ikh HY-suh / Myn NAH-muh ist..." },
-            { en: "Nice to meet you", tr: "Freut mich, Sie kennenzulernen", phNative: "Neis tu miht ju", phEng: "FROYT mikh, zee KEHN-en-tsoo-LEHR-nen" },
-            { en: "How are you?", tr: "Wie geht es Ihnen?", phNative: "Hau ahr ju?", phEng: "VEE gayt ess EE-nen?" },
-            { en: "I'm fine, thank you", tr: "Mir geht es gut, danke", phNative: "Eim fein, tänk ju", phEng: "MEER gayt ess GOOT, DAHN-kuh" }
-          ],
-          everyday: [
-            { en: "Please", tr: "Bitte", phNative: "Plihs", phEng: "BIT-tuh" },
-            { en: "Thank you", tr: "Danke", phNative: "Tänk ju", phEng: "DAHN-kuh" },
-            { en: "You're welcome", tr: "Bitte sehr / Gern geschehen", phNative: "Juhr wällkamm", phEng: "BIT-tuh zair / GAIRN geh-SHAY-en" },
-            { en: "Excuse me", tr: "Entschuldigung", phNative: "Ex-kjuus mih", phEng: "ent-SHOOL-dee-goong" },
-            { en: "I'm sorry", tr: "Es tut mir leid", phNative: "Eim ssori", phEng: "ess toot MEER LYT" },
-            { en: "Can you help me?", tr: "Können Sie mir helfen?", phNative: "Kän ju hälp mih?", phEng: "KER-nen zee MEER HEL-fen?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "Wo ist die Toilette?", phNative: "Wär is se bahss-ruhm?", phEng: "VOH ist dee twah-LET-tuh?" },
-            { en: "How much is this?", tr: "Wie viel kostet das?", phNative: "Hau matsch is sis?", phEng: "VEE feel KOSS-tet dahs?" },
-            { en: "I would like...", tr: "Ich möchte...", phNative: "Ei wudd leik...", phEng: "Ikh MERKH-tuh..." },
-            { en: "I don't understand", tr: "Ich verstehe nicht", phNative: "Ei dohnt an-der-stähnd", phEng: "Ikh fair-SHTAY-uh nikht" },
-            { en: "What time is it?", tr: "Wie spät ist es?", phNative: "Wott teim is itt?", phEng: "VEE SHPAYT ist ess?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "Wir bieten diesen Monat einen kostenlosen Bibelkurs an.", phNative: "Wihr offering e frih Beibel kohrs sis manfs.", phEng: "Veer BEE-ten DEE-zen MOH-naht EYE-nen KOSS-ten-loh-zen BEE-bel-koors ahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Hätten Sie Interesse an einem kostenlosen Bibelkurs?", phNative: "Wudd ju bi intrested in e frih Beibel staddi?", phEng: "HET-ten zee in-ter-ESS-uh ahn EYE-nem KOSS-ten-loh-zen BEE-bel-koors?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "Wir laden dazu ein, eine kostenlose Bibellektion auszuprobieren.", phNative: "Wihr inweiting pihpl tu trei e frih Beibel lessen.", phEng: "Veer LAH-den dah-TSOO eye-nuh KOSS-ten-loh-zuh BEE-bel-lek-tsee-ohn OWS-tsoo-proh-bee-ren." },
-            { en: "Have you ever tried studying the Bible?", tr: "Haben Sie schon einmal die Bibel studiert?", phNative: "Häff ju ewwer treid staddi-ing se Beibel?", phEng: "HAH-ben zee shohn EYE-mahl dee BEE-bel shtoo-DEERT?" },
-            { en: "This course can help you understand the Bible.", tr: "Dieser Kurs kann Ihnen helfen, die Bibel zu verstehen.", phNative: "Siss kohrs känn hälp ju an-der-stähnd se Beibel.", phEng: "DEE-zer koors kahn EE-nen HEL-fen, dee BEE-bel tsoo fair-SHTAY-en." },
-            { en: "It answers important questions about life and the future.", tr: "Er beantwortet wichtige Fragen über das Leben und die Zukunft.", phNative: "Itt ahnsers impor-tent kwes-tschns e-baut leif änd se fjuttscher.", phEng: "Air beh-ANT-vor-tet VIKH-tee-guh FRAH-gen OO-ber dahs LAY-ben oond dee TSOO-koonft." },
-            { en: "There is no charge and no obligation.", tr: "Er ist völlig kostenlos und unverbindlich.", phNative: "Sähr is noh tscharhdj änd noh ob-li-geh-schn.", phEng: "Air ist FOEL-likh KOSS-ten-lohs oond OON-fair-bind-likh." },
-            { en: "You can choose the time and place.", tr: "Sie können Zeit und Ort selbst wählen.", phNative: "Ju känn tschuhs se teim änd plehs.", phEng: "Zee KER-nen TSYT oond ORT zelbst VAY-len." },
-            { en: "It can be done in person or by video call.", tr: "Das geht persönlich oder per Videogespräch.", phNative: "Itt känn bi dann in pör-sn ohr bei widdio kohl.", phEng: "Dahs gayt pair-ZERN-likh OH-der pair VEE-deh-oh-geh-shprekh." },
-            { en: "Even a few minutes each week is fine.", tr: "Schon wenige Minuten pro Woche reichen aus.", phNative: "Ihwenn e fjuu minnits ihtsch wihk is fein.", phEng: "Shohn VAY-nee-guh mee-NOO-ten proh VOKH-uh RY-khen ows." },
-            { en: "May I show you how the course works?", tr: "Darf ich Ihnen kurz zeigen, wie der Kurs abläuft?", phNative: "Mei ei schoh ju hau se kohrs wörks?", phEng: "Dahrf ikh EE-nen koorts TSY-gen, vee dair koors AHP-loyft?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Diese kurze Demonstration dauert nur ein paar Minuten.", phNative: "Siss de-mon-streh-schn will teik ohn-li e fjuu minnits.", phEng: "DEE-zuh KOORT-suh deh-mon-strah-tsee-OHN DOW-ert noor eye pahr mee-NOO-ten." }
-          ]
-        }
-      },
-      kannada: {
-        name: "ಕನ್ನಡ",
-        englishName: "Kannada",
-        code: "kn-IN",
-        categories: {
-          greetings: "ಶುಭಾಶಯಗಳು",
-          everyday: "ದೈನಂದಿನ",
-          getting_around: "ಪ್ರಯಾಣ",
-          ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
-            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
-            { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
-            { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
-            { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
-            { en: "I'm fine, thank you", tr: "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ, ಧನ್ಯವಾದಗಳು", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "NAH-noo chen-nah-GEED-day-nay, dhuhn-yuh-VAH-duh-gul-oo" }
-          ],
-          everyday: [
-            { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
-            { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
-            { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
-            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
-            { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
-            { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
-            { en: "How much is this?", tr: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "EE-duh-ruh BEH-lay ESH-too?" },
-            { en: "I would like...", tr: "ನನಗೆ ... ಬೇಕು", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "nuh-NUH-gay ... BAY-koo" },
-            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
-            { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
-            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "ಉಚಿತ ಬೈಬಲ್ ಪಾಠವನ್ನು ಪ್ರಯತ್ನಿಸಲು ನಾವು ಜನರನ್ನು ಆಹ್ವಾನಿಸುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಇನ್ವೈಟಿಂಗ್ ಪೀಪಲ್ ಟು ಟ್ರೈ ಎ ಫ್ರೀ ಬೈಬಲ್ ಲೆಸನ್.", phEng: "oo-chee-tuh BY-buhl PAH-tuh-wuhn-noo pruh-yuht-nee-suhl-oo NAH-voo juh-nuh-RUHN-noo ah-wah-nee-soot-TEED-day-vay." },
-            { en: "Have you ever tried studying the Bible?", tr: "ನೀವು ಎಂದಾದರೂ ಬೈಬಲ್ ಕಲಿಯಲು ಪ್ರಯತ್ನಿಸಿದ್ದೀರಾ?", phNative: "ಹ್ಯಾವ್ ಯು ಎವರ್ ಟ್ರೈಡ್ ಸ್ಟಡಿಯಿಂಗ್ ದ ಬೈಬಲ್?", phEng: "NEE-voo en-dah-duh-ROO BY-buhl kuh-lee-yuhl-oo pruh-yuht-nee-seed-DEE-rah?" },
-            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
-            { en: "It answers important questions about life and the future.", tr: "ಇದು ಜೀವನ ಮತ್ತು ಭವಿಷ್ಯದ ಬಗ್ಗೆ ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತದೆ.", phNative: "ಇಟ್ ಆನ್ಸರ್ಸ್ ಇಂಪಾರ್ಟೆಂಟ್ ಕ್ವೆಶ್ಚನ್ಸ್ ಅಬೌಟ್ ಲೈಫ್ ಅಂಡ್ ದ ಫ್ಯೂಚರ್.", phEng: "ee-DOO jee-vuh-nuh muht-too bhuh-VEESH-yuh-duh buhg-gay pruh-moo-khuh pruhsh-nay-gluh-GAY oot-tuh-ree-soot-tuh-day." },
-            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." },
-            { en: "You can choose the time and place.", tr: "ನೀವೇ ಸಮಯ ಮತ್ತು ಸ್ಥಳವನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.", phNative: "ಯು ಕ್ಯಾನ್ ಚೂಸ್ ದ ಟೈಮ್ ಅಂಡ್ ಪ್ಲೇಸ್.", phEng: "nee-VAY suh-muh-yuh muht-too sthl-wuhn-noo EYE-kay mah-duh-boo-doo." },
-            { en: "It can be done in person or by video call.", tr: "ಇದನ್ನು ನೇರವಾಗಿ ಅಥವಾ ವಿಡಿಯೋ ಕಾಲ್ ಮೂಲಕ ಮಾಡಬಹುದು.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "ee-duhn-noo NAY-ruh-wah-gee uh-thuh-wah VEE-dee-yoh kahl moo-luh-kuh mah-duh-boo-doo." },
-            { en: "Even a few minutes each week is fine.", tr: "ಪ್ರತಿ ವಾರ ಕೆಲವೇ ನಿಮಿಷಗಳು ಸಾಕು.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "pruh-tee VAH-ruh keh-luh-VAY nee-mee-shuh-gl-oo SAH-koo." },
-            { en: "May I show you how the course works?", tr: "ಕೋರ್ಸ್ ಹೇಗೆ ನಡೆಯುತ್ತದೆ ಎಂದು ನಾನು ನಿಮಗೆ ತೋರಿಸಲೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "kohrs hay-GAY nuh-dey-yoot-tuh-day en-doo NAH-noo nee-muh-gay toh-ree-suh-LAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಈ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಕೆಲವೇ ನಿಮಿಷಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "ee praht-yuhk-shee-kay keh-luh-VAY nee-mee-shuh-gluhn-noo teh-gay-dhoo-kohl-loot-tuh-day." }
-          ]
-        }
-      },
-      konkani: {
-        name: "ಕೊಂಕಣಿ (ಕನ್ನಡ)",
-        englishName: "Konkani (Kannada)",
-        code: "kok",
-        categories: {
-          greetings: "ನಮಸ್ಕಾರ",
-          everyday: "ದಿನಚರಿ",
-          getting_around: "ಭೊಂವ್ಡಿ",
-          ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ್ / ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAHR / dev buh-REM kuh-ROOM" },
-            { en: "Good morning", tr: "ದೇವ್ ಬರೆಂ ಕಾಲ್ ದಿವಂ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "dev buh-REM kahl dee-VUM" },
-            { en: "My name is...", tr: "ಮ್ಹಜೆಂ ನಾಂವ್...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "mhuh-JEM NAHMV..." },
-            { en: "Nice to meet you", tr: "ತುಮ್ಕಾಂ ಭೆಟುನ್ ಸಂತೊಸ್ ಜಾಲೊ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "toom-KAHM bhay-TOON sahn-TOHS jah-LOH" },
-            { en: "How are you?", tr: "ತುಮಿ ಕಶೆ ಆಸಾತ್?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "too-MEE kuh-SHAY ah-SAHT?" },
-            { en: "I'm fine, thank you", tr: "ಹಾಂವ್ ಬರೊ ಆಸಾಂ, ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "HAHMV buh-ROH ah-SAHM, dev buh-REM kuh-ROOM" }
-          ],
-          everyday: [
-            { en: "Please", tr: "ದಯಾ ಕರುನ್", phNative: "ಪ್ಲೀಸ್", phEng: "duh-YAH kuh-ROON" },
-            { en: "Thank you", tr: "ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dev buh-REM kuh-ROOM" },
-            { en: "You're welcome", tr: "ಕಾಂಯ್ ಪರವಾ ನಾ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "KAHNY puh-ruh-wah NAH" },
-            { en: "Excuse me", tr: "ಮಾಫ್ ಕರಾ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "MAHF kuh-RAH" },
-            { en: "I'm sorry", tr: "ಮ್ಹಾಕಾ ಭೊಗ್ಶಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "mhah-KAH bhog-SHEE" },
-            { en: "Can you help me?", tr: "ಮ್ಹಾಕಾ ಕಾಂಯ್ ಕುಮೊಕ್ ಕರ್ತೆಲೆಂವೇ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "mhah-KAH kahny koo-MOHK kur-tay-lem-VAY?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "ಭಾಂದ್ವೊ / ಸಂಧು ಖಂಯ್ ಆಸಾ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌ರೂಮ್?", phEng: "bhahn-DVOH khuhny ah-SAH?" },
-            { en: "How much is this?", tr: "ಹಾಚೆ ಮೋಲ್ ಕಿತ್ಲೆಂ?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "HAH-chay MOHL keet-LEM?" },
-            { en: "I would like...", tr: "ಮ್ಹಾಕಾ ... ಜಾಯ್ ಆಸ್ಲೆಂ", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "mhah-KAH ... JAHY ahs-LEM" },
-            { en: "I don't understand", tr: "ಮ್ಹಾಕಾ ಸಮ್ಜನಾ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "mhah-KAH sum-juh-NAH" },
-            { en: "What time is it?", tr: "ಕಿತ್ಲೆ ವೊರಾಂ ಜಾಲಿಂ?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "keet-LAY voh-RAHM jah-LEEM?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "ಆಮಿ ಹ್ಯಾ ಮಹಿನಾಂತ್ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಕೋರ್ಸ್ ಭೆಟಯ್ತಾಂವ್.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "AH-mee hyah muh-hee-NAHNT pook-KUHT BY-buhl kohrs bhay-toy-TAHMV." },
-            { en: "Would you be interested in a free Bible study?", tr: "ತುಮ್ಕಾಂ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಶಿಕೊಂಕ್ ಆಸಕ್ತ್ ಆಸಾವೇ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "toom-KAHM pook-KUHT BY-buhl shee-KONK ah-suhkt ah-sah-VAY?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "ಆಮಿ ಲೊಕಾಂಕ್ ಏಕ್ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಪಾಠ್ ಚಾಕುನ್ ಪಳೆಂವ್ಕ್ ಆಪಯ್ತಾಂವ್.", phNative: "ವಿ ಆರ್ ಇನ್ವೈಟಿಂಗ್ ಪೀಪಲ್ ಟು ಟ್ರೈ ಎ ಫ್ರೀ ಬೈಬಲ್ ಲೆಸನ್.", phEng: "AH-mee loh-KAHNK ayk pook-KUHT BY-buhl PAHTH chah-koon puh-lyevnk ah-poy-TAHMV." },
-            { en: "Have you ever tried studying the Bible?", tr: "ತುಮಿ ಕೆದ್ನಾಂಯ್ ಬೈಬಲ್ ವಾಚುನ್ ಕಳಿತ್ ಕರ್ನ್ ಘೆಂವ್ಕ್ ಪಳೆಲಾಂವೇ?", phNative: "ಹ್ಯಾವ್ ಯು ಎವರ್ ಟ್ರೈಡ್ ಸ್ಟಡಿಯಿಂಗ್ ದ ಬೈಬಲ್?", phEng: "too-MEE ked-NAHNY BY-buhl vah-CHOON kuh-LEET kurn ghemvk puh-lyay-lahm-VAY?" },
-            { en: "This course can help you understand the Bible.", tr: "ಹ್ಯಾ ಕೋರ್ಸಾ ವರ್ವಿಂ ತುಮ್ಕಾಂ ಬೈಬಲ್ ಸಮ್ಜೊಂಕ್ ಕುಮೊಕ್ ಮೆಳ್ತಲಿ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "hyah kohr-SAH vur-VEEM toom-KAHM BY-buhl sum-JONK koo-mohk mel-TUH-lee." },
-            { en: "It answers important questions about life and the future.", tr: "ಜಿವಿತಾಚ್ಯಾ ಆನಿ ಮುಖ್ಲ್ಯಾ ಕಾಳಾಚ್ಯಾ ಗಂಭೀರ್ ಸವಾಲಾಂಕ್ ಹೊ ಜಾಪ್ ದಿತಾ.", phNative: "ಇಟ್ ಆನ್ಸರ್ಸ್ ಇಂಪಾರ್ಟೆಂಟ್ ಕ್ವೆಶ್ಚನ್ಸ್ ಅಬೌಟ್ ಲೈಫ್ ಅಂಡ್ ದ ಫ್ಯೂಚರ್.", phEng: "jee-vee-tah-CHYAH ah-NEE mookh-LYAH kah-wah-CHYAH gum-BHEER suh-vah-lahnk hoh JAHP dee-TAH." },
-            { en: "There is no charge and no obligation.", tr: "ಹಾಕಾ ಕಾಂಯ್ ಖರ್ಚ್ ನಾ ಆನಿ ಕಸಲೆಂಯ್ ಬಂಧನ್ ನಾ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "HAH-kah kahny KHURCH nah ah-nee kuh-suh-lemy bun-DHUN nah." },
-            { en: "You can choose the time and place.", tr: "ತುಮಿಚ್ ವೇಳ್ ಆನಿ ಜಾಗೊ ವಿಂಚ್ಯೆತ್.", phNative: "ಯು ಕ್ಯಾನ್ ಚೂಸ್ ದ ಟೈಮ್ ಅಂಡ್ ಪ್ಲೇಸ್.", phEng: "too-MEECH vayl ah-NEE jah-GOH veen-chyet." },
-            { en: "It can be done in person or by video call.", tr: "ಹೆಂ ಖುದ್ದ್ ಮೆಳುನ್ ವಾ ವಿಡಿಯೋ ಕೊಲ್ ಮುಖಾಂತ್ರ್ ಕರ್ಯೆತ್.", phNative: "ಇಟ್ ಕ್ಯಾನ್ ಬಿ ಡನ್ ಇನ್ ಪರ್ಸನ್ ಆರ್ ಬೈ ವಿಡಿಯೋ ಕಾಲ್.", phEng: "hem KHOOD-doo meh-WOON vah VEE-dee-yoh kohl moo-KHAHN-truh kur-yet." },
-            { en: "Even a few minutes each week is fine.", tr: "ಹರ್ಯೆಕಾ ಸಪ್ತ್ಯಾಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಪುರೊ.", phNative: "ಈವನ್ ಎ ಫ್ಯೂ ಮಿನಿಟ್ಸ್ ಈಚ್ ವೀಕ್ ಈಸ್ ಫೈನ್.", phEng: "hur-yay-KAH suhp-TYAHK kay-VUHL thoh-deemch mee-noo-TAHM poo-ROH." },
-            { en: "May I show you how the course works?", tr: "ಹೊ ಕೋರ್ಸ್ ಕಸೊ ಚಲ್ತಾ ಮ್ಹಣ್ ಹಾಂವ್ ತುಮ್ಕಾಂ ದಾಕಂವ್ವೇ?", phNative: "ಮೇ ಐ ಶೋ ಯು ಹೌ ದ ಕೋರ್ಸ್ ವರ್ಕ್ಸ್?", phEng: "hoh kohrs kuh-SOH chuhl-TAH mhun HAHMV toom-KAHM dah-kuhmv-VAY?" },
-            { en: "This demonstration will take only a few minutes.", tr: "ಹೆಂ ದಾಕಂವ್ಕ್ ಕೇವಲ್ ಥೊಡಿಂಚ್ ಮಿನುಟಾಂ ಲಾಗ್ತೆಲಿಂ.", phNative: "ದಿಸ್ ಡೆಮೊನ್‌ಸ್ಟ್ರೇಷನ್ ವಿಲ್ ಟೇಕ್ ಓನ್ಲಿ ಎ ಫ್ಯೂ ಮಿನುಟಾಂ.", phEng: "hem dah-kuhmvk kay-VUHL thoh-deemch mee-noo-TAHM lahg-teh-LEEM." }
-          ]
-        }
-      },
-      korean: {
-        name: "한국어",
-        englishName: "Korean",
-        code: "ko-KR",
-        categories: {
-          greetings: "인사말",
-          everyday: "일상 표현",
-          getting_around: "길 찾기 및 여행",
-          ministry_skills: "봉사 기술"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "안녕하세요", phNative: "헬로 / 하이", phEng: "ahn-nyung-hah-seh-yoh" },
-            { en: "Good morning", tr: "좋은 아침입니다", phNative: "굿 모닝", phEng: "joh-eun ah-cheem-eem-nee-dah" },
-            { en: "My name is...", tr: "제 이름은 ... 입니다", phNative: "마이 네임 이즈...", phEng: "jeh ee-reum-eun ... eem-nee-dah" },
-            { en: "Nice to meet you", tr: "만나서 반갑습니다", phNative: "나이스 투 미트 유", phEng: "mahn-nah-suh bahn-gahp-seum-nee-dah" },
-            { en: "How are you?", tr: "어떻게 지내세요?", phNative: "하우 아 유?", phEng: "uh-tuhk-keh jee-neh-seh-yoh?" },
-            { en: "I'm fine, thank you", tr: "잘 지내요, 감사합니다", phNative: "아임 파인, 땡큐", phEng: "jahl jee-neh-yoh, gahm-sah-hahm-nee-dah" }
-          ],
-          everyday: [
-            { en: "Please", tr: "부탁합니다 / 제발", phNative: "플리즈", phEng: "boo-tahk-hahm-nee-dah" },
-            { en: "Thank you", tr: "감사합니다", phNative: "땡큐", phEng: "gahm-sah-hahm-nee-dah" },
-            { en: "You're welcome", tr: "천만에요", phNative: "유어 웰컴", phEng: "chuhn-mahn-eh-yoh" },
-            { en: "Excuse me", tr: "실례합니다", phNative: "익스큐즈 미", phEng: "sheel-lyeh-hahm-nee-dah" },
-            { en: "I'm sorry", tr: "죄송합니다", phNative: "아임 쏘리", phEng: "jweh-sohng-hahm-nee-dah" },
-            { en: "Can you help me?", tr: "저 좀 도와주시겠어요?", phNative: "캔 유 헬프 미?", phEng: "juh johm doh-wah-joo-shee-gess-uh-yoh?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "화장실이 어디예요?", phNative: "웨어 이즈 더 배쓰룸?", phEng: "hwah-jahng-sheel-ee uh-dee-yeh-yoh?" },
-            { en: "How much is this?", tr: "이거 얼마예요?", phNative: "하우 머치 이즈 디스?", phEng: "ee-guh uhl-mah-yeh-yoh?" },
-            { en: "I would like...", tr: "...을/를 원합니다", phNative: "아이 우드 라이크...", phEng: "...eul/reul won-hahm-nee-dah" },
-            { en: "I don't understand", tr: "이해가 안 돼요", phNative: "아이 돈 언더스탠드", phEng: "ee-heh-gah ahn dweh-yoh" },
-            { en: "What time is it?", tr: "지금 몇 시예요?", phNative: "왓 타임 이즈 잇?", phEng: "jee-geum myut shee-yeh-yoh?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "이번 달에 무료 성경 공부 과정을 제공하고 있습니다.", phNative: "위어 오퍼링 어 프리 바이블 코스 디스 먼스.", phEng: "ee-bun dahl-eh moo-ryoh suhng-gyung gohng-boo gwah-jung-eul jeh-gohng-hah-goh eess-seum-nee-dah." },
-            { en: "Would you be interested in a free Bible study?", tr: "무료 성경 공부에 관심이 있으신가요?", phNative: "우드 유 비 인터레스티드 인 어 프리 바이블 스터디?", phEng: "moo-ryoh suhng-gyung gohng-boo-eh gwahn-sheem-ee eess-euh-sheen-gah-yoh?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "무료 성경 학습을 한번 체험해 보시도록 초대하고 있습니다.", phNative: "위어 인바이팅 피플 투 트라이 어 프리 바이블 레슨.", phEng: "moo-ryoh suhng-gyung hahk-seub-eul hahn-bun cheh-uhm-heh boh-shee-doh-rohk choh-deh-hah-goh eess-seum-nee-dah." },
-            { en: "Have you ever tried studying the Bible?", tr: "성경을 공부해 보신 적이 있으신가요?", phNative: "해브 유 에버 트라이드 스터디잉 더 바이블?", phEng: "suhng-gyung-eul gohng-boo-heh boh-sheen juhk-ee eess-euh-sheen-gah-yoh?" },
-            { en: "This course can help you understand the Bible.", tr: "이 과정은 성경을 이해하는 데 큰 도움이 됩니다.", phNative: "디스 코스 캔 헬프 유 언더스탠드 더 바이블.", phEng: "ee gwah-jung-eun suhng-gyung-eul ee-heh-hah-neun deh keun doh-oom-ee dwehm-nee-dah." },
-            { en: "It answers important questions about life and the future.", tr: "인생과 미래에 관한 중요한 질문들의 답을 알려 줍니다.", phNative: "잇 앤서스 임포턴트 퀘스천스 어바웃 라이프 앤드 더 퓨처.", phEng: "een-seng-gwah mee-reh-eh gwahn-hahn joong-yoh-hahn jeel-moon-deul-eui dahb-eul ahl-lyuh joom-nee-dah." },
-            { en: "There is no charge and no obligation.", tr: "비용이 전혀 들지 않으며 어떠한 의무도 없습니다.", phNative: "데어 이즈 노 차지 앤드 노 오블리게이션.", phEng: "bee-yohng-ee juhn-hyuh deul-jee ahn-euh-myuh uh-ttuh-hahn eui-moo-doh uhps-seum-nee-dah." },
-            { en: "You can choose the time and place.", tr: "원하시는 시간과 장소를 직접 선택하실 수 있습니다.", phNative: "유 캔 추즈 더 타임 앤드 플레이스.", phEng: "won-hah-shee-neun shee-gahn-gwah jahng-soh-reul jeek-juhp suhn-tehk-hah-sheel soo eess-seum-nee-dah." },
-            { en: "It can be done in person or by video call.", tr: "직접 만나서 하거나 화상 통화로도 가능합니다.", phNative: "잇 캔 비 던 인 퍼슨 오어 바이 비디오 콜.", phEng: "jeek-juhp mahn-nah-suh hah-guh-nah hwah-sahng tohng-hwah-roh-doh gah-neung-hahm-nee-dah." },
-            { en: "Even a few minutes each week is fine.", tr: "매주 단 몇 분만 시간을 내셔도 괜찮습니다.", phNative: "이븐 어 퓨 미닛츠 이치 위크 이즈 파인.", phEng: "meh-joo dahn myut boon-mahn shee-gahn-eul neh-syuh-doh gwen-chahn-seum-nee-dah." },
-            { en: "May I show you how the course works?", tr: "이 과정이 어떻게 진행되는지 잠깐 보여 드려도 될까요?", phNative: "메이 아이 쇼 유 하우 더 코스 워크스?", phEng: "ee gwah-jung-ee uh-tuhk-keh jeen-heng-dweh-neun-jee jahm-kkahn boh-yuh deul-yuh-doh dwel-kkah-yoh?" },
-            { en: "This demonstration will take only a few minutes.", tr: "시연에는 몇 분밖에 걸리지 않습니다.", phNative: "디스 데몬스트레이션 윌 테이크 온리 어 퓨 미닛츠.", phEng: "shee-yuhn-eh-neun myut boon-bahk-eh guhl-lee-jee ahn-seum-nee-dah." }
-          ]
-        }
-      },
-      slovenian: {
-        name: "Slovenščina",
-        englishName: "Slovenian",
-        code: "sl-SI",
-        categories: {
-          greetings: "Pozdravi",
-          everyday: "Vsakdanji izrazi",
-          getting_around: "Na poti",
-          ministry_skills: "Oznanjevanje"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "Zdravo / Pozdravljeni", phNative: "Helo / Haj", phEng: "ZDRAH-voh / poh-ZRAHV-lyeh-nee" },
-            { en: "Good morning", tr: "Dobro jutro", phNative: "Gud morning", phEng: "DOH-broh YOO-troh" },
-            { en: "My name is...", tr: "Moje ime je...", phNative: "Maj nejm iz...", phEng: "MOH-yeh ee-MEH yeh..." },
-            { en: "Nice to meet you", tr: "Me veseli", phNative: "Najs tu mit ju", phEng: "meh veh-SEH-lee" },
-            { en: "How are you?", tr: "Kako ste?", phNative: "Hav ar ju?", phEng: "kah-KOH steh?" },
-            { en: "I'm fine, thank you", tr: "Dobro sem, hvala", phNative: "Ajm fajn, tenk ju", phEng: "DOH-broh sem, HVAH-lah" }
-          ],
-          everyday: [
-            { en: "Please", tr: "Prosim", phNative: "Pliz", phEng: "PROH-seem" },
-            { en: "Thank you", tr: "Hvala", phNative: "Tenk ju", phEng: "HVAH-lah" },
-            { en: "You're welcome", tr: "Ni za kaj", phNative: "Jur velkam", phEng: "nee zah KY" },
-            { en: "Excuse me", tr: "Oprostite", phNative: "Ekskjuz mi", phEng: "oh-prohs-TEE-teh" },
-            { en: "I'm sorry", tr: "Žal mi je", phNative: "Ajm sori", phEng: "ZHAHL mee yeh" },
-            { en: "Can you help me?", tr: "Mi lahko pomagate?", phNative: "Ken ju help mi?", phEng: "mee LAH-hkoh poh-MAH-gah-teh?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "Kje je stranišče?", phNative: "Ver iz de batrum?", phEng: "kyeh yeh strah-NEESH-cheh?" },
-            { en: "How much is this?", tr: "Koliko stane to?", phNative: "Hav mač iz dis?", phEng: "KOH-lee-koh STAH-neh toh?" },
-            { en: "I would like...", tr: "Rad bi... (m) / Rada bi... (f)", phNative: "Aj vud lajk...", phEng: "RAHD bee... / RAH-dah bee..." },
-            { en: "I don't understand", tr: "Ne razumem", phNative: "Aj dont anderstend", phEng: "neh rah-ZOO-mem" },
-            { en: "What time is it?", tr: "Koliko je ura?", phNative: "Vot tajm iz it?", phEng: "KOH-lee-koh yeh OO-rah?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "Ta mesec ponujamo brezplačen svetopisemski tečaj.", phNative: "Vir offering e fri bajbl kors dis mant.", phEng: "tah MEH-sets poh-NOO-yah-moh brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
-            { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested in e fri bajbl stadi?", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "Vabimo vas, da poskusite brezplačno lekcijo o Svetem pismu.", phNative: "Vir invajting pipul tu traj e fri bajbl lesn.", phEng: "VAH-bee-moh vahs, dah poh-SKOO-see-teh brez-PLAHCH-noh LEK-tsee-yoh oh SVEH-tem PEES-moo." },
-            { en: "Have you ever tried studying the Bible?", tr: "Ali ste že kdaj poskusili raziskovati Sveto pismo?", phNative: "Hev ju ever trajd stadiing de bajbl?", phEng: "AH-lee steh zheh k-dye poh-SKOO-see-lee rah-zees-koh-VAH-tee SVEH-toh PEES-moh?" },
-            { en: "This course can help you understand the Bible.", tr: "Ta tečaj vam lahko pomaga razumeti Sveto pismo.", phNative: "Dis kors ken help ju anderstend de bajbl.", phEng: "tah teh-CHEY vahm LAH-hkoh poh-MAH-gah rah-ZOO-meh-tee SVEH-toh PEES-moh." },
-            { en: "It answers important questions about life and the future.", tr: "Odgovarja na pomembna vprašanja o življenju in prihodnosti.", phNative: "It ansers importnt kvesčns ebavt lajf end de fjučr.", phEng: "ohd-goh-VAHR-yah nah poh-MEMB-nah vprah-SHAHN-yah oh zheev-LYEN-yoo een pree-KHOHT-noh-stee." },
-            { en: "There is no charge and no obligation.", tr: "Tečaj je brezplačen in brez kakršnih koli obveznosti.", phNative: "Der iz no čardž end no obligejšn.", phEng: "teh-CHEY yeh brez-PLAH-chen een brez KAH-kuhr-shneekh KOH-lee ohb-VEZ-noh-stee." },
-            { en: "You can choose the time and place.", tr: "Sami lahko izberete čas in kraj.", phNative: "Ju ken čuz de tajm end plejs.", phEng: "SAH-mee LAH-hkoh eez-beh-REH-teh chahs een kry." },
-            { en: "It can be done in person or by video call.", tr: "Lahko poteka osebno ali prek videoklica.", phNative: "It ken bi dan in persn or baj vidijo kol.", phEng: "LAH-hkoh poh-TEH-kah oh-SEB-noh AH-lee prek VEE-deh-oh-klee-tsah." },
-            { en: "Even a few minutes each week is fine.", tr: "Dovolj je že nekaj minut na teden.", phNative: "Ivn e fju minits ič vik iz fajn.", phEng: "doh-VOHLY yeh zheh NEH-ky MEE-noot nah TEH-den." },
-            { en: "May I show you how the course works?", tr: "Vam lahko pokažem, kako tečaj poteka?", phNative: "Mej aj šov ju hav de kors verks?", phEng: "vahm LAH-hkoh poh-KAH-zhem, kah-KOH teh-CHEY poh-TEH-kah?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Ta prikaz bo vzel le nekaj minut.", phNative: "Dis demonstrejšn vil tejk onli e fju minits.", phEng: "tah PREE-kahz boh VZEHL leh NEH-ky MEE-noot." }
-          ]
-        }
-      },
-      french: {
-        name: "Français",
-        englishName: "French",
-        code: "fr-FR",
-        categories: {
-          greetings: "Salutations",
-          everyday: "Tous les jours",
-          getting_around: "Se déplacer",
-          ministry_skills: "Techniques de prédication"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "Bonjour / Salut", phNative: "Hèlo / Haï", phEng: "bohn-ZHOOR / sah-LOO" },
-            { en: "Good morning", tr: "Bonjour", phNative: "Goud morningue", phEng: "bohn-ZHOOR" },
-            { en: "My name is...", tr: "Je m'appelle...", phNative: "Maï nèym iz...", phEng: "zhuh mah-PEL..." },
-            { en: "Nice to meet you", tr: "Enchanté(e)", phNative: "Naïss tou mite you", phEng: "ahn-shahn-TAY" },
-            { en: "How are you?", tr: "Comment allez-vous ? / Ça va ?", phNative: "Haow are you ?", phEng: "koh-mahn tah-lay VOO? / sah VAH?" },
-            { en: "I'm fine, thank you", tr: "Ça va bien, merci", phNative: "Aïm faïne, thènke you", phEng: "sah VAH byan, mair-SEE" }
-          ],
-          everyday: [
-            { en: "Please", tr: "S'il vous plaît", phNative: "Plize", phEng: "seel voo PLEH" },
-            { en: "Thank you", tr: "Merci", phNative: "Thènke you", phEng: "mair-SEE" },
-            { en: "You're welcome", tr: "De rien / Je vous en prie", phNative: "Youre ouèlcomme", phEng: "duh RYAN / zhuh vooz ahn PREE" },
-            { en: "Excuse me", tr: "Excusez-moi / Pardon", phNative: "Ex-kiouze mi", phEng: "ex-kew-ZAY MWAH / pahr-DOHN" },
-            { en: "I'm sorry", tr: "Je suis désolé(e)", phNative: "Aïm sori", phEng: "zhuh swee day-zoh-LAY" },
-            { en: "Can you help me?", tr: "Pouvez-vous m'aider ?", phNative: "Kèn you hèlp mi ?", phEng: "poo-VAY voo may-DAY?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "Où sont les toilettes ?", phNative: "Ouère iz ze bath-roume ?", phEng: "OO sohn lay twah-LET?" },
-            { en: "How much is this?", tr: "Combien ça coûte ?", phNative: "Haow meutch iz diss ?", phEng: "kohm-BYAN sah KOOT?" },
-            { en: "I would like...", tr: "Je voudrais...", phNative: "Aïe woud laïk...", phEng: "zhuh voo-DRAY..." },
-            { en: "I don't understand", tr: "Je ne comprends pas", phNative: "Aïe donte eunder-stènde", phEng: "zhuh nuh kohm-PRAHN pah" },
-            { en: "What time is it?", tr: "Quelle heure est-il ?", phNative: "Ouate taïme iz ite ?", phEng: "kel UHR ay-TEEL?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "Ce mois-ci, nous proposons un cours biblique gratuit.", phNative: "Ouir ofeurigne e fri Baïbeul cors diss meunts.", phEng: "suh MWAH-see, noo proh-poh-ZOHN un koor BEE-bleek grah-TWEE." },
-            { en: "Would you be interested in a free Bible study?", tr: "Seriez-vous intéressé(e) par un cours biblique gratuit ?", phNative: "Woud you bi intéréstide in e fri Baïbeul steudi ?", phEng: "suh-ree-AY vooz an-tay-ray-SAY pahr un koor BEE-bleek grah-TWEE?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "Nous invitons les gens à essayer une leçon biblique gratuite.", phNative: "Ouir invaïtingue pipoul tou traï e fri Baïbeul lessone.", phEng: "nooz an-vee-TOHN lay ZHAHN ah ay-say-YAY oon luh-SOHN BEE-bleek grah-TWEET." },
-            { en: "Have you ever tried studying the Bible?", tr: "Avez-vous déjà essayé d'étudier la Bible ?", phNative: "Hèv you évère traïde steudiyingue ze Baïbeul ?", phEng: "ah-VAY voo day-ZHAH ay-say-YAY day-too-DYAY lah BEE-bluh?" },
-            { en: "This course can help you understand the Bible.", tr: "Ce cours peut vous aider à comprendre la Bible.", phNative: "Diss cors kèn hèlp you eunder-stènde ze Baïbeul.", phEng: "suh KOOR puh vooz ay-DAY ah kohm-PRAHN-druh lah BEE-bluh." },
-            { en: "It answers important questions about life and the future.", tr: "Il répond aux grandes questions sur la vie et l'avenir.", phNative: "Ite anseurz importante kouéstionez ébaout laïfe ènde ze fioutcheur.", phEng: "eel ray-POHN oh GRAHND kes-TYOHN soor lah VEE ay lahv-NEER." },
-            { en: "There is no charge and no obligation.", tr: "C'est entièrement gratuit et sans engagement.", phNative: "Zère iz no tchardje ènde no oblighéchone.", phEng: "set ahn-tyair-MAHN grah-TWEE ay sahnz ahn-gahzh-MAHN." },
-            { en: "You can choose the time and place.", tr: "Vous pouvez choisir l'heure et le lieu.", phNative: "You kèn tchouze ze taïme ènde pléïsse.", phEng: "voo poo-VAY shwah-ZEER LUHR ay luh LYUH." },
-            { en: "It can be done in person or by video call.", tr: "Cela peut se faire en personne ou par visioconférence.", phNative: "Ite kèn bi deune in peursone or baï vidio kol.", phEng: "suh-LAH puh suh FAIR ahn pair-SUHN oo pahr vee-zyoh-kohn-fay-RAHNS." },
-            { en: "Even a few minutes each week is fine.", tr: "Même quelques minutes par semaine suffisent.", phNative: "Ivne e fiou minitce itche ouik iz faïne.", phEng: "MEHM kel-kuh mee-NOOT pahr suh-MEN soo-FEEZ." },
-            { en: "May I show you how the course works?", tr: "Puis-je vous montrer comment se passe une leçon ?", phNative: "Méï aï cho you haow ze cors oueurkce ?", phEng: "pweezh voo mohn-TRAY koh-MAHN suh PAHS oon luh-SOHN?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Cette démonstration ne prendra que quelques minutes.", phNative: "Diss démonstréchone ouil téïk oneli e fiou minitce.", phEng: "set day-mohn-strah-SYOHN nuh prahn-DRAH kuh kel-kuh mee-NOOT." }
-          ]
-        }
-      },
-      tagalog: {
-        name: "Tagalog",
-        englishName: "Tagalog (Filipino)",
-        code: "fil-PH",
-        categories: {
-          greetings: "Pagbati",
-          everyday: "Araw-araw",
-          getting_around: "Pagbibiyahe",
-          ministry_skills: "Kasanayan sa Ministeryo"
-        },
-        data: {
-          greetings: [
-            { en: "Hello / Hi", tr: "Kumusta / Kamusta", phNative: "He-lo / Hay", phEng: "koo-moos-TAH" },
-            { en: "Good morning", tr: "Magandang umaga", phNative: "Gud mor-ning", phEng: "mah-gahn-DAHNG oo-MAH-gah" },
-            { en: "My name is...", tr: "Ang pangalan ko ay...", phNative: "May neym is...", phEng: "ahng pah-NGAH-lahn koh eye..." },
-            { en: "Nice to meet you", tr: "Ikinagagalak kitang makilala", phNative: "Nays tu mit yu", phEng: "ee-kee-nah-gah-gah-LAHK kee-tahng mah-kee-LAH-lah" },
-            { en: "How are you?", tr: "Kumusta ka?", phNative: "Haw ar yu?", phEng: "koo-moos-TAH kah?" },
-            { en: "I'm fine, thank you", tr: "Mabuti naman, salamat", phNative: "Aym fayn, tenk yu", phEng: "mah-BOO-tee nah-MAHN, sah-LAH-maht" }
-          ],
-          everyday: [
-            { en: "Please", tr: "Pakiusap / Paki...", phNative: "Plis", phEng: "pah-kee-OO-sahp" },
-            { en: "Thank you", tr: "Salamat po", phNative: "Tenk yu", phEng: "sah-LAH-maht poh" },
-            { en: "You're welcome", tr: "Walang anuman", phNative: "Yur wel-kam", phEng: "wah-LAHNG ah-noo-MAHN" },
-            { en: "Excuse me", tr: "Ipagpaumanhin po / Paumanhin", phNative: "Eks-kyus mi", phEng: "ee-pahg-pow-mahn-HEEN poh" },
-            { en: "I'm sorry", tr: "Patawad po / Pasensya na", phNative: "Aym soh-ri", phEng: "pah-TAH-wahd poh / pah-SEN-syah nah" },
-            { en: "Can you help me?", tr: "Puwede mo ba akong tulungan?", phNative: "Ken yu help mi?", phEng: "PWEH-deh moh bah ah-KOHNG too-LOO-ngahn?" }
-          ],
-          getting_around: [
-            { en: "Where is the bathroom?", tr: "Nasaan po ang banyo (CR)?", phNative: "Wer is da bat-rum?", phEng: "nah-sah-AHN poh ahng BAHN-yoh?" },
-            { en: "How much is this?", tr: "Magkano po ito?", phNative: "Haw mats is dis?", phEng: "mahg-KAH-noh poh ee-TOH?" },
-            { en: "I would like...", tr: "Gusto ko po ng...", phNative: "Ay wud layk...", phEng: "GOOS-toh koh poh nahng..." },
-            { en: "I don't understand", tr: "Hindi ko po maintindihan", phNative: "Ay dont an-der-stend", phEng: "heen-DEE koh poh mah-een-teen-DEE-hahn" },
-            { en: "What time is it?", tr: "Anong oras na po?", phNative: "Wat taym is it?", phEng: "ah-NOHNG OH-rahs nah poh?" }
-          ],
-          ministry_skills: [
-            { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors dis mant.", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted in e fri Bay-bol sta-di?", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "Inaanyayahan namin ang mga tao na subukan ang isang libreng aralin sa Bibliya.", phNative: "Wir in-vay-ting pi-pol tu tray e fri Bay-bol le-son.", phEng: "ee-nah-ahn-yah-YAH-hahn nah-MEEN ahng mah-NGAH TAH-oh nah soo-BOO-kahn ahng ee-SAHNG LEEG-breng ah-rah-LEEN sah beeb-LEE-yah." },
-            { en: "Have you ever tried studying the Bible?", tr: "Nasubukan mo na bang pag-aralan ang Bibliya?", phNative: "Hav yu e-ver trayd sta-di-ying da Bay-bol?", phEng: "nah-soo-BOO-kahn moh nah bahng pahg-ah-RAH-lahn ahng beeb-LEE-yah?" },
-            { en: "This course can help you understand the Bible.", tr: "Makakatulong ang kursong ito para mas maunawaan mo ang Bibliya.", phNative: "Dis kors ken help yu an-der-stend da Bay-bol.", phEng: "mah-kah-kah-TOO-lohng ahng KOOR-sohng ee-TOH PAH-rah mahs mah-oo-nah-wah-AHN moh ahng beeb-LEE-yah." },
-            { en: "It answers important questions about life and the future.", tr: "Sinasagot nito ang mahahalagang tanong tungkol sa buhay at hinaharap.", phNative: "It an-sers im-por-tant kwes-tsons a-bawt layf end da fyu-tsur.", phEng: "see-nah-SAH-goht NEE-toh ahng mah-hah-hah-lah-GAHNG TAH-nohng toong-KOHL sah BOO-hye aht hee-nah-HAH-rahp." },
-            { en: "There is no charge and no obligation.", tr: "Ito ay libre at walang anumang obligasyon.", phNative: "Der is no tsards end no ob-li-gey-syon.", phEng: "ee-TOH eye LEEG-breh aht wah-LAHNG ah-noo-MAHNG ohb-lee-gahs-YOHN." },
-            { en: "You can choose the time and place.", tr: "Maaari mong piliin ang oras at lugar.", phNative: "Yu ken tsus da taym end pleys.", phEng: "mah-ah-ah-REE mohng pee-LEE-een ahng OH-rahs aht loo-GAHR." },
-            { en: "It can be done in person or by video call.", tr: "Puwede itong gawin nang personal o sa pamamagitan ng video call.", phNative: "It ken bi dan in per-son or bay vid-yo kol.", phEng: "PWEH-deh ee-TOHNG GAH-ween nahng pair-soh-NAHL oh sah pah-mah-mah-gee-TAHN nahng VEE-dyoh kohl." },
-            { en: "Even a few minutes each week is fine.", tr: "Kahit ilang minuto lang bawat linggo ay sapat na.", phNative: "I-ven e fyu mi-nits its wik is fayn.", phEng: "KAH-heet ee-LAHNG mee-NOO-toh lahng BAH-waht leeng-GOH eye sah-PAHT nah." },
-            { en: "May I show you how the course works?", tr: "Puwede ko bang ipakita sa iyo kung paano ito ginagawa?", phNative: "Mey ay syo yu haw da kors werks?", phEng: "PWEH-deh koh bahng ee-pah-KEE-tah sah ee-YOH koong pah-AH-noh ee-TOH gee-nah-GAH-wah?" },
-            { en: "This demonstration will take only a few minutes.", tr: "Ilang minuto lamang ang kailangan sa maikling demonstrasyong ito.", phNative: "Dis de-mon-strey-syon wil teyk on-li e fyu mi-nits.", phEng: "ee-LAHNG mee-NOO-toh LAH-mahng ahng kye-LAH-ngahn sah mah-eek-LEENG deh-mohn-strahs-YOHNG ee-TOH." }
+            { en: "We’re offering a free Bible course this month.", tr: "نحن نقدم دورة مجانية في دراسة الكتاب المقدس هذا الشهر.", phNative: "Weer of-fer-ing a free Bay-bol kors.", phEng: "NAH-noo noo-QAD-dim DOW-rah moo-JAH-nee-yah feel kee-TAHB ahl-moo-QAD-dahs." },
+            { en: "Would you be interested in a free Bible study?", tr: "هل ترغب في تجربة درس مجاني في الكتاب المقدس؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "hal TAR-ghab fee taj-REE-bah DARS moo-JAH-nee?" },
+            { en: "This course can help you understand the Bible.", tr: "هذه الدورة تساعدك على فهم الكتاب المقدس.", phNative: "Dis kors ken help yu...", phEng: "HAH-zee-hee ahd-DOW-rah too-SAH-ee-dook ah-lah FAHM ahl-kee-TAHB." },
+            { en: "There is no charge and no obligation.", tr: "الدورة مجانية بالكامل وبدون أي التزام.", phNative: "Der iz no charj...", phEng: "ahd-DOW-rah moo-JAH-nee-yah beel-KAH-mil wah bee-DOON ay il-tee-ZAHM." }
           ]
         }
       },
@@ -1074,12 +624,7 @@
         name: "中文 (普通话)",
         englishName: "Chinese (Mandarin)",
         code: "zh-CN",
-        categories: {
-          greetings: "问候",
-          everyday: "日常",
-          getting_around: "出行",
-          ministry_skills: "传道技能"
-        },
+        categories: { greetings: "问候", everyday: "日常", getting_around: "出行", ministry_skills: "传道技能" },
         data: {
           greetings: [
             { en: "Hello / Hi", tr: "你好 / 嗨", phNative: "哈喽 / 嗨 (Hā-lóu / Hāi)", phEng: "NEE-HOW / HY" },
@@ -1107,22 +652,458 @@
           ministry_skills: [
             { en: "We’re offering a free Bible course this month.", tr: "我们这个月提供免费的圣经课程。", phNative: "威尔 奥弗令 额 弗瑞 拜伯 阔斯 迪斯 忙斯", phEng: "WOH-muhn JHAY-guh YWEH TEE-goong MYEN-fay duh SHUNG-jeeng KUH-chuhng." },
             { en: "Would you be interested in a free Bible study?", tr: "你对免费学习圣经感兴趣吗？", phNative: "乌德 尤 必 因特瑞斯提德 因 额 弗瑞 拜伯 斯塔迪", phEng: "NEE DWAY MYEN-fay SHYWEH-shee SHUNG-jeeng GAHN SHING-chyoo MAH?" },
-            { en: "We’re inviting people to try a free Bible lesson.", tr: "我们邀请人体验一堂免费的圣经课。", phNative: "威尔 因歪廷 批剖 吐 揣 额 弗瑞 拜伯 来森", phEng: "WOH-muhn YOW-cheeng RUHN TEE-yehn YEE-tahng MYEN-fay duh SHUNG-jeeng KUH." },
-            { en: "Have you ever tried studying the Bible?", tr: "你以前有学习过圣经吗？", phNative: "汉夫 尤 挨窝 揣德 斯塔迪硬 泽 拜伯", phEng: "NEE YEE-chyehn YOH SHYWEH-shee GWOH SHUNG-jeeng MAH?" },
             { en: "This course can help you understand the Bible.", tr: "这个课程能帮助你明白圣经。", phNative: "迪斯 阔斯 看 海普 尤 安德斯坦德 泽 拜伯", phEng: "JHAY-guh KUH-chuhng NUNG BAHNG-joo NEE MING-by SHUNG-jeeng." },
-            { en: "It answers important questions about life and the future.", tr: "它能解答关于人生和未来的重要问题。", phNative: "伊特 安瑟斯 音剖特恩特 阔斯臣斯 阿包特 来福 恩德 泽 퓨처", phEng: "TAH NUNG JYEH-dah GWAHN-yoo RUHN-shuhng HUH WAY-lye duh JOONG-yow WUN-tee." },
-            { en: "There is no charge and no obligation.", tr: "完全免费，没有任何约束。", phNative: "泽尔 伊兹 诺 恰芝 恩德 诺 欧伯利给讯", phEng: "WAHN-chywen MYEN-fay, MAY-yoh RUHN-huh YWEH-shoo." },
-            { en: "You can choose the time and place.", tr: "你可以自由选择时间和地点。", phNative: "尤 看 丘兹 泽 泰姆 恩德 普雷斯", phEng: "NEE KEE-yee DZU-yoh SHYWEN-zuh SHUH-jyehn HUH DEE-dyehn." },
-            { en: "It can be done in person or by video call.", tr: "可以通过面对面或视频通话来进行。", phNative: "伊特 看 必 当 因 剖森 或 拜 威第欧 靠", phEng: "KEE-yee TOONG-gwoh MYEN-dway-MYEN HWOH SHUH-peen TOONG-hwah LYEE JEEN-sheeng." },
-            { en: "Even a few minutes each week is fine.", tr: "每周即使只花几分钟也可以。", phNative: "依温 额 퓨 迷你茨 一起 威克 伊兹 放", phEng: "MAY-joh JEE-shuh JHUR HWAH JEE FUN-joong YEH KEE-yee." },
-            { en: "May I show you how the course works?", tr: "我可以向你示范一下课程是怎么进行的吗？", phNative: "妹 艾 秀 尤 豪 泽 阔斯 沃克斯", phEng: "WOH KEE-yee SHYAHNG NEE SHUH-fahn YEE-syah KUH-chuhng SHUH DZEN-muh JEEN-sheeng duh MAH?" },
-            { en: "This demonstration will take only a few minutes.", tr: "这个示范只需要几分钟时间。", phNative: "迪斯 德蒙斯特雷讯 威尔 忒克 欧恩利 额 퓨 迷你茨", phEng: "JHAY-guh SHUH-fahn JHEE SHYEE-yow JEE FUN-joong SHUH-jyehn." }
+            { en: "There is no charge and no obligation.", tr: "完全免费，没有任何约束。", phNative: "泽尔 伊兹 诺 恰芝 恩德 诺 欧伯利给讯", phEng: "WAHN-chywen MYEN-fay, MAY-yoh RUHN-huh YWEH-shoo." }
+          ]
+        }
+      },
+      dutch: {
+        name: "Nederlands",
+        englishName: "Dutch",
+        code: "nl-NL",
+        categories: { greetings: "Begroetingen", everyday: "Dagelijks", getting_around: "Onderweg", ministry_skills: "Predikingsvaardigheden" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hallo / Hoi", phNative: "Hè-lo / Haai", phEng: "HAH-loh / HOY" },
+            { en: "Good morning", tr: "Goedemorgen", phNative: "Goed mor-ning", phEng: "KHOO-duh-MOR-khun" },
+            { en: "My name is...", tr: "Mijn naam is...", phNative: "Maai neem is...", phEng: "MAYN NAHM ISS..." },
+            { en: "Nice to meet you", tr: "Aangenaam kennis te maken", phNative: "Nais toe miet joe", phEng: "AHN-khuh-NAHM KEH-nis tuh MAH-kun" },
+            { en: "How are you?", tr: "Hoe gaat het?", phNative: "Hauw aar joe?", phEng: "HOO KHAHT HET?" },
+            { en: "I'm fine, thank you", tr: "Goed, dank je wel", phNative: "Aaim faain, thènk joe", phEng: "KHOOT, DAHN-kyuh-VEL" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Alstublieft", phNative: "Pliez", phEng: "AHL-stoo-BLEEFT" },
+            { en: "Thank you", tr: "Dank u wel", phNative: "Thènk joe", phEng: "DAHNK-oo-VEL" },
+            { en: "You're welcome", tr: "Graag gedaan", phNative: "Joer wel-kom", phEng: "KHRAHKH khuh-DAHN" },
+            { en: "Excuse me", tr: "Pardon / Neem me niet kwalijk", phNative: "Eks-kjuus mie", phEng: "par-DOHN" },
+            { en: "I'm sorry", tr: "Het spijt me", phNative: "Aaim sor-rie", phEng: "HET SPYT MUH" },
+            { en: "Can you help me?", tr: "Kunt u mij helpen?", phNative: "Kèn joe hèlp mie?", phEng: "KOONT oo may HEL-pun?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Waar is het toilet?", phNative: "Wèèr is de bath-roem?", phEng: "VAHR ISS het twah-LET?" },
+            { en: "How much is this?", tr: "Hoeveel kost dit?", phNative: "Hauw matsj is dis?", phEng: "HOO-vayl KOST DIT?" },
+            { en: "I would like...", tr: "Ik wil graag...", phNative: "Aai woed laaik...", phEng: "IK VIL KHRAHKH..." },
+            { en: "I don't understand", tr: "Ik begrijp het niet", phNative: "Aai doont un-der-stènd", phEng: "IK buh-KHRAYP HET NEET" },
+            { en: "What time is it?", tr: "Hoe laat is het?", phNative: "Wat taaim is it?", phEng: "HOO LAHT ISS HET?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "We bieden deze maand een gratis Bijbelcursus aan.", phNative: "Wier of-fe-ring e frie Baai-bel koors dis munth.", phEng: "Vay BEE-dun DAY-zuh MAHNT un KHRAH-tis BY-buhl-koor-soos ahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Zou u geïnteresseerd zijn in een gratis Bijbelcursus?", phNative: "Woed joe bie in-tres-ted in e frie Baai-bel stoe-die?", phEng: "ZOW oo khuh-IN-tuh-reh-SAYRT zayn in un KHRAH-tis BY-buhl-koor-soos?" },
+            { en: "This course can help you understand the Bible.", tr: "Deze cursus kan u helpen de Bijbel te begrijpen.", phNative: "Dis koors kèn hèlp joe un-der-stènd de Baai-bel.", phEng: "DAY-zuh KOOR-soos kahn oo HEL-pun duh BY-buhl tuh buh-KHRAY-pun." },
+            { en: "There is no charge and no obligation.", tr: "Het is helemaal gratis en vrijblijvend.", phNative: "Dèr is noo tsjaardsj ènd noo ob-li-gee-sjun.", phEng: "HET ISS HAY-luh-mahl KHRAH-tis en VRAY-blay-vunt." }
+          ]
+        }
+      },
+      french: {
+        name: "Français",
+        englishName: "French",
+        code: "fr-FR",
+        categories: { greetings: "Salutations", everyday: "Tous les jours", getting_around: "Se déplacer", ministry_skills: "Techniques de prédication" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Bonjour / Salut", phNative: "Hèlo / Haï", phEng: "bohn-ZHOOR / sah-LOO" },
+            { en: "Good morning", tr: "Bonjour", phNative: "Goud morningue", phEng: "bohn-ZHOOR" },
+            { en: "My name is...", tr: "Je m'appelle...", phNative: "Maï nèym iz...", phEng: "zhuh mah-PEL..." },
+            { en: "Nice to meet you", tr: "Enchanté(e)", phNative: "Naïss tou mite you", phEng: "ahn-shahn-TAY" },
+            { en: "How are you?", tr: "Comment allez-vous ? / Ça va ?", phNative: "Haow are you ?", phEng: "koh-mahn tah-lay VOO? / sah VAH?" },
+            { en: "I'm fine, thank you", tr: "Ça va bien, merci", phNative: "Aïm faïne, thènke you", phEng: "sah VAH byan, mair-SEE" }
+          ],
+          everyday: [
+            { en: "Please", tr: "S'il vous plaît", phNative: "Plize", phEng: "seel voo PLEH" },
+            { en: "Thank you", tr: "Merci", phNative: "Thènke you", phEng: "mair-SEE" },
+            { en: "You're welcome", tr: "De rien / Je vous en prie", phNative: "Youre ouèlcomme", phEng: "duh RYAN / zhuh vooz ahn PREE" },
+            { en: "Excuse me", tr: "Excusez-moi / Pardon", phNative: "Ex-kiouze mi", phEng: "ex-kew-ZAY MWAH / pahr-DOHN" },
+            { en: "I'm sorry", tr: "Je suis désolé(e)", phNative: "Aïm sori", phEng: "zhuh swee day-zoh-LAY" },
+            { en: "Can you help me?", tr: "Pouvez-vous m'aider ?", phNative: "Kèn you hèlp mi ?", phEng: "poo-VAY voo may-DAY?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Où sont les toilettes ?", phNative: "Ouère iz ze bath-roume ?", phEng: "OO sohn lay twah-LET?" },
+            { en: "How much is this?", tr: "Combien ça coûte ?", phNative: "Haow meutch iz diss ?", phEng: "kohm-BYAN sah KOOT?" },
+            { en: "I would like...", tr: "Je voudrais...", phNative: "Aïe woud laïk...", phEng: "zhuh voo-DRAY..." },
+            { en: "I don't understand", tr: "Je ne comprends pas", phNative: "Aïe donte eunder-stènde", phEng: "zhuh nuh kohm-PRAHN pah" },
+            { en: "What time is it?", tr: "Quelle heure est-il ?", phNative: "Ouate taïme iz ite ?", phEng: "kel UHR ay-TEEL?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Ce mois-ci, nous proposons un cours biblique gratuit.", phNative: "Ouir ofeurigne e fri Baïbeul cors diss meunts.", phEng: "suh MWAH-see, noo proh-poh-ZOHN un koor BEE-bleek grah-TWEE." },
+            { en: "Would you be interested in a free Bible study?", tr: "Seriez-vous intéressé(e) par un cours biblique gratuit ?", phNative: "Woud you bi intéréstide in e fri Baïbeul steudi ?", phEng: "suh-ree-AY vooz an-tay-ray-SAY pahr un koor BEE-bleek grah-TWEE?" },
+            { en: "This course can help you understand the Bible.", tr: "Ce cours peut vous aider à comprendre la Bible.", phNative: "Diss cors kèn hèlp you eunder-stènde ze Baïbeul.", phEng: "suh KOOR puh vooz ay-DAY ah kohm-PRAHN-druh lah BEE-bluh." },
+            { en: "There is no charge and no obligation.", tr: "C'est entièrement gratuit et sans engagement.", phNative: "Zère iz no tchardje ènde no oblighéchone.", phEng: "set ahn-tyair-MAHN grah-TWEE ay sahnz ahn-gahzh-MAHN." }
+          ]
+        }
+      },
+      german: {
+        name: "Deutsch",
+        englishName: "German",
+        code: "de-DE",
+        categories: { greetings: "Begrüßungen", everyday: "Alltag", getting_around: "Unterwegs", ministry_skills: "Predigtdienst" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hallo", phNative: "Hällo / Hai", phEng: "HAH-loh" },
+            { en: "Good morning", tr: "Guten Morgen", phNative: "Gud mourning", phEng: "GOO-ten MOR-gen" },
+            { en: "My name is...", tr: "Ich heiße... / Mein Name ist...", phNative: "Mei nehm is...", phEng: "Ikh HY-suh / Myn NAH-muh ist..." },
+            { en: "Nice to meet you", tr: "Freut mich, Sie kennenzulernen", phNative: "Neis tu miht ju", phEng: "FROYT mikh, zee KEHN-en-tsoo-LEHR-nen" },
+            { en: "How are you?", tr: "Wie geht es Ihnen?", phNative: "Hau ahr ju?", phEng: "VEE gayt ess EE-nen?" },
+            { en: "I'm fine, thank you", tr: "Mir geht es gut, danke", phNative: "Eim fein, tänk ju", phEng: "MEER gayt ess GOOT, DAHN-kuh" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Bitte", phNative: "Plihs", phEng: "BIT-tuh" },
+            { en: "Thank you", tr: "Danke", phNative: "Tänk ju", phEng: "DAHN-kuh" },
+            { en: "You're welcome", tr: "Bitte sehr / Gern geschehen", phNative: "Juhr wällkamm", phEng: "BIT-tuh zair / GAIRN geh-SHAY-en" },
+            { en: "Excuse me", tr: "Entschuldigung", phNative: "Ex-kjuus mih", phEng: "ent-SHOOL-dee-goong" },
+            { en: "I'm sorry", tr: "Es tut mir leid", phNative: "Eim ssori", phEng: "ess toot MEER LYT" },
+            { en: "Can you help me?", tr: "Können Sie mir helfen?", phNative: "Kän ju hälp mih?", phEng: "KER-nen zee MEER HEL-fen?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Wo ist die Toilette?", phNative: "Wär is se bahss-ruhm?", phEng: "VOH ist dee twah-LET-tuh?" },
+            { en: "How much is this?", tr: "Wie viel kostet das?", phNative: "Hau matsch is sis?", phEng: "VEE feel KOSS-tet dahs?" },
+            { en: "I would like...", tr: "Ich möchte...", phNative: "Ei wudd leik...", phEng: "Ikh MERKH-tuh..." },
+            { en: "I don't understand", tr: "Ich verstehe nicht", phNative: "Ei dohnt an-der-stähnd", phEng: "Ikh fair-SHTAY-uh nikht" },
+            { en: "What time is it?", tr: "Wie spät ist es?", phNative: "Wott teim is itt?", phEng: "VEE SHPAYT ist ess?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Wir bieten diesen Monat einen kostenlosen Bibelkurs an.", phNative: "Wihr offering e frih Beibel kohrs sis manfs.", phEng: "Veer BEE-ten DEE-zen MOH-naht EYE-nen KOSS-ten-loh-zen BEE-bel-koors ahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Hätten Sie Interesse an einem kostenlosen Bibelkurs?", phNative: "Wudd ju bi intrested in e frih Beibel staddi?", phEng: "HET-ten zee in-ter-ESS-uh ahn EYE-nem KOSS-ten-loh-zen BEE-bel-koors?" },
+            { en: "This course can help you understand the Bible.", tr: "Dieser Kurs kann Ihnen helfen, die Bibel zu verstehen.", phNative: "Siss kohrs känn hälp ju an-der-stähnd se Beibel.", phEng: "DEE-zer koors kahn EE-nen HEL-fen, dee BEE-bel tsoo fair-SHTAY-en." },
+            { en: "There is no charge and no obligation.", tr: "Er ist völlig kostenlos und unverbindlich.", phNative: "Sähr is noh tscharhdj änd noh ob-li-geh-schn.", phEng: "Air ist FOEL-likh KOSS-ten-lohs oond OON-fair-bind-likh." }
+          ]
+        }
+      },
+      kannada: {
+        name: "ಕನ್ನಡ",
+        englishName: "Kannada",
+        code: "kn-IN",
+        categories: { greetings: "ಶುಭಾಶಯಗಳು", everyday: "ದೈನಂದಿನ", getting_around: "ಪ್ರಯಾಣ", ministry_skills: "ಸೇವಾ ಕೌಶಲ್ಯಗಳು" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
+            { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
+            { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
+            { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
+            { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
+            { en: "I'm fine, thank you", tr: "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ, ಧನ್ಯವಾದಗಳು", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "NAH-noo chen-nah-GEED-day-nay, dhuhn-yuh-VAH-duh-gul-oo" }
+          ],
+          everyday: [
+            { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
+            { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
+            { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
+            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
+            { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
+            { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್ರೂಮ್?", phEng: "show-CHAH-luh-yuh EL-lee-day?" },
+            { en: "How much is this?", tr: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "EE-duh-ruh BEH-lay ESH-too?" },
+            { en: "I would like...", tr: "ನನಗೆ ... ಬೇಕು", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "nuh-NUH-gay ... BAY-koo" },
+            { en: "I don't understand", tr: "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "nuh-NUH-gay ahr-thuh-vah-GOOT-teel-luh" },
+            { en: "What time is it?", tr: "ಸಮಯ ಎಷ್ಟು?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "suh-muh-yuh ESH-too?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
+            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
+            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
+            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." }
+          ]
+        }
+      },
+      konkani: {
+        name: "ಕೊಂಕಣಿ (ಕನ್ನಡ)",
+        englishName: "Konkani (Kannada)",
+        code: "kok",
+        categories: { greetings: "ನಮಸ್ಕಾರ", everyday: "ದಿನಚರಿ", getting_around: "ಭೊಂವ್ಡಿ", ministry_skills: "ಸೆವಾ ಕೌಶಲ್ಯಾಂ" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ್ / ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAHR / dev buh-REM kuh-ROOM" },
+            { en: "Good morning", tr: "ದೇವ್ ಬರೆಂ ಕಾಲ್ ದಿವಂ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "dev buh-REM kahl dee-VUM" },
+            { en: "My name is...", tr: "ಮ್ಹಜೆಂ ನಾಂವ್...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "mhuh-JEM NAHMV..." },
+            { en: "Nice to meet you", tr: "ತುಮ್ಕಾಂ ಭೆಟುನ್ ಸಂತೊಸ್ ಜಾಲೊ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "toom-KAHM bhay-TOON sahn-TOHS jah-LOH" },
+            { en: "How are you?", tr: "ತುಮಿ ಕಶೆ ಆಸಾತ್?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "too-MEE kuh-SHAY ah-SAHT?" },
+            { en: "I'm fine, thank you", tr: "ಹಾಂವ್ ಬರೊ ಆಸಾಂ, ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಐ ಆಮ್ ಫೈನ್, ಥ್ಯಾಂಕ್ ಯು", phEng: "HAHMV buh-ROH ah-SAHM, dev buh-REM kuh-ROOM" }
+          ],
+          everyday: [
+            { en: "Please", tr: "ದಯಾ ಕರುನ್", phNative: "ಪ್ಲೀಸ್", phEng: "duh-YAH kuh-ROON" },
+            { en: "Thank you", tr: "ದೇವ್ ಬರೆಂ ಕರುಂ", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dev buh-REM kuh-ROOM" },
+            { en: "You're welcome", tr: "ಕಾಂಯ್ ಪರವಾ ನಾ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "KAHNY puh-ruh-wah NAH" },
+            { en: "Excuse me", tr: "ಮಾಫ್ ಕರಾ", phNative: "ಎಕ್ಸ್‌ಕ್ಯೂಸ್ ಮಿ", phEng: "MAHF kuh-RAH" },
+            { en: "I'm sorry", tr: "ಮ್ಹಾಕಾ ಭೊಗ್ಶಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "mhah-KAH bhog-SHEE" },
+            { en: "Can you help me?", tr: "ಮ್ಹಾಕಾ ಕಾಂಯ್ ಕುಮೊಕ್ ಕರ್ತೆಲೆಂವೇ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "mhah-KAH kahny koo-MOHK kur-tay-lem-VAY?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "ಭಾಂದ್ವೊ / ಸಂಧು ಖಂಯ್ ಆಸಾ?", phNative: "ವೇರ್ ಈಸ್ ದ ಬಾತ್‌ರೂಮ್?", phEng: "bhahn-DVOH khuhny ah-SAH?" },
+            { en: "How much is this?", tr: "ಹಾಚೆ ಮೋಲ್ ಕಿತ್ಲೆಂ?", phNative: "ಹೌ ಮಚ್ ಈಸ್ ದಿಸ್?", phEng: "HAH-chay MOHL keet-LEM?" },
+            { en: "I would like...", tr: "ಮ್ಹಾಕಾ ... ಜಾಯ್ ಆಸ್ಲೆಂ", phNative: "ಐ ವುಡ್ ಲೈಕ್...", phEng: "mhah-KAH ... JAHY ahs-LEM" },
+            { en: "I don't understand", tr: "ಮ್ಹಾಕಾ ಸಮ್ಜನಾ", phNative: "ಐ ಡೋಂಟ್ ಅಂಡರ್‌ಸ್ಟಾಂಡ್", phEng: "mhah-KAH sum-juh-NAH" },
+            { en: "What time is it?", tr: "ಕಿತ್ಲೆ ವೊರಾಂ ಜಾಲಿಂ?", phNative: "ವಾಟ್ ಟೈಮ್ ಈಸ್ ಇಟ್?", phEng: "keet-LAY voh-RAHM jah-LEEM?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "ಆಮಿ ಹ್ಯಾ ಮಹಿನಾಂತ್ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಕೋರ್ಸ್ ಭೆಟಯ್ತಾಂವ್.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್...", phEng: "AH-mee hyah muh-hee-NAHNT pook-KUHT BY-buhl kohrs bhay-toy-TAHMV." },
+            { en: "Would you be interested in a free Bible study?", tr: "ತುಮ್ಕಾಂ ಪುಕ್ಕಟ್ ಬೈಬಲ್ ಶಿಕೊಂಕ್ ಆಸಕ್ತ್ ಆಸಾವೇ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್...", phEng: "toom-KAHM pook-KUHT BY-buhl shee-KONK ah-suhkt ah-sah-VAY?" },
+            { en: "This course can help you understand the Bible.", tr: "ಹ್ಯಾ ಕೋರ್ಸಾ ವರ್ವಿಂ ತುಮ್ಕಾಂ ಬೈಬಲ್ ಸಮ್ಜೊಂಕ್ ಕುಮೊಕ್ ಮೆಳ್ತಲಿ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು...", phEng: "hyah kohr-SAH vur-VEEM toom-KAHM BY-buhl sum-JONK koo-mohk mel-TUH-lee." },
+            { en: "There is no charge and no obligation.", tr: "ಹಾಕಾ ಕಾಂಯ್ ಖರ್ಚ್ ನಾ ಆನಿ ಕಸಲೆಂಯ್ ಬಂಧನ್ ನಾ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್...", phEng: "HAH-kah kahny KHURCH nah ah-nee kuh-suh-lemy bun-DHUN nah." }
+          ]
+        }
+      },
+      korean: {
+        name: "한국어",
+        englishName: "Korean",
+        code: "ko-KR",
+        categories: { greetings: "인사말", everyday: "일상 표현", getting_around: "길 찾기 및 여행", ministry_skills: "봉사 기술" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "안녕하세요", phNative: "헬로 / 하이", phEng: "ahn-nyung-hah-seh-yoh" },
+            { en: "Good morning", tr: "좋은 아침입니다", phNative: "굿 모닝", phEng: "joh-eun ah-cheem-eem-nee-dah" },
+            { en: "My name is...", tr: "제 이름은 ... 입니다", phNative: "마이 네임 이즈...", phEng: "jeh ee-reum-eun ... eem-nee-dah" },
+            { en: "Nice to meet you", tr: "만나서 반갑습니다", phNative: "나이스 투 미트 유", phEng: "mahn-nah-suh bahn-gahp-seum-nee-dah" },
+            { en: "How are you?", tr: "어떻게 지내세요?", phNative: "하우 아 유?", phEng: "uh-tuhk-keh jee-neh-seh-yoh?" },
+            { en: "I'm fine, thank you", tr: "잘 지내요, 감사합니다", phNative: "아임 파인, 땡큐", phEng: "jahl jee-neh-yoh, gahm-sah-hahm-nee-dah" }
+          ],
+          everyday: [
+            { en: "Please", tr: "부탁합니다 / 제발", phNative: "플리즈", phEng: "boo-tahk-hahm-nee-dah" },
+            { en: "Thank you", tr: "감사합니다", phNative: "땡큐", phEng: "gahm-sah-hahm-nee-dah" },
+            { en: "You're welcome", tr: "천만에요", phNative: "유어 웰컴", phEng: "chuhn-mahn-eh-yoh" },
+            { en: "Excuse me", tr: "실례합니다", phNative: "익스큐즈 미", phEng: "sheel-lyeh-hahm-nee-dah" },
+            { en: "I'm sorry", tr: "죄송합니다", phNative: "아임 쏘리", phEng: "jweh-sohng-hahm-nee-dah" },
+            { en: "Can you help me?", tr: "저 좀 도와주시겠어요?", phNative: "캔 유 헬프 미?", phEng: "juh johm doh-wah-joo-shee-gess-uh-yoh?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "화장실이 어디예요?", phNative: "웨어 이즈 더 배쓰룸?", phEng: "hwah-jahng-sheel-ee uh-dee-yeh-yoh?" },
+            { en: "How much is this?", tr: "이거 얼마예요?", phNative: "하우 머치 이즈 디스?", phEng: "ee-guh uhl-mah-yeh-yoh?" },
+            { en: "I would like...", tr: "...을/를 원합니다", phNative: "아이 우드 라이크...", phEng: "...eul/reul won-hahm-nee-dah" },
+            { en: "I don't understand", tr: "이해가 안 돼요", phNative: "아이 돈 언더스탠드", phEng: "ee-heh-gah ahn dweh-yoh" },
+            { en: "What time is it?", tr: "지금 몇 시예요?", phNative: "왓 타임 이즈 잇?", phEng: "jee-geum myut shee-yeh-yoh?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "이번 달에 무료 성경 공부 과정을 제공하고 있습니다.", phNative: "위어 오퍼링 어 프리 바이블 코스...", phEng: "ee-bun dahl-eh moo-ryoh suhng-gyung gohng-boo gwah-jung-eul jeh-gohng-hah-goh eess-seum-nee-dah." },
+            { en: "Would you be interested in a free Bible study?", tr: "무료 성경 공부에 관심이 있으신가요?", phNative: "우드 유 비 인터레스티드...", phEng: "moo-ryoh suhng-gyung gohng-boo-eh gwahn-sheem-ee eess-euh-sheen-gah-yoh?" },
+            { en: "This course can help you understand the Bible.", tr: "이 과정은 성경을 이해하는 데 큰 도움이 됩니다.", phNative: "디스 코스 캔 헬프 유...", phEng: "ee gwah-jung-eun suhng-gyung-eul ee-heh-hah-neun deh keun doh-oom-ee dwehm-nee-dah." },
+            { en: "There is no charge and no obligation.", tr: "비용이 전혀 들지 않으며 어떠한 의무도 없습니다.", phNative: "데어 이즈 노 차지...", phEng: "bee-yohng-ee juhn-hyuh deul-jee ahn-euh-myuh uh-ttuh-hahn eui-moo-doh uhps-seum-nee-dah." }
+          ]
+        }
+      },
+      persian: {
+        name: "فارسی",
+        englishName: "Persian",
+        code: "fa-IR",
+        categories: { greetings: "احوال‌پرسی", everyday: "روزمره", getting_around: "مسیر و آدرس", ministry_skills: "مهارت‌های خدمت" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "سلام / درود", phNative: "Hello / Hay", phEng: "sah-LAHM / deh-ROOD" },
+            { en: "Good morning", tr: "صبح بخیر", phNative: "Gud mor-ning", phEng: "sohb beh-KHAYR" },
+            { en: "My name is...", tr: "نام من ... است", phNative: "May neym iz...", phEng: "NAH-meh man ... ast" },
+            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "Nays tu mit yu", phEng: "az dee-dah-reh-TAHN khoosh-BAKH-tam" },
+            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "Haw ar yu?", phEng: "HAH-leh shoh-MAH cheh-TOOR ast?" },
+            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "Aym fayn, thenk yu", phEng: "KHOO-bam, mot-shak-KEH-ram" }
+          ],
+          everyday: [
+            { en: "Please", tr: "لطفاً", phNative: "Pleez", phEng: "LOHT-fan" },
+            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "Thenk yu", phEng: "seh-pahs-goz-AH-ram / mam-NOON" },
+            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "Yur wel-kam", phEng: "khah-HESH mee-koh-nam" },
+            { en: "Excuse me", tr: "ببخشید", phNative: "Eks-kyuz mi", phEng: "beh-BAKH-sheed" },
+            { en: "I'm sorry", tr: "متأسفم", phNative: "Aym sah-ree", phEng: "mote-ah-SEH-fam" },
+            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "Ken yu help mi?", phEng: "mee-tav-AH-need koh-MAH-kam koh-NEED?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "Wer iz da baht-room?", phEng: "dast-SHOO-yee koh-JAHST?" },
+            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "Haw mach iz dis?", phEng: "ghey-MAH-teh een cheh-GHADR ast?" },
+            { en: "I would like...", tr: "من می‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
+            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "Ay dont an-der-stend", phEng: "moh-tah-VAJ-jeh neh-mee-SHOH-vam" },
+            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "Wat taym iz it?", phEng: "sah-AT chand ast?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem." },
+            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?" },
+            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "Dis kors ken help yu...", phEng: "een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED." },
+            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "Der iz no charj...", phEng: "een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad." }
+          ]
+        }
+      },
+      polish: {
+        name: "polski",
+        englishName: "Polish",
+        code: "pl-PL",
+        categories: { greetings: "Powitania", everyday: "Na co dzień", getting_around: "W podróży", ministry_skills: "Służba kaznodziejska" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Cześć / Dzień dobry", phNative: "Helo / Haj", phEng: "CHESHTCH / Jyen DOH-bry" },
+            { en: "Good morning", tr: "Dzień dobry", phNative: "Gud morning", phEng: "Jyen DOH-bry" },
+            { en: "My name is...", tr: "Nazywam się...", phNative: "Maj nejm yz...", phEng: "nah-ZY-vahm SHYEH..." },
+            { en: "Nice to meet you", tr: "Miło cię poznać", phNative: "Najs tu mit ju", phEng: "MEE-woh chyeh POHZ-nahch" },
+            { en: "How are you?", tr: "Jak się masz?", phNative: "Hał ar ju?", phEng: "YAHK shyeh MAHSH?" },
+            { en: "I'm fine, thank you", tr: "Dziękuję, dobrze", phNative: "Ajm fajn, fenk ju", phEng: "jyen-KOO-yeh, DOHB-zheh" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Proszę", phNative: "Pliz", phEng: "PROH-sheh" },
+            { en: "Thank you", tr: "Dziękuję", phNative: "Tenk ju", phEng: "jyen-KOO-yeh" },
+            { en: "You're welcome", tr: "Nie ma za co", phNative: "Jur wełkam", phEng: "NYEH mah ZAH TSO" },
+            { en: "Excuse me", tr: "Przepraszam", phNative: "Eksk juz mi", phEng: "psheh-PRAH-shahm" },
+            { en: "I'm sorry", tr: "Przepraszam", phNative: "Ajm sori", phEng: "psheh-PRAH-shahm" },
+            { en: "Can you help me?", tr: "Czy możesz mi pomóc?", phNative: "Ken ju help mi?", phEng: "chy MOH-zhesh mee POH-moots?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Gdzie jest toaleta?", phNative: "Łer yz de bat-rum?", phEng: "GDZYEH yest twah-LEH-tah?" },
+            { en: "How much is this?", tr: "Ile to kosztuje?", phNative: "Hał macz yz dys?", phEng: "EE-leh toh kosh-TOO-yeh?" },
+            { en: "I would like...", tr: "Chciałbym / Chciałabym...", phNative: "Aj łud lajk...", phEng: "KHY-chow-bym / KHY-ah-wah-bym..." },
+            { en: "I don't understand", tr: "Nie rozumiem", phNative: "Aj dont ander-stend", phEng: "NYEH roh-ZOO-myem" },
+            { en: "What time is it?", tr: "Która jest godzina?", phNative: "Łot tajm yz yt?", phEng: "KTOO-rah yest gohd-ZEE-nah?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "W tym miesiącu proponujemy bezpłatny kurs biblijny.", phNative: "Łir ofering e fri bajbl kors...", phEng: "V tym myeh-SHOHN-tsoo proh-poh-NOO-yeh-my bez-PWAHT-ny koors beeb-LEEY-ny." },
+            { en: "Would you be interested in a free Bible study?", tr: "Czy chciałbyś spróbować bezpłatnego kursu biblijnego?", phNative: "Łud ju bi interestyd...", phEng: "Chy khy-chow-BYSH sproo-BOH-vahch bez-pwaht-NEH-goh KOOR-soo beeb-LEEY-neh-goh?" },
+            { en: "This course can help you understand the Bible.", tr: "Ten kurs może ci pomóc zrozumieć Biblię.", phNative: "Dys kors ken help ju...", phEng: "Ten koors MOH-zheh chee POH-moots zroh-ZOO-myech BEEB-lyeh." },
+            { en: "There is no charge and no obligation.", tr: "Kurs jest bezpłatny i do niczego nie zobowiązuje.", phNative: "Der yz noł czardż...", phEng: "Koors yest bez-PWAHT-ny ee doh nee-CHEH-goh nyeh zoh-boh-vyon-ZOO-yeh." }
+          ]
+        }
+      },
+      russian: {
+        name: "Русский",
+        englishName: "Russian",
+        code: "ru-RU",
+        categories: { greetings: "Приветствия", everyday: "На каждый день", getting_around: "В пути", ministry_skills: "Навыки служения" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Здравствуйте / Привет", phNative: "Khel-lo / Khay", phEng: "ZDRAHST-vuy-tye / PREE-vyet" },
+            { en: "Good morning", tr: "Доброе утро", phNative: "Gud mor-ning", phEng: "DOHB-ruh-yeh OO-truh" },
+            { en: "My name is...", tr: "Меня зовут...", phNative: "May neym iz...", phEng: "mye-NYAH zah-VOOT..." },
+            { en: "Nice to meet you", tr: "Приятно познакомиться", phNative: "Nays tu mit yu", phEng: "pree-YAHT-nuh pahz-nah-KOH-mee-tsah" },
+            { en: "How are you?", tr: "Как ваши дела?", phNative: "Haw ar yu?", phEng: "KAHK VAH-shee dye-LAH?" },
+            { en: "I'm fine, thank you", tr: "Спасибо, хорошо", phNative: "Aym fayn, thenk yu", phEng: "spah-SEE-buh, khah-rah-SHOH" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Пожалуйста", phNative: "Pleez", phEng: "pah-ZHAHL-oo-stah" },
+            { en: "Thank you", tr: "Спасибо", phNative: "Thenk yu", phEng: "spah-SEE-buh" },
+            { en: "You're welcome", tr: "Не за что", phNative: "Yur wel-kam", phEng: "NYEH zah shtoh" },
+            { en: "Excuse me", tr: "Извините", phNative: "Eks-kyuz mi", phEng: "eez-vee-NEE-tye" },
+            { en: "I'm sorry", tr: "Простите", phNative: "Aym sah-ree", phEng: "prah-STEE-tye" },
+            { en: "Can you help me?", tr: "Вы можете мне помочь?", phNative: "Ken yu help mi?", phEng: "vy MOH-zheh-tye mnye pah-MOHTCH?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Где находится туалет?", phNative: "Wer iz da baht-room?", phEng: "gdeh nah-KHOHT-see-tsah too-ah-LYET?" },
+            { en: "How much is this?", tr: "Сколько это стоит?", phNative: "Haw mach iz dis?", phEng: "SKOHL-kuh EH-tuh STOH-eet?" },
+            { en: "I would like...", tr: "Я хотел(а) бы...", phNative: "Ay wud layk...", phEng: "yah khah-TYEL(ah) by..." },
+            { en: "I don't understand", tr: "Я не понимаю", phNative: "Ay dont an-der-stend", phEng: "yah nyeh pah-nee-MY-oo" },
+            { en: "What time is it?", tr: "Который час?", phNative: "Wat taym iz it?", phEng: "kah-TOH-ry CHYHS?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "В этом месяце мы предлагаем бесплатный библейский курс.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "V EH-tahm MYE-sya-tseh my preed-lah-GAH-yem byez-PLAHT-ny beeb-LYEY-sky koors." },
+            { en: "Would you be interested in a free Bible study?", tr: "Хотели бы вы попробовать бесплатный библейский курс?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "khah-TYEH-lee by vy pah-PROH-bah-vaht byez-PLAHT-ny beeb-LYEY-sky koors?" },
+            { en: "This course can help you understand the Bible.", tr: "Этот курс поможет вам лучше понять Библию.", phNative: "Dis kors ken help yu...", phEng: "EH-tat koors pah-MOH-zhet vahm LOOT-sheh pah-NYAHT BEEB-lee-yoo." },
+            { en: "There is no charge and no obligation.", tr: "Курс совершенно бесплатный и ни к чему не обязывает.", phNative: "Der iz no charj...", phEng: "Koors sah-vyer-SHEN-nah byez-PLAHT-ny ee nee k cheh-MOO nyeh ah-BYAH-zy-vah-yet." }
+          ]
+        }
+      },
+      slovenian: {
+        name: "Slovenščina",
+        englishName: "Slovenian",
+        code: "sl-SI",
+        categories: { greetings: "Pozdravi", everyday: "Vsakdanji izrazi", getting_around: "Na poti", ministry_skills: "Oznanjevanje" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Zdravo / Pozdravljeni", phNative: "Helo / Haj", phEng: "ZDRAH-voh / poh-ZRAHV-lyeh-nee" },
+            { en: "Good morning", tr: "Dobro jutro", phNative: "Gud morning", phEng: "DOH-broh YOO-troh" },
+            { en: "My name is...", tr: "Moje ime je...", phNative: "Maj nejm iz...", phEng: "MOH-yeh ee-MEH yeh..." },
+            { en: "Nice to meet you", tr: "Me veseli", phNative: "Najs tu mit ju", phEng: "meh veh-SEH-lee" },
+            { en: "How are you?", tr: "Kako ste?", phNative: "Hav ar ju?", phEng: "kah-KOH steh?" },
+            { en: "I'm fine, thank you", tr: "Dobro sem, hvala", phNative: "Ajm fajn, tenk ju", phEng: "DOH-broh sem, HVAH-lah" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Prosim", phNative: "Pliz", phEng: "PROH-seem" },
+            { en: "Thank you", tr: "Hvala", phNative: "Tenk ju", phEng: "HVAH-lah" },
+            { en: "You're welcome", tr: "Ni za kaj", phNative: "Jur velkam", phEng: "nee zah KY" },
+            { en: "Excuse me", tr: "Oprostite", phNative: "Ekskjuz mi", phEng: "oh-prohs-TEE-teh" },
+            { en: "I'm sorry", tr: "Žal mi je", phNative: "Ajm sori", phEng: "ZHAHL mee yeh" },
+            { en: "Can you help me?", tr: "Mi lahko pomagate?", phNative: "Ken ju help mi?", phEng: "mee LAH-hkoh poh-MAH-gah-teh?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Kje je stranišče?", phNative: "Ver iz de batrum?", phEng: "kyeh yeh strah-NEESH-cheh?" },
+            { en: "How much is this?", tr: "Koliko stane to?", phNative: "Hav mač iz dis?", phEng: "KOH-lee-koh STAH-neh toh?" },
+            { en: "I would like...", tr: "Rad bi... (m) / Rada bi... (f)", phNative: "Aj vud lajk...", phEng: "RAHD bee... / RAH-dah bee..." },
+            { en: "I don't understand", tr: "Ne razumem", phNative: "Aj dont anderstend", phEng: "neh rah-ZOO-mem" },
+            { en: "What time is it?", tr: "Koliko je ura?", phNative: "Vot tajm iz it?", phEng: "KOH-lee-koh yeh OO-rah?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Ta mesec ponujamo brezplačen svetopisemski tečaj.", phNative: "Vir offering e fri bajbl kors...", phEng: "tah MEH-sets poh-NOO-yah-moh brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
+            { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested...", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY?" },
+            { en: "This course can help you understand the Bible.", tr: "Ta tečaj vam lahko pomaga razumeti Sveto pismo.", phNative: "Dis kors ken help ju...", phEng: "tah teh-CHEY vahm LAH-hkoh poh-MAH-gah rah-ZOO-meh-tee SVEH-toh PEES-moh." },
+            { en: "There is no charge and no obligation.", tr: "Tečaj je brezplačen in brez kakršnih koli obveznosti.", phNative: "Der iz no čardž...", phEng: "teh-CHEY yeh brez-PLAH-chen een brez KAH-kuhr-shneekh KOH-lee ohb-VEZ-noh-stee." }
+          ]
+        }
+      },
+      spanish: {
+        name: "Español",
+        englishName: "Spanish",
+        code: "es-US",
+        categories: { greetings: "Saludos", everyday: "De diario", getting_around: "En el camino", ministry_skills: "Destrezas para predicar" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hola", phNative: "Jelou / Jai", phEng: "OH-lah" },
+            { en: "Good morning", tr: "Buenos días", phNative: "Gud morning", phEng: "BWEH-nos DEE-as" },
+            { en: "My name is...", tr: "Mi nombre es...", phNative: "Mai neim is...", phEng: "mee NOHM-breh ess..." },
+            { en: "Nice to meet you", tr: "Mucho gusto / Encantado(a)", phNative: "Nais tu mit iu", phEng: "MOO-choh GOOS-toh" },
+            { en: "How are you?", tr: "¿Cómo está usted? / ¿Cómo estás?", phNative: "Jau ar iu?", phEng: "KOH-moh ess-TAH oos-TED?" },
+            { en: "I'm fine, thank you", tr: "Muy bien, gracias", phNative: "Aim fain, tenk iu", phEng: "mwee byehn, GRAH-syahs" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Por favor", phNative: "Plis", phEng: "por fah-VOR" },
+            { en: "Thank you", tr: "Muchas gracias", phNative: "Tenk iu", phEng: "MOO-chas GRAH-syahs" },
+            { en: "You're welcome", tr: "De nada", phNative: "Iur uelcam", phEng: "deh NAH-dah" },
+            { en: "Excuse me", tr: "Disculpe / Con permiso", phNative: "Ekskius mi", phEng: "dees-KOOL-peh / kohn pehr-MEE-soh" },
+            { en: "I'm sorry", tr: "Lo siento / Perdón", phNative: "Aim sori", phEng: "loh SYEHN-toh / pehr-DOHN" },
+            { en: "Can you help me?", tr: "¿Me podría ayudar?", phNative: "Ken iu jelp mi?", phEng: "meh poh-DREE-ah ah-yoo-DAHR?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "¿Dónde está el baño?", phNative: "Guer is da bazrum?", phEng: "DOHN-deh ess-TAH ehl BAHN-yoh?" },
+            { en: "How much is this?", tr: "¿Cuánto cuesta esto?", phNative: "Jau mach is dis?", phEng: "KWAHN-toh KWEHS-tah ESS-toh?" },
+            { en: "I would like...", tr: "Me gustaría...", phNative: "Ai gud laik...", phEng: "meh goos-tah-REE-ah..." },
+            { en: "I don't understand", tr: "No entiendo", phNative: "Ai dont anderstand", phEng: "noh ehn-TYEHN-doh" },
+            { en: "What time is it?", tr: "¿Qué hora es?", phNative: "Guat taim is it?", phEng: "keh OH-rah ess?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Este mes estamos ofreciendo un curso bíblico gratuito.", phNative: "Uir ofering a fri baibol kors...", phEng: "ESS-teh mehs ess-TAH-mos oh-freh-SYEHN-doh oon KOOR-soh BEE-blee-koh grah-TWEE-toh." },
+            { en: "Would you be interested in a free Bible study?", tr: "¿Le gustaría probar nuestras clases bíblicas gratuitas?", phNative: "Gud iu bi intrested in...", phEng: "leh goos-tah-REE-ah proh-BAHR NWEHS-tras KLAH-sehs BEE-blee-kas grah-TWEE-tas?" },
+            { en: "This course can help you understand the Bible.", tr: "Este curso le ayudará a comprender mejor la Biblia.", phNative: "Dis kors ken jelp iu...", phEng: "ESS-teh KOOR-soh leh ah-yoo-dah-RAH ah kohm-prehn-DEHR meh-HOR lah BEE-blyah." },
+            { en: "There is no charge and no obligation.", tr: "Es totalmente gratis y sin ningún compromiso.", phNative: "Der is no charj...", phEng: "ess toh-tahl-MEHN-teh GRAH-tees ee seen neen-GOON kohm-proh-MEE-soh." }
+          ]
+        }
+      },
+      tagalog: {
+        name: "Tagalog",
+        englishName: "Tagalog (Filipino)",
+        code: "fil-PH",
+        categories: { greetings: "Pagbati", everyday: "Araw-araw", getting_around: "Pagbibiyahe", ministry_skills: "Kasanayan sa Ministeryo" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Kumusta / Kamusta", phNative: "He-lo / Hay", phEng: "koo-moos-TAH" },
+            { en: "Good morning", tr: "Magandang umaga", phNative: "Gud mor-ning", phEng: "mah-gahn-DAHNG oo-MAH-gah" },
+            { en: "My name is...", tr: "Ang pangalan ko ay...", phNative: "May neym is...", phEng: "ahng pah-NGAH-lahn koh eye..." },
+            { en: "Nice to meet you", tr: "Ikinagagalak kitang makilala", phNative: "Nays tu mit yu", phEng: "ee-kee-nah-gah-gah-LAHK kee-tahng mah-kee-LAH-lah" },
+            { en: "How are you?", tr: "Kumusta ka?", phNative: "Haw ar yu?", phEng: "koo-moos-TAH kah?" },
+            { en: "I'm fine, thank you", tr: "Mabuti naman, salamat", phNative: "Aym fayn, tenk yu", phEng: "mah-BOO-tee nah-MAHN, sah-LAH-maht" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Pakiusap / Paki...", phNative: "Plis", phEng: "pah-kee-OO-sahp" },
+            { en: "Thank you", tr: "Salamat po", phNative: "Tenk yu", phEng: "sah-LAH-maht poh" },
+            { en: "You're welcome", tr: "Walang anuman", phNative: "Yur wel-kam", phEng: "wah-LAHNG ah-noo-MAHN" },
+            { en: "Excuse me", tr: "Ipagpaumanhin po / Paumanhin", phNative: "Eks-kyus mi", phEng: "ee-pahg-pow-mahn-HEEN poh" },
+            { en: "I'm sorry", tr: "Patawad po / Pasensya na", phNative: "Aym soh-ri", phEng: "pah-TAH-wahd poh / pah-SEN-syah nah" },
+            { en: "Can you help me?", tr: "Puwede mo ba akong tulungan?", phNative: "Ken yu help mi?", phEng: "PWEH-deh moh bah ah-KOHNG too-LOO-ngahn?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Nasaan po ang banyo (CR)?", phNative: "Wer is da bat-rum?", phEng: "nah-sah-AHN poh ahng BAHN-yoh?" },
+            { en: "How much is this?", tr: "Magkano po ito?", phNative: "Haw mats is dis?", phEng: "mahg-KAH-noh poh ee-TOH?" },
+            { en: "I would like...", tr: "Gusto ko po ng...", phNative: "Ay wud layk...", phEng: "GOOS-toh koh poh nahng..." },
+            { en: "I don't understand", tr: "Hindi ko po maintindihan", phNative: "Ay dont an-der-stend", phEng: "heen-DEE koh poh mah-een-teen-DEE-hahn" },
+            { en: "What time is it?", tr: "Anong oras na po?", phNative: "Wat taym is it?", phEng: "ah-NOHNG OH-rahs nah poh?" }
+          ],
+          ministry_skills: [
+            { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors...", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted...", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
+            { en: "This course can help you understand the Bible.", tr: "Makakatulong ang kursong ito para mas maunawaan mo ang Bibliya.", phNative: "Dis kors ken help yu...", phEng: "mah-kah-kah-TOO-lohng ahng KOOR-sohng ee-TOH PAH-rah mahs mah-oo-nah-wah-AHN moh ahng beeb-LEE-yah." },
+            { en: "There is no charge and no obligation.", tr: "Ito ay libre at walang anumang obligasyon.", phNative: "Der is no tsards...", phEng: "ee-TOH eye LEEG-breh aht wah-LAHNG ah-noo-MAHNG ohb-lee-gahs-YOHN." }
           ]
         }
       }
     };
 
-    let currentLangKey = 'german';
+    let currentLangKey = 'spanish';
     let currentCategory = 'greetings';
     let currentMode = 'native';
 
@@ -1133,6 +1114,46 @@
       getting_around: "Getting Around",
       ministry_skills: "Ministry Skills"
     };
+
+    // Render the language buttons grid on Screen 1 alphabetically
+    function renderLanguageGrid() {
+      const grid = document.getElementById('languageButtonsGrid');
+      grid.innerHTML = '';
+      
+      const sortedKeys = Object.keys(database).sort((a, b) => 
+        database[a].englishName.localeCompare(database[b].englishName)
+      );
+
+      sortedKeys.forEach(key => {
+        const lang = database[key];
+        const btn = document.createElement('button');
+        btn.onclick = () => selectLanguage(key);
+        btn.className = "p-4 bg-white/95 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700 rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-lg transition text-left flex items-center space-x-4";
+        btn.innerHTML = `
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1 4c-.5 2.5-2 4.5-4 6m1-6h6m-3 0a15 15 0 01-2 5.5M21 19l-4-8-4 8m1.5-3h5M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H7l-4 4V5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">${lang.englishName}</div>
+            <div class="text-lg font-bold text-slate-900 dark:text-white leading-tight">${lang.name}</div>
+          </div>
+        `;
+        grid.appendChild(btn);
+      });
+
+      // Populate detail screen dropdown
+      const detailDropdown = document.getElementById('detailLangDropdown');
+      detailDropdown.innerHTML = '';
+      sortedKeys.forEach(key => {
+        const lang = database[key];
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.innerText = `${lang.englishName} (${lang.name})`;
+        detailDropdown.appendChild(opt);
+      });
+    }
 
     function renderCategories() {
       const lang = database[currentLangKey];
@@ -1161,8 +1182,6 @@
             : 'bg-white/95 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
-        // Icons are now text-xl (50% larger than previous text-sm)
-        // Stack format: Bold selected language title on top, italicized English subtitle below
         btn.innerHTML = `
           <div class="flex justify-between items-center w-full mb-2">
             <i class="fa-solid ${cat.icon} text-xl ${isActive ? 'text-indigo-200' : 'text-indigo-600 dark:text-indigo-400'}"></i>
@@ -1227,7 +1246,7 @@
             <div class="space-y-1">
               <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.tr}</p>
               <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.en}</h3>
-              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phNative} ]</p>
+              <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️️ [ ${item.phNative} ]</p>
             </div>
             <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
               <button onclick="speakText('${item.en.replace(/'/g, "\\'")}', 'en-US')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
@@ -1254,7 +1273,8 @@
       });
     }
 
-    // --- INITIALIZE GREETINGS ON FIRST LOAD ---
+    // --- INITIALIZATION ---
+    renderLanguageGrid();
     applyGreetingLanguage('english');
   </script>
 </body>
