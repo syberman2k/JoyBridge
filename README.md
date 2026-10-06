@@ -32,6 +32,7 @@ The app includes interactive communication modules for 14 languages:
 12. **Slovenian** (Slovenščina)
 13. **Spanish** (Español)
 14. **Tagalog (Filipino)** (Tagalog)
+15. **Vietnamese** (tiếng Việt)
 
 ---
 
