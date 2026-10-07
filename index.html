@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 2.4 by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 2.5 (10 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NW JoyBridge - 2026 International Convention Language Helper</title>
+  <title>2026 Eternal Happiness - Convention Language Helper</title>
 
   <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
   <link rel="icon" type="image/png" href="LOGO_Square.png">
@@ -29,35 +29,32 @@
     .phrase-card:hover { transform: translateY(-2px); }
   </style>
 </head>
-<body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200">
+<body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-16 sm:pt-20">
 
-  <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY (Change 9: Dimmed light mode by 5% for card contrast) -->
+  <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('AppBKGrnd.jpg');"></div>
     <div class="absolute inset-0 bg-black/5 dark:bg-transparent pointer-events-none transition-colors duration-200"></div>
     <div class="absolute inset-0 bg-white/10 dark:bg-slate-950/85 transition-colors duration-200"></div>
   </div>
 
-  <!-- Header -->
-  <header class="bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/60 dark:border-slate-800 relative">
-    <div class="max-w-4xl mx-auto px-4 py-2 sm:py-2.5 flex items-center justify-between pb-4 sm:pb-4 gap-2">
-      <div class="flex items-center space-x-2.5 cursor-pointer flex-shrink-0" onclick="goToWelcome()">
-        <!-- Change 7: Refresh button for PWA / web app navigation -->
+  <!-- Header (Change 2: Logo removed, 2-line title; Change 8: Fixed header) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md border-b border-indigo-600/60 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 py-2 sm:py-2.5 flex items-center justify-between pb-3 sm:pb-3 gap-2">
+      <div class="flex items-center space-x-2 cursor-pointer flex-shrink-0" onclick="goToWelcome()">
+        <!-- PWA Refresh button -->
         <button id="pwaRefreshBtn" onclick="event.stopPropagation(); refreshApp();" class="p-1.5 rounded-lg bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 transition text-xs sm:text-sm text-indigo-100" title="Refresh Application">
           <i class="fa-solid fa-rotate-right"></i>
         </button>
 
-        <div class="w-8 h-8 rounded-md overflow-hidden bg-white/20 p-0.5 flex items-center justify-center flex-shrink-0">
-          <img src="LOGO_Square.png" alt="NW JoyBridge Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-          <span class="hidden text-lg">🌉</span>
-        </div>
-        <div>
-          <h1 class="text-lg sm:text-xl font-bold tracking-tight leading-tight">NW JoyBridge</h1>
-          <p class="text-[11px] sm:text-xs text-indigo-200 dark:text-slate-300 leading-tight">2026 Eternal Happiness International Convention Helper</p>
+        <!-- Change 2: 2 Lines, No Logo -->
+        <div class="text-left">
+          <h1 id="headerLine1" class="text-sm sm:text-base font-extrabold tracking-tight leading-tight text-white drop-shadow-sm">2026 Eternal Happiness</h1>
+          <p id="headerLine2" class="text-[11px] sm:text-xs text-indigo-200 dark:text-slate-300 font-medium leading-tight">Convention Language Helper</p>
         </div>
       </div>
 
-      <!-- Action Buttons in Top Right (Changes 3 & 10: Moved Greeting Selector to Top Bar with 🗣️) -->
+      <!-- Action Buttons in Top Right (Change 4: LTR marks on emoji; Change 6: English at top) -->
       <div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
         <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1">
           <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install</span>
@@ -71,26 +68,26 @@
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Top-Bar Greeting Language Selector Dropdown -->
+        <!-- Dropdown Selector (English first + LTR mark &#x200E; to fix Arabic & Persian on Mobile) -->
         <div class="relative inline-block">
-          <select id="topGreetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="appearance-none bg-indigo-800/90 dark:bg-slate-800 hover:bg-indigo-900 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 rounded-lg px-2 sm:px-2.5 py-1.5 pr-6 sm:pr-7 text-xs font-semibold text-white focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer shadow-sm transition max-w-[125px] sm:max-w-[195px] truncate">
-            <option value="arabic">🗣️ العربية (Arabic)</option>
-            <option value="chinese">🗣️ 中文 (Chinese)</option>
-            <option value="dutch">🗣️ Nederlands (Dutch)</option>
-            <option value="english">🗣️ English (English)</option>
-            <option value="french">🗣️ Français (French)</option>
-            <option value="german">🗣️ Deutsch (German)</option>
-            <option value="kannada">🗣️ ಕನ್ನಡ (Kannada)</option>
-            <option value="konkani_romi">🗣️ Konknni Romi (Konkani)</option>
-            <option value="korean">🗣️ 한국어 (Korean)</option>
-            <option value="persian">🗣️ فارسی (Persian)</option>
-            <option value="polish">🗣️ polski (Polish)</option>
-            <option value="russian">🗣️ Русский (Russian)</option>
-            <option value="slovenian">🗣️ Slovenščina (Slovenian)</option>
-            <option value="spanish">🗣️ Español (Spanish)</option>
-            <option value="tagalog">🗣️ Tagalog (Filipino)</option>
-            <option value="turkish">🗣️ Türkçe (Turkish)</option>
-            <option value="vietnamese">🗣️ Tiếng Việt (Vietnamese)</option>
+          <select id="topGreetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="appearance-none bg-indigo-800/90 dark:bg-slate-800 hover:bg-indigo-900 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 rounded-lg px-2 sm:px-2.5 py-1.5 pr-6 sm:pr-7 text-xs font-semibold text-white focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer shadow-sm transition max-w-[130px] sm:max-w-[200px] truncate">
+            <option value="english">&#x200E;🗣️ English (English)</option>
+            <option value="arabic">&#x200E;🗣️ العربية (Arabic)</option>
+            <option value="chinese">&#x200E;🗣️ 中文 (Chinese)</option>
+            <option value="dutch">&#x200E;🗣️ Nederlands (Dutch)</option>
+            <option value="french">&#x200E;🗣️ Français (French)</option>
+            <option value="german">&#x200E;🗣️ Deutsch (German)</option>
+            <option value="kannada">&#x200E;🗣️ ಕನ್ನಡ (Kannada)</option>
+            <option value="konkani_romi">&#x200E;🗣️ Konknni Romi (Konkani)</option>
+            <option value="korean">&#x200E;🗣️ 한국어 (Korean)</option>
+            <option value="persian">&#x200E;🗣️ فارسی (Persian)</option>
+            <option value="polish">&#x200E;🗣️ polski (Polish)</option>
+            <option value="russian">&#x200E;🗣️ Русский (Russian)</option>
+            <option value="slovenian">&#x200E;🗣️ Slovenščina (Slovenian)</option>
+            <option value="spanish">&#x200E;🗣️ Español (Spanish)</option>
+            <option value="tagalog">&#x200E;🗣️ Tagalog (Filipino)</option>
+            <option value="turkish">&#x200E;🗣️ Türkçe (Turkish)</option>
+            <option value="vietnamese">&#x200E;🗣️ Tiếng Việt (Vietnamese)</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-indigo-200 dark:text-slate-400 text-[10px]">
             <i class="fa-solid fa-chevron-down"></i>
@@ -103,15 +100,15 @@
       </div>
     </div>
 
-    <!-- Version & Offline Mode Indicators (Change 5) -->
+    <!-- Version & Offline Mode Indicators -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.4</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.5</span>
     </div>
   </header>
 
   <!-- Offline Status Banner -->
-  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-xs font-semibold py-1 px-4 text-center sticky top-[53px] z-50">
+  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-xs font-semibold py-1 px-4 text-center fixed top-[56px] sm:top-[64px] left-0 right-0 z-40">
     <i class="fa-solid fa-wifi-slash mr-1"></i> Offline Mode: JoyBridge is running from local device cache.
   </div>
 
@@ -123,7 +120,15 @@
 
       <!-- Welcome Hero Banner -->
       <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-200/90 dark:border-slate-800 shadow-lg text-center space-y-4">
-        <div class="inline-flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white dark:bg-slate-800 border-2 border-indigo-100 dark:border-indigo-900/60 shadow-md p-1.5 overflow-hidden mx-auto">
+        
+        <!-- Change 7: Standalone Large WELCOME on its own line at the top -->
+        <div>
+          <h2 id="welcomeStandaloneWord" class="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-indigo-700 dark:text-indigo-400 drop-shadow-sm">
+            WELCOME
+          </h2>
+        </div>
+
+        <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white dark:bg-slate-800 border-2 border-indigo-100 dark:border-indigo-900/60 shadow-md p-1.5 overflow-hidden mx-auto">
           <img src="LOGO_Circular.png" alt="San Diego 2026 Convention Emblem" class="w-full h-full object-contain rounded-full" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
           <span class="hidden text-3xl">⛵</span>
         </div>
@@ -132,12 +137,24 @@
           <span id="welcomeBadge" class="inline-block px-3 py-1 bg-indigo-50 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider rounded-full">
             San Diego, California • 2026
           </span>
-          <h2 id="welcomeTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h3 id="welcomeTitle" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Welcome, Dear International Delegates!
-          </h2>
+          </h3>
           <p id="welcomeBody" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
             We open our hearts and arms in warm Christian love as we welcome you to the <strong class="text-indigo-700 dark:text-indigo-400">“Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego!
           </p>
+
+          <!-- Change 1: Theme-tie Scripture Matthew 13:16 -->
+          <div class="pt-3 max-w-xl mx-auto">
+            <blockquote class="bg-indigo-50/80 dark:bg-slate-800/80 border-l-4 border-indigo-600 dark:border-indigo-400 px-4 py-2.5 rounded-r-xl text-left shadow-sm">
+              <p id="welcomeScriptureText" class="text-xs sm:text-sm font-medium italic text-indigo-950 dark:text-indigo-200">
+                “Happy are your eyes because they see and your ears because they hear.”
+              </p>
+              <cite id="welcomeScriptureCite" class="block text-right text-[11px] font-bold text-indigo-700 dark:text-indigo-300 mt-1 not-italic">
+                — Matthew 13:16
+              </cite>
+            </blockquote>
+          </div>
         </div>
 
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -155,7 +172,7 @@
 
       <!-- VIDEO & MAP SECTION -->
       <div class="space-y-4 pt-2">
-        <!-- Card 1: Video (Change 1: poster attribute, Change 6: 2-line title) -->
+        <!-- Card 1: Video (Change 3: Video Poster attribute included) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
             <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-lg"></i>
@@ -177,7 +194,7 @@
           </p>
         </div>
 
-        <!-- Card 2: Convention Venue Map Card (Change 8: Top-Right 3-line overlay & Localized Copyright) -->
+        <!-- Card 2: Convention Venue Map Card (Change 5: Localized 3 lines on top-right of photo) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <div class="flex items-center space-x-2.5">
@@ -195,12 +212,12 @@
             </a>
           </div>
 
-          <!-- Venue Image with Link, Top-Right Header Overlay, and Localized Copyright Overlay -->
+          <!-- Venue Image with Link, Top-Right Localized Overlay, and Localized Copyright -->
           <a href="https://www.google.com/maps/place/San+Diego+Convention+Center/@32.7054977,-117.1601028,2480m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80d953574be55d8b:0x568846370a748ca5!8m2!3d32.7054977!4d-117.1601028!16zL20vMDMzdjNz?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
              target="_blank" rel="noopener noreferrer"
              class="block rounded-xl overflow-hidden shadow-inner aspect-video relative group border border-slate-200 dark:border-slate-700">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('VenuePhoto.png');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/70"></div>
 
             <!-- Tap overlay prompt -->
             <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-md font-medium flex items-center gap-1.5 border border-white/20">
@@ -208,14 +225,14 @@
               <span id="venueTapText">Open in Maps</span>
             </div>
 
-            <!-- Change 8: Top-Right 3-line overlay, bold top line, right-justified -->
+            <!-- Change 5: Top-Right 3-line overlay in selected language -->
             <div class="absolute top-3 right-3 text-right pointer-events-none select-none text-white drop-shadow-md">
-              <div class="text-sm sm:text-lg md:text-xl font-black uppercase tracking-wider text-amber-300">CONVENTION VENUE</div>
-              <div class="text-xs sm:text-sm font-semibold tracking-wide text-white/95">San Diego Convention Center</div>
-              <div class="text-[11px] sm:text-xs font-medium text-slate-200">Nov 27–29, 2026</div>
+              <div id="venuePhotoOverlayLine1" class="text-sm sm:text-base md:text-lg font-black uppercase tracking-wider text-amber-300 leading-tight">CONVENTION VENUE</div>
+              <div id="venuePhotoOverlayLine2" class="text-xs sm:text-sm font-semibold tracking-wide text-white/95 leading-tight">San Diego Convention Center</div>
+              <div id="venuePhotoOverlayLine3" class="text-[11px] sm:text-xs font-medium text-slate-200 leading-tight">Nov 27–29, 2026</div>
             </div>
 
-            <!-- Lower Right Copyright Annotation (Change 8: Localized) -->
+            <!-- Lower Right Copyright Annotation -->
             <div id="venueCopyrightText" class="absolute bottom-2 right-3 pointer-events-none select-none text-[10px] sm:text-xs text-white/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded shadow">
               Images may be subject to copyright . Image capture: Oct 2020
             </div>
@@ -228,7 +245,7 @@
         </div>
       </div>
 
-      <!-- Quick Delegate Links: JW.ORG (Change 4: Dynamic Language Link) & WhatsApp Support -->
+      <!-- Quick Delegate Links: JW.ORG & WhatsApp Support -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
         <a id="jwOrgDynamicLink" href="https://www.jw.org/en/library/programs/2026-convention-program/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
           <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
@@ -304,7 +321,8 @@
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5" id="categoryContainer"></div>
 
-      <div class="sticky top-[53px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
+      <!-- Change 9: Sticky Native / English Mode Tabs with sticky top offset under the fixed header -->
+      <div class="sticky top-[58px] sm:top-[66px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors shadow-sm">
         <div class="flex bg-slate-200/90 dark:bg-slate-800/90 p-1 rounded-xl font-medium text-sm shadow-sm">
           <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
             <span id="tabNativeText"></span>
@@ -353,12 +371,10 @@
 
     initTheme();
 
-    // Change 7: Refresh application PWA helper
     function refreshApp() {
       window.location.reload();
     }
 
-    // Change 4: JW.ORG Language URL Dictionary
     const jwOrgLinks = {
       english: "https://www.jw.org/en/library/programs/2026-convention-program/",
       arabic: "https://www.jw.org/ar/%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8%D8%A9/%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D9%85%D8%AC/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9-%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A-%D9%85%D8%AD%D9%81%D9%84-%D9%A2%D9%A0%D9%A2%D9%A6/",
@@ -379,12 +395,17 @@
       vietnamese: "https://www.jw.org/vi/thu-vien/chuong-trinh/chuong-trinh-dai-hoi-2026/"
     };
 
-    // Greeting translations (Changes 2, 6, 8)
+    // Greeting translations (Changes 1, 2, 5, 7)
     const greetingTranslations = {
       english: {
+        welcomeWord: "WELCOME",
+        headerLine1: "2026 Eternal Happiness",
+        headerLine2: "Convention Language Helper",
         badge: "San Diego, California • 2026",
         title: "Welcome, Dear International Delegates!",
         body: "We open our hearts and arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego!",
+        scriptureText: "“Happy are your eyes because they see and your ears because they hear.”",
+        scriptureCite: "— Matthew 13:16",
         actionBtn: "Open Language Helper",
         videoTitle: "Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)",
         videoSubtitle: "Convention Preparation & Highlights",
@@ -393,15 +414,23 @@
         venueSubtitle: "San Diego Convention Center • Nov 27–29, 2026",
         venueDesc: "The San Diego Convention Center is the official gathering place for the “Eternal Happiness” International Convention of Jehovah's Witnesses, taking place November 27 thru 29, 2026.",
         venueTap: "Open in Maps",
+        venuePhotoLine1: "CONVENTION VENUE",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "Nov 27–29, 2026",
         venueCopyright: "Images may be subject to copyright . Image capture: Oct 2020",
         jwOrgTitle: "JW.ORG Convention Program",
         jwOrgDesc: "Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.",
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship."
       },
       arabic: {
+        welcomeWord: "أهلاً وسهلاً",
+        headerLine1: "٢٠٢٦ السعادة الأبدية",
+        headerLine2: "المساعد اللغوي للمحفل",
         badge: "سان دييغو، كاليفورنيا • 2026",
         title: "أهلاً وسهلاً بكم، أيها المندوبون الدوليون الأعزاء!",
         body: "نفتح قلوبنا وأذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة!",
+        scriptureText: "«طوبى لعيونكم لأنها تبصر، ولآذانكم لأنها تسمع».",
+        scriptureCite: "— متى ١٣: ١٦",
         actionBtn: "افتح المساعد اللغوي (العربية)",
         videoTitle: "مرحباً بكم في محفل سان دييغو الأممي<br>«السعادة الأبدية»! (إشعيا ٢٦: ٧)",
         videoSubtitle: "استعدادات المحفل وأبرز المحطات",
@@ -410,15 +439,23 @@
         venueSubtitle: "مركز مؤتمرات سان دييغو • ٢٧–٢٩ نوفمبر ٢٠٢٦",
         venueDesc: "مركز مؤتمرات سان دييغو هو المقر الرسمي لانعقاد المحفل الأممي لشهود يهوه تحت عنوان «السعادة الأبدية»، في الفترة من ٢٧ إلى ٢٩ نوفمبر ٢٠٢٦.",
         venueTap: "فتح في الخرائط",
+        venuePhotoLine1: "موقع انعقاد المحفل",
+        venuePhotoLine2: "مركز مؤتمرات سان دييغو",
+        venuePhotoLine3: "٢٧–٢٩ نوفمبر ٢٠٢٦",
         venueCopyright: "قد تخضع الصور لحقوق الطبع والنشر . تاريخ التقاط الصورة: أكتوبر ٢٠٢٠",
         jwOrgTitle: "برنامج محفل 2026 على JW.ORG",
         jwOrgDesc: "اطّلع على إصدارات المحفل، البرامج اليومية، الترانيم، والتشجيع الروحي بمئات اللغات.",
         whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية."
       },
       chinese: {
+        welcomeWord: "热烈欢迎",
+        headerLine1: "2026 永恒的幸福",
+        headerLine2: "大会语言交流助手",
         badge: "加利福尼亚州圣迭戈 • 2026",
         title: "热烈欢迎亲爱的国际代表们！",
         body: "我们怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！",
+        scriptureText: "“你们的眼睛多么有福，因为能看见；你们的耳朵多么有福，因为能听见。”",
+        scriptureCite: "—— 马太福音 13:16",
         actionBtn: "开启语言交流助手 (普通话)",
         videoTitle: "欢迎来到圣迭戈“永恒的幸福”<br>国际大会！（以赛亚书 26:7）",
         videoSubtitle: "大会筹备与精彩亮点",
@@ -427,15 +464,23 @@
         venueSubtitle: "圣迭戈会展中心 • 2026年11月27日至29日",
         venueDesc: "圣迭戈会展中心是耶和华见证人2026年“永恒的幸福”国际大会的官方举办地点，盛会将于2026年11月27日至29日隆重举行。",
         venueTap: "在地图中打开",
+        venuePhotoLine1: "大会主会场",
+        venuePhotoLine2: "圣迭戈会展中心",
+        venuePhotoLine3: "2026年11月27日至29日",
         venueCopyright: "图片可能受版权保护。拍摄时间：2020年10月",
         jwOrgTitle: "JW.ORG 2026 大会节目表",
         jwOrgDesc: "浏览数百种语言的大会发行物、每日节目单、音乐与宝贵的属灵鼓励。",
         whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。"
       },
       dutch: {
+        welcomeWord: "WELKOM",
+        headerLine1: "2026 Eeuwige vreugde",
+        headerLine2: "Congrestaalhulp",
         badge: "San Diego, Californië • 2026",
         title: "Welkom, Lieve Internationale Afgevaardigden!",
         body: "Met warme christelijke liefde heten wij u van harte welkom op het internationale congres <strong class=\"text-indigo-700 dark:text-indigo-400\">„Eeuwige vreugde”</strong>. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben!",
+        scriptureText: "„Gelukkig zijn jullie ogen omdat ze zien, en jullie oren omdat ze horen.”",
+        scriptureCite: "— Mattheüs 13:16",
         actionBtn: "Open Taalhulp (Nederlands)",
         videoTitle: "Welkom op het San Diego „Eeuwige vreugde”<br>Internationaal Congres! (Jesaja 26:7)",
         videoSubtitle: "Congresvoorbereiding en Hoogtepunten",
@@ -444,15 +489,23 @@
         venueSubtitle: "San Diego Convention Center • 27–29 nov 2026",
         venueDesc: "Het San Diego Convention Center is de officiële locatie voor het „Eeuwige vreugde” Internationale Congres van Jehovah's Getuigen, van 27 t/m 29 november 2026.",
         venueTap: "Open in Maps",
+        venuePhotoLine1: "CONGRESLOCATIE",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27–29 nov 2026",
         venueCopyright: "Afbeeldingen zijn mogelijk auteursrechtelijk beschermd . Opname: okt 2020",
         jwOrgTitle: "JW.ORG Congresprogramma 2026",
         jwOrgDesc: "Bekijk congrespublicaties, dagprogramma's, muziek en geestelijke aanmoediging in honderden talen.",
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang."
       },
       french: {
+        welcomeWord: "BIENVENUE",
+        headerLine1: "2026 Le bonheur éternel",
+        headerLine2: "Aide linguistique de l'assemblée",
         badge: "San Diego, Californie • 2026",
         title: "Bienvenue, chers délégués internationaux !",
         body: "C'est avec un amour fraternel chaleureux que nous vous accueillons à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego !",
+        scriptureText: "« Heureux sont vos yeux parce qu’ils voient, et vos oreilles parce qu’elles entendent. »",
+        scriptureCite: "— Matthieu 13:16",
         actionBtn: "Ouvrir l'aide linguistique (Français)",
         videoTitle: "Bienvenue à l'assemblée internationale de San Diego<br>« Le bonheur éternel » ! (Isaïe 26:7)",
         videoSubtitle: "Préparatifs et moments forts de l'assemblée",
@@ -461,15 +514,23 @@
         venueSubtitle: "San Diego Convention Center • 27–29 nov. 2026",
         venueDesc: "Le San Diego Convention Center est le lieu officiel de rassemblement pour l'assemblée internationale des Témoins de Jéhovah « Le bonheur éternel », qui se tiendra du 27 au 29 novembre 2026.",
         venueTap: "Ouvrir dans Maps",
+        venuePhotoLine1: "LIEU DE L'ASSEMBLÉE",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27–29 nov. 2026",
         venueCopyright: "Les images peuvent être protégées par des droits d'auteur . Octobre 2020",
         jwOrgTitle: "Programme de l'assemblée 2026 sur JW.ORG",
         jwOrgDesc: "Accédez aux parutions de l'assemblée, aux programmes quotidiens, à la musique et aux encouragements en des centaines de langues.",
         whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange."
       },
       german: {
+        welcomeWord: "WILLKOMMEN",
+        headerLine1: "2026 Ewige Freude",
+        headerLine2: "Kongress-Sprachhelfer",
         badge: "San Diego, Kalifornien • 2026",
         title: "Herzlich willkommen, liebe internationale Delegierte!",
         body: "Mit herzlicher christlicher Liebe heißen wir Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„Ewige Freude“</strong> willkommen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben!",
+        scriptureText: "„Glücklich sind eure Augen, weil sie sehen, und eure Ohren, weil sie hören.“",
+        scriptureCite: "— Matthäus 13:16",
         actionBtn: "Sprachhelfer öffnen (Deutsch)",
         videoTitle: "Willkommen zum Internationalen Kongress in San Diego<br>„Ewige Freude“! (Jesaja 26:7)",
         videoSubtitle: "Kongressvorbereitung & Höhepunkte",
@@ -478,15 +539,23 @@
         venueSubtitle: "San Diego Convention Center • 27.–29. Nov. 2026",
         venueDesc: "Das San Diego Convention Center ist der offizielle Veranstaltungsort für den Internationalen Kongress der Zeugen Jehovas „Ewige Freude“, der vom 27. bis 29. November 2026 stattfindet.",
         venueTap: "In Google Maps öffnen",
+        venuePhotoLine1: "KONGRESSVERANSTALTUNGSORT",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27.–29. Nov. 2026",
         venueCopyright: "Bilder sind möglicherweise urheberrechtlich geschützt . Aufnahme: Okt. 2020",
         jwOrgTitle: "JW.ORG Kongressprogramm 2026",
         jwOrgDesc: "Zugang zu Kongressveröffentlichungen, Tagesprogrammen, Musik und geistiger Ermunterung in Hunderten von Sprachen.",
         whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten."
       },
       kannada: {
+        welcomeWord: "ಸುಸ್ವಾಗತ",
+        headerLine1: "2026 ಶಾಶ್ವತ ಸಂತೋಷ",
+        headerLine2: "ಸಮಾವೇಶ ಭಾಷಾ ಸಹಾಯಕ",
         badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
         title: "ಆತ್ಮೀಯ ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ, ನಿಮಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ!",
         body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಪ್ರೀತಿಯಿಂದ ಸ್ವಾಗತಿಸುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ!",
+        scriptureText: "“ನಿಮ್ಮ ಕಣ್ಣುಗಳು ನೋಡುತ್ತವೆ, ಆದ್ದರಿಂದ ಅವು ಸಂತೋಷವಾಗಿವೆ; ನಿಮ್ಮ ಕಿವಿಗಳು ಕೇಳುತ್ತವೆ, ಆದ್ದರಿಂದ ಅವು ಸಂತೋಷವಾಗಿವೆ.”",
+        scriptureCite: "— ಮತ್ತಾಯ 13:16",
         actionBtn: "ಭಾಷಾ ಸಹಾಯ ತೆರೆಯಿರಿ (ಕನ್ನಡ)",
         videoTitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ<br>ಸಮಾವೇಶಕ್ಕೆ ಸುಸ್ವಾಗತ! (ಯೆಶಾಯ 26:7)",
         videoSubtitle: "ಸಮಾವೇಶದ ಸಿದ್ಧತೆ ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳು",
@@ -495,15 +564,23 @@
         venueSubtitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್ • ನವೆಂಬರ್ 27–29, 2026",
         venueDesc: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್ ಯೆಹೋವನ ಸಾಕ್ಷಿಗಳ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಅಧಿಕೃತ ತಾಣವಾಗಿದ್ದು, ನವೆಂಬರ್ 27 ರಿಂದ 29, 2026 ರವರೆಗೆ ನಡೆಯಲಿದೆ.",
         venueTap: "ಮ್ಯಾಪ್‌ನಲ್ಲಿ ನೋಡಿ",
+        venuePhotoLine1: "ಸಮಾವೇಶದ ಸ್ಥಳ",
+        venuePhotoLine2: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್",
+        venuePhotoLine3: "ನವೆಂಬರ್ 27–29, 2026",
         venueCopyright: "ಚಿತ್ರಗಳು ಹಕ್ಕುಸ್ವಾಮ್ಯಕ್ಕೆ ಒಳಪಟ್ಟಿರಬಹುದು . ಅಕ್ಟೋಬರ್ 2020",
         jwOrgTitle: "JW.ORG 2026 ಸಮಾವೇಶ ಕಾರ್ಯಕ್ರಮ",
         jwOrgDesc: "ನೂರಾರು ಭಾಷೆಗಳಲ್ಲಿ ಸಮಾವೇಶದ ಬಿಡುಗಡೆಗಳು, ದಿನಚರಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಂಗೀತವನ್ನು ಪಡೆಯಿರಿ.",
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ."
       },
       konkani_romi: {
+        welcomeWord: "BOREM YEUKOR",
+        headerLine1: "2026 Sodankalchem Dhadosponn",
+        headerLine2: "Mellachi Bhas Adar",
         badge: "San Diego, California • 2026",
         title: "Mogachea Sonvsarik Pratinidhimno, Tumkam Borem Yeukor!",
         body: "Kristi mogan ami tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta!",
+        scriptureText: "“Punn tumche dolle polletat dekhun ani tumche kan aikotat dekhun tumkam subhagim.”",
+        scriptureCite: "— Matev 13:16",
         actionBtn: "Bhas Adar Ugtto Korat (Konknni Romi)",
         videoTitle: "San Diego “Sodankalchem Dhadosponn” Sonvsarik<br>Mellak Borem Yeukor! (Izaias 26:7)",
         videoSubtitle: "Mellachi Toyari ani Khas Ghoddnneo",
@@ -512,15 +589,23 @@
         venueSubtitle: "San Diego Convention Center • Nov 27–29, 2026",
         venueDesc: "San Diego Convention Center hem Jehovachea Govayancho 'Sodankalchem Dhadosponn' Sonvsarik Mellachem odhikrut zago, zo Novembrache 27 te 29, 2026 meren choltolo.",
         venueTap: "Maps-ant Ugtto Korat",
+        venuePhotoLine1: "MELLACHEM THOLL",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "Nov 27–29, 2026",
         venueCopyright: "Chitram kopiraitik khala asonk xoktat . Otbr 2020",
         jwOrgTitle: "JW.ORG 2026 Odhivexon Kariavoll",
         jwOrgDesc: "Xenkddeamni bhasamni zomeache uzvaddavnneo, disachem kareakrom ani bhavartik sfurti melloiat.",
         whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat."
       },
       korean: {
+        welcomeWord: "환영합니다",
+        headerLine1: "2026 영원한 행복",
+        headerLine2: "대회 언어 도우미",
         badge: "캘리포니아주 샌디에이고 • 2026",
         title: "국제 대표자 여러분을 따뜻한 사랑으로 환영합니다!",
         body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"영원한 행복\"</strong> 국제대회에 참석하신 여러분을 그리스도인 사랑으로 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다!",
+        scriptureText: "“여러분의 눈은 보고 여러분의 귀는 듣기 때문에 행복합니다.”",
+        scriptureCite: "— 마태복음 13:16",
         actionBtn: "언어 도우미 열기 (한국어)",
         videoTitle: "샌디에이고 “영원한 행복” 국제대회에<br>오신 것을 환영합니다! (이사야 26:7)",
         videoSubtitle: "대회 준비 과정 및 주요 하이라이트",
@@ -529,15 +614,23 @@
         venueSubtitle: "샌디에이고 컨벤션 센터 • 2026년 11월 27일~29일",
         venueDesc: "샌디에이고 컨벤션 센터는 2026년 11월 27일부터 29일까지 개최되는 여호와의 증인의 \"영원한 행복\" 국제대회 공식 행사장입니다.",
         venueTap: "지도에서 보기",
+        venuePhotoLine1: "대회 개최 장소",
+        venuePhotoLine2: "샌디에이고 컨벤션 센터",
+        venuePhotoLine3: "2026년 11월 27일~29일",
         venueCopyright: "이미지는 저작권의 보호를 받을 수 있습니다 . 2020년 10월",
         jwOrgTitle: "JW.ORG 2026 대회 프로그램",
         jwOrgDesc: "수백 개 언어로 제공되는 대회 발표물, 일일 프로그램, 성악곡 및 영적 격려를 확인해 보세요.",
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요."
       },
       persian: {
+        welcomeWord: "خوش آمدید",
+        headerLine1: "۲۰۲۶ شادی جاودانی",
+        headerLine2: "راهنمای زبان مجمع",
         badge: "سن دیگو، کالیفرنیا • 2026",
         title: "به گرمی به شما نمایندگان گرامی بین‌المللی خوش‌آمد می‌گوییم!",
         body: "با محبت گرم مسیحی ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی»</strong> گرامی می‌داریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم!",
+        scriptureText: "«خوشا به حال چشمان شما زیرا می‌بینند و گوش‌های شما زیرا می‌شنوند.»",
+        scriptureCite: "— مَتّی ۱۳: ۱۶",
         actionBtn: "باز کردن راهنمای زبان (فارسی)",
         videoTitle: "به مجمع بین‌المللی سن دیگو «شادی جاودانی»<br>خوش آمدید! (اِشَعْیا ۲۶: ۷)",
         videoSubtitle: "آمادگی‌های مجمع و نکات برجسته",
@@ -546,15 +639,23 @@
         venueSubtitle: "مرکز همایش‌های سن دیگو • ۲۷ تا ۲۹ نوامبر ۲۰۲۶",
         venueDesc: "مرکز همایش‌های سن دیگو محل رسمی برگزاری مجمع بین‌المللی شاهدان یَهُوَه با عنوان «شادی جاودانی» است که از ۲۷ تا ۲۹ نوامبر ۲۰۲۶ برگزار خواهد شد.",
         venueTap: "مشاهده در نقشه",
+        venuePhotoLine1: "محل برگزاری مجمع",
+        venuePhotoLine2: "مرکز همایش‌های سن دیگو",
+        venuePhotoLine3: "۲۷ تا ۲۹ نوامبر ۲۰۲۶",
         venueCopyright: "تصاویر ممکن است مشمول حق نسخه‌برداری باشند . اکتبر ۲۰۲۰",
         jwOrgTitle: "برنامه کنگره ۲۰۲۶ در JW.ORG",
         jwOrgDesc: "دسترسی به نشریات مجمع، برنامه‌های روزانه، سرودها و تشویق‌های روحانی به صدها زبان.",
         whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید."
       },
       polish: {
+        welcomeWord: "WITAJCIE",
+        headerLine1: "2026 Wieczne szczęście",
+        headerLine2: "Pomoc językowa na kongresie",
         badge: "San Diego, Kalifornia • 2026",
         title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
         body: "Z gorącą chrześcijańską miłością witamy Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego!",
+        scriptureText: "„Szczęśliwe są wasze oczy, bo widzą, i wasze uszy, bo słyszą.”",
+        scriptureCite: "— Mateusza 13:16",
         actionBtn: "Otwórz pomoc językową (Polski)",
         videoTitle: "Witamy na Kongresie Międzynarodowym w San Diego<br>„Wieczne szczęście”! (Izajasza 26:7)",
         videoSubtitle: "Przygotowania do Kongresu i najważniejsze momenty",
@@ -563,32 +664,48 @@
         venueSubtitle: "San Diego Convention Center • 27–29 listopada 2026",
         venueDesc: "San Diego Convention Center to oficjalne miejsce Kongresu Międzynarodowego Świadków Jehowy pod hasłem „Wieczne szczęście”, odbywającego się w dniach 27–29 listopada 2026 r.",
         venueTap: "Otwórz w Mapach",
+        venuePhotoLine1: "MIEJSCE KONGRESU",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27–29 listopada 2026",
         venueCopyright: "Obrazy mogą być chronione prawem autorskim . Październik 2020",
         jwOrgTitle: "JW.ORG Program Kongresu 2026",
         jwOrgDesc: "Korzystaj z materiałów kongresowych, programu dziennego, pieśni i duchowych zachęt w setkach języków.",
         whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą."
       },
       russian: {
+        welcomeWord: "ДОБРО ПОЖАЛОВАТЬ",
+        headerLine1: "2026 Вечное счастье",
+        headerLine2: "Языковой помощник конгресса",
         badge: "Сан-Диего, Калифорния • 2026",
         title: "Добро пожаловать, дорогие международные делегаты!",
         body: "С теплой христианской любовью мы приветствуем вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего!",
+        scriptureText: "«Счастливы ваши глаза, потому что видят, и ваши уши, потому что слышат».",
+        scriptureCite: "— Матфея 13:16",
         actionBtn: "Открыть языковой помощник (Русский)",
         videoTitle: "Добро пожаловать на Международный конгресс в Сан-Диего<br>«Вечное счастье»! (Исаия 26:7)",
         videoSubtitle: "Подготовка к конгрессу и ключевые моменты",
         videoCaption: "Видео подготовки и ярких моментов Международного конгресса в Сан-Диего.",
-        venueTitle: "Место проведения конгреッサ",
+        venueTitle: "Место проведения конгресса",
         venueSubtitle: "Конференц-центр Сан-Диего • 27–29 ноября 2026 г.",
         venueDesc: "Конференц-центр Сан-Диего (San Diego Convention Center) — официальное место проведения Международного конгресса Свидетелей Иеговы «Вечное счастье», который пройдет с 27 по 29 ноября 2026 года.",
         venueTap: "Открыть на картах",
+        venuePhotoLine1: "МЕСТО ПРОВЕДЕНИЯ КОНГРЕССА",
+        venuePhotoLine2: "Конференц-центр Сан-Диего",
+        venuePhotoLine3: "27–29 ноября 2026 г.",
         venueCopyright: "Изображения могут быть защищены авторским правом . Октябрь 2020 г.",
         jwOrgTitle: "JW.ORG Программа конгресса 2026",
         jwOrgDesc: "Получите доступ к публикациям конгресса, ежедневной программе, музыке и духовному ободрению на сотнях языков.",
         whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения."
       },
       slovenian: {
+        welcomeWord: "DOBRODOŠLI",
+        headerLine1: "2026 Večna sreča",
+        headerLine2: "Zborovalni jezikovni pripomoček",
         badge: "San Diego, Kalifornija • 2026",
         title: "Dobrodošli, dragi mednarodni delegati!",
         body: "S toplo krščansko ljubeznijo vas odprtih rok pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu!",
+        scriptureText: "»Srečne vaše oči, ker vidijo, in vaša ušesa, ker slišijo.«",
+        scriptureCite: "— Matej 13:16",
         actionBtn: "Odpri jezikovni pripomoček (Slovenščina)",
         videoTitle: "Dobrodošli na mednarodnem zborovanju v San Diegu<br>»Večna sreča«! (Izaija 26:7)",
         videoSubtitle: "Priprave na zborovanje in vrhunci",
@@ -597,15 +714,23 @@
         venueSubtitle: "San Diego Convention Center • 27.–29. nov. 2026",
         venueDesc: "San Diego Convention Center je uradno zbirališče za mednarodno zborovanje Jehovovih prič z naslovom »Večna sreča«, ki bo potekalo od 27. do 29. novembra 2026.",
         venueTap: "Odpri v Google Zemljevidih",
+        venuePhotoLine1: "PRIZORIŠČE ZBOROVANJA",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27.–29. nov. 2026",
         venueCopyright: "Slike so morda zaščitene z avtorskimi pravicami . Okt. 2020",
         jwOrgTitle: "JW.ORG Zborovalni program 2026",
         jwOrgDesc: "Dostopajte do zborovalnih izdaj, dnevnih programov, glasbe in duhovne spodbude v stotinah jezikov.",
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje."
       },
       spanish: {
+        welcomeWord: "BIENVENIDOS",
+        headerLine1: "2026 Felicidad eterna",
+        headerLine2: "Ayuda de idiomas para la asamblea",
         badge: "San Diego, California • 2026",
         title: "¡Bienvenidos, queridos delegados internacionales!",
         body: "Con cálido amor cristiano les damos la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego!",
+        scriptureText: "“Dichosos los ojos de ustedes porque ven y sus oídos porque oyen.”",
+        scriptureCite: "— Mateo 13:16",
         actionBtn: "Abrir ayuda de idiomas (Español)",
         videoTitle: "¡Bienvenidos a la Asamblea Internacional de San Diego<br>“Felicidad eterna”! (Isaías 26:7)",
         videoSubtitle: "Preparativos y momentos destacados de la asamblea",
@@ -614,15 +739,23 @@
         venueSubtitle: "San Diego Convention Center • 27 al 29 de nov. de 2026",
         venueDesc: "El Centro de Convenciones de San Diego (San Diego Convention Center) es la sede oficial de la Asamblea Internacional de los Testigos de Jehová “Felicidad eterna”, que tendrá lugar del 27 al 29 de noviembre de 2026.",
         venueTap: "Abrir en Maps",
+        venuePhotoLine1: "LUGAR DE LA ASAMBLEA",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27 al 29 de nov. de 2026",
         venueCopyright: "Las imágenes pueden estar sujetas a derechos de autor . Octubre de 2020",
         jwOrgTitle: "JW.ORG Programa de la asamblea 2026",
         jwOrgDesc: "Acceda a publicaciones de la asamblea, programas diarios, canciones y ánimo espiritual en cientos de idiomas.",
         whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal."
       },
       tagalog: {
+        welcomeWord: "MALIGAYANG PAGDATING",
+        headerLine1: "2026 Walang-Hanggang Kaligayahan",
+        headerLine2: "Pantulong sa Wika para sa Kombensiyon",
         badge: "San Diego, California • 2026",
         title: "Maligayang Pagdating, Mahal naming mga Internasyonal na Delegado!",
         body: "Buong puso at may mainit na Kristiyanong pag-ibig kaming sumasalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego!",
+        scriptureText: "“Maligaya kayo dahil nakakakita ang inyong mga mata at nakakarinig ang inyong mga tainga.”",
+        scriptureCite: "— Mateo 13:16",
         actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
         videoTitle: "Maligayang Pagdating sa San Diego “Walang-Hanggang Kaligayahan”<br>Internasyonal na Kombensiyon! (Isaias 26:7)",
         videoSubtitle: "Paghahanda at Mahahalagang Bahagi ng Kombensiyon",
@@ -631,15 +764,23 @@
         venueSubtitle: "San Diego Convention Center • Nob 27–29, 2026",
         venueDesc: "Ang San Diego Convention Center ang opisyal na venue para sa “Walang-Hanggang Kaligayahan” Internasyonal na Kombensiyon ng mga Saksi ni Jehova sa Nobyembre 27 hanggang 29, 2026.",
         venueTap: "Buksan sa Maps",
+        venuePhotoLine1: "LUGAR NG KOMBツールENSIYON",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "Nob 27–29, 2026",
         venueCopyright: "Maaaring may copyright ang mga larawan . Kuha noong Oktubre 2020",
         jwOrgTitle: "JW.ORG 2026 Kombensiyon Programa",
         jwOrgDesc: "Tingnan ang mga inilabas sa kombensiyon, pang-araw-araw na programa, musika, at pampatibay sa daan-daang wika.",
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama."
       },
       turkish: {
+        welcomeWord: "HOŞ GELDİNİZ",
+        headerLine1: "2026 Sonsuz Mutluluk",
+        headerLine2: "Bölge Kongresi Dil Yardımcısı",
         badge: "San Diego, Kaliforniya • 2026",
         title: "Değerli Uluslararası Delegelerimiz, Hoş Geldiniz!",
         body: "Sizleri sıcak Hristiyan sevgisiyle <strong class=\"text-indigo-700 dark:text-indigo-400\">„Sonsuz Mutluluk”</strong> Uluslararası Bölge Kongresi’nde karşılamaktan büyük sevinç duyuyoruz. Okyanusları veya kıtaları aşmış olun, güneşli San Diego’da bizimle birlikte olmanızdan ötürü çok mutluyuz!",
+        scriptureText: "„Gördükleri için gözleriniz, işittikleri için kulaklarınız ne mutlu!“",
+        scriptureCite: "— Matta 13:16",
         actionBtn: "Dil Yardımcısını Aç (Türkçe)",
         videoTitle: "San Diego „Sonsuz Mutluluk” Uluslararası<br>Bölge Kongresine Hoş Geldiniz! (İşaya 26:7)",
         videoSubtitle: "Kongre Hazırlıkları ve Öne Çıkanlar",
@@ -648,15 +789,23 @@
         venueSubtitle: "San Diego Kongre Merkezi • 27–29 Kasım 2026",
         venueDesc: "San Diego Kongre Merkezi (San Diego Convention Center), Yehova’nın Şahitlerinin 27-29 Kasım 2026 tarihlerinde gerçekleşecek olan „Sonsuz Mutluluk” Uluslararası Kongresi’nin resmi buluşma merkezidir.",
         venueTap: "Haritada Aç",
+        venuePhotoLine1: "KONGRE ALANI",
+        venuePhotoLine2: "San Diego Kongre Merkezi",
+        venuePhotoLine3: "27–29 Kasım 2026",
         venueCopyright: "Görseller telif hakkına tabi olabilir . Çekim tarihi: Ekim 2020",
         jwOrgTitle: "JW.ORG 2026 Kongre Programı",
         jwOrgDesc: "Yüzlerce dilde kongre yayınlarına, günlük programlara, ilahilere ve ruhi teşviklere ulaşın.",
         whatsAppDesc: "Konukseverlik duyuruları, yerel destek ve kardeşlik bağı için özel <strong>ESMCHDelegatesSupport</strong> WhatsApp grubumuza katılın."
       },
       vietnamese: {
+        welcomeWord: "HOAN NGHÊNH",
+        headerLine1: "2026 Hạnh phúc vĩnh cửu",
+        headerLine2: "Trợ giúp ngôn ngữ Đại hội",
         badge: "San Diego, California • 2026",
         title: "Nồng nhiệt chào đón quý đại biểu quốc tế!",
         body: "Với tình yêu thương ấm áp của anh em đồng đạo, chúng tôi vui mừng chào đón quý vị đến với Đại hội Quốc tế <strong class=\"text-indigo-700 dark:text-indigo-400\">“Hạnh phúc vĩnh cửu”</strong>. Dù đã vượt qua đại dương hay châu lục, chúng tôi vô cùng hân hoan khi có quý vị tại thành phố San Diego tràn ngập ánh nắng!",
+        scriptureText: "“Phúc cho mắt anh em vì được thấy, và tai anh em vì được nghe.”",
+        scriptureCite: "— Ma-thi-ơ 13:16",
         actionBtn: "Mở Trợ giúp Ngôn ngữ (Tiếng Việt)",
         videoTitle: "Chào mừng đến với Đại hội Quốc tế San Diego<br>“Hạnh phúc vĩnh cửu”! (Ê-sai 26:7)",
         videoSubtitle: "Công tác chuẩn bị đại hội & những nét đặc sắc",
@@ -665,6 +814,9 @@
         venueSubtitle: "Trung tâm Hội nghị San Diego • 27–29 tháng 11, 2026",
         venueDesc: "Trung tâm Hội nghị San Diego (San Diego Convention Center) là địa điểm chính thức tổ chức Đại hội Quốc tế “Hạnh phúc vĩnh cửu” của Nhân Chứng Giê-hô-va, diễn ra từ ngày 27 đến 29 tháng 11 năm 2026.",
         venueTap: "Mở trong Bản đồ",
+        venuePhotoLine1: "ĐỊA ĐIỂM ĐẠI HỘI",
+        venuePhotoLine2: "Trung tâm Hội nghị San Diego",
+        venuePhotoLine3: "27–29 tháng 11, 2026",
         venueCopyright: "Hình ảnh có thể có bản quyền . Thời gian chụp ảnh: Tháng 10 năm 2020",
         jwOrgTitle: "JW.ORG Chương trình Đại hội 2026",
         jwOrgDesc: "Truy cập các ấn phẩm đại hội, chương trình mỗi ngày, âm nhạc và sự khích lệ thiêng liêng bằng hàng trăm ngôn ngữ.",
@@ -683,26 +835,44 @@
 
     function applyGreetingLanguage(langKey) {
       const data = greetingTranslations[langKey] || greetingTranslations.english;
+      
+      // Change 7: Standalone WELCOME word
+      document.getElementById('welcomeStandaloneWord').innerText = data.welcomeWord || "WELCOME";
+      
+      // Change 2: Localized 2-line header
+      document.getElementById('headerLine1').innerText = data.headerLine1 || "2026 Eternal Happiness";
+      document.getElementById('headerLine2').innerText = data.headerLine2 || "Convention Language Helper";
+
       document.getElementById('welcomeBadge').innerText = data.badge;
       document.getElementById('welcomeTitle').innerHTML = data.title;
       document.getElementById('welcomeBody').innerHTML = data.body;
+      
+      // Change 1: Matthew 13:16 Scripture
+      document.getElementById('welcomeScriptureText').innerText = data.scriptureText;
+      document.getElementById('welcomeScriptureCite').innerText = data.scriptureCite;
+
       document.getElementById('welcomeActionBtnText').innerText = data.actionBtn;
       
-      // Localized Video Card (Change 6: 2-line title)
+      // Localized Video Card
       document.getElementById('videoCardTitle').innerHTML = data.videoTitle;
       document.getElementById('videoCardSubtitle').innerText = data.videoSubtitle;
       document.getElementById('videoCardCaption').innerText = data.videoCaption;
 
-      // Localized Venue Card (Change 8: Localized copyright)
+      // Localized Venue Card & 3 lines photo overlay (Change 5)
       document.getElementById('venueCardTitle').innerText = data.venueTitle;
       document.getElementById('venueCardSubtitle').innerText = data.venueSubtitle;
       document.getElementById('venueCardDescription').innerText = data.venueDesc;
+      
+      document.getElementById('venuePhotoOverlayLine1').innerText = data.venuePhotoLine1;
+      document.getElementById('venuePhotoOverlayLine2').innerText = data.venuePhotoLine2;
+      document.getElementById('venuePhotoOverlayLine3').innerText = data.venuePhotoLine3;
+
       const venueTapEl = document.getElementById('venueTapText');
       if (venueTapEl) venueTapEl.innerText = data.venueTap;
       const venueCopyEl = document.getElementById('venueCopyrightText');
       if (venueCopyEl) venueCopyEl.innerText = data.venueCopyright;
 
-      // Localized External Links (Change 4: dynamic JW.ORG link)
+      // Localized JW.ORG link
       const dynamicUrl = jwOrgLinks[langKey] || jwOrgLinks.english;
       const jwLink = document.getElementById('jwOrgDynamicLink');
       if (jwLink) jwLink.href = dynamicUrl;
@@ -781,8 +951,7 @@
       }
     }
 
-    // Change 5: Offline Mode Caching & Status Indicator Logic
-    const CACHE_NAME = 'joybridge-cache-v2.4';
+    const CACHE_NAME = 'joybridge-cache-v2.5';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -825,7 +994,7 @@
       if (isOnline) {
         banner.classList.add('hidden');
         if (dot) {
-          dot.style.color = '#10B981'; // Emerald Green: Online Live
+          dot.style.color = '#10B981'; // Emerald Green
           dot.title = "Online (Live): Fully connected";
         }
       } else {
@@ -833,10 +1002,10 @@
         const hasCache = await checkCacheReadiness();
         if (dot) {
           if (hasCache) {
-            dot.style.color = '#06B6D4'; // Cyan / Teal: Offline Cached & Ready
+            dot.style.color = '#06B6D4'; // Cyan / Teal
             dot.title = "Offline (Cached & Ready): Running locally";
           } else {
-            dot.style.color = '#64748B'; // Slate Gray: Offline Unavailable / Not Cached
+            dot.style.color = '#64748B'; // Slate Gray
             dot.title = "Offline (Not Cached): Disconnected";
           }
         }
@@ -868,8 +1037,48 @@
       });
     }
 
-    // Complete multilingual database (Change 2: Added Türkçe and Tiếng Việt)
+    // Complete multilingual database (Change 11: Persian phonetics in Persian script added)
     const database = {
+      english: {
+        name: "English",
+        englishName: "English",
+        code: "en-US",
+        categories: { greetings: "Greetings", everyday: "Everyday", getting_around: "Getting Around", ministry_skills: "Ministry Skills" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hello / Hi", phNative: "Hel-lo / Hy", phEng: "HEL-loh / HY" },
+            { en: "Good morning", tr: "Good morning", phNative: "Gud mor-ning", phEng: "GOOD MOR-ning" },
+            { en: "My name is...", tr: "My name is...", phNative: "My neym iz...", phEng: "MY NAYM IZ..." },
+            { en: "Nice to meet you", tr: "Nice to meet you", phNative: "Nays tu mit yu", phEng: "NYS TOO MEET YOO" },
+            { en: "How are you?", tr: "How are you?", phNative: "Haw ar yu?", phEng: "HOW AHR YOO?" },
+            { en: "I'm fine, thank you", tr: "I'm fine, thank you", phNative: "Aym fayn, thenk yu", phEng: "EYEM FYN, THAYNK YOO" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Please", phNative: "Pleez", phEng: "PLEEZ" },
+            { en: "Thank you", tr: "Thank you", phNative: "Thenk yu", phEng: "THAYNK YOO" },
+            { en: "You're welcome", tr: "You're welcome", phNative: "Yur wel-kam", phEng: "YOOR WEL-kum" },
+            { en: "Excuse me", tr: "Excuse me", phNative: "Eks-kyuz mi", phEng: "ek-SKYOOZ mee" },
+            { en: "I'm sorry", tr: "I'm sorry", phNative: "Aym sah-ree", phEng: "EYEM SAH-ree" },
+            { en: "Can you help me?", tr: "Can you help me?", phNative: "Ken yu help mi?", phEng: "KAN YOO HELP MEE?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Where is the bathroom?", phNative: "Wer iz da bath-room?", phEng: "WAIR IZ THE BATH-room?" },
+            { en: "How much is this?", tr: "How much is this?", phNative: "Haw mach iz dis?", phEng: "HOW MUCH IZ THIS?" },
+            { en: "I would like...", tr: "I would like...", phNative: "Ay wud layk...", phEng: "EYE WOOLD LYK..." },
+            { en: "I don't understand", tr: "I don't understand", phNative: "Ay dont an-der-stend", phEng: "EYE DOHNT un-der-STAND" },
+            { en: "What time is it?", tr: "What time is it?", phNative: "Wat taym iz it?", phEng: "WUHT TYM IZ IT?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "I am happy to see you in San Diego.", phNative: "Aym hap-pee tu see yu in San Dee-ay-go.", phEng: "EYEM HAP-ee TOO SEE YOO IN SAN dee-AY-goh." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", phNative: "Aym heer tu in-vayt yu...", phEng: "EYEM HEER TOO in-VYT YOO..." },
+            { en: "I am visiting from ...(country)", tr: "I am visiting from ...(country)", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "EYEM VIZ-it-ing FRUM ...(KUN-tree)" },
+            { en: "We’re offering a free Bible course this month.", tr: "We’re offering a free Bible course this month.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "WEER OFF-er-ing AY FREE BY-bul KORS THIS MUNTH." },
+            { en: "Would you be interested in a free Bible study?", tr: "Would you be interested in a free Bible study?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "WOOLD YOO BEE IN-ter-est-ed IN AY FREE BY-bul STUH-dee?" },
+            { en: "This course can help you understand the Bible.", tr: "This course can help you understand the Bible.", phNative: "Dis kors ken help yu...", phEng: "THIS KORS KAN HELP YOO un-der-STAND THE BY-bul." },
+            { en: "There is no charge and no obligation.", tr: "There is no charge and no obligation.", phNative: "Der iz no charj...", phEng: "THAIR IZ NOH CHARJ AND NOH ob-li-GAY-shun." }
+          ]
+        }
+      },
       arabic: {
         name: "العربية",
         englishName: "Arabic",
@@ -901,7 +1110,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "يسعدني جداً أن أراك في سان دييغو.", phNative: "Aym hap-pee tu see yu in San Dee-ay-go.", phEng: "yoos-ee-DOO-nee JID-dan an ah-RAH-ka fee San Dee-EH-go." },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "أنا هنا لأدعوك أنت وعائلتك لحضور محفلنا بعنوان «السعادة الأبدية» في 27 نوفمبر في سان دييغو، تفضل دعوتك الشخصية.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "AH-nah HOON-ah li-ad-OO-wah-ka wa ah-ee-LAH-took li-hoo-DOOR mahf-lee-NAH bee-oon-WAHN as-sah-AH-dah al-ab-ah-DEE-yah fee sah-bah-ah wa eesh-REEN no-VEM-bar fee San Dee-EH-go, tah-FAD-dal dah-wah-TOOK ash-shakh-SEE-yah." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "أنا هنا لأدعوك أنت وعائلتك لحضور محفلنا بعنوان «السعادة الأبدية» في 27 نوفمبر في سان دييغو، تفضل دعوتك الشخصية.", phNative: "Aym heer tu in-vayt yu...", phEng: "AH-nah HOON-ah li-ad-OO-wah-ka wa ah-ee-LAH-took li-hoo-DOOR mahf-lee-NAH bee-oon-WAHN as-sah-AH-dah al-ab-ah-DEE-yah fee sah-bah-ah wa eesh-REEN no-VEM-bar fee San Dee-EH-go, tah-FAD-dal dah-wah-TOOK ash-shakh-SEE-yah." },
             { en: "I am visiting from ...(country)", tr: "أنا زائر من ...(البلد)", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "AH-nah ZAH-eer min ...(al-BAH-lad)" },
             { en: "We’re offering a free Bible course this month.", tr: "نحن نقدم دورة مجانية في دراسة الكتاب المقدس هذا الشهر.", phNative: "Weer of-fer-ing a free Bay-bol kors.", phEng: "NAH-noo noo-QAD-dim DOW-rah moo-JAH-nee-yah feel kee-TAHB ahl-moo-QAD-dahs." },
             { en: "Would you be interested in a free Bible study?", tr: "هل ترغب في تجربة درس مجاني في الكتاب المقدس؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "hal TAR-ghab fee taj-REE-bah DARS moo-JAH-nee?" },
@@ -981,12 +1190,12 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Fijn u te zien hier in San Diego!", phNative: "Aaim hèp-pie toe sie joe in Sèn Die-ee-goo.", phEng: "FAYN oo tuh ZEEN heer in Sahn Dee-AY-goh!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ik nodig u en uw gezin graag uit voor ons congres met het thema 'Eeuwige vreugde' op 27 november in San Diego. Hier is uw persoonlijke uitnodiging.", phNative: "Aaim hier toe in-vaait joe ènd joer fem-mie-lie...", phEng: "IK NOH-duhk oo en ew khuh-ZIN khrahkh OYT voor ons kon-GRES met het TAY-mah AY-wuh-khuh VREUKH-duh op ZAY-vun-en-TVIN-tukh noh-VEM-ber in Sahn Dee-AY-goh. HEER iss ew per-SOHN-luh-kuh OYT-noh-duh-khing." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ik nodig u en uw gezin graag uit voor ons congres met het thema 'Eeuwige vreugde' op 27 november in San Diego. Hier is uw persoonlijke uitnodiging.", phNative: "Aaim hier toe in-vaait joe...", phEng: "IK NOH-duhk oo en ew khuh-ZIN khrahkh OYT voor ons kon-GRES met het TAY-mah AY-wuh-khuh VREUKH-duh op ZAY-vun-en-TVIN-tukh noh-VEM-ber in Sahn Dee-AY-goh. HEER iss ew per-SOHN-luh-kuh OYT-noh-duh-khing." },
             { en: "I am visiting from ...(country)", tr: "Ik ben op bezoek uit ...(land)", phNative: "Aaim vi-zi-ting from ...(kun-trie)", phEng: "IK ben op buh-ZOOK oyt ...(LAHNT)" },
-            { en: "We’re offering a free Bible course this month.", tr: "We bieden deze maand een gratis Bijbelcursus aan.", phNative: "Wier of-fe-ring e frie Baai-bel koors dis munth.", phEng: "Vay BEE-dun DAY-zuh MAHNT un KHRAH-tis BY-buhl-koor-soos ahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Zou u geïnteresseerd zijn in een gratis Bijbelcursus?", phNative: "Woed joe bie in-tres-ted in e frie Baai-bel stoe-die?", phEng: "ZOW oo khuh-IN-tuh-reh-SAYRT zayn in un KHRAH-tis BY-buhl-koor-soos?" },
-            { en: "This course can help you understand the Bible.", tr: "Deze cursus kan u helpen de Bijbel te begrijpen.", phNative: "Dis koors kèn hèlp joe un-der-stènd de Baai-bel.", phEng: "DAY-zuh KOOR-soos kahn oo HEL-pun duh BY-buhl tuh buh-KHRAY-pun." },
-            { en: "There is no charge and no obligation.", tr: "Het is helemaal gratis en vrijblijvend.", phNative: "Dèr is noo tsjaardsj ènd noo ob-li-gee-sjun.", phEng: "HET ISS HAY-luh-mahl KHRAH-tis en VRAY-blay-vunt." }
+            { en: "We’re offering a free Bible course this month.", tr: "We bieden deze maand een gratis Bijbelcursus aan.", phNative: "Wier of-fe-ring e frie Baai-bel koors...", phEng: "Vay BEE-dun DAY-zuh MAHNT un KHRAH-tis BY-buhl-koor-soos ahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Zou u geïnteresseerd zijn in een gratis Bijbelcursus?", phNative: "Woed joe bie in-tres-ted...", phEng: "ZOW oo khuh-IN-tuh-reh-SAYRT zayn in un KHRAH-tis BY-buhl-koor-soos?" },
+            { en: "This course can help you understand the Bible.", tr: "Deze cursus kan u helpen de Bijbel te begrijpen.", phNative: "Dis koors kèn hèlp joe...", phEng: "DAY-zuh KOOR-soos kahn oo HEL-pun duh BY-buhl tuh buh-KHRAY-pun." },
+            { en: "There is no charge and no obligation.", tr: "Het is helemaal gratis en vrijblijvend.", phNative: "Dèr is noo tsjaardsj...", phEng: "HET ISS HAY-luh-mahl KHRAH-tis en VRAY-blay-vunt." }
           ]
         }
       },
@@ -1021,12 +1230,12 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Je suis très heureux(se) de vous voir à San Diego.", phNative: "Aïm hapi tou si you in San Diego.", phEng: "zhuh swee trayz uh-RUH / uh-RUHZ duh voo VWAHR ah San Diego." },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Je viens vous inviter, vous et votre famille, à notre assemblée intitulée « Le bonheur éternel », le 27 novembre à San Diego. Voici votre invitation personnelle.", phNative: "Aïm hir tou invaït you and your famili...", phEng: "zhuh vyan vooz an-vee-TAY, vooz ay VOT-ruh fah-MEE-yuh, ah NOT-ruh ah-sahm-BLAY an-tee-tew-LAY « Luh boh-NUHR ay-tair-NEL », luh van-SET noh-VAHM-bruh ah San Diego. vwah-SEE VOT-ruh an-vee-tah-SYOHN pair-sohn-NEL." },
-            { en: "I am visiting from ...(country)", tr: "Je viens de ... (pays).", phNative: "Aïm vizitingue from ... (kountri)", phEng: "zhuh VYAN duh ... (pay-EE)." },
-            { en: "We’re offering a free Bible course this month.", tr: "Ce mois-ci, nous proposons un cours biblique gratuit.", phNative: "Ouir ofeurigne e fri Baïbeul cors diss meunts.", phEng: "suh MWAH-see, noo proh-poh-ZOHN un koor BEE-bleek grah-TWEE." },
-            { en: "Would you be interested in a free Bible study?", tr: "Seriez-vous intéressé(e) par un cours biblique gratuit ?", phNative: "Woud you bi intéréstide in e fri Baïbeul steudi ?", phEng: "suh-ree-AY vooz an-tay-ray-SAY pahr un koor BEE-bleek grah-TWEE?" },
-            { en: "This course can help you understand the Bible.", tr: "Ce cours peut vous aider à comprendre la Bible.", phNative: "Diss cors kèn hèlp you eunder-stènde ze Baïbeul.", phEng: "suh KOOR puh vooz ay-DAY ah kohm-PRAHN-druh lah BEE-bluh." },
-            { en: "There is no charge and no obligation.", tr: "C'est entièrement gratuit et sans engagement.", phNative: "Zère iz no tchardje ènde no oblighéchone.", phEng: "set ahn-tyair-MAHN grah-TWEE ay sahnz ahn-gahzh-MAHN." }
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Je viens vous inviter, vous et votre famille, à notre assemblée intitulée « Le bonheur éternel », le 27 novembre à San Diego. Voici votre invitation personnelle.", phNative: "Aïm hir tou invaït you...", phEng: "zhuh vyan vooz an-vee-TAY, vooz ay VOT-ruh fah-MEE-yuh, ah NOT-ruh ah-sahm-BLAY an-tee-tew-LAY « Luh boh-NUHR ay-tair-NEL », luh van-SET noh-VAHM-bruh ah San Diego. vwah-SEE VOT-ruh an-vee-tah-SYOHN pair-sohn-NEL." },
+            { en: "I am visiting from ...(country)", tr: "Je viens de ... (pays).", phNative: "Aïm vizitingue from ...(kountri)", phEng: "zhuh VYAN duh ... (pay-EE)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Ce mois-ci, nous proposons un cours biblique gratuit.", phNative: "Ouir ofeurigne e fri Baïbeul cors...", phEng: "suh MWAH-see, noo proh-poh-ZOHN un koor BEE-bleek grah-TWEE." },
+            { en: "Would you be interested in a free Bible study?", tr: "Seriez-vous intéressé(e) par un cours biblique gratuit ?", phNative: "Woud you bi intéréstide...", phEng: "suh-ree-AY vooz an-tay-ray-SAY pahr un koor BEE-bleek grah-TWEE?" },
+            { en: "This course can help you understand the Bible.", tr: "Ce cours peut vous aider à comprendre la Bible.", phNative: "Diss cors kèn hèlp you...", phEng: "suh KOOR puh vooz ay-DAY ah kohm-PRAHN-druh lah BEE-bluh." },
+            { en: "There is no charge and no obligation.", tr: "C'est entièrement gratuit et sans engagement.", phNative: "Zère iz no tchardje...", phEng: "set ahn-tyair-MAHN grah-TWEE ay sahnz ahn-gahzh-MAHN." }
           ]
         }
       },
@@ -1061,12 +1270,12 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Ich freue mich sehr, Sie in San Diego zu sehen!", phNative: "Ei ämm häppi tu sie ju in Sän Diego.", phEng: "Ikh FROY-uh mikh zair, zee in San Diego tsoo ZAY-en!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ich möchte Sie und Ihre Familie herzlich zu unserem Kongress „Ewige Freude“ am 27. November in San Diego einladen. Hier ist Ihre persönliche Einladung.", phNative: "Ei ämm hier tu inweyt ju änd juhr fämili...", phEng: "Ikh MERKH-tuh zee oont EE-ruh fah-MEE-lyuh HAIRTS-likh tsoo OON-zuh-rem kohn-GRESS „AY-vee-guh FROY-duh“ ahm ZEE-ben-oond-TSVAHN-tsikh-sten noh-VEM-ber in San Diego EYN-lah-den. Heer ist EE-ruh pair-ZERN-likh-uh EYN-lah-doong." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Ich möchte Sie und Ihre Familie herzlich zu unserem Kongress „Ewige Freude“ am 27. November in San Diego einladen. Hier ist Ihre persönliche Einladung.", phNative: "Ei ämm hier tu inweyt ju...", phEng: "Ikh MERKH-tuh zee oont EE-ruh fah-MEE-lyuh HAIRTS-likh tsoo OON-zuh-rem kohn-GRESS „AY-vee-guh FROY-duh“ ahm ZEE-ben-oond-TSVAHN-tsikh-sten noh-VEM-ber in San Diego EYN-lah-den. Heer ist EE-ruh pair-ZERN-likh-uh EYN-lah-doong." },
             { en: "I am visiting from ...(country)", tr: "Ich bin zu Besuch aus ...(Land).", phNative: "Ei ämm wisiting from ...(kantry)", phEng: "Ikh bin tsoo buh-ZOOKH ows ...(LAHNT)." },
-            { en: "We’re offering a free Bible course this month.", tr: "Wir bieten diesen Monat einen kostenlosen Bibelkurs an.", phNative: "Wihr offering e frih Beibel kohrs sis manfs.", phEng: "Veer BEE-ten DEE-zen MOH-naht EYE-nen KOSS-ten-loh-zen BEE-bel-koors ahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Hätten Sie Interesse an einem kostenlosen Bibelkurs?", phNative: "Wudd ju bi intrested in e frih Beibel staddi?", phEng: "HET-ten zee in-ter-ESS-uh ahn EYE-nem KOSS-ten-loh-zen BEE-bel-koors?" },
-            { en: "This course can help you understand the Bible.", tr: "Dieser Kurs kann Ihnen helfen, die Bibel zu verstehen.", phNative: "Siss kohrs känn hälp ju an-der-stähnd se Beibel.", phEng: "DEE-zer koors kahn EE-nen HEL-fen, dee BEE-bel tsoo fair-SHTAY-en." },
-            { en: "There is no charge and no obligation.", tr: "Er ist völlig kostenlos und unverbindlich.", phNative: "Sähr is noh tscharhdj änd noh ob-li-geh-schn.", phEng: "Air ist FOEL-likh KOSS-ten-lohs oond OON-fair-bind-likh." }
+            { en: "We’re offering a free Bible course this month.", tr: "Wir bieten diesen Monat einen kostenlosen Bibelkurs an.", phNative: "Wihr offering e frih Beibel kohrs...", phEng: "Veer BEE-ten DEE-zen MOH-naht EYE-nen KOSS-ten-loh-zen BEE-bel-koors ahn." },
+            { en: "Would you be interested in a free Bible study?", tr: "Hätten Sie Interesse an einem kostenlosen Bibelkurs?", phNative: "Wudd ju bi intrested in e frih...", phEng: "HET-ten zee in-ter-ESS-uh ahn EYE-nem KOSS-ten-loh-zen BEE-bel-koors?" },
+            { en: "This course can help you understand the Bible.", tr: "Dieser Kurs kann Ihnen helfen, die Bibel zu verstehen.", phNative: "Siss kohrs känn hälp ju...", phEng: "DEE-zer koors kahn EE-nen HEL-fen, dee BEE-bel tsoo fair-SHTAY-en." },
+            { en: "There is no charge and no obligation.", tr: "Er ist völlig kostenlos und unverbindlich.", phNative: "Sähr is noh tscharhdj...", phEng: "Air ist FOEL-likh KOSS-ten-lohs oond OON-fair-bind-likh." }
           ]
         }
       },
@@ -1101,12 +1310,12 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನಿಮ್ಮನ್ನು ನೋಡಿ ನನಗೆ ತುಂಬಾ ಸಂತೋಷವಾಗಿದೆ.", phNative: "ಐ ಆಮ್ ಹ್ಯಾಪಿ ಟು ಸೀ ಯು ಇನ್ ಸ್ಯಾನ್ ಡಿಯಾಗೋ.", phEng: "San Diego-duhl-lee neem-MAHN-noo noh-DEE nuh-nuh-GAY toom-BAH sahn-TOH-shuh-vah-gee-day." },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "ನವೆಂಬರ್ 27 ರಂದು ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನಡೆಯುವ 'ಶಾಶ್ವತ ಸಂತೋಷ' ಎಂಬ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬವನ್ನು ಆಹ್ವಾನಿಸಲು ನಾನು ಬಂದಿದ್ದೇನೆ, ಇದು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಆಮಂತ್ರಣ ಪತ್ರಿಕೆ.", phNative: "ಐ ಆಮ್ ಹಿಯರ್ ಟು ಇನ್ವೈಟ್ ಯು ಅಂಡ್ ಯುವರ್ ಫ್ಯಾಮಿಲಿ...", phEng: "November eeppath-EHL-rohn-doo San Diego-duhl-lee nuh-duh-YOO-wah 'Shahsh-wuh-tuh Sahn-TOH-shuh' em-bah suh-mah-vay-SHUK-kay neem-MAHN-noo muht-too neem-muh koo-toom-buh-wuhn-noo ah-wah-nee-suhl-oo NAH-noo buhn-deed-DAY-nay, ee-DOO neem-muh vye-yuhk-tee-kuh ah-muhn-truh-nuh puht-ree-kay." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "ನವೆಂಬರ್ 27 ರಂದು ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನಡೆಯುವ 'ಶಾಶ್ವತ ಸಂತೋಷ' ಎಂಬ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬವನ್ನು ಆಹ್ವಾನಿಸಲು ನಾನು ಬಂದಿದ್ದೇನೆ, ಇದು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಆಮಂತ್ರಣ ಪತ್ರಿಕೆ.", phNative: "ಐ ಆಮ್ ಹಿಯರ್ ಟು ಇನ್ವೈಟ್ ಯು...", phEng: "November eeppath-EHL-rohn-doo San Diego-duhl-lee nuh-duh-YOO-wah 'Shahsh-wuh-tuh Sahn-TOH-shuh' em-bah suh-mah-vay-SHUK-kay neem-MAHN-noo muht-too neem-muh koo-toom-buh-wuhn-noo ah-wah-nee-suhl-oo NAH-noo buhn-deed-DAY-nay, ee-DOO neem-muh vye-yuhk-tee-kuh ah-muhn-truh-nuh puht-ree-kay." },
             { en: "I am visiting from ...(country)", tr: "ನಾನು ...(ದೇಶ)ದಿಂದ ಭೇಟಿ ನೀಡುತ್ತಿದ್ದೇನೆ.", phNative: "ಐ ಆಮ್ ವಿಸಿಟಿಂಗ್ ಫ್ರಮ್ ...(ಕಂಟ್ರಿ)", phEng: "NAH-noo ...(DAY-shuh)-dihn-duh bhay-TEE nee-doot-TEED-day-nay." },
-            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್ ದಿಸ್ ಮಂತ್.", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
-            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್ ಇನ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಸ್ಟಡಿ?", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
-            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು ಅಂಡರ್‌ಸ್ಟಾಂಡ್ ದ ಬೈಬಲ್.", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
-            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್ ಅಂಡ್ ನೋ ಆಬ್ಲಿಗೇಷನ್.", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." }
+            { en: "We’re offering a free Bible course this month.", tr: "ನಾವು ಈ ತಿಂಗಳು ಉಚಿತ ಬೈಬಲ್ ಕೋರ್ಸ್ ನೀಡುತ್ತಿದ್ದೇವೆ.", phNative: "ವಿ ಆರ್ ಆಫರಿಂಗ್ ಎ ಫ್ರೀ ಬೈಬಲ್ ಕೋರ್ಸ್...", phEng: "NAH-voo ee TEEN-guhl-oo oo-chee-tuh BY-buhl kohrs nee-doot-TEED-day-vay." },
+            { en: "Would you be interested in a free Bible study?", tr: "ನೀವು ಉಚಿತ ಬೈಬಲ್ ಅಧ್ಯಯನದಲ್ಲಿ ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೀರಾ?", phNative: "ವುಡ್ ಯು ಬಿ ಇಂಟರೆಸ್ಟೆಡ್...", phEng: "NEE-voo oo-chee-tuh BY-buhl ahd-yuh-nuh-duhl-lee AH-suhk-tee hon-deed-DEE-rah?" },
+            { en: "This course can help you understand the Bible.", tr: "ಈ ಕೋರ್ಸ್ ನಿಮಗೆ ಬೈಬಲ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.", phNative: "ದಿಸ್ ಕೋರ್ಸ್ ಕ್ಯಾನ್ ಹೆಲ್ಪ್ ಯು...", phEng: "ee kohrs nee-MUH-gay BY-buhl ahr-thuh-mah-dee-kohl-luhl-oo suh-HAH-yuh mah-doot-tuh-day." },
+            { en: "There is no charge and no obligation.", tr: "ಇದು ಸಂಪೂರ್ಣ ಉಚಿತ ಮತ್ತು ಯಾವುದೇ ಕಡ್ಡಾಯವಿಲ್ಲ.", phNative: "ದೇರ್ ಈಸ್ ನೋ ಚಾರ್ಜ್...", phEng: "ee-DOO suhm-POOR-nuh oo-chee-tuh muht-too yah-vood-day kuhd-dah-yuh-VEEL-luh." }
           ]
         }
       },
@@ -1141,7 +1350,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "San Diego xarant tumkam pollovn mhaka khub khuxi bhogli.", phNative: "Aym hap-pee tu see yu in San Diego.", phEng: "San Diego shah-RAHNT toom-KAHM poh-LOHV-n mhah-KAH khoob khoo-SHEE bhog-LEE." },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Novembrache 27-ver San Diego zatelea 'Sodankalchem Dhadosponn' hea Mellak tumkam ani tumchea kuttumbak amontronn diunk hanv aila(m), hem tumchem khas amontronn-potr.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "Noh-vem-BRAH-chay vees-tah-SATH-ver San Diego zah-TEH-lyah 'Soh-dahn-KAHL-chem Dhah-dohs-PONN' hyah MEL-lahk toom-KAHM ah-NEE toom-CHYAH koot-TOOM-bahk ah-mohn-TROHN dyoonk HAHMV eye-LAH, hem toom-CHEM khahs ah-mohn-TROHN-poh-truh." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Novembrache 27-ver San Diego zatelea 'Sodankalchem Dhadosponn' hea Mellak tumkam ani tumchea kuttumbak amontronn diunk hanv aila(m), hem tumchem khas amontronn-potr.", phNative: "Aym heer tu in-vayt yu...", phEng: "Noh-vem-BRAH-chay vees-tah-SATH-ver San Diego zah-TEH-lyah 'Soh-dahn-KAHL-chem Dhah-dohs-PONN' hyah MEL-lahk toom-KAHM ah-NEE toom-CHYAH koot-TOOM-bahk ah-mohn-TROHN dyoonk HAHMV eye-LAH, hem toom-CHEM khahs ah-mohn-TROHN-poh-truh." },
             { en: "I am visiting from ...(country)", tr: "Hanv ...(desh) thaun bhett diunk aila(m).", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "HAHMV ...(daysh) thah-OON bhaytt dyoonk eye-LAH." },
             { en: "We’re offering a free Bible course this month.", tr: "Hea mhoineant ami fukot Baibl obheas korunk manddunk haddtat.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "hyah moy-NEHN-aht AH-mee foo-KOHT BYE-buhl ob-HYAHS koh-ROONK mahnd-DOONK hahd-TAHT." },
             { en: "Would you be interested in a free Bible study?", tr: "Tumkam fukot Baibl obheas korunk khuxi asa?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "toom-KAHM foo-KOHT BYE-buhl ob-HYAHS koh-ROONK khoo-SHEE ah-SAH?" },
@@ -1197,36 +1406,36 @@
         categories: { greetings: "احوال‌پرسی", everyday: "روزمره", getting_around: "مسیر و آدرس", ministry_skills: "مهارت‌های خدمت" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "سلام / درود", phNative: "Hello / Hay", phEng: "sah-LAHM / deh-ROOD" },
-            { en: "Good morning", tr: "صبح بخیر", phNative: "Gud mor-ning", phEng: "sohb beh-KHAYR" },
-            { en: "My name is...", tr: "نام من ... است", phNative: "May neym iz...", phEng: "NAH-meh man ... ast" },
-            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "Nays tu mit yu", phEng: "az dee-dah-reh-TAHN khoosh-BAKH-tam" },
-            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "Haw ar yu?", phEng: "HAH-leh shoh-MAH cheh-TOOR ast?" },
-            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "Aym fayn, thenk yu", phEng: "KHOO-bam, mot-shak-KEH-ram" }
+            { en: "Hello / Hi", tr: "سلام / درود", phNative: "هلو / های (Hello / Hay)", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
+            { en: "Good morning", tr: "صبح بخیر", phNative: "گود مورنینگ (Gud mor-ning)", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
+            { en: "My name is...", tr: "نام من ... است", phNative: "مای نِیم ایز... (May neym iz...)", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
+            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "نایس تو میت یو (Nays tu mit yu)", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
+            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "هاو آر یو؟ (Haw ar yu?)", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
+            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "آیم فاین، تَنک یو (Aym fayn, thenk yu)", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
           ],
           everyday: [
-            { en: "Please", tr: "لطفاً", phNative: "Pleez", phEng: "LOHT-fan" },
-            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "Thenk yu", phEng: "seh-pahs-goz-AH-ram / mam-NOON" },
-            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "Yur wel-kam", phEng: "khah-HESH mee-koh-nam" },
-            { en: "Excuse me", tr: "ببخشید", phNative: "Eks-kyuz mi", phEng: "beh-BAKH-sheed" },
-            { en: "I'm sorry", tr: "متأسفم", phNative: "Aym sah-ree", phEng: "mote-ah-SEH-fam" },
-            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "Ken yu help mi?", phEng: "mee-tav-AH-need koh-MAH-kam koh-NEED?" }
+            { en: "Please", tr: "لطفاً", phNative: "پلیز (Pleez)", phEng: "لُطفاً (LOHT-fan)" },
+            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "تَنک یو (Thenk yu)", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
+            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "یور ولکام (Yur wel-kam)", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
+            { en: "Excuse me", tr: "ببخشید", phNative: "اکسکیوز می (Eks-kyuz mi)", phEng: "بِبَخشید (beh-BAKH-sheed)" },
+            { en: "I'm sorry", tr: "متأسفم", phNative: "آیم ساری (Aym sah-ree)", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
+            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "کَن یو هِلپ می؟ (Ken yu help mi?)", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "Wer iz da baht-room?", phEng: "dast-SHOO-yee koh-JAHST?" },
-            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "Haw mach iz dis?", phEng: "ghey-MAH-teh een cheh-GHADR ast?" },
-            { en: "I would like...", tr: "من میخواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
-            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "Ay dont an-der-stend", phEng: "moh-tah-VAJ-jeh neh-mee-SHOH-vam" },
-            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "Wat taym iz it?", phEng: "sah-AT chand ast?" }
+            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "وِر ایز دَ باثروم؟ (Wer iz da baht-room?)", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
+            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "هاو ماچ ایز دیس؟ (Haw mach iz dis?)", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
+            { en: "I would like...", tr: "من میخواهم...", phNative: "آی وود لایک... (Ay wud layk...)", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
+            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "آی دُنت آندرستَند (Ay dont an-der-stend)", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
+            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "وات تایم ایز ایت؟ (Wat taym iz it?)", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
           ],
           ministry_skills: [
-            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "Aym hap-pee tu see yu in San Diego.", phEng: "az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam." },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "Aym heer tu in-vayt yu and yur fah-mee-lee...", phEng: "man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-MAH-yeed, een dah-vat-NAH-meh-yeh shakh-SEE-yeh shoh-mahst." },
-            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam." },
-            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem." },
-            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?" },
-            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "Dis kors ken help yu...", phEng: "een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED." },
-            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "Der iz no charj...", phEng: "een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad." }
+            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "آیم هَپی تو سی یو این سن دیگو", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "آیم هیر تو اینوایت یو...", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را دَعوَت کُنَم (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam)" },
+            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
+            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "ویر آفرینگ اِ فری بایبل کورس...", phEng: "ما این ماه یِک دورِه رایِگانِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
+            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "وود یو بی اینترستد...", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
+            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "دیس کورس کَن هِلپ یو...", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
+            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "دِر ایز نو چارژ...", phEng: "این دورِه کامِلاً رایِگان اَست (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
           ]
         }
       },
@@ -1261,7 +1470,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Cieszę się, że widzę Cię w San Diego!", phNative: "Ajm hepi tu si ju in San Dijego.", phEng: "CHYEH-sheh shyeh, zheh VEE-dzeh chyeh v San Diego!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Chciał(a)bym serdecznie zaprosić Ciebie i Twoją rodzinę na kongres pod hasłem „Wieczne szczęście”, który odbędzie się 27 listopada w San Diego. Oto Twoje osobiste zaproszenie.", phNative: "Ajm hir tu inwajt ju and jur femili...", phEng: "KHY-chow(ah)bym sair-DETCH-nyeh zah-PROH-sheetch CHYEH-byeh ee TVOH-yoh roh-JEE-neh nah KOHN-gres pohd KHAH-swem „VYECH-neh SHCHAYN-shchyeh”, KTOO-ry ohd-BEN-jeh shyeh dwah-JEE-shchya shehd-MEH-goh lees-toh-PAH-dah v San Diego. OH-toh TVOH-yeh oh-soh-BEES-teh zah-proh-SHEH-nyeh." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Chciał(a)bym serdecznie zaprosić Ciebie i Twoją rodzinę na kongres pod hasłem „Wieczne szczęście”, który odbędzie się 27 listopada w San Diego. Oto Twoje osobiste zaproszenie.", phNative: "Ajm hir tu inwajt ju...", phEng: "KHY-chow(ah)bym sair-DETCH-nyeh zah-PROH-sheetch CHYEH-byeh ee TVOH-yoh roh-JEE-neh nah KOHN-gres pohd KHAH-swem „VYECH-neh SHCHAYN-shchyeh”, KTOO-ry ohd-BEN-jeh shyeh dwah-JEE-shchya shehd-MEH-goh lees-toh-PAH-dah v San Diego. OH-toh TVOH-yeh oh-soh-BEES-teh zah-proh-SHEH-nyeh." },
             { en: "I am visiting from ...(country)", tr: "Przyjechałem / Przyjechałam w odwiedziny z ...(kraj).", phNative: "Ajm wiziting from ...(kantri)", phEng: "pshy-yeh-KHAH-wem / pshy-yeh-KHAH-wahm v ohd-vyeh-JEE-ny z ...(KRY)." },
             { en: "We’re offering a free Bible course this month.", tr: "W tym miesiącu proponujemy bezpłatny kurs biblijny.", phNative: "Łir ofering e fri bajbl kors...", phEng: "V tym myeh-SHOHN-tsoo proh-poh-NOO-yeh-my bez-PWAHT-ny koors beeb-LEEY-ny." },
             { en: "Would you be interested in a free Bible study?", tr: "Czy chciałbyś spróbować bezpłatnego kursu biblijnego?", phNative: "Łud ju bi interestyd...", phEng: "Chy khy-chow-BYSH sproo-BOH-vahch bez-pwaht-NEH-goh KOOR-soo beeb-LEEY-neh-goh?" },
@@ -1301,7 +1510,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Я очень рад(а) видеть вас в Сан-Диего!", phNative: "Aym khe-pi tu si yu in San Di-ye-go.", phEng: "yah OH-cheen RAHD(ah) VEE-deet' vahs v Sahn-Dee-EH-guh!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Я приглашаю вас и вашу семью на наш конгресс под названием «Вечное счастье», который пройдет 27 ноября в Сан-Диего. Вот ваше личное приглашение.", phNative: "Aym kheer tu in-vayt yu end yur fe-mi-li...", phEng: "yah pree-glah-SHAH-yoo vahs ee VAH-shoo syem-YOO nah nahsh kohn-GRESS pohd nahz-VAH-nee-yem «VYECH-nuh-yeh SCHYAHST-yeh», kah-TOH-ry prohy-DYOT dvad-tsaht' sed'-MOH-vuh nah-yahb-RYAH v Sahn-Dee-EH-guh. voht VAH-sheh LEETCH-nuh-yeh pree-glah-SHEH-nee-yeh." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Я приглашаю вас и вашу семью на наш конгресс под названием «Вечное счастье», который пройдет 27 ноября в Сан-Диего. Вот ваше личное приглашение.", phNative: "Aym kheer tu in-vayt yu...", phEng: "yah pree-glah-SHAH-yoo vahs ee VAH-shoo syem-YOO nah nahsh kohn-GRESS pohd nahz-VAH-nee-yem «VYECH-nuh-yeh SCHYAHST-yeh», kah-TOH-ry prohy-DYOT dvad-tsaht' sed'-MOH-vuh nah-yahb-RYAH v Sahn-Dee-EH-guh. voht VAH-sheh LEETCH-nuh-yeh pree-glah-SHEH-nee-yeh." },
             { en: "I am visiting from ...(country)", tr: "Я приехал(а) в гости из ...(страна).", phNative: "Aym vi-zi-ting from ...(kan-tri)", phEng: "yah pree-YEH-khuhl(ah) v GOHS-tee eez ...(strah-NAH)." },
             { en: "We’re offering a free Bible course this month.", tr: "В этом месяце мы предлагаем бесплатный библейский курс.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "V EH-tahm MYE-sya-tseh my preed-lah-GAH-yem byez-PLAHT-ny beeb-LYEY-sky koors." },
             { en: "Would you be interested in a free Bible study?", tr: "Хотели бы вы попробовать бесплатный библейский курс?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "khah-TYEH-lee by vy pah-PROH-bah-vaht byez-PLAHT-ny beeb-LYEY-sky koors?" },
@@ -1341,7 +1550,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Zelo sem vesel(a), da vas vidim v San Diegu!", phNative: "Ajm hepi tu si ju in San Dijego.", phEng: "ZEH-loh sem veh-SEL(ah), dah vahs VEE-deem v San Diegu!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tukaj sem, da vas in vašo družino povabim na naše zborovanje z naslovom »Večna sreča«, ki bo 27. novembra v San Diegu. Tukaj je vaše osebno vabilo.", phNative: "Ajm hir tu invajt ju end jur femili...", phEng: "TOO-kye sem, dah vahs een VAH-shoh droo-ZHEE-noh poh-VAH-beem nah NAH-sheh zboh-roh-VAHN-yeh z nahs-LOH-vohm »VECH-nah SREH-chah«, kee boh sed-em-een-DVAH-seht-eh-gah noh-VEM-brah v San Diegu. TOO-kye yeh VAH-sheh oh-SEB-noh vah-BEE-loh." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tukaj sem, da vas in vašo družino povabim na naše zborovanje z naslovom »Večna sreča«, ki bo 27. novembra v San Diegu. Tukaj je vaše osebno vabilo.", phNative: "Ajm hir tu invajt ju...", phEng: "TOO-kye sem, dah vahs een VAH-shoh droo-ZHEE-noh poh-VAH-beem nah NAH-sheh zboh-roh-VAHN-yeh z nahs-LOH-vohm »VECH-nah SREH-chah«, kee boh sed-em-een-DVAH-seht-eh-gah noh-VEM-brah v San Diegu. TOO-kye yeh VAH-sheh oh-SEB-noh vah-BEE-loh." },
             { en: "I am visiting from ...(country)", tr: "Na obisku sem iz ...(država).", phNative: "Ajm viziting from ...(kantri)", phEng: "nah oh-BEES-koo sem eez ...(duhr-ZHAH-vah)." },
             { en: "We’re offering a free Bible course this month.", tr: "Ta mesec ponujamo brezplačen svetopisemski tečaj.", phNative: "Vir offering e fri bajbl kors...", phEng: "tah MEH-sets poh-NOO-yah-moh brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY." },
             { en: "Would you be interested in a free Bible study?", tr: "Bi vas zanimal brezplačen svetopisemski tečaj?", phNative: "Vud ju bi interested...", phEng: "bee vahs zah-NEE-mahl brez-PLAH-chen sveh-toh-pee-SEM-skee teh-CHEY?" },
@@ -1381,7 +1590,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "¡Qué alegría verle aquí en San Diego!", phNative: "Aim japi tu si iu in San Diego.", phEng: "kay ah-leh-GREE-ah VEHR-leh ah-KEE en San Diego!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Estoy aquí para invitarle a usted y a su familia a nuestra asamblea titulada “Felicidad eterna”, el 27 de noviembre en San Diego. Aquí tiene su invitación personal.", phNative: "Aim jir tu invait iu and iur famili...", phEng: "ess-TOY ah-KEE PAH-rah een-vee-TAHR-leh ah oos-TED ee ah soo fah-MEE-lyah ah NWEHS-trah ah-sahm-BLEH-ah tee-too-LAH-dah “Feh-lee-see-DAHD eh-TEHR-nah”, ehl veyn-tee-SYEH-teh deh noh-VYEHM-breh en San Diego. ah-KEE TYEH-neh soo een-vee-tah-SYOHN pehr-soh-NAHL." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Estoy aquí para invitarle a usted y a su familia a nuestra asamblea titulada “Felicidad eterna”, el 27 de noviembre en San Diego. Aquí tiene su invitación personal.", phNative: "Aim jir tu invait iu...", phEng: "ess-TOY ah-KEE PAH-rah een-vee-TAHR-leh ah oos-TED ee ah soo fah-MEE-lyah ah NWEHS-trah ah-sahm-BLEH-ah tee-too-LAH-dah “Feh-lee-see-DAHD eh-TEHR-nah”, ehl veyn-tee-SYEH-teh deh noh-VYEHM-breh en San Diego. ah-KEE TYEH-neh soo een-vee-tah-SYOHN pehr-soh-NAHL." },
             { en: "I am visiting from ...(country)", tr: "Estoy de visita desde ...(país).", phNative: "Aim visiting from ...(kantri)", phEng: "ess-TOY deh vee-SEE-tah DEHS-deh ...(pah-EES)." },
             { en: "We’re offering a free Bible course this month.", tr: "Este mes estamos ofreciendo un curso bíblico gratuito.", phNative: "Uir ofering a fri baibol kors...", phEng: "ESS-teh mehs ess-TAH-mos oh-freh-SYEHN-doh oon KOOR-soh BEE-blee-koh grah-TWEE-toh." },
             { en: "Would you be interested in a free Bible study?", tr: "¿Le gustaría probar nuestras clases bíblicas gratuitas?", phNative: "Gud iu bi intrested in...", phEng: "leh goos-tah-REE-ah proh-BAHR NWEHS-tras KLAH-sehs BEE-blee-kas grah-TWEE-tas?" },
@@ -1421,7 +1630,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Masaya akong makita ka rito sa San Diego!", phNative: "Aym hapi tu si yu in San Diego.", phEng: "mah-sah-YAH ah-KOHNG mah-KEE-tah kah REE-toh sah San Diego!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Nandito po ako para anyayahan kayo at ang inyong pamilya sa aming kombensiyon na may temang “Walang-Hanggang Kaligayahan” sa Nobyembre 27 sa San Diego. Narito po ang inyong personal na imbitasyon.", phNative: "Aym hir tu invayt yu end yur famili...", phEng: "nahn-DEE-toh poh ah-KOH PAH-rah ahn-yah-YAH-hahn kah-YOH aht ahng een-YOHNG pah-MEEL-yah sah AH-meeng kohm-ben-shon nah may TAY-mah “Wah-lahng-Hahng-gahng Kah-lee-gah-YAH-hahn” sah nohb-YEM-breh dwah-leem-PAHT-sah-PEE-toh sah San Diego. nah-REE-toh poh ahng een-YOHNG pair-soh-NAHL nah eem-bee-tahs-YOHN." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Nandito po ako para anyayahan kayo at ang inyong pamilya sa aming kombensiyon na may temang “Walang-Hanggang Kaligayahan” sa Nobyembre 27 sa San Diego. Narito po ang inyong personal na imbitasyon.", phNative: "Aym hir tu invayt yu...", phEng: "nahn-DEE-toh poh ah-KOH PAH-rah ahn-yah-YAH-hahn kah-YOH aht ahng een-YOHNG pah-MEEL-yah sah AH-meeng kohm-ben-shon nah may TAY-mah “Wah-lahng-Hahng-gahng Kah-lee-gah-YAH-hahn” sah nohb-YEM-breh dwah-leem-PAHT-sah-PEE-toh sah San Diego. nah-REE-toh poh ahng een-YOHNG pair-soh-NAHL nah eem-bee-tahs-YOHN." },
             { en: "I am visiting from ...(country)", tr: "Bumisita po ako mula sa ...(bansa).", phNative: "Aym visiting from ...(kantri)", phEng: "boo-mee-SEE-tah poh ah-KOH MOO-lah sah ...(bahn-SAH)." },
             { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors...", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
             { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted...", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
@@ -1461,10 +1670,10 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Sizi San Diego'da gördüğüme çok sevindim!", phNative: "Aym hepi tu si yu in San Diego.", phEng: "SEE-zee San Diego-dah goer-dew-yew-MEH chohk seh-veen-DEEM!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Sizi ve ailenizi 27 Kasım'da San Diego'da düzenlenecek olan „Sonsuz Mutluluk” temalı bölge kongremize davet etmek için buradayım; işte kişisel davetiyeniz.", phNative: "Aym hir tu invayt yu end yur femili...", phEng: "SEE-zee veh eye-leh-NEE-zee yir-mee yeh-DEE kah-suhm-DAH San Diego-dah dew-zen-leh-neh-JEK oh-LAHN „Sohn-SOOZ Moot-loo-LOOK” teh-mah-LUH boel-GEH kohng-reh-MEE-zeh dah-VET et-MEK ee-CHEEN boo-rah-dah-YUM; eesh-TEH kee-shee-SEL dah-veh-tee-yeh-NEEZ." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Sizi ve ailenizi 27 Kasım'da San Diego'da düzenlenecek olan „Sonsuz Mutluluk” temalı bölge kongremize davet etmek için buradayım; işte kişisel davetiyeniz.", phNative: "Aym hir tu invayt yu...", phEng: "SEE-zee veh eye-leh-NEE-zee yir-mee yeh-DEE kah-suhm-DAH San Diego-dah dew-zen-leh-neh-JEK oh-LAHN „Sohn-SOOZ Moot-loo-LOOK” teh-mah-LUH boel-GEH kohng-reh-MEE-zeh dah-VET et-MEK ee-CHEEN boo-rah-dah-YUM; eesh-TEH kee-shee-SEL dah-veh-tee-yeh-NEEZ." },
             { en: "I am visiting from ...(country)", tr: "...(ülke)'den ziyarete geldim.", phNative: "Aym viziting from ...(kantri)", phEng: "...(ewl-KEH)'den zee-yah-REH-teh gel-DEEM." },
             { en: "We’re offering a free Bible course this month.", tr: "Bu ay ücretsiz Kutsal Kitap kursu sunuyoruz.", phNative: "Vir ofering e fri Baybıl kors...", phEng: "boo eye ew-cret-SEEZ koot-SAHL kee-TAHP koor-SOO soo-noo-YOH-rooz." },
-            { en: "Would you be interested in a free Bible study?", tr: "Ücretsiz bir Kutsal Kitap incelemesi denemek ister misiniz?", phNative: "Vud yu bi interested in e fri Baybıl stadi?", phEng: "ew-cret-SEEZ beer koot-SAHL kee-TAHP een-jeh-leh-meh-SEE deh-neh-MEK ees-TEHR mee-see-neez?" },
+            { en: "Would you be interested in a free Bible study?", tr: "Ücretsiz bir Kutsal Kitap incelemesi denemek ister misiniz?", phNative: "Vud yu bi interested...", phEng: "ew-cret-SEEZ beer koot-SAHL kee-TAHP een-jeh-leh-meh-SEE deh-neh-MEK ees-TEHR mee-see-neez?" },
             { en: "This course can help you understand the Bible.", tr: "Bu kurs Kutsal Kitap'ı anlamanıza yardımcı olabilir.", phNative: "Dis kors ken help yu...", phEng: "boo koors koot-SAHL kee-tah-PUH ahn-lah-mah-nuh-ZAH yahr-duhm-JUH oh-lah-bee-LEER." },
             { en: "There is no charge and no obligation.", tr: "Tamamen ücretsizdir ve hiçbir yükümlülük getirmez.", phNative: "Der iz no çarc...", phEng: "tah-mah-MEN ew-cret-SEEZ-deer veh heetch-BEER yew-kewm-lew-LEWK geh-teer-MEZ." }
           ]
@@ -1501,9 +1710,9 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Rất vui được gặp bạn tại San Diego!", phNative: "Aim háp-pi tu si du in San Đi-ê-gô.", phEng: "zuht vooy dew-uhk guhp bahn tye San Diego!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tôi đến đây để mời bạn và gia đình tham dự Đại hội mang chủ đề “Hạnh phúc vĩnh cửu” vào ngày 27 tháng 11 tại San Diego; xin gửi bạn giấy mời này.", phNative: "Aim hi-ơ tu in-vai-t du en dua phe-mi-li...", phEng: "toy den dye deh moy bahn vah zyah deen tahm zew dye hoy mahng choo deh “Hahn fook veeng kew” vow nye hay-mwoy byet tahng mwoy mot tye San Diego; seen guy bahn zye moy nye." },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tôi đến đây để mời bạn và gia đình tham dự Đại hội mang chủ đề “Hạnh phúc vĩnh cửu” vào ngày 27 tháng 11 tại San Diego; xin gửi bạn giấy mời này.", phNative: "Aim hi-ơ tu in-vai-t du...", phEng: "toy den dye deh moy bahn vah zyah deen tahm zew dye hoy mahng choo deh “Hahn fook veeng kew” vow nye hay-mwoy byet tahng mwoy mot tye San Diego; seen guy bahn zye moy nye." },
             { en: "I am visiting from ...(country)", tr: "Tôi đến từ ...(quốc gia).", phNative: "Aim vi-si-tinh ph-rom ...(con-tri)", phEng: "toy den too ...(kwohk zyah)." },
-            { en: "We’re offering a free Bible course this month.", tr: "Tháng này chúng tôi có khóa học Kinh Thánh miễn phí.", phNative: "Quy-ơ óp-phơ-rinh ơ ph-ri Bai-bồ co-s...", phEng: "tahng nye choong toy koh khwah hawk keen tahng myen fee." },
+            { en: "We’re offering a free Bible course this month.", tr: "Tháng này chúng tôi có khóa học Kinh Thánh miễn phí.", phNative: "Quy-ơ óp-phơ-rinh ơ ph-ri...", phEng: "tahng nye choong toy koh khwah hawk keen tahng myen fee." },
             { en: "Would you be interested in a free Bible study?", tr: "Bạn có muốn tìm hiểu khóa học Kinh Thánh miễn phí không?", phNative: "Quút du bi in-tơ-rét-tịt...", phEng: "bahn koh mwon teem hew khwah hawk keen tahng myen fee khohm?" },
             { en: "This course can help you understand the Bible.", tr: "Khóa học này sẽ giúp bạn hiểu rõ Kinh Thánh hơn.", phNative: "Đít co-s cen hép du...", phEng: "khwah hawk nye seh zoop bahn hew zaw keen tahng hurn." },
             { en: "There is no charge and no obligation.", tr: "Khóa học hoàn toàn miễn phí và không có ràng buộc nào.", phNative: "Đe-ơ ít nô cha-ch...", phEng: "khwah hawk hwahn twahn myen fee vah khohm koh zahng bwook now." }
@@ -1523,14 +1732,16 @@
       ministry_skills: "Ministry Skills"
     };
 
-    // Change 10: Re-sorted languages alphabetically by English display name
+    // Change 6: English first, followed alphabetically by other languages
     function renderLanguageGrid() {
       const grid = document.getElementById('languageButtonsGrid');
       grid.innerHTML = '';
       
-      const sortedKeys = Object.keys(database).sort((a, b) => 
-        database[a].englishName.localeCompare(database[b].englishName)
-      );
+      const sortedKeys = Object.keys(database).sort((a, b) => {
+        if (a === 'english') return -1;
+        if (b === 'english') return 1;
+        return database[a].englishName.localeCompare(database[b].englishName);
+      });
 
       sortedKeys.forEach(key => {
         const lang = database[key];
@@ -1638,6 +1849,7 @@
       }
     }
 
+    // Change 10: Suppress Listen button for Persian (fa-IR); Change 11: Render Persian script phonetics
     function renderPhrases() {
       const container = document.getElementById('phrasesList');
       container.innerHTML = '';
@@ -1662,17 +1874,23 @@
             </div>
           `;
         } else {
+          // Check if Persian: omit the Listen button
+          const isPersian = currentLangKey === 'persian';
+          const listenButtonHtml = isPersian 
+            ? '' 
+            : `<div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+                <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
+                  <i class="fa-solid fa-volume-high"></i> Listen (${lang.englishName})
+                </button>
+              </div>`;
+
           card.innerHTML = `
             <div class="space-y-1">
               <p class="text-xs text-slate-500 dark:text-slate-400 italic">${item.en}</p>
               <h3 class="text-lg font-bold text-slate-900 dark:text-white">${item.tr}</h3>
               <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${item.phEng} ]</p>
             </div>
-            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
-              <button onclick="speakText('${item.tr.replace(/'/g, "\\'")}', '${lang.code}')" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-600 dark:text-slate-200 px-3 py-1 rounded-md transition flex items-center gap-1">
-                <i class="fa-solid fa-volume-high"></i> Listen (${lang.englishName})
-              </button>
-            </div>
+            ${listenButtonHtml}
           `;
         }
 
