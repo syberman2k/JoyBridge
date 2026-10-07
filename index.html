@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 2.3 by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 2.4 by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - 2026 International Convention Language Helper</title>
@@ -31,54 +31,87 @@
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200">
 
-  <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY -->
+  <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY (Change 9: Dimmed light mode by 5% for card contrast) -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('AppBKGrnd.jpg');"></div>
-    <div class="absolute inset-0 bg-white/15 dark:bg-slate-950/85 transition-colors duration-200"></div>
+    <div class="absolute inset-0 bg-black/5 dark:bg-transparent pointer-events-none transition-colors duration-200"></div>
+    <div class="absolute inset-0 bg-white/10 dark:bg-slate-950/85 transition-colors duration-200"></div>
   </div>
 
   <!-- Header -->
   <header class="bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-indigo-600/60 dark:border-slate-800 relative">
-    <div class="max-w-4xl mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between pb-4 sm:pb-4">
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="goToWelcome()">
+    <div class="max-w-4xl mx-auto px-4 py-2 sm:py-2.5 flex items-center justify-between pb-4 sm:pb-4 gap-2">
+      <div class="flex items-center space-x-2.5 cursor-pointer flex-shrink-0" onclick="goToWelcome()">
+        <!-- Change 7: Refresh button for PWA / web app navigation -->
+        <button id="pwaRefreshBtn" onclick="event.stopPropagation(); refreshApp();" class="p-1.5 rounded-lg bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 transition text-xs sm:text-sm text-indigo-100" title="Refresh Application">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+
         <div class="w-8 h-8 rounded-md overflow-hidden bg-white/20 p-0.5 flex items-center justify-center flex-shrink-0">
           <img src="LOGO_Square.png" alt="NW JoyBridge Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
           <span class="hidden text-lg">🌉</span>
         </div>
         <div>
-          <h1 class="text-xl font-bold tracking-tight leading-tight">NW JoyBridge</h1>
-          <p class="text-xs text-indigo-200 dark:text-slate-300 leading-tight">2026 Eternal Happiness International Convention Helper</p>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight leading-tight">NW JoyBridge</h1>
+          <p class="text-[11px] sm:text-xs text-indigo-200 dark:text-slate-300 leading-tight">2026 Eternal Happiness International Convention Helper</p>
         </div>
       </div>
 
-      <!-- Action Buttons in Top Right -->
-      <div class="flex items-center space-x-1.5 sm:space-x-2">
+      <!-- Action Buttons in Top Right (Changes 3 & 10: Moved Greeting Selector to Top Bar with 🗣️) -->
+      <div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
         <button id="installBtn" onclick="installPWA()" class="hidden text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1">
           <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install</span>
         </button>
 
-        <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1.5" title="Greeting & Welcome Page">
-          <i class="fa-solid fa-heart text-pink-300"></i> <span class="font-medium">Welcome</span>
+        <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1" title="Greeting & Welcome Page">
+          <i class="fa-solid fa-heart text-pink-300"></i> <span class="hidden sm:inline font-medium">Welcome</span>
         </button>
 
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
-        <button id="homeBtn" onclick="goToHome()" class="hidden text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition">
-          <i class="fa-solid fa-earth-americas mr-1"></i> Languages
+        <!-- Top-Bar Greeting Language Selector Dropdown -->
+        <div class="relative inline-block">
+          <select id="topGreetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="appearance-none bg-indigo-800/90 dark:bg-slate-800 hover:bg-indigo-900 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 rounded-lg px-2 sm:px-2.5 py-1.5 pr-6 sm:pr-7 text-xs font-semibold text-white focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer shadow-sm transition max-w-[125px] sm:max-w-[195px] truncate">
+            <option value="arabic">🗣️ العربية (Arabic)</option>
+            <option value="chinese">🗣️ 中文 (Chinese)</option>
+            <option value="dutch">🗣️ Nederlands (Dutch)</option>
+            <option value="english">🗣️ English (English)</option>
+            <option value="french">🗣️ Français (French)</option>
+            <option value="german">🗣️ Deutsch (German)</option>
+            <option value="kannada">🗣️ ಕನ್ನಡ (Kannada)</option>
+            <option value="konkani_romi">🗣️ Konknni Romi (Konkani)</option>
+            <option value="korean">🗣️ 한국어 (Korean)</option>
+            <option value="persian">🗣️ فارسی (Persian)</option>
+            <option value="polish">🗣️ polski (Polish)</option>
+            <option value="russian">🗣️ Русский (Russian)</option>
+            <option value="slovenian">🗣️ Slovenščina (Slovenian)</option>
+            <option value="spanish">🗣️ Español (Spanish)</option>
+            <option value="tagalog">🗣️ Tagalog (Filipino)</option>
+            <option value="turkish">🗣️ Türkçe (Turkish)</option>
+            <option value="vietnamese">🗣️ Tiếng Việt (Vietnamese)</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-indigo-200 dark:text-slate-400 text-[10px]">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <button id="homeBtn" onclick="goToHome()" class="hidden text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition">
+          <i class="fa-solid fa-earth-americas sm:mr-1"></i> <span class="hidden sm:inline">Languages</span>
         </button>
       </div>
     </div>
 
-    <!-- Version Indicator -->
-    <div class="absolute bottom-0.5 right-4 pointer-events-none select-none">
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.3</span>
+    <!-- Version & Offline Mode Indicators (Change 5) -->
+    <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
+      <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.4</span>
     </div>
   </header>
 
   <!-- Offline Status Banner -->
-  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-xs font-semibold py-1 px-4 text-center sticky top-[57px] z-50">
+  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-xs font-semibold py-1 px-4 text-center sticky top-[53px] z-50">
     <i class="fa-solid fa-wifi-slash mr-1"></i> Offline Mode: JoyBridge is running from local device cache.
   </div>
 
@@ -87,36 +120,6 @@
 
     <!-- Screen 0: Welcome & Greeting Page -->
     <section id="welcomeScreen" class="space-y-6">
-
-      <!-- TOP LANGUAGE SELECTOR DROPDOWN FOR GREETINGS -->
-      <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-4 border border-slate-200/90 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <label for="greetingLangSelect" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 uppercase tracking-wide">
-          <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400 text-base"></i>
-          <span>Select Greeting Language / 语言 / لغة:</span>
-        </label>
-        <div class="relative w-full sm:w-72">
-          <select id="greetingLangSelect" onchange="selectGreetingLanguage(this.value)" class="w-full appearance-none bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 pr-9 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer transition">
-            <option value="english">English (English)</option>
-            <option value="arabic">العربية (Arabic)</option>
-            <option value="chinese">中文 (Chinese)</option>
-            <option value="dutch">Nederlands (Dutch)</option>
-            <option value="french">Français (French)</option>
-            <option value="german">Deutsch (German)</option>
-            <option value="kannada">ಕನ್ನಡ (Kannada)</option>
-            <option value="konkani_romi">Konknni Romi (Konkani)</option>
-            <option value="korean">한국어 (Korean)</option>
-            <option value="persian">فارسی (Persian)</option>
-            <option value="polish">polski (Polish)</option>
-            <option value="russian">Русский (Russian)</option>
-            <option value="slovenian">Slovenščina (Slovenian)</option>
-            <option value="spanish">Español (Spanish)</option>
-            <option value="tagalog">Tagalog (Filipino)</option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
-            <i class="fa-solid fa-chevron-down text-xs"></i>
-          </div>
-        </div>
-      </div>
 
       <!-- Welcome Hero Banner -->
       <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-200/90 dark:border-slate-800 shadow-lg text-center space-y-4">
@@ -145,24 +148,26 @@
           </button>
           <button onclick="goToHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm transition">
             <i class="fa-solid fa-list-ul"></i>
-            <span>All 14 Languages</span>
+            <span>All 16 Languages</span>
           </button>
         </div>
       </div>
 
       <!-- VIDEO & MAP SECTION -->
       <div class="space-y-4 pt-2">
-        <!-- Card 1: Video -->
+        <!-- Card 1: Video (Change 1: poster attribute, Change 6: 2-line title) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center space-x-2.5 border-b border-slate-100 dark:border-slate-800 pb-3">
             <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-lg"></i>
             <div>
-              <h3 id="videoCardTitle" class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">Welcome to San Diego</h3>
-              <p id="videoCardSubtitle" class="text-xs text-slate-500 dark:text-slate-400">Convention Preparation & Highlights</p>
+              <h3 id="videoCardTitle" class="font-bold text-slate-900 dark:text-white text-base sm:text-lg leading-tight">
+                Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)
+              </h3>
+              <p id="videoCardSubtitle" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Convention Preparation & Highlights</p>
             </div>
           </div>
           <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center">
-            <video controls playsinline preload="metadata" class="w-full h-full object-contain">
+            <video controls playsinline preload="metadata" poster="VideoPoster.jpg" class="w-full h-full object-contain">
               <source src="VIDEO_SanDiegoConventionPrep.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
@@ -172,7 +177,7 @@
           </p>
         </div>
 
-        <!-- Card 2: Convention Venue Map Card -->
+        <!-- Card 2: Convention Venue Map Card (Change 8: Top-Right 3-line overlay & Localized Copyright) -->
         <div class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/90 dark:border-slate-800 shadow-md space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <div class="flex items-center space-x-2.5">
@@ -190,12 +195,12 @@
             </a>
           </div>
 
-          <!-- Venue Image with Link and Copyright Overlay -->
+          <!-- Venue Image with Link, Top-Right Header Overlay, and Localized Copyright Overlay -->
           <a href="https://www.google.com/maps/place/San+Diego+Convention+Center/@32.7054977,-117.1601028,2480m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80d953574be55d8b:0x568846370a748ca5!8m2!3d32.7054977!4d-117.1601028!16zL20vMDMzdjNz?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
              target="_blank" rel="noopener noreferrer"
              class="block rounded-xl overflow-hidden shadow-inner aspect-video relative group border border-slate-200 dark:border-slate-700">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('VenuePhoto.png');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/25"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
 
             <!-- Tap overlay prompt -->
             <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-md font-medium flex items-center gap-1.5 border border-white/20">
@@ -203,8 +208,15 @@
               <span id="venueTapText">Open in Maps</span>
             </div>
 
-            <!-- Lower Right Copyright Annotation -->
-            <div class="absolute bottom-2 right-3 pointer-events-none select-none text-[10px] sm:text-xs text-white/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded shadow">
+            <!-- Change 8: Top-Right 3-line overlay, bold top line, right-justified -->
+            <div class="absolute top-3 right-3 text-right pointer-events-none select-none text-white drop-shadow-md">
+              <div class="text-sm sm:text-lg md:text-xl font-black uppercase tracking-wider text-amber-300">CONVENTION VENUE</div>
+              <div class="text-xs sm:text-sm font-semibold tracking-wide text-white/95">San Diego Convention Center</div>
+              <div class="text-[11px] sm:text-xs font-medium text-slate-200">Nov 27–29, 2026</div>
+            </div>
+
+            <!-- Lower Right Copyright Annotation (Change 8: Localized) -->
+            <div id="venueCopyrightText" class="absolute bottom-2 right-3 pointer-events-none select-none text-[10px] sm:text-xs text-white/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded shadow">
               Images may be subject to copyright . Image capture: Oct 2020
             </div>
           </a>
@@ -216,15 +228,15 @@
         </div>
       </div>
 
-      <!-- Quick Delegate Links: JW.ORG & WhatsApp Support (Moved to Bottom) -->
+      <!-- Quick Delegate Links: JW.ORG (Change 4: Dynamic Language Link) & WhatsApp Support -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        <a href="https://jw.org" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
+        <a id="jwOrgDynamicLink" href="https://www.jw.org/en/library/programs/2026-convention-program/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
           <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center text-xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
             JW
           </div>
           <div class="flex-grow">
             <div class="flex items-center justify-between">
-              <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">Official JW.ORG</h4>
+              <h4 id="jwOrgCardTitle" class="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">JW.ORG Convention Program</h4>
               <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-indigo-500"></i>
             </div>
             <p id="jwOrgCardDesc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
@@ -292,7 +304,7 @@
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5" id="categoryContainer"></div>
 
-      <div class="sticky top-[57px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
+      <div class="sticky top-[53px] z-40 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/90 dark:border-slate-800/80 transition-colors">
         <div class="flex bg-slate-200/90 dark:bg-slate-800/90 p-1 rounded-xl font-medium text-sm shadow-sm">
           <button id="tabNative" onclick="setMode('native')" class="flex-1 py-2.5 rounded-lg transition text-center shadow-sm">
             <span id="tabNativeText"></span>
@@ -341,19 +353,48 @@
 
     initTheme();
 
+    // Change 7: Refresh application PWA helper
+    function refreshApp() {
+      window.location.reload();
+    }
+
+    // Change 4: JW.ORG Language URL Dictionary
+    const jwOrgLinks = {
+      english: "https://www.jw.org/en/library/programs/2026-convention-program/",
+      arabic: "https://www.jw.org/ar/%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8%D8%A9/%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D9%85%D8%AC/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9-%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A-%D9%85%D8%AD%D9%81%D9%84-%D9%A2%D9%A0%D9%A2%D9%A6/",
+      chinese: "https://www.jw.org/cmn-hans/%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9B%BE%E4%B9%A6%E9%A6%86/%E8%8A%82%E7%9B%AE%E8%A1%A8/2026-%E5%A4%A7%E4%BC%9A%E8%8A%82%E7%9B%AE%E8%A1%A8/",
+      dutch: "https://www.jw.org/nl/bibliotheek/programmas/congresprogramma-2026/",
+      french: "https://www.jw.org/fr/biblioth%C3%A8que/programmes/programme-assemblee-regionale-2026/",
+      german: "https://www.jw.org/de/bibliothek/programme/kongressprogramm-2026/",
+      kannada: "https://www.jw.org/kn/%E0%B2%B2%E0%B3%88%E0%B2%AC%E0%B3%8D%E0%B2%B0%E0%B2%B0%E0%B2%BF/%E0%B2%95%E0%B2%BE%E0%B2%B0%E0%B3%8D%E0%B2%AF%E0%B2%95%E0%B3%8D%E0%B2%B0%E0%B2%AE%E0%B2%97%E0%B2%B3%E0%B3%81/2026%E0%B2%B0-%E0%B2%85%E0%B2%A7%E0%B2%BF%E0%B2%B5%E0%B3%87%E0%B2%B6%E0%B2%A8-%E0%B2%95%E0%B2%BE%E0%B2%B0%E0%B3%8D%E0%B2%AF%E0%B2%95%E0%B3%8D%E0%B2%B0%E0%B2%AE/",
+      konkani_romi: "https://www.jw.org/gom/library/kariavolli/2026-odhivexon-kariavoll/",
+      korean: "https://www.jw.org/ko/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/2026-%EB%8C%80%ED%9A%8C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/",
+      persian: "https://www.jw.org/fa/%DA%A9%D8%AA%D8%A7%D8%A8%D8%AE%D8%A7%D9%86%D9%87/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%E2%80%8C%D9%87%D8%A7/%DA%A9%D9%86%DA%AF%D8%B1%D9%87-%DB%B2%DB%B0%DB%B2%DB%B6-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87/",
+      polish: "https://www.jw.org/pl/biblioteka/programy/2026-program-kongresu/",
+      russian: "https://www.jw.org/ru/%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B9/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BA%D0%BE%D0%BD%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B0-2026-%D0%B3%D0%BE%D0%B4%D0%B0/",
+      slovenian: "https://www.jw.org/sl/knjiznica/programi/zborovalni-program-2026/",
+      spanish: "https://www.jw.org/es/biblioteca/programas/programa-asamblea-regional-2026/",
+      tagalog: "https://www.jw.org/tl/library/programa/2026-kombensiyon-programa/",
+      turkish: "https://www.jw.org/tr/kutuphane/programlar/2026-bolge-kongresi-program/",
+      vietnamese: "https://www.jw.org/vi/thu-vien/chuong-trinh/chuong-trinh-dai-hoi-2026/"
+    };
+
+    // Greeting translations (Changes 2, 6, 8)
     const greetingTranslations = {
       english: {
         badge: "San Diego, California • 2026",
         title: "Welcome, Dear International Delegates!",
         body: "We open our hearts and arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego!",
         actionBtn: "Open Language Helper",
-        videoTitle: "Welcome to San Diego",
+        videoTitle: "Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)",
         videoSubtitle: "Convention Preparation & Highlights",
         videoCaption: "San Diego International Convention Preparation & Highlights video.",
         venueTitle: "Convention Venue",
         venueSubtitle: "San Diego Convention Center • Nov 27–29, 2026",
         venueDesc: "The San Diego Convention Center is the official gathering place for the “Eternal Happiness” International Convention of Jehovah's Witnesses, taking place November 27 thru 29, 2026.",
         venueTap: "Open in Maps",
+        venueCopyright: "Images may be subject to copyright . Image capture: Oct 2020",
+        jwOrgTitle: "JW.ORG Convention Program",
         jwOrgDesc: "Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.",
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship."
       },
@@ -362,13 +403,15 @@
         title: "أهلاً وسهلاً بكم، أيها المندوبون الدوليون الأعزاء!",
         body: "نفتح قلوبنا وأذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة!",
         actionBtn: "افتح المساعد اللغوي (العربية)",
-        videoTitle: "مرحباً بكم في سان دييغو",
+        videoTitle: "مرحباً بكم في محفل سان دييغو الأممي<br>«السعادة الأبدية»! (إشعيا ٢٦: ٧)",
         videoSubtitle: "استعدادات المحفل وأبرز المحطات",
         videoCaption: "فيديو استعدادات وأبرز محطات محفل سان دييغو الأممي.",
         venueTitle: "موقع انعقاد المحفل",
         venueSubtitle: "مركز مؤتمرات سان دييغو • ٢٧–٢٩ نوفمبر ٢٠٢٦",
         venueDesc: "مركز مؤتمرات سان دييغو هو المقر الرسمي لانعقاد المحفل الأممي لشهود يهوه تحت عنوان «السعادة الأبدية»، في الفترة من ٢٧ إلى ٢٩ نوفمبر ٢٠٢٦.",
         venueTap: "فتح في الخرائط",
+        venueCopyright: "قد تخضع الصور لحقوق الطبع والنشر . تاريخ التقاط الصورة: أكتوبر ٢٠٢٠",
+        jwOrgTitle: "برنامج محفل 2026 على JW.ORG",
         jwOrgDesc: "اطّلع على إصدارات المحفل، البرامج اليومية، الترانيم، والتشجيع الروحي بمئات اللغات.",
         whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية."
       },
@@ -377,13 +420,15 @@
         title: "热烈欢迎亲爱的国际代表们！",
         body: "我们怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！",
         actionBtn: "开启语言交流助手 (普通话)",
-        videoTitle: "欢迎来到圣迭戈",
+        videoTitle: "欢迎来到圣迭戈“永恒的幸福”<br>国际大会！（以赛亚书 26:7）",
         videoSubtitle: "大会筹备与精彩亮点",
         videoCaption: "圣迭戈国际大会筹备与亮点精选短片。",
         venueTitle: "大会主会场",
         venueSubtitle: "圣迭戈会展中心 • 2026年11月27日至29日",
         venueDesc: "圣迭戈会展中心是耶和华见证人2026年“永恒的幸福”国际大会的官方举办地点，盛会将于2026年11月27日至29日隆重举行。",
         venueTap: "在地图中打开",
+        venueCopyright: "图片可能受版权保护。拍摄时间：2020年10月",
+        jwOrgTitle: "JW.ORG 2026 大会节目表",
         jwOrgDesc: "浏览数百种语言的大会发行物、每日节目单、音乐与宝贵的属灵鼓励。",
         whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。"
       },
@@ -392,13 +437,15 @@
         title: "Welkom, Lieve Internationale Afgevaardigden!",
         body: "Met warme christelijke liefde heten wij u van harte welkom op het internationale congres <strong class=\"text-indigo-700 dark:text-indigo-400\">„Eeuwige vreugde”</strong>. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben!",
         actionBtn: "Open Taalhulp (Nederlands)",
-        videoTitle: "Welkom in San Diego",
+        videoTitle: "Welkom op het San Diego „Eeuwige vreugde”<br>Internationaal Congres! (Jesaja 26:7)",
         videoSubtitle: "Congresvoorbereiding en Hoogtepunten",
         videoCaption: "San Diego Internationaal Congres voorbereiding en hoogtepunten video.",
         venueTitle: "Congreslocatie",
         venueSubtitle: "San Diego Convention Center • 27–29 nov 2026",
         venueDesc: "Het San Diego Convention Center is de officiële locatie voor het „Eeuwige vreugde” Internationale Congres van Jehovah's Getuigen, van 27 t/m 29 november 2026.",
         venueTap: "Open in Maps",
+        venueCopyright: "Afbeeldingen zijn mogelijk auteursrechtelijk beschermd . Opname: okt 2020",
+        jwOrgTitle: "JW.ORG Congresprogramma 2026",
         jwOrgDesc: "Bekijk congrespublicaties, dagprogramma's, muziek en geestelijke aanmoediging in honderden talen.",
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang."
       },
@@ -407,13 +454,15 @@
         title: "Bienvenue, chers délégués internationaux !",
         body: "C'est avec un amour fraternel chaleureux que nous vous accueillons à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego !",
         actionBtn: "Ouvrir l'aide linguistique (Français)",
-        videoTitle: "Bienvenue à San Diego",
+        videoTitle: "Bienvenue à l'assemblée internationale de San Diego<br>« Le bonheur éternel » ! (Isaïe 26:7)",
         videoSubtitle: "Préparatifs et moments forts de l'assemblée",
         videoCaption: "Vidéo des préparatifs et moments forts de l'assemblée internationale de San Diego.",
         venueTitle: "Lieu de l'assemblée",
         venueSubtitle: "San Diego Convention Center • 27–29 nov. 2026",
         venueDesc: "Le San Diego Convention Center est le lieu officiel de rassemblement pour l'assemblée internationale des Témoins de Jéhovah « Le bonheur éternel », qui se tiendra du 27 au 29 novembre 2026.",
         venueTap: "Ouvrir dans Maps",
+        venueCopyright: "Les images peuvent être protégées par des droits d'auteur . Octobre 2020",
+        jwOrgTitle: "Programme de l'assemblée 2026 sur JW.ORG",
         jwOrgDesc: "Accédez aux parutions de l'assemblée, aux programmes quotidiens, à la musique et aux encouragements en des centaines de langues.",
         whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange."
       },
@@ -422,13 +471,15 @@
         title: "Herzlich willkommen, liebe internationale Delegierte!",
         body: "Mit herzlicher christlicher Liebe heißen wir Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„Ewige Freude“</strong> willkommen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben!",
         actionBtn: "Sprachhelfer öffnen (Deutsch)",
-        videoTitle: "Willkommen in San Diego",
+        videoTitle: "Willkommen zum Internationalen Kongress in San Diego<br>„Ewige Freude“! (Jesaja 26:7)",
         videoSubtitle: "Kongressvorbereitung & Höhepunkte",
         videoCaption: "Video über Vorbereitung und Höhepunkte des Internationalen Kongresses in San Diego.",
         venueTitle: "Kongressveranstaltungsort",
         venueSubtitle: "San Diego Convention Center • 27.–29. Nov. 2026",
         venueDesc: "Das San Diego Convention Center ist der offizielle Veranstaltungsort für den Internationalen Kongress der Zeugen Jehovas „Ewige Freude“, der vom 27. bis 29. November 2026 stattfindet.",
         venueTap: "In Google Maps öffnen",
+        venueCopyright: "Bilder sind möglicherweise urheberrechtlich geschützt . Aufnahme: Okt. 2020",
+        jwOrgTitle: "JW.ORG Kongressprogramm 2026",
         jwOrgDesc: "Zugang zu Kongressveröffentlichungen, Tagesprogrammen, Musik und geistiger Ermunterung in Hunderten von Sprachen.",
         whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten."
       },
@@ -437,13 +488,15 @@
         title: "ಆತ್ಮೀಯ ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ, ನಿಮಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ!",
         body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಪ್ರೀತಿಯಿಂದ ಸ್ವಾಗತಿಸುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ!",
         actionBtn: "ಭಾಷಾ ಸಹಾಯ ತೆರೆಯಿರಿ (ಕನ್ನಡ)",
-        videoTitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ ಸುಸ್ವಾಗತ",
+        videoTitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ<br>ಸಮಾವೇಶಕ್ಕೆ ಸುಸ್ವಾಗತ! (ಯೆಶಾಯ 26:7)",
         videoSubtitle: "ಸಮಾವೇಶದ ಸಿದ್ಧತೆ ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳು",
         videoCaption: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಸಿದ್ಧತೆ ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳ ವೀಡಿಯೊ.",
         venueTitle: "ಸಮಾವೇಶದ ಸ್ಥಳ",
         venueSubtitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್ • ನವೆಂಬರ್ 27–29, 2026",
         venueDesc: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್ ಯೆಹೋವನ ಸಾಕ್ಷಿಗಳ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಅಧಿಕೃತ ತಾಣವಾಗಿದ್ದು, ನವೆಂಬರ್ 27 ರಿಂದ 29, 2026 ರವರೆಗೆ ನಡೆಯಲಿದೆ.",
         venueTap: "ಮ್ಯಾಪ್‌ನಲ್ಲಿ ನೋಡಿ",
+        venueCopyright: "ಚಿತ್ರಗಳು ಹಕ್ಕುಸ್ವಾಮ್ಯಕ್ಕೆ ಒಳಪಟ್ಟಿರಬಹುದು . ಅಕ್ಟೋಬರ್ 2020",
+        jwOrgTitle: "JW.ORG 2026 ಸಮಾವೇಶ ಕಾರ್ಯಕ್ರಮ",
         jwOrgDesc: "ನೂರಾರು ಭಾಷೆಗಳಲ್ಲಿ ಸಮಾವೇಶದ ಬಿಡುಗಡೆಗಳು, ದಿನಚರಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಂಗೀತವನ್ನು ಪಡೆಯಿರಿ.",
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ."
       },
@@ -452,13 +505,15 @@
         title: "Mogachea Sonvsarik Pratinidhimno, Tumkam Borem Yeukor!",
         body: "Kristi mogan ami tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta!",
         actionBtn: "Bhas Adar Ugtto Korat (Konknni Romi)",
-        videoTitle: "San Diego Xarant Borem Yeukor",
+        videoTitle: "San Diego “Sodankalchem Dhadosponn” Sonvsarik<br>Mellak Borem Yeukor! (Izaias 26:7)",
         videoSubtitle: "Mellachi Toyari ani Khas Ghoddnneo",
         videoCaption: "San Diego Sonvsarik Mellachi toyari ani mukhel ghoddnneancho video.",
         venueTitle: "Mellachem Tholl",
         venueSubtitle: "San Diego Convention Center • Nov 27–29, 2026",
         venueDesc: "San Diego Convention Center hem Jehovachea Govayancho 'Sodankalchem Dhadosponn' Sonvsarik Mellachem odhikrut zago, zo Novembrache 27 te 29, 2026 meren choltolo.",
         venueTap: "Maps-ant Ugtto Korat",
+        venueCopyright: "Chitram kopiraitik khala asonk xoktat . Otbr 2020",
+        jwOrgTitle: "JW.ORG 2026 Odhivexon Kariavoll",
         jwOrgDesc: "Xenkddeamni bhasamni zomeache uzvaddavnneo, disachem kareakrom ani bhavartik sfurti melloiat.",
         whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat."
       },
@@ -467,13 +522,15 @@
         title: "국제 대표자 여러분을 따뜻한 사랑으로 환영합니다!",
         body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"영원한 행복\"</strong> 국제대회에 참석하신 여러분을 그리스도인 사랑으로 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다!",
         actionBtn: "언어 도우미 열기 (한국어)",
-        videoTitle: "샌디에이고에 오신 것을 환영합니다",
+        videoTitle: "샌디에이고 “영원한 행복” 국제대회에<br>오신 것을 환영합니다! (이사야 26:7)",
         videoSubtitle: "대회 준비 과정 및 주요 하이라이트",
         videoCaption: "샌디에이고 국제대회 준비 과정 및 하이라이트 영상.",
         venueTitle: "대회 개최 장소",
         venueSubtitle: "샌디에이고 컨벤션 센터 • 2026년 11월 27일~29일",
         venueDesc: "샌디에이고 컨벤션 센터는 2026년 11월 27일부터 29일까지 개최되는 여호와의 증인의 \"영원한 행복\" 국제대회 공식 행사장입니다.",
         venueTap: "지도에서 보기",
+        venueCopyright: "이미지는 저작권의 보호를 받을 수 있습니다 . 2020년 10월",
+        jwOrgTitle: "JW.ORG 2026 대회 프로그램",
         jwOrgDesc: "수백 개 언어로 제공되는 대회 발표물, 일일 프로그램, 성악곡 및 영적 격려를 확인해 보세요.",
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요."
       },
@@ -482,13 +539,15 @@
         title: "به گرمی به شما نمایندگان گرامی بین‌المللی خوش‌آمد می‌گوییم!",
         body: "با محبت گرم مسیحی ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی»</strong> گرامی می‌داریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم!",
         actionBtn: "باز کردن راهنمای زبان (فارسی)",
-        videoTitle: "به سن دیگو خوش آمدید",
+        videoTitle: "به مجمع بین‌المللی سن دیگو «شادی جاودانی»<br>خوش آمدید! (اِشَعْیا ۲۶: ۷)",
         videoSubtitle: "آمادگی‌های مجمع و نکات برجسته",
         videoCaption: "ویدئوی آمادگی‌ها و نکات برجسته مجمع بین‌المللی سن دیگو.",
         venueTitle: "محل برگزاری مجمع",
         venueSubtitle: "مرکز همایش‌های سن دیگو • ۲۷ تا ۲۹ نوامبر ۲۰۲۶",
         venueDesc: "مرکز همایش‌های سن دیگو محل رسمی برگزاری مجمع بین‌المللی شاهدان یَهُوَه با عنوان «شادی جاودانی» است که از ۲۷ تا ۲۹ نوامبر ۲۰۲۶ برگزار خواهد شد.",
         venueTap: "مشاهده در نقشه",
+        venueCopyright: "تصاویر ممکن است مشمول حق نسخه‌برداری باشند . اکتبر ۲۰۲۰",
+        jwOrgTitle: "برنامه کنگره ۲۰۲۶ در JW.ORG",
         jwOrgDesc: "دسترسی به نشریات مجمع، برنامه‌های روزانه، سرودها و تشویق‌های روحانی به صدها زبان.",
         whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید."
       },
@@ -497,13 +556,15 @@
         title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
         body: "Z gorącą chrześcijańską miłością witamy Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego!",
         actionBtn: "Otwórz pomoc językową (Polski)",
-        videoTitle: "Witamy w San Diego",
+        videoTitle: "Witamy na Kongresie Międzynarodowym w San Diego<br>„Wieczne szczęście”! (Izajasza 26:7)",
         videoSubtitle: "Przygotowania do Kongresu i najważniejsze momenty",
         videoCaption: "Film przedstawiający przygotowania i najważniejsze momenty Kongresu Międzynarodowego w San Diego.",
         venueTitle: "Miejsce Kongresu",
         venueSubtitle: "San Diego Convention Center • 27–29 listopada 2026",
         venueDesc: "San Diego Convention Center to oficjalne miejsce Kongresu Międzynarodowego Świadków Jehowy pod hasłem „Wieczne szczęście”, odbywającego się w dniach 27–29 listopada 2026 r.",
         venueTap: "Otwórz w Mapach",
+        venueCopyright: "Obrazy mogą być chronione prawem autorskim . Październik 2020",
+        jwOrgTitle: "JW.ORG Program Kongresu 2026",
         jwOrgDesc: "Korzystaj z materiałów kongresowych, programu dziennego, pieśni i duchowych zachęt w setkach języków.",
         whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą."
       },
@@ -512,13 +573,15 @@
         title: "Добро пожаловать, дорогие международные делегаты!",
         body: "С теплой христианской любовью мы приветствуем вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего!",
         actionBtn: "Открыть языковой помощник (Русский)",
-        videoTitle: "Добро пожаловать в Сан-Диего",
+        videoTitle: "Добро пожаловать на Международный конгресс в Сан-Диего<br>«Вечное счастье»! (Исаия 26:7)",
         videoSubtitle: "Подготовка к конгрессу и ключевые моменты",
         videoCaption: "Видео подготовки и ярких моментов Международного конгресса в Сан-Диего.",
-        venueTitle: "Место проведения конгресса",
+        venueTitle: "Место проведения конгреッサ",
         venueSubtitle: "Конференц-центр Сан-Диего • 27–29 ноября 2026 г.",
         venueDesc: "Конференц-центр Сан-Диего (San Diego Convention Center) — официальное место проведения Международного конгресса Свидетелей Иеговы «Вечное счастье», который пройдет с 27 по 29 ноября 2026 года.",
         venueTap: "Открыть на картах",
+        venueCopyright: "Изображения могут быть защищены авторским правом . Октябрь 2020 г.",
+        jwOrgTitle: "JW.ORG Программа конгресса 2026",
         jwOrgDesc: "Получите доступ к публикациям конгресса, ежедневной программе, музыке и духовному ободрению на сотнях языков.",
         whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения."
       },
@@ -527,13 +590,15 @@
         title: "Dobrodošli, dragi mednarodni delegati!",
         body: "S toplo krščansko ljubeznijo vas odprtih rok pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu!",
         actionBtn: "Odpri jezikovni pripomoček (Slovenščina)",
-        videoTitle: "Dobrodošli v San Diegu",
+        videoTitle: "Dobrodošli na mednarodnem zborovanju v San Diegu<br>»Večna sreča«! (Izaija 26:7)",
         videoSubtitle: "Priprave na zborovanje in vrhunci",
         videoCaption: "Videoposnetek priprav in vrhuncev mednarodnega zborovanja v San Diegu.",
         venueTitle: "Prizorišče zborovanja",
         venueSubtitle: "San Diego Convention Center • 27.–29. nov. 2026",
         venueDesc: "San Diego Convention Center je uradno zbirališče za mednarodno zborovanje Jehovovih prič z naslovom »Večna sreča«, ki bo potekalo od 27. do 29. novembra 2026.",
         venueTap: "Odpri v Google Zemljevidih",
+        venueCopyright: "Slike so morda zaščitene z avtorskimi pravicami . Okt. 2020",
+        jwOrgTitle: "JW.ORG Zborovalni program 2026",
         jwOrgDesc: "Dostopajte do zborovalnih izdaj, dnevnih programov, glasbe in duhovne spodbude v stotinah jezikov.",
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje."
       },
@@ -542,13 +607,15 @@
         title: "¡Bienvenidos, queridos delegados internacionales!",
         body: "Con cálido amor cristiano les damos la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego!",
         actionBtn: "Abrir ayuda de idiomas (Español)",
-        videoTitle: "Bienvenidos a San Diego",
+        videoTitle: "¡Bienvenidos a la Asamblea Internacional de San Diego<br>“Felicidad eterna”! (Isaías 26:7)",
         videoSubtitle: "Preparativos y momentos destacados de la asamblea",
         videoCaption: "Video de preparativos y momentos destacados de la Asamblea Internacional de San Diego.",
         venueTitle: "Lugar de la asamblea",
         venueSubtitle: "San Diego Convention Center • 27 al 29 de nov. de 2026",
         venueDesc: "El Centro de Convenciones de San Diego (San Diego Convention Center) es la sede oficial de la Asamblea Internacional de los Testigos de Jehová “Felicidad eterna”, que tendrá lugar del 27 al 29 de noviembre de 2026.",
         venueTap: "Abrir en Maps",
+        venueCopyright: "Las imágenes pueden estar sujetas a derechos de autor . Octubre de 2020",
+        jwOrgTitle: "JW.ORG Programa de la asamblea 2026",
         jwOrgDesc: "Acceda a publicaciones de la asamblea, programas diarios, canciones y ánimo espiritual en cientos de idiomas.",
         whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal."
       },
@@ -557,15 +624,51 @@
         title: "Maligayang Pagdating, Mahal naming mga Internasyonal na Delegado!",
         body: "Buong puso at may mainit na Kristiyanong pag-ibig kaming sumasalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego!",
         actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
-        videoTitle: "Maligayang Pagdating sa San Diego",
+        videoTitle: "Maligayang Pagdating sa San Diego “Walang-Hanggang Kaligayahan”<br>Internasyonal na Kombensiyon! (Isaias 26:7)",
         videoSubtitle: "Paghahanda at Mahahalagang Bahagi ng Kombensiyon",
         videoCaption: "Video ng paghahanda at highlights para sa San Diego International Convention.",
         venueTitle: "Lugar ng Kombensiyon",
         venueSubtitle: "San Diego Convention Center • Nob 27–29, 2026",
         venueDesc: "Ang San Diego Convention Center ang opisyal na venue para sa “Walang-Hanggang Kaligayahan” Internasyonal na Kombensiyon ng mga Saksi ni Jehova sa Nobyembre 27 hanggang 29, 2026.",
         venueTap: "Buksan sa Maps",
+        venueCopyright: "Maaaring may copyright ang mga larawan . Kuha noong Oktubre 2020",
+        jwOrgTitle: "JW.ORG 2026 Kombensiyon Programa",
         jwOrgDesc: "Tingnan ang mga inilabas sa kombensiyon, pang-araw-araw na programa, musika, at pampatibay sa daan-daang wika.",
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama."
+      },
+      turkish: {
+        badge: "San Diego, Kaliforniya • 2026",
+        title: "Değerli Uluslararası Delegelerimiz, Hoş Geldiniz!",
+        body: "Sizleri sıcak Hristiyan sevgisiyle <strong class=\"text-indigo-700 dark:text-indigo-400\">„Sonsuz Mutluluk”</strong> Uluslararası Bölge Kongresi’nde karşılamaktan büyük sevinç duyuyoruz. Okyanusları veya kıtaları aşmış olun, güneşli San Diego’da bizimle birlikte olmanızdan ötürü çok mutluyuz!",
+        actionBtn: "Dil Yardımcısını Aç (Türkçe)",
+        videoTitle: "San Diego „Sonsuz Mutluluk” Uluslararası<br>Bölge Kongresine Hoş Geldiniz! (İşaya 26:7)",
+        videoSubtitle: "Kongre Hazırlıkları ve Öne Çıkanlar",
+        videoCaption: "San Diego Uluslararası Bölge Kongresi hazırlıkları ve önemli anlar videosu.",
+        venueTitle: "Kongre Alanı",
+        venueSubtitle: "San Diego Kongre Merkezi • 27–29 Kasım 2026",
+        venueDesc: "San Diego Kongre Merkezi (San Diego Convention Center), Yehova’nın Şahitlerinin 27-29 Kasım 2026 tarihlerinde gerçekleşecek olan „Sonsuz Mutluluk” Uluslararası Kongresi’nin resmi buluşma merkezidir.",
+        venueTap: "Haritada Aç",
+        venueCopyright: "Görseller telif hakkına tabi olabilir . Çekim tarihi: Ekim 2020",
+        jwOrgTitle: "JW.ORG 2026 Kongre Programı",
+        jwOrgDesc: "Yüzlerce dilde kongre yayınlarına, günlük programlara, ilahilere ve ruhi teşviklere ulaşın.",
+        whatsAppDesc: "Konukseverlik duyuruları, yerel destek ve kardeşlik bağı için özel <strong>ESMCHDelegatesSupport</strong> WhatsApp grubumuza katılın."
+      },
+      vietnamese: {
+        badge: "San Diego, California • 2026",
+        title: "Nồng nhiệt chào đón quý đại biểu quốc tế!",
+        body: "Với tình yêu thương ấm áp của anh em đồng đạo, chúng tôi vui mừng chào đón quý vị đến với Đại hội Quốc tế <strong class=\"text-indigo-700 dark:text-indigo-400\">“Hạnh phúc vĩnh cửu”</strong>. Dù đã vượt qua đại dương hay châu lục, chúng tôi vô cùng hân hoan khi có quý vị tại thành phố San Diego tràn ngập ánh nắng!",
+        actionBtn: "Mở Trợ giúp Ngôn ngữ (Tiếng Việt)",
+        videoTitle: "Chào mừng đến với Đại hội Quốc tế San Diego<br>“Hạnh phúc vĩnh cửu”! (Ê-sai 26:7)",
+        videoSubtitle: "Công tác chuẩn bị đại hội & những nét đặc sắc",
+        videoCaption: "Video chuẩn bị và những điểm nổi bật của Đại hội Quốc tế San Diego.",
+        venueTitle: "Địa điểm Đại hội",
+        venueSubtitle: "Trung tâm Hội nghị San Diego • 27–29 tháng 11, 2026",
+        venueDesc: "Trung tâm Hội nghị San Diego (San Diego Convention Center) là địa điểm chính thức tổ chức Đại hội Quốc tế “Hạnh phúc vĩnh cửu” của Nhân Chứng Giê-hô-va, diễn ra từ ngày 27 đến 29 tháng 11 năm 2026.",
+        venueTap: "Mở trong Bản đồ",
+        venueCopyright: "Hình ảnh có thể có bản quyền . Thời gian chụp ảnh: Tháng 10 năm 2020",
+        jwOrgTitle: "JW.ORG Chương trình Đại hội 2026",
+        jwOrgDesc: "Truy cập các ấn phẩm đại hội, chương trình mỗi ngày, âm nhạc và sự khích lệ thiêng liêng bằng hàng trăm ngôn ngữ.",
+        whatsAppDesc: "Tham gia nhóm WhatsApp <strong>ESMCHDelegatesSupport</strong> để nhận thông tin hỗ trợ đón tiếp, hướng dẫn địa phương và sự kết hợp nồng ấm."
       }
     };
 
@@ -573,8 +676,8 @@
 
     function selectGreetingLanguage(langKey) {
       currentGreetingLang = langKey;
-      const select = document.getElementById('greetingLangSelect');
-      if (select) select.value = langKey;
+      const topSelect = document.getElementById('topGreetingLangSelect');
+      if (topSelect) topSelect.value = langKey;
       applyGreetingLanguage(langKey);
     }
 
@@ -585,19 +688,26 @@
       document.getElementById('welcomeBody').innerHTML = data.body;
       document.getElementById('welcomeActionBtnText').innerText = data.actionBtn;
       
-      // Localized Video Card
-      document.getElementById('videoCardTitle').innerText = data.videoTitle;
+      // Localized Video Card (Change 6: 2-line title)
+      document.getElementById('videoCardTitle').innerHTML = data.videoTitle;
       document.getElementById('videoCardSubtitle').innerText = data.videoSubtitle;
       document.getElementById('videoCardCaption').innerText = data.videoCaption;
 
-      // Localized Venue Card
+      // Localized Venue Card (Change 8: Localized copyright)
       document.getElementById('venueCardTitle').innerText = data.venueTitle;
       document.getElementById('venueCardSubtitle').innerText = data.venueSubtitle;
       document.getElementById('venueCardDescription').innerText = data.venueDesc;
       const venueTapEl = document.getElementById('venueTapText');
       if (venueTapEl) venueTapEl.innerText = data.venueTap;
+      const venueCopyEl = document.getElementById('venueCopyrightText');
+      if (venueCopyEl) venueCopyEl.innerText = data.venueCopyright;
 
-      // Localized External Links
+      // Localized External Links (Change 4: dynamic JW.ORG link)
+      const dynamicUrl = jwOrgLinks[langKey] || jwOrgLinks.english;
+      const jwLink = document.getElementById('jwOrgDynamicLink');
+      if (jwLink) jwLink.href = dynamicUrl;
+      const jwTitleEl = document.getElementById('jwOrgCardTitle');
+      if (jwTitleEl) jwTitleEl.innerText = data.jwOrgTitle || "JW.ORG Convention Program";
       document.getElementById('jwOrgCardDesc').innerText = data.jwOrgDesc;
       document.getElementById('whatsappCardDesc').innerHTML = data.whatsAppDesc;
     }
@@ -671,27 +781,94 @@
       }
     }
 
-    function updateOnlineStatus() {
-      const banner = document.getElementById('offlineBanner');
-      if (!navigator.onLine) {
-        banner.classList.remove('hidden');
-      } else {
-        banner.classList.add('hidden');
+    // Change 5: Offline Mode Caching & Status Indicator Logic
+    const CACHE_NAME = 'joybridge-cache-v2.4';
+    const CORE_ASSETS = [
+      './',
+      './index.html',
+      './manifest.json',
+      './LOGO_Square.png',
+      './LOGO_Circular.png',
+      './AppBKGrnd.jpg',
+      './VenuePhoto.png',
+      './VideoPoster.jpg'
+    ];
+
+    async function checkCacheReadiness() {
+      if (!('caches' in window)) return false;
+      try {
+        const cache = await caches.open(CACHE_NAME);
+        const keys = await cache.keys();
+        return keys.length >= 3;
+      } catch (e) {
+        return false;
       }
     }
 
-    window.addEventListener('online', updateOnlineStatus);
+    async function precacheAssets() {
+      if ('caches' in window) {
+        try {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.addAll(CORE_ASSETS);
+          updateOnlineStatus();
+        } catch (err) {
+          console.warn('Pre-caching background note:', err);
+        }
+      }
+    }
+
+    async function updateOnlineStatus() {
+      const banner = document.getElementById('offlineBanner');
+      const dot = document.getElementById('offlineIndicatorDot');
+      const isOnline = navigator.onLine;
+
+      if (isOnline) {
+        banner.classList.add('hidden');
+        if (dot) {
+          dot.style.color = '#10B981'; // Emerald Green: Online Live
+          dot.title = "Online (Live): Fully connected";
+        }
+      } else {
+        banner.classList.remove('hidden');
+        const hasCache = await checkCacheReadiness();
+        if (dot) {
+          if (hasCache) {
+            dot.style.color = '#06B6D4'; // Cyan / Teal: Offline Cached & Ready
+            dot.title = "Offline (Cached & Ready): Running locally";
+          } else {
+            dot.style.color = '#64748B'; // Slate Gray: Offline Unavailable / Not Cached
+            dot.title = "Offline (Not Cached): Disconnected";
+          }
+        }
+      }
+    }
+
+    window.addEventListener('online', () => {
+      updateOnlineStatus();
+      precacheAssets();
+    });
     window.addEventListener('offline', updateOnlineStatus);
     updateOnlineStatus();
+    precacheAssets();
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('Service Worker registered. Scope:', reg.scope))
+          .then(reg => {
+            reg.onupdatefound = () => {
+              const installingWorker = reg.installing;
+              installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  updateOnlineStatus();
+                }
+              };
+            };
+          })
           .catch(err => console.error('Service Worker registration failed:', err));
       });
     }
 
+    // Complete multilingual database (Change 2: Added Türkçe and Tiếng Việt)
     const database = {
       arabic: {
         name: "العربية",
@@ -911,7 +1088,7 @@
             { en: "Please", tr: "ದಯವಿಟ್ಟು", phNative: "ಪ್ಲೀಸ್", phEng: "duh-yuh-VEET-too" },
             { en: "Thank you", tr: "ಧನ್ಯವಾದಗಳು", phNative: "ಥ್ಯಾಂಕ್ ಯು", phEng: "dhuhn-yuh-VAH-duh-gul-oo" },
             { en: "You're welcome", tr: "ಪರವಾಗಿಲ್ಲ", phNative: "ಯುವರ್ ವೆಲ್ಕಮ್", phEng: "puh-ruh-vah-GEEL-luh" },
-            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್‌‌‌ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
+            { en: "Excuse me", tr: "ಕ್ಷಮಿಸಿ", phNative: "ಎಕ್ಸ್ಕ್ಯೂಸ್ ಮಿ", phEng: "kshu-MEE-see" },
             { en: "I'm sorry", tr: "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ", phNative: "ಐ ಆಮ್ ಸಾರಿ", phEng: "nuhn-NUHN-noo kshu-MEE-see" },
             { en: "Can you help me?", tr: "ನನಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಾ?", phNative: "ಕ್ಯಾನ್ ಯು ಹೆಲ್ಪ್ ಮಿ?", phEng: "nuh-NUH-gay suh-HAH-yuh mah-doot-TEE-rah?" }
           ],
@@ -1038,7 +1215,7 @@
           getting_around: [
             { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "Wer iz da baht-room?", phEng: "dast-SHOO-yee koh-JAHST?" },
             { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "Haw mach iz dis?", phEng: "ghey-MAH-teh een cheh-GHADR ast?" },
-            { en: "I would like...", tr: "من می‌‌‌‌خواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
+            { en: "I would like...", tr: "من میخواهم...", phNative: "Ay wud layk...", phEng: "man mee-KHAH-ham..." },
             { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "Ay dont an-der-stend", phEng: "moh-tah-VAJ-jeh neh-mee-SHOH-vam" },
             { en: "What time is it?", tr: "ساعت چند است؟", phNative: "Wat taym iz it?", phEng: "sah-AT chand ast?" }
           ],
@@ -1252,6 +1429,86 @@
             { en: "There is no charge and no obligation.", tr: "Ito ay libre at walang anumang obligasyon.", phNative: "Der is no tsards...", phEng: "ee-TOH eye LEEG-breh aht wah-LAHNG ah-noo-MAHNG ohb-lee-gahs-YOHN." }
           ]
         }
+      },
+      turkish: {
+        name: "Türkçe",
+        englishName: "Turkish",
+        code: "tr-TR",
+        categories: { greetings: "Selamlaşmalar", everyday: "Günlük Konuşmalar", getting_around: "Ulaşım ve Yön", ministry_skills: "Hizmet Becerileri" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Merhaba / Selam", phNative: "Helo / Hay", phEng: "MEHR-hah-bah / seh-LAHM" },
+            { en: "Good morning", tr: "Günaydın", phNative: "Gud morning", phEng: "gew-NYE-duhn" },
+            { en: "My name is...", tr: "Benim adım...", phNative: "May neym iz...", phEng: "beh-NEEM ah-DUHM..." },
+            { en: "Nice to meet you", tr: "Tanıştığımıza memnun oldum", phNative: "Nays tu mit yu", phEng: "tah-nuhsh-tuh-uh-muh-ZAH mehm-NOON ohl-DOOM" },
+            { en: "How are you?", tr: "Nasılsınız?", phNative: "Hav ar yu?", phEng: "nah-suhl-suh-NUHZ?" },
+            { en: "I'm fine, thank you", tr: "İyiyim, teşekkür ederim", phNative: "Aym fayn, tenk yu", phEng: "ee-YEE-yeem, teh-shehk-KEWR eh-deh-reem" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Lütfen", phNative: "Pliz", phEng: "LEWT-fehn" },
+            { en: "Thank you", tr: "Teşekkür ederim / Sağ olun", phNative: "Tenk yu", phEng: "teh-shehk-KEWR eh-deh-reem / SAHW oh-loon" },
+            { en: "You're welcome", tr: "Rica ederim / Bir şey değil", phNative: "Yur velkam", phEng: "ree-JAH eh-deh-reem / beer shey deh-YEEL" },
+            { en: "Excuse me", tr: "Affedersiniz / Pardon", phNative: "Eks-kyuz mi", phEng: "ahf-feh-DEHR-see-neez / pahr-DOHN" },
+            { en: "I'm sorry", tr: "Özür dilerim", phNative: "Aym sori", phEng: "oe-ZEWR dee-leh-reem" },
+            { en: "Can you help me?", tr: "Bana yardım edebilir misiniz?", phNative: "Ken yu help mi?", phEng: "bah-NAH yahr-DUHM eh-deh-bee-LEER mee-see-neez?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Tuvalet nerede?", phNative: "Ver iz da bat-rum?", phEng: "too-vah-LET neh-reh-deh?" },
+            { en: "How much is this?", tr: "Bu ne kadar?", phNative: "Hav maç iz dis?", phEng: "boo neh kah-DAHR?" },
+            { en: "I would like...", tr: "... rica ediyorum / istiyorum", phNative: "Ay vud layk...", phEng: "... ree-JAH eh-dee-yoh-room / ees-tee-YOH-room" },
+            { en: "I don't understand", tr: "Anlamıyorum", phNative: "Ay dont anderstend", phEng: "ahn-lah-muh-YOH-room" },
+            { en: "What time is it?", tr: "Saat kaç?", phNative: "Vat taym iz it?", phEng: "sah-AHT kahtch?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Sizi San Diego'da gördüğüme çok sevindim!", phNative: "Aym hepi tu si yu in San Diego.", phEng: "SEE-zee San Diego-dah goer-dew-yew-MEH chohk seh-veen-DEEM!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Sizi ve ailenizi 27 Kasım'da San Diego'da düzenlenecek olan „Sonsuz Mutluluk” temalı bölge kongremize davet etmek için buradayım; işte kişisel davetiyeniz.", phNative: "Aym hir tu invayt yu end yur femili...", phEng: "SEE-zee veh eye-leh-NEE-zee yir-mee yeh-DEE kah-suhm-DAH San Diego-dah dew-zen-leh-neh-JEK oh-LAHN „Sohn-SOOZ Moot-loo-LOOK” teh-mah-LUH boel-GEH kohng-reh-MEE-zeh dah-VET et-MEK ee-CHEEN boo-rah-dah-YUM; eesh-TEH kee-shee-SEL dah-veh-tee-yeh-NEEZ." },
+            { en: "I am visiting from ...(country)", tr: "...(ülke)'den ziyarete geldim.", phNative: "Aym viziting from ...(kantri)", phEng: "...(ewl-KEH)'den zee-yah-REH-teh gel-DEEM." },
+            { en: "We’re offering a free Bible course this month.", tr: "Bu ay ücretsiz Kutsal Kitap kursu sunuyoruz.", phNative: "Vir ofering e fri Baybıl kors...", phEng: "boo eye ew-cret-SEEZ koot-SAHL kee-TAHP koor-SOO soo-noo-YOH-rooz." },
+            { en: "Would you be interested in a free Bible study?", tr: "Ücretsiz bir Kutsal Kitap incelemesi denemek ister misiniz?", phNative: "Vud yu bi interested in e fri Baybıl stadi?", phEng: "ew-cret-SEEZ beer koot-SAHL kee-TAHP een-jeh-leh-meh-SEE deh-neh-MEK ees-TEHR mee-see-neez?" },
+            { en: "This course can help you understand the Bible.", tr: "Bu kurs Kutsal Kitap'ı anlamanıza yardımcı olabilir.", phNative: "Dis kors ken help yu...", phEng: "boo koors koot-SAHL kee-tah-PUH ahn-lah-mah-nuh-ZAH yahr-duhm-JUH oh-lah-bee-LEER." },
+            { en: "There is no charge and no obligation.", tr: "Tamamen ücretsizdir ve hiçbir yükümlülük getirmez.", phNative: "Der iz no çarc...", phEng: "tah-mah-MEN ew-cret-SEEZ-deer veh heetch-BEER yew-kewm-lew-LEWK geh-teer-MEZ." }
+          ]
+        }
+      },
+      vietnamese: {
+        name: "Tiếng Việt",
+        englishName: "Vietnamese",
+        code: "vi-VN",
+        categories: { greetings: "Chào hỏi", everyday: "Hàng ngày", getting_around: "Đi lại & Chỉ đường", ministry_skills: "Kỹ năng rao giảng" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Xin chào", phNative: "Hơ-lô / Hai", phEng: "seen CHOW" },
+            { en: "Good morning", tr: "Chào buổi sáng", phNative: "Gút mo-ninh", phEng: "chow bwoy SAHNG" },
+            { en: "My name is...", tr: "Tên tôi là...", phNative: "Mai nem ít...", phEng: "ten toy LAH..." },
+            { en: "Nice to meet you", tr: "Rất vui được gặp bạn", phNative: "Nai-sơ tu mít du", phEng: "zuht vooy dew-uhk guhp bahn" },
+            { en: "How are you?", tr: "Bạn khỏe không?", phNative: "Hao a du?", phEng: "bahn KHWEY-uh khohm?" },
+            { en: "I'm fine, thank you", tr: "Tôi khỏe, cảm ơn bạn", phNative: "Aim phai, thenk du", phEng: "toy KHWEY-uh, kahm ern bahn" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Làm ơn / Xin vui lòng", phNative: "P-li-s", phEng: "lahm ERN / seen vooy LOHNG" },
+            { en: "Thank you", tr: "Cảm ơn bạn", phNative: "Thenk du", phEng: "kahm ERN bahn" },
+            { en: "You're welcome", tr: "Không có chi", phNative: "Dua queo-cơm", phEng: "khohm koh CHEE" },
+            { en: "Excuse me", tr: "Xin lỗi (làm phiền)", phNative: "Ích-kiu-s mi", phEng: "seen LOY" },
+            { en: "I'm sorry", tr: "Tôi xin lỗi", phNative: "Aim so-ri", phEng: "toy seen LOY" },
+            { en: "Can you help me?", tr: "Bạn có thể giúp tôi không?", phNative: "Cen du hép mi?", phEng: "bahn koh TEH zoop toy khohm?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Nhà vệ sinh ở đâu?", phNative: "Que-ơ ít đơ bát-rum?", phEng: "nyah veh SEEN uh DOW?" },
+            { en: "How much is this?", tr: "Cái này giá bao nhiêu?", phNative: "Hao mát-ch ít đít?", phEng: "kye nye ZYAH bow NYEW?" },
+            { en: "I would like...", tr: "Tôi muốn...", phNative: "Ai quút lai-k...", phEng: "toy MWUHN..." },
+            { en: "I don't understand", tr: "Tôi không hiểu", phNative: "Ai đôn ăn-đơ-x-ten", phEng: "toy khohm HYEW" },
+            { en: "What time is it?", tr: "Mấy giờ rồi?", phNative: "Quát tai-m ít ít?", phEng: "may ZUR zoy?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Rất vui được gặp bạn tại San Diego!", phNative: "Aim háp-pi tu si du in San Đi-ê-gô.", phEng: "zuht vooy dew-uhk guhp bahn tye San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tôi đến đây để mời bạn và gia đình tham dự Đại hội mang chủ đề “Hạnh phúc vĩnh cửu” vào ngày 27 tháng 11 tại San Diego; xin gửi bạn giấy mời này.", phNative: "Aim hi-ơ tu in-vai-t du en dua phe-mi-li...", phEng: "toy den dye deh moy bahn vah zyah deen tahm zew dye hoy mahng choo deh “Hahn fook veeng kew” vow nye hay-mwoy byet tahng mwoy mot tye San Diego; seen guy bahn zye moy nye." },
+            { en: "I am visiting from ...(country)", tr: "Tôi đến từ ...(quốc gia).", phNative: "Aim vi-si-tinh ph-rom ...(con-tri)", phEng: "toy den too ...(kwohk zyah)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Tháng này chúng tôi có khóa học Kinh Thánh miễn phí.", phNative: "Quy-ơ óp-phơ-rinh ơ ph-ri Bai-bồ co-s...", phEng: "tahng nye choong toy koh khwah hawk keen tahng myen fee." },
+            { en: "Would you be interested in a free Bible study?", tr: "Bạn có muốn tìm hiểu khóa học Kinh Thánh miễn phí không?", phNative: "Quút du bi in-tơ-rét-tịt...", phEng: "bahn koh mwon teem hew khwah hawk keen tahng myen fee khohm?" },
+            { en: "This course can help you understand the Bible.", tr: "Khóa học này sẽ giúp bạn hiểu rõ Kinh Thánh hơn.", phNative: "Đít co-s cen hép du...", phEng: "khwah hawk nye seh zoop bahn hew zaw keen tahng hurn." },
+            { en: "There is no charge and no obligation.", tr: "Khóa học hoàn toàn miễn phí và không có ràng buộc nào.", phNative: "Đe-ơ ít nô cha-ch...", phEng: "khwah hawk hwahn twahn myen fee vah khohm koh zahng bwook now." }
+          ]
+        }
       }
     };
 
@@ -1266,6 +1523,7 @@
       ministry_skills: "Ministry Skills"
     };
 
+    // Change 10: Re-sorted languages alphabetically by English display name
     function renderLanguageGrid() {
       const grid = document.getElementById('languageButtonsGrid');
       grid.innerHTML = '';
