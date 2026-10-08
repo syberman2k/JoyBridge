@@ -1,4 +1,4 @@
-Version 2.8 – 08 Oct 2026:
+Version 2.8 08 Oct 2026:
 Key Changes Made:
 1. Bigger Font Sizes for Small Mobile Displays:
 	A) Boosted base typography across headings, descriptions, badges, card text, buttons, and navigation controls (e.g., body text from text-xs/text-sm up to text-sm/text-base, headings and titles bumped proportionally) to ensure readability on smaller phone viewports.
