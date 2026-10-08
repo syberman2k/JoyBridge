@@ -1,0 +1,39 @@
+Version 2.8 – 08 Oct 2026:
+Key Changes Made:
+1. Bigger Font Sizes for Small Mobile Displays:
+	A) Boosted base typography across headings, descriptions, badges, card text, buttons, and navigation controls (e.g., body text from text-xs/text-sm up to text-sm/text-base, headings and titles bumped proportionally) to ensure readability on smaller phone viewports.
+2. WhatsApp Support Group Card:
+     	A) Added the localized 3-line text block right below the WhatsApp logo and above the QR code / support section:
+		Line 1: NW JoyBridge App
+		Line 2: Support for Delegates
+		Line 3: WhatsApp Group
+	B) Styled with explicit RGB color rgb(70, 60, 199) (#463cc7), centered, bold, and dynamic per selected language.
+	C) Included a centered QR code element pointing directly to the invite link.
+3) Updated WhatsApp Group Link:
+	a) Changed target link to [https://chat.whatsapp.com/HKDpPyi2kEJFnMIqE3hzaE?mode=gi_t](https://chat.whatsapp.com/HKDpPyi2kEJFnMIqE3hzaE?mode=gi_t).
+4) Dynamic JW Programs Logo by Language:
+	A) Replaced the static square box with a responsive image element sourcing dynamically from ./programmes/{language}.jpg (e.g., ./programmes/english.jpg, ./programmes/spanish.jpg, etc.) based on the active language.
+	B) Retained the established language-specific JW.ORG 2026 convention program links.
+
+
+Version 2.6 07Oct2026:
+Summary of Changes:
+1 Header Line 1 Updated: Changed Line 1 from "2026 Eternal Happiness" to "NW JoyBridge" across the application and greeting translation dictionaries
+2 Video Black Box / Poster Fix:
+	* Added preload="none" (preventing mobile and desktop web engines from preloading video frames that paint over the poster with a black rectangle before play).
+	* Removed native <source> nesting and defined src="VIDEO_SanDiegoConventionPrep.mp4" directly on <video poster="VideoPoster.jpg"> so mobile WebKit/Blink and Safari render the poster image reliably.
+	* Wrapped the container with relative and a fallback background image style matching VideoPoster.jpg.
+3 Two-Line Welcome Header: Split the standalone welcome word into two separate, impactful lines:
+	* Line 1: "WELCOME TO"
+	* Line 2: "SAN DIEGO!" (with localized equivalents across all 16 languages).
+4 Venue Subtitle Date Moved to Next Line: In the Convention Venue card header, moved "Nov 27–29, 2026" onto its own line directly below "San Diego Convention Center" using a <br> break.
+5 Welcome Message Phrasing Updated: Updated the welcome body text in all languages to read: “We open our hearts and extend our arms in warm Christian love as we welcome you to the “2026 Eternal Happiness” International Convention...”
+
+Version 2.5 07Oct2026 CH: 
+Summary of Changes Implemented:
+1 Welcome Scripture Added: Included Matthew 13:16 — “Happy are your eyes because they see and your ears because they hear.” prominently styled below the welcome message in the selected language.
+2 Header Redesigned:
+	* Removed the logo icon and box.
+	* Converted title into 2 localized lines: Line 1: 2026 Eternal Happiness, Line 2: Convention Language Helper, updating dynamically when language is changed.
+3 Video Poster: Retained and confirmed poster="VideoPoster.jpg" on the <video> tag so it shows the thumbnail image immediately without video trimming.
+4 Emoji Alignment for RTL Languages (Arabic & Persian): Wrapped and prepended &#x200E;
