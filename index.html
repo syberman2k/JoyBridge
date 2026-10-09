@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 2.82 (08 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 2.81 (08 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Convention Language Helper</title>
@@ -27,7 +27,6 @@
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .phrase-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .phrase-card:hover { transform: translateY(-2px); }
-    .jw-program-font { font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif; }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-20 sm:pt-24 text-base">
@@ -100,10 +99,10 @@
       </div>
     </div>
 
-    <!-- Version & Offline Mode Indicators (Version 2.82) -->
+    <!-- Version & Offline Mode Indicators (Change 1: v2.81) -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.82</span>
+      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.81</span>
     </div>
   </header>
 
@@ -143,9 +142,8 @@
           <h3 id="welcomeTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Welcome, Dear International Delegates!
           </h3>
-          <!-- Change 2: Restored "extend our" -->
           <p id="welcomeBody" class="text-base sm:text-lg text-slate-700 dark:text-slate-200 max-w-2xl mx-auto leading-relaxed">
-            We open our hearts and extend our arms in warm Christian love as we welcome you to the <strong class="text-indigo-700 dark:text-indigo-400">“2026 Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego! We are happy you are here!
+            We open our hearts and arms in warm Christian love as we welcome you to the <strong class="text-indigo-700 dark:text-indigo-400">“2026 Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego! We are happy you are here!
           </p>
 
           <!-- Theme Scripture Matthew 13:16 -->
@@ -218,14 +216,14 @@
             </a>
           </div>
 
-          <!-- Venue Image with Link, Centered Overlay, Top-Right Overlay, and Localized Copyright -->
+          <!-- Venue Image with Link, Centered 100% Enlarged Overlay (Change 3), Top-Right Overlay, and Localized Copyright -->
           <a href="https://www.google.com/maps/place/San+Diego+Convention+Center/@32.7054977,-117.1601028,2480m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80d953574be55d8b:0x568846370a748ca5!8m2!3d32.7054977!4d-117.1601028!16zL20vMDMzdjNz?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
              target="_blank" rel="noopener noreferrer"
              class="block rounded-xl overflow-hidden shadow-inner aspect-video relative group border border-slate-200 dark:border-slate-700">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('VenuePhoto.png');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/70"></div>
 
-            <!-- Centered "Open in Maps" Overlay -->
+            <!-- Centered "Open in Maps" Overlay (Enlarged 100% / 2x - Change 3) -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div class="bg-black/75 hover:bg-black/85 backdrop-blur-md text-white text-base sm:text-xl font-bold px-5 sm:px-7 py-3 sm:py-4 rounded-2xl flex items-center gap-3 border-2 border-white/30 shadow-2xl transition group-hover:scale-110">
                 <i class="fa-solid fa-arrow-up-right-from-square text-lg sm:text-2xl text-indigo-300"></i>
@@ -253,56 +251,21 @@
         </div>
       </div>
 
-      <!-- Quick Delegate Links: JW.ORG Program & WhatsApp Support (Change 3: co-pgm26_E_lg.jpg card & typography) -->
+      <!-- Quick Delegate Links: JW.ORG Program & WhatsApp Support -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
         
-        <!-- JW.ORG Program Card (Change 3: Co-pgm photo with centered typography overlays & hex #453BC8 title) -->
+        <!-- JW.ORG Program Card -->
         <a id="jwOrgDynamicLink" href="https://www.jw.org/en/library/programs/2026-convention-program/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
-          
-          <!-- Program Booklet Image Wrapper with 4-Line Overlay Layout -->
-          <div class="w-28 sm:w-36 aspect-[3/4] rounded-xl overflow-hidden relative flex-shrink-0 shadow-md border border-slate-300/80 dark:border-slate-700 group-hover:scale-105 transition bg-slate-100 dark:bg-slate-800">
-            <img src="co-pgm26_E_lg.jpg" alt="Convention Program Cover" class="w-full h-full object-cover">
-
-            <!-- Dynamic Typography Overlay matching co-pgm styling across languages -->
-            <div class="absolute inset-0 flex flex-col justify-between p-2 text-center pointer-events-none select-none">
-              
-              <!-- Upper Block (Lines 1, 2, dividing rule, Line 3) -->
-              <div class="w-full flex flex-col items-center pt-1.5">
-                <!-- Line 1: ETERNAL in Calibri Regular, wide tracking, #173631 -->
-                <div id="jwPgmLine1" class="jw-program-font font-normal uppercase leading-none tracking-[0.22em] text-[11px] sm:text-[13px] w-[80%] mx-auto text-center" style="color: #173631;">
-                  ETERNAL
-                </div>
-
-                <!-- Line 2: HAPPINESS in Calibri Regular, wide tracking, #173631 -->
-                <div id="jwPgmLine2" class="jw-program-font font-normal uppercase leading-none tracking-[0.22em] text-[11px] sm:text-[13px] w-[80%] mx-auto text-center mt-0.5" style="color: #173631;">
-                  HAPPINESS
-                </div>
-
-                <!-- Dividing line in picture coordinate -->
-                <div class="w-[82%] border-b border-[#173631]/60 my-1"></div>
-
-                <!-- Line 3: 2026 CONVENTION OF JEHOVAH'S WITNESSES in Calibri Bold, tracking, #173631 -->
-                <div id="jwPgmLine3" class="jw-program-font font-bold uppercase leading-tight tracking-[0.05em] text-[6.5px] sm:text-[8px] w-[82%] mx-auto text-center" style="color: #173631;">
-                  2026 CONVENTION OF JEHOVAH'S WITNESSES
-                </div>
-              </div>
-
-              <!-- Lower Block (Line 4: PROGRAM at bottom in Calibri Bold, tracking, #000000) -->
-              <div class="w-full pb-1">
-                <div id="jwPgmLine4" class="jw-program-font font-bold uppercase leading-none tracking-[0.14em] text-[7.5px] sm:text-[9px] mx-auto text-center" style="color: #000000;">
-                  PROGRAM
-                </div>
-              </div>
-            </div>
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-indigo-50 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 shadow-sm border border-indigo-200/60 dark:border-slate-700 group-hover:scale-105 transition">
+            <img id="jwProgramLogoImg" src="programmes/english.jpg" alt="JW Convention Program" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <div class="hidden w-full h-full bg-indigo-600 text-white font-black flex items-center justify-center text-xl">JW</div>
           </div>
-
-          <!-- Card Description Content (Change 3C: Title set to #453BC8) -->
           <div class="flex-grow">
             <div class="flex items-center justify-between">
-              <h4 id="jwOrgCardTitle" class="font-bold text-base sm:text-lg transition leading-snug" style="color: #453BC8;">JW.ORG Convention Program</h4>
+              <h4 id="jwOrgCardTitle" class="font-bold text-slate-900 dark:text-white text-base sm:text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition leading-snug">JW.ORG Convention Program</h4>
               <i class="fa-solid fa-arrow-up-right-from-square text-sm text-slate-400 group-hover:text-indigo-500"></i>
             </div>
-            <p id="jwOrgCardDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-snug">
+            <p id="jwOrgCardDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-snug">
               Access convention releases, daily programs, music, and spiritual encouragement in hundreds of languages.
             </p>
           </div>
@@ -338,14 +301,14 @@
             </div>
           </div>
 
-          <!-- QR Code and Updated Prompt (Change 1: Click here (or Scan QR) to Join Group) -->
+          <!-- QR Code and Updated Prompt (Change 2) -->
           <div class="mt-3 flex flex-col items-center justify-center">
             <div class="p-2 bg-white rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
               <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fchat.whatsapp.com%2FHKDpPyi2kEJFnMIqE3hzaE%3Fmode%3Dgi_t" alt="Scan to join WhatsApp Group" class="w-28 h-28 object-contain">
             </div>
-            <!-- Change 1 -->
+            <!-- Change 2: Click here or Scan QR with "here" bold & italics -->
             <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 font-medium text-center">
-              Click <i><b>here</b></i> (or Scan QR) to Join Group
+              Click <i><b>here</b></i> or Scan QR to Join Group
             </span>
           </div>
         </a>
@@ -467,7 +430,6 @@
       vietnamese: "https://www.jw.org/vi/thu-vien/chuong-trinh/chuong-trinh-dai-hoi-2026/"
     };
 
-    // Greeting translations & program booklet typography per language (Changes 2 & 3)
     const greetingTranslations = {
       english: {
         welcomeLine1: "WELCOME TO",
@@ -476,7 +438,7 @@
         headerLine2: "Convention Language Helper",
         badge: "San Diego, California • 2026",
         title: "Welcome, Dear International Delegates!",
-        body: "We open our hearts and extend our arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego! We are happy you are here!",
+        body: "We open our hearts and arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego! We are happy you are here!",
         scriptureText: "“Happy are your eyes because they see and your ears because they hear.”",
         scriptureCite: "— Matthew 13:16",
         actionBtn: "Open Language Helper",
@@ -496,12 +458,7 @@
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship.",
         waLine1: "NW JoyBridge App",
         waLine2: "Support for Delegates",
-        waLine3: "WhatsApp Group",
-        // Program Cover lines
-        pgmLine1: "ETERNAL",
-        pgmLine2: "HAPPINESS",
-        pgmLine3: "2026 CONVENTION OF JEHOVAH'S WITNESSES",
-        pgmLine4: "PROGRAM"
+        waLine3: "WhatsApp Group"
       },
       arabic: {
         welcomeLine1: "أهلاً وسهلاً بكم في",
@@ -510,7 +467,7 @@
         headerLine2: "المساعد اللغوي للمحفل",
         badge: "سان دييغو، كاليفورنيا • 2026",
         title: "أهلاً وسهلاً بكم، أيها المندوبون الدوليون الأعزاء!",
-        body: "نفتح قلوبنا ونمد أذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية ٢٠٢٦»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة! نحن سعداء جداً بوجودكم معنا!",
+        body: "نفتح قلوبنا وأذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية ٢٠٢٦»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة! نحن سعداء جداً بوجودكم معنا!",
         scriptureText: "«طوبى لعيونكم لأنها تبصر، ولآذانكم لأنها تسمع».",
         scriptureCite: "— متى ١٣: ١٦",
         actionBtn: "افتح المساعد اللغوي (العربية)",
@@ -530,11 +487,7 @@
         whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية.",
         waLine1: "تطبيق NW JoyBridge",
         waLine2: "دعم المندوبين الدوليين",
-        waLine3: "مجموعة واتساب",
-        pgmLine1: "السعادة",
-        pgmLine2: "الأبدية",
-        pgmLine3: "محفل شهود يهوه لعام ٢٠٢٦",
-        pgmLine4: "البرنامج"
+        waLine3: "مجموعة واتساب"
       },
       chinese: {
         welcomeLine1: "热烈欢迎光临",
@@ -543,7 +496,7 @@
         headerLine2: "大会语言交流助手",
         badge: "加利福尼亚州圣迭戈 • 2026",
         title: "热烈欢迎亲爱的国际代表们！",
-        body: "我们敞开心扉并伸出双臂，怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！我们非常高兴您能来到这里！",
+        body: "我们敞开心扉并张开双臂，怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！我们非常高兴您能来到这里！",
         scriptureText: "“你们的眼睛多么有福，因为能看见；你们的耳朵多么有福，因为能听见。”",
         scriptureCite: "—— 马太福音 13:16",
         actionBtn: "开启语言交流助手 (普通话)",
@@ -563,11 +516,7 @@
         whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。",
         waLine1: "NW JoyBridge 应用",
         waLine2: "大会代表交流支持",
-        waLine3: "WhatsApp 交流群",
-        pgmLine1: "永恒的",
-        pgmLine2: "幸福",
-        pgmLine3: "2026 耶和华见证人大会",
-        pgmLine4: "节目表"
+        waLine3: "WhatsApp 交流群"
       },
       dutch: {
         welcomeLine1: "WELKOM IN",
@@ -576,7 +525,7 @@
         headerLine2: "Congrestaalhulp",
         badge: "San Diego, Californië • 2026",
         title: "Welkom, Lieve Internationale Afgevaardigden!",
-        body: "We openen ons hart en strekken onze armen uit in warme christelijke liefde om u van harte welkom te heten op het <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Eeuwige vreugde”</strong> internationale congres. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben! We zijn heel blij dat u er bent!",
+        body: "We openen ons hart en onze armen in warme christelijke liefde om u van harte welkom te heten op het <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Eeuwige vreugde”</strong> internationale congres. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben! We zijn heel blij dat u er bent!",
         scriptureText: "„Gelukkig zijn jullie ogen omdat ze zien, en jullie oren omdat ze horen.”",
         scriptureCite: "— Mattheüs 13:16",
         actionBtn: "Open Taalhulp (Nederlands)",
@@ -596,11 +545,7 @@
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hulp voor Afgevaardigden",
-        waLine3: "WhatsApp-groep",
-        pgmLine1: "EEUWIGE",
-        pgmLine2: "VREUGDE",
-        pgmLine3: "CONGRES VAN JEHOVAH'S GETUIGEN 2026",
-        pgmLine4: "PROGRAMMA"
+        waLine3: "WhatsApp-groep"
       },
       french: {
         welcomeLine1: "BIENVENUE À",
@@ -609,7 +554,7 @@
         headerLine2: "Aide linguistique de l'assemblée",
         badge: "San Diego, Californie • 2026",
         title: "Bienvenue, chers délégués internationaux !",
-        body: "Nous vous ouvrons nos cœurs et vous tendons les bras avec un amour fraternel chaleureux pour vous accueillir à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel 2026 »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego ! Nous sommes si heureux de votre présence !",
+        body: "Nous vous ouvrons nos cœurs et nos bras avec un amour fraternel chaleureux pour vous accueillir à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel 2026 »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego ! Nous sommes si heureux de votre présence !",
         scriptureText: "« Heureux sont vos yeux parce qu’ils voient, et vos oreilles parce qu’elles entendent. »",
         scriptureCite: "— Matthieu 13:16",
         actionBtn: "Ouvrir l'aide linguistique (Français)",
@@ -629,11 +574,7 @@
         whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange.",
         waLine1: "Application NW JoyBridge",
         waLine2: "Assistance aux Délégués",
-        waLine3: "Groupe WhatsApp",
-        pgmLine1: "LE BONHEUR",
-        pgmLine2: "ÉTERNEL",
-        pgmLine3: "ASSEMBLÉE DES TÉMOINS DE JÉHOVAH 2026",
-        pgmLine4: "PROGRAMME"
+        waLine3: "Groupe WhatsApp"
       },
       german: {
         welcomeLine1: "WILLKOMMEN IN",
@@ -642,7 +583,7 @@
         headerLine2: "Kongress-Sprachhelfer",
         badge: "San Diego, Kalifornien • 2026",
         title: "Herzlich willkommen, liebe internationale Delegierte!",
-        body: "Wir öffnen unsere Herzen und breiten unsere Arme in herzlicher christlicher Liebe aus, um Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Ewige Freude“</strong> willkommen zu heißen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben! Wir freuen uns sehr, dass Sie hier sind!",
+        body: "Wir öffnen unsere Herzen und Arme in herzlicher christlicher Liebe, um Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Ewige Freude“</strong> willkommen zu heißen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben! Wir freuen uns sehr, dass Sie hier sind!",
         scriptureText: "„Glücklich sind eure Augen, weil sie sehen, und eure Ohren, weil sie hören.“",
         scriptureCite: "— Matthäus 13:16",
         actionBtn: "Sprachhelfer öffnen (Deutsch)",
@@ -662,11 +603,7 @@
         whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hilfe für Delegierte",
-        waLine3: "WhatsApp-Gruppe",
-        pgmLine1: "EWIGE",
-        pgmLine2: "FREUDE",
-        pgmLine3: "KONGRESS DER ZEUGEN JEHOVAS 2026",
-        pgmLine4: "PROGRAMM"
+        waLine3: "WhatsApp-Gruppe"
       },
       kannada: {
         welcomeLine1: "ಸ್ವಾಗತ",
@@ -675,7 +612,7 @@
         headerLine2: "ಸಮಾವೇಶ ಭಾಷಾ ಸಹಾಯಕ",
         badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
         title: "ಆತ್ಮೀಯ ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ, ನಿಮಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ!",
-        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಸ್ವಾಗತಿಸಲು ನಾವು ನಮ್ಮ ಹೃದಯಗಳನ್ನು ತೆರೆದು ನಮ್ಮ ತೋಳುಗಳನ್ನು ಪ್ರೀತಿಯಿಂದ ಚಾಚುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ! ನೀವು ಇಲ್ಲಿರುವುದಕ್ಕೆ ನಮಗೆ ತುಂಬಾ ಸಂತೋಷವಾಗಿದೆ!",
+        body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಸ್ವಾಗತಿಸಲು ನಾವು ನಮ್ಮ ಹೃದಯ ಮತ್ತು ತೋಳುಗಳನ್ನು ಪ್ರೀತಿಯಿಂದ ತೆರೆಯುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ! ನೀವು ಇಲ್ಲಿರುವುದಕ್ಕೆ ನಮಗೆ ತುಂಬಾ ಸಂತೋಷವಾಗಿದೆ!",
         scriptureText: "“ನಿಮ್ಮ ಕಣ್ಣುಗಳು ನೋಡುತ್ತವೆ, ಆದ್ದರಿಂದ ಅವು ಸಂತೋಷವಾಗಿವೆ; ನಿಮ್ಮ ಕಿವಿಗಳು ಕೇಳುತ್ತವೆ, ಆದ್ದರಿಂದ ಅವು ಸಂತೋಷವಾಗಿವೆ.”",
         scriptureCite: "— ಮತ್ತಾಯ 13:16",
         actionBtn: "ಭಾಷಾ ಸಹಾಯ ತೆರೆಯಿರಿ (ಕನ್ನಡ)",
@@ -695,11 +632,7 @@
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ.",
         waLine1: "NW JoyBridge ಆ್ಯಪ್",
         waLine2: "ಪ್ರತಿನಿಧಿಗಳಿಗೆ ಸಹಾಯ",
-        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು",
-        pgmLine1: "ಶಾಶ್ವತ",
-        pgmLine2: "ಸಂತೋಷ",
-        pgmLine3: "ಯೆಹೋವನ ಸಾಕ್ಷಿಗಳ 2026 ರ ಅಧಿವೇಶನ",
-        pgmLine4: "ಕಾರ್ಯಕ್ರಮ"
+        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು"
       },
       konkani_romi: {
         welcomeLine1: "BOREM YEUKOR",
@@ -708,7 +641,7 @@
         headerLine2: "Mellachi Bhas Adar",
         badge: "San Diego, California • 2026",
         title: "Mogachea Sonvsarik Pratinidhimno, Tumkam Borem Yeukor!",
-        body: "Ami amchim kallzam ugttim korun ani Kristi mogan hath vistaron tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta! Tumi hanga asat mhonn amkam khub khuxi bhogli!",
+        body: "Ami amchim kallzam ani hath Kristi mogan ugttim korun tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta! Tumi hanga asat mhonn amkam khub khuxi bhogli!",
         scriptureText: "“Punn tumche dolle polletat dekhun ani tumche kan aikotat dekhun tumkam subhagim.”",
         scriptureCite: "— Matev 13:16",
         actionBtn: "Bhas Adar Ugtto Korat (Konknni Romi)",
@@ -728,11 +661,7 @@
         whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat.",
         waLine1: "NW JoyBridge App",
         waLine2: "Pratinidhink Adar",
-        waLine3: "WhatsApp Zomo",
-        pgmLine1: "SODANKALCHEM",
-        pgmLine2: "DHADOSPONN",
-        pgmLine3: "JEHOVACHEA GOVAYANCHO 2026 MELL",
-        pgmLine4: "KARIAVOLL"
+        waLine3: "WhatsApp Zomo"
       },
       korean: {
         welcomeLine1: "환영합니다",
@@ -741,7 +670,7 @@
         headerLine2: "대회 언어 도우미",
         badge: "캘리포니아주 샌디에이고 • 2026",
         title: "국제 대표자 여러분을 따뜻한 사랑으로 환영합니다!",
-        body: "우리는 따뜻한 그리스도인 사랑으로 마음을 열고 두 팔을 활짝 벌려 여러분을 <strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 영원한 행복\"</strong> 국제대회에 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다! 여러분과 함께하게 되어 정말 행복합니다!",
+        body: "우리는 따뜻한 그리스도인 사랑으로 마음과 두 팔을 활짝 열어 여러분을 <strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 영원한 행복\"</strong> 국제대회에 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다! 여러분과 함께하게 되어 정말 행복합니다!",
         scriptureText: "“여러분의 눈은 보고 여러분의 귀는 듣기 때문에 행복합니다.”",
         scriptureCite: "— 마태복음 13:16",
         actionBtn: "언어 도우미 열기 (한국어)",
@@ -761,11 +690,7 @@
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요.",
         waLine1: "NW JoyBridge 앱",
         waLine2: "국제 대표자 지원 안내",
-        waLine3: "WhatsApp 그룹",
-        pgmLine1: "영원한",
-        pgmLine2: "행복",
-        pgmLine3: "2026 여호와의 증인 대회",
-        pgmLine4: "프로그램"
+        waLine3: "WhatsApp 그룹"
       },
       persian: {
         welcomeLine1: "خوش آمدید به",
@@ -774,7 +699,7 @@
         headerLine2: "راهنمای زبان مجمع",
         badge: "سن دیگو، کالیفرنیا • 2026",
         title: "به گرمی به شما نمایندگان گرامی بین‌المللی خوش‌آمد می‌گوییم!",
-        body: "ما دل‌های خود را می‌گشاییم و آغوش پرمهر مسیحی خود را باز می‌کنیم تا ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی ۲۰۲۶»</strong> گرامی بداریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم! از حضور شما در اینجا بسیار خوشحالیم!",
+        body: "ما با آغوش باز و قلبی سرشار از محبت گرم مسیحی ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی ۲۰۲۶»</strong> گرامی می‌داریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم! از حضور شما در اینجا بسیار خوشحالیم!",
         scriptureText: "«خوشا به حال چشمان شما زیرا می‌بینند و گوش‌های شما زیرا می‌شنوند.»",
         scriptureCite: "— مَتّی ۱۳: ۱۶",
         actionBtn: "باز کردن راهنمای زبان (فارسی)",
@@ -794,11 +719,7 @@
         whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید.",
         waLine1: "اپلیکیشن NW JoyBridge",
         waLine2: "پشتیبانی از نمایندگان مجمع",
-        waLine3: "گروه واتس‌اپ",
-        pgmLine1: "شادی",
-        pgmLine2: "جاودانی",
-        pgmLine3: "کنگره شاهدان یَهُوَه ۲۰۲۶",
-        pgmLine4: "برنامه"
+        waLine3: "گروه واتس‌اپ"
       },
       polish: {
         welcomeLine1: "WITAJCIE W",
@@ -807,7 +728,7 @@
         headerLine2: "Pomoc językowa na kongresie",
         badge: "San Diego, Kalifornia • 2026",
         title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
-        body: "Otwieramy nasze serca i wyciągamy ramiona z gorącą chrześcijańską miłością, witając Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście 2026”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego! Bardzo się cieszymy, że tu jesteście!",
+        body: "Otwieramy nasze serca i ramiona z gorącą chrześcijańską miłością, witając Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście 2026”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego! Bardzo się cieszymy, że tu jesteście!",
         scriptureText: "„Szczęśliwe są wasze oczy, bo widzą, i wasze uszy, bo słyszą.”",
         scriptureCite: "— Mateusza 13:16",
         actionBtn: "Otwórz pomoc językową (Polski)",
@@ -827,11 +748,7 @@
         whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą.",
         waLine1: "Aplikacja NW JoyBridge",
         waLine2: "Wsparcie dla Delegatów",
-        waLine3: "Grupa WhatsApp",
-        pgmLine1: "WIECZNE",
-        pgmLine2: "SZCZĘŚCIE",
-        pgmLine3: "KONGRES ŚWIADKÓW JEHOWY 2026",
-        pgmLine4: "PROGRAM"
+        waLine3: "Grupa WhatsApp"
       },
       russian: {
         welcomeLine1: "ДОБРО ПОЖАЛОВАТЬ В",
@@ -840,7 +757,7 @@
         headerLine2: "Языковой помощник конгресса",
         badge: "Сан-Диего, Калифорния • 2026",
         title: "Добро пожаловать, дорогие международные делегаты!",
-        body: "Мы открываем наши сердца и простираем объятия с теплой христианской любовью, приветствуя вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье 2026»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего! Мы очень счастливы, что вы здесь!",
+        body: "Мы открываем наши сердца и объятия с теплой христианской любовью, приветствуя вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье 2026»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего! Мы очень счастливы, что вы здесь!",
         scriptureText: "«Счастливы ваши глаза, потому что видят, и ваши уши, потому что слышат».",
         scriptureCite: "— Матфея 13:16",
         actionBtn: "Открыть языковой помощник (Русский)",
@@ -860,11 +777,7 @@
         whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения.",
         waLine1: "Приложение NW JoyBridge",
         waLine2: "Поддержка делегатов",
-        waLine3: "Группа в WhatsApp",
-        pgmLine1: "ВЕЧНОЕ",
-        pgmLine2: "СЧАСТЬЕ",
-        pgmLine3: "КОНГРЕСС СВИДЕТЕЛЕЙ ИЕГОВЫ 2026 ГОДА",
-        pgmLine4: "ПРОГРАММА"
+        waLine3: "Группа в WhatsApp"
       },
       slovenian: {
         welcomeLine1: "DOBRODOŠLI V",
@@ -873,7 +786,7 @@
         headerLine2: "Zborovalni jezikovni pripomoček",
         badge: "San Diego, Kalifornija • 2026",
         title: "Dobrodošli, dragi mednarodni delegati!",
-        body: "Odpiramo svoja srca in z vso toplino krščanske ljubezni širimo roke ter vas pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča 2026«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu! Zelo smo veseli, da ste tukaj!",
+        body: "Odpiramo svoja srca in roke v topli krščanski ljubezni ter vas pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča 2026«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu! Zelo smo veseli, da ste tukaj!",
         scriptureText: "»Srečne vaše oči, ker vidijo, in vaša ušesa, ker slišijo.«",
         scriptureCite: "— Matej 13:16",
         actionBtn: "Odpri jezikovni pripomoček (Slovenščina)",
@@ -893,11 +806,7 @@
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje.",
         waLine1: "Aplikacija NW JoyBridge",
         waLine2: "Podpora za delegate",
-        waLine3: "Skupina WhatsApp",
-        pgmLine1: "VEČNA",
-        pgmLine2: "SREČA",
-        pgmLine3: "ZBOROVANJE JEHOVOVIH PRIČ 2026",
-        pgmLine4: "PROGRAM"
+        waLine3: "Skupina WhatsApp"
       },
       spanish: {
         welcomeLine1: "BIENVENIDOS A",
@@ -906,7 +815,7 @@
         headerLine2: "Ayuda de idiomas para la asamblea",
         badge: "San Diego, California • 2026",
         title: "¡Bienvenidos, queridos delegados internacionales!",
-        body: "Les abrimos nuestro corazón y les extendemos los brazos con cálido amor cristiano para darles la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna 2026”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego! ¡Estamos muy felices de que estén aquí!",
+        body: "Les abrimos nuestro corazón y nuestros brazos con cálido amor cristiano para darles la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna 2026”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego! ¡Estamos muy felices de que estén aquí!",
         scriptureText: "“Dichosos los ojos de ustedes porque ven y sus oídos porque oyen.”",
         scriptureCite: "— Mateo 13:16",
         actionBtn: "Abrir ayuda de idiomas (Español)",
@@ -926,11 +835,7 @@
         whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal.",
         waLine1: "App NW JoyBridge",
         waLine2: "Apoyo para Delegados",
-        waLine3: "Grupo de WhatsApp",
-        pgmLine1: "FELICIDAD",
-        pgmLine2: "ETERNA",
-        pgmLine3: "ASAMBLEA DE LOS TESTIGOS DE JEHOVÁ 2026",
-        pgmLine4: "PROGRAMA"
+        waLine3: "Grupo de WhatsApp"
       },
       tagalog: {
         welcomeLine1: "MALIGAYANG PAGDATING SA",
@@ -939,7 +844,7 @@
         headerLine2: "Pantulong sa Wika para sa Kombensiyon",
         badge: "San Diego, California • 2026",
         title: "Maligayang Pagdating, Mahal naming mga Internasyonal na Delegado!",
-        body: "Binubuksan namin ang aming mga puso at iniuunat ang aming mga bisig taglay ang mainit na Kristiyanong pag-ibig sa pagsalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan 2026”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego! Masaya kaming nandito kayo!",
+        body: "Binubuksan namin ang aming mga puso at mga bisig taglay ang mainit na Kristiyanong pag-ibig sa pagsalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan 2026”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego! Masaya kaming nandito kayo!",
         scriptureText: "“Maligaya kayo dahil nakakakita ang inyong mga mata at nakakarinig ang inyong mga tainga.”",
         scriptureCite: "— Mateo 13:16",
         actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
@@ -959,11 +864,7 @@
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama.",
         waLine1: "NW JoyBridge App",
         waLine2: "Tulong para sa mga Delegado",
-        waLine3: "WhatsApp Group",
-        pgmLine1: "WALANG-HANGGANG",
-        pgmLine2: "KALIGAYAHAN",
-        pgmLine3: "2026 KOMBENSIYON NG MGA SAKSI NI JEHOVA",
-        pgmLine4: "PROGRAMA"
+        waLine3: "WhatsApp Group"
       },
       turkish: {
         welcomeLine1: "HOŞ GELDİNİZ",
@@ -992,11 +893,7 @@
         whatsAppDesc: "Konukseverlik duyuruları, yerel destek ve kardeşlik bağı için özel <strong>ESMCHDelegatesSupport</strong> WhatsApp grubumuza katılın.",
         waLine1: "NW JoyBridge Uygulaması",
         waLine2: "Delegeler İçin Destek",
-        waLine3: "WhatsApp Grubu",
-        pgmLine1: "SONSUZ",
-        pgmLine2: "MUTLULUK",
-        pgmLine3: "YEHOVA’NIN ŞAHİTLERİ 2026 BÖLGE KONGRESİ",
-        pgmLine4: "PROGRAM"
+        waLine3: "WhatsApp Grubu"
       },
       vietnamese: {
         welcomeLine1: "NỒNG NHIỆT CHÀO MỪNG ĐẾN",
@@ -1005,7 +902,7 @@
         headerLine2: "Trợ giúp ngôn ngữ Đại hội",
         badge: "San Diego, California • 2026",
         title: "Nồng nhiệt chào đón quý đại biểu quốc tế!",
-        body: "Chúng tôi mở rộng tấm lòng và dang rộng vòng tay với tình yêu thương ấm áp của anh em đồng đạo để chào đón quý vị đến với Đại hội Quốc tế <strong class=\"text-indigo-700 dark:text-indigo-400\">“Hạnh phúc vĩnh cửu 2026”</strong>. Dù đã vượt qua đại dương hay châu lục, chúng tôi vô cùng hân hoan khi có quý vị tại thành phố San Diego tràn ngập ánh nắng! Chúng tôi rất vui mừng vì sự hiện diện của quý vị!",
+        body: "Chúng tôi mở rộng tấm lòng và vòng tay với tình yêu thương ấm áp của anh em đồng đạo để chào đón quý vị đến với Đại hội Quốc tế <strong class=\"text-indigo-700 dark:text-indigo-400\">“Hạnh phúc vĩnh cửu 2026”</strong>. Dù đã vượt qua đại dương hay châu lục, chúng tôi vô cùng hân hoan khi có quý vị tại thành phố San Diego tràn ngập ánh nắng! Chúng tôi rất vui mừng vì sự hiện diện của quý vị!",
         scriptureText: "“Phúc cho mắt anh em vì được thấy, và tai anh em vì được nghe.”",
         scriptureCite: "— Ma-thi-ơ 13:16",
         actionBtn: "Mở Trợ giúp Ngôn ngữ (Tiếng Việt)",
@@ -1025,11 +922,7 @@
         whatsAppDesc: "Tham gia nhóm WhatsApp <strong>ESMCHDelegatesSupport</strong> để nhận thông tin hỗ trợ đón tiếp, hướng dẫn địa phương và sự kết hợp nồng ấm.",
         waLine1: "Ứng dụng NW JoyBridge",
         waLine2: "Hỗ trợ Đại biểu",
-        waLine3: "Nhóm WhatsApp",
-        pgmLine1: "HẠNH PHÚC",
-        pgmLine2: "VĨNH CỬU",
-        pgmLine3: "ĐẠI HỘI NHÂN CHỨNG GIÊ-HÔ-VA 2026",
-        pgmLine4: "CHƯƠNG TRÌNH"
+        waLine3: "Nhóm WhatsApp"
       }
     };
 
@@ -1089,7 +982,7 @@
       const venueCopyEl = document.getElementById('venueCopyrightText');
       if (venueCopyEl) venueCopyEl.innerText = data.venueCopyright;
 
-      // JW.ORG dynamic link & program cover typography (Change 3)
+      // JW.ORG dynamic link & dynamic logo
       const dynamicUrl = jwOrgLinks[langKey] || jwOrgLinks.english;
       const jwLink = document.getElementById('jwOrgDynamicLink');
       if (jwLink) jwLink.href = dynamicUrl;
@@ -1097,11 +990,11 @@
       if (jwTitleEl) jwTitleEl.innerText = data.jwOrgTitle || "JW.ORG Convention Program";
       document.getElementById('jwOrgCardDesc').innerText = data.jwOrgDesc;
       
-      // Dynamic 4 lines on co-pgm26_E_lg.jpg cover
-      document.getElementById('jwPgmLine1').innerText = data.pgmLine1 || "ETERNAL";
-      document.getElementById('jwPgmLine2').innerText = data.pgmLine2 || "HAPPINESS";
-      document.getElementById('jwPgmLine3').innerText = data.pgmLine3 || "2026 CONVENTION OF JEHOVAH'S WITNESSES";
-      document.getElementById('jwPgmLine4').innerText = data.pgmLine4 || "PROGRAM";
+      const jwLogo = document.getElementById('jwProgramLogoImg');
+      if (jwLogo) {
+        jwLogo.style.display = 'block';
+        jwLogo.src = `programmes/${langKey}.jpg`;
+      }
 
       // WhatsApp card text in selected language
       document.getElementById('whatsappCardDesc').innerHTML = data.whatsAppDesc;
@@ -1181,7 +1074,7 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v2.82';
+    const CACHE_NAME = 'joybridge-cache-v2.81';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -1190,8 +1083,7 @@
       './LOGO_Circular.png',
       './AppBKGrnd.jpg',
       './VenuePhoto.png',
-      './VideoPoster.jpg',
-      './co-pgm26_E_lg.jpg'
+      './VideoPoster.jpg'
     ];
 
     async function checkCacheReadiness() {
@@ -1621,7 +1513,7 @@
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "샌디에이고에서 뵙게 되어 정말 기쁩니다.", phNative: "아임 해피 투 씨 유 인 샌디에이고.", phEng: "San Diego-eh-suh bwehp-geh dweh-uh juhng-mahl geep-peum-nee-dah." },
             { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "11월 27일 샌디에이고에서 열리는 \"2026 영원한 행복\" 대회의 초대장을 전해 드리고자 합니다. 가족과 함께 꼭 참석해 보세요.", phNative: "아임 히어 투 인바이트 유...", phEng: "sheeb-eel-wahl ee-sheeb-cheel-eel San Diego-eh-suh yuhl-lee-neun \"2026 young-won-hahn heng-bohk\" deh-hweh-eui choh-deh-jahng-eul juhn-heh deu-ree-goh-jah hahm-nee-dah. gah-johk-gwah hahm-kkeh kkok chahm-suhk-heh boh-seh-yoh." },
-            { en: "I am visiting from ...(country)", tr: "저는 ...(국가)에서 방문했습니다.", phNative: "아임 비지팅 프롬 ...(컨트리)", phEng: "juh-neun ...(gook-kkah)-eh-suh balance-haess-seum-nee-dah." },
+            { en: "I am visiting from ...(country)", tr: "저는 ...(국가)에서 방문했습니다.", phNative: "아임 비지팅 프롬 ...(컨트리)", phEng: "juh-neun ...(gook-kkah)-eh-suh bahng-moon-haess-seum-nee-dah." },
             { en: "We’re offering a free Bible course this month.", tr: "이번 달에 무료 성경 공부 과정을 제공하고 있습니다.", phNative: "위어 오퍼링 어 프리 바이블 코스...", phEng: "ee-bun dahl-eh moo-ryoh suhng-gyung gohng-boo gwah-jung-eul jeh-gohng-hah-goh eess-seum-nee-dah." },
             { en: "Would you be interested in a free Bible study?", tr: "무료 성경 공부에 관심이 있으신가요?", phNative: "우드 유 비 인터레스티드...", phEng: "moo-ryoh suhng-gyung gohng-boo-eh gwahn-sheem-ee eess-euh-sheen-gah-yoh?" },
             { en: "This course can help you understand the Bible.", tr: "이 과정은 성경을 이해하는 데 큰 도움이 됩니다.", phNative: "디스 코스 캔 헬프 유...", phEng: "ee gwah-jung-eun suhng-gyung-eul ee-heh-hah-neun deh keun doh-oom-ee dwehm-nee-dah." },
