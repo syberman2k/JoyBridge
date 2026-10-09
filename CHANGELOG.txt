@@ -1,3 +1,24 @@
+
+==========================================================================================
+Version 2.82.1 – 08 Oct 2026) incorporating your changes:
+
+Summary of Updates:
+Version Update: Bumped version indicators, comments, and the cache key to v2.82.1.
+
+JW.ORG Card Icon Restored: Re-instated the original classic purple/indigo square "JW" logo badge in the upper-left of the card.
+
+Full-Width Dynamic Program Booklet Canvas:
+
+Swapped the graphic image source to ./co-pgm26_BLANK_lg.jpg loaded from root.
+
+Positioned the booklet prominently below the card description text spanning the full width of the card.
+
+Scaled the text and lines proportionally so the localized text (ETERNAL, HAPPINESS, convention title, and PROGRAM) is large, crisp, and easily legible.
+
+Retained the language-specific links pointing to the official convention program pages on JW.ORG.
+
+Updated Card Copy: Updated description text to:“Access the convention daily programs, convention releases, music and spiritual encouragement in hundreds of languages”.
+
 ==========================================================================================
 Version 2.82 – 08 Oct 2026:
 
