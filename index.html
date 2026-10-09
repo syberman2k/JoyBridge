@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 2.80 (08 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 2.81 (08 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Convention Language Helper</title>
@@ -38,7 +38,7 @@
     <div class="absolute inset-0 bg-white/10 dark:bg-slate-950/85 transition-colors duration-200"></div>
   </div>
 
-  <!-- Header (Solid & Fixed) -->
+  <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md border-b border-indigo-600/60 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between pb-3.5 sm:pb-3.5 gap-2">
       <div class="flex items-center space-x-2.5 cursor-pointer flex-shrink-0" onclick="goToWelcome()">
@@ -99,10 +99,10 @@
       </div>
     </div>
 
-    <!-- Version & Offline Mode Indicators -->
+    <!-- Version & Offline Mode Indicators (Change 1: v2.81) -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.8</span>
+      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.81</span>
     </div>
   </header>
 
@@ -216,17 +216,19 @@
             </a>
           </div>
 
-          <!-- Venue Image with Link, Top-Right Localized Overlay, and Localized Copyright -->
+          <!-- Venue Image with Link, Centered 100% Enlarged Overlay (Change 3), Top-Right Overlay, and Localized Copyright -->
           <a href="https://www.google.com/maps/place/San+Diego+Convention+Center/@32.7054977,-117.1601028,2480m/data=!3m2!1e3!4b1!4m6!3m5!1s0x80d953574be55d8b:0x568846370a748ca5!8m2!3d32.7054977!4d-117.1601028!16zL20vMDMzdjNz?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
              target="_blank" rel="noopener noreferrer"
              class="block rounded-xl overflow-hidden shadow-inner aspect-video relative group border border-slate-200 dark:border-slate-700">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" style="background-image: url('VenuePhoto.png');"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/70"></div>
 
-            <!-- Tap overlay prompt -->
-            <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs sm:text-sm px-3 py-1.5 rounded-md font-medium flex items-center gap-1.5 border border-white/20">
-              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-              <span id="venueTapText">Open in Maps</span>
+            <!-- Centered "Open in Maps" Overlay (Enlarged 100% / 2x - Change 3) -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="bg-black/75 hover:bg-black/85 backdrop-blur-md text-white text-base sm:text-xl font-bold px-5 sm:px-7 py-3 sm:py-4 rounded-2xl flex items-center gap-3 border-2 border-white/30 shadow-2xl transition group-hover:scale-110">
+                <i class="fa-solid fa-arrow-up-right-from-square text-lg sm:text-2xl text-indigo-300"></i>
+                <span id="venueTapText">Open in Maps</span>
+              </div>
             </div>
 
             <!-- Top-Right 3-line overlay in selected language -->
@@ -249,10 +251,10 @@
         </div>
       </div>
 
-      <!-- Quick Delegate Links: JW.ORG Program & WhatsApp Support (Changes 2, 3, 4) -->
+      <!-- Quick Delegate Links: JW.ORG Program & WhatsApp Support -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
         
-        <!-- JW.ORG Program Card (Change 4: Uses dynamic .jpg logo from /programmes/{language}.jpg) -->
+        <!-- JW.ORG Program Card -->
         <a id="jwOrgDynamicLink" href="https://www.jw.org/en/library/programs/2026-convention-program/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex items-start space-x-4 group">
           <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-indigo-50 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 shadow-sm border border-indigo-200/60 dark:border-slate-700 group-hover:scale-105 transition">
             <img id="jwProgramLogoImg" src="programmes/english.jpg" alt="JW Convention Program" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
@@ -269,7 +271,7 @@
           </div>
         </a>
 
-        <!-- WhatsApp Support Group Card (Changes 2 & 3: Logo, RGB words, QR code, Updated link) -->
+        <!-- WhatsApp Support Group Card -->
         <a href="https://chat.whatsapp.com/HKDpPyi2kEJFnMIqE3hzaE?mode=gi_t" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md hover:border-emerald-500 dark:hover:border-emerald-400 transition flex flex-col group">
           <div class="flex items-start space-x-4">
             <div class="w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-3xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
@@ -286,7 +288,7 @@
             </div>
           </div>
 
-          <!-- Change 2: Centered 3 lines in RGB (70, 60, 199) placed below logo & above QR code -->
+          <!-- Centered 3 lines in RGB (70, 60, 199) placed below logo & above QR code -->
           <div class="mt-4 pt-3 border-t border-slate-200/70 dark:border-slate-800 text-center space-y-0.5">
             <div id="waLine1" class="text-sm sm:text-base font-extrabold uppercase tracking-wide leading-tight" style="color: rgb(70, 60, 199);">
               NW JoyBridge App
@@ -299,12 +301,15 @@
             </div>
           </div>
 
-          <!-- Change 2: QR Code below the 3 lines -->
+          <!-- QR Code and Updated Prompt (Change 2) -->
           <div class="mt-3 flex flex-col items-center justify-center">
             <div class="p-2 bg-white rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
               <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fchat.whatsapp.com%2FHKDpPyi2kEJFnMIqE3hzaE%3Fmode%3Dgi_t" alt="Scan to join WhatsApp Group" class="w-28 h-28 object-contain">
             </div>
-            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1.5 font-medium">Scan QR to Join Group</span>
+            <!-- Change 2: Click here or Scan QR with "here" bold & italics -->
+            <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 font-medium text-center">
+              Click <i><b>here</b></i> or Scan QR to Join Group
+            </span>
           </div>
         </a>
 
@@ -425,7 +430,6 @@
       vietnamese: "https://www.jw.org/vi/thu-vien/chuong-trinh/chuong-trinh-dai-hoi-2026/"
     };
 
-    // Greeting translations & WhatsApp group translations (Changes 1, 2)
     const greetingTranslations = {
       english: {
         welcomeLine1: "WELCOME TO",
@@ -978,7 +982,7 @@
       const venueCopyEl = document.getElementById('venueCopyrightText');
       if (venueCopyEl) venueCopyEl.innerText = data.venueCopyright;
 
-      // JW.ORG dynamic link & dynamic logo from /programmes/{language}.jpg (Change 4)
+      // JW.ORG dynamic link & dynamic logo
       const dynamicUrl = jwOrgLinks[langKey] || jwOrgLinks.english;
       const jwLink = document.getElementById('jwOrgDynamicLink');
       if (jwLink) jwLink.href = dynamicUrl;
@@ -992,7 +996,7 @@
         jwLogo.src = `programmes/${langKey}.jpg`;
       }
 
-      // WhatsApp card text in selected language (Change 2)
+      // WhatsApp card text in selected language
       document.getElementById('whatsappCardDesc').innerHTML = data.whatsAppDesc;
       document.getElementById('waLine1').innerText = data.waLine1 || "NW JoyBridge App";
       document.getElementById('waLine2').innerText = data.waLine2 || "Support for Delegates";
@@ -1070,7 +1074,7 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v2.8';
+    const CACHE_NAME = 'joybridge-cache-v2.81';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -1113,7 +1117,7 @@
       if (isOnline) {
         banner.classList.add('hidden');
         if (dot) {
-          dot.style.color = '#10B981'; // Emerald Green
+          dot.style.color = '#10B981';
           dot.title = "Online (Live): Fully connected";
         }
       } else {
@@ -1121,10 +1125,10 @@
         const hasCache = await checkCacheReadiness();
         if (dot) {
           if (hasCache) {
-            dot.style.color = '#06B6D4'; // Cyan / Teal
+            dot.style.color = '#06B6D4';
             dot.title = "Offline (Cached & Ready): Running locally";
           } else {
-            dot.style.color = '#64748B'; // Slate Gray
+            dot.style.color = '#64748B';
             dot.title = "Offline (Not Cached): Disconnected";
           }
         }
@@ -1952,7 +1956,6 @@
       }
     }
 
-    // Larger font sizes & 2x bigger Listen buttons (Changes 1, 2)
     function renderPhrases() {
       const container = document.getElementById('phrasesList');
       container.innerHTML = '';
