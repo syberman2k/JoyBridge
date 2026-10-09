@@ -1,34 +1,24 @@
 
 ==========================================================================================
-Version 2.82.1 – 08 Oct 2026) incorporating your changes:
+Version 2.82.1 – 08 Oct 2026:
 
 Summary of Updates:
-Version Update: Bumped version indicators, comments, and the cache key to v2.82.1.
-
-JW.ORG Card Icon Restored: Re-instated the original classic purple/indigo square "JW" logo badge in the upper-left of the card.
-
-Full-Width Dynamic Program Booklet Canvas:
-
-Swapped the graphic image source to ./co-pgm26_BLANK_lg.jpg loaded from root.
-
-Positioned the booklet prominently below the card description text spanning the full width of the card.
-
-Scaled the text and lines proportionally so the localized text (ETERNAL, HAPPINESS, convention title, and PROGRAM) is large, crisp, and easily legible.
-
-Retained the language-specific links pointing to the official convention program pages on JW.ORG.
-
-Updated Card Copy: Updated description text to:“Access the convention daily programs, convention releases, music and spiritual encouragement in hundreds of languages”.
+1. Version Update: Bumped version indicators, comments, and the cache key to v2.82.1.
+2. JW.ORG Card Icon Restored: Re-instated the original classic purple/indigo square "JW" logo badge in the upper-left of the card.
+3. Full-Width Dynamic Program Booklet Canvas:
+	A) Swapped the graphic image source to ./co-pgm26_BLANK_lg.jpg loaded from root.
+	B) Positioned the booklet prominently below the card description text spanning the full width of the card.
+	C) Scaled the text and lines proportionally so the localized text (ETERNAL, HAPPINESS, convention title, and PROGRAM) is large, crisp, and easily legible.
+	D) Retained the language-specific links pointing to the official convention program pages on JW.ORG.
+4. Updated Card Copy: Updated description text to:“Access the convention daily programs, convention releases, music and spiritual encouragement in hundreds of languages”.
 
 ==========================================================================================
 Version 2.82 – 08 Oct 2026:
 
 Key Updates Made:
 1. Version Update: Bumped application to v2.82 across header comments, cache key, and bottom status indicator.
-
 2. WhatsApp QR Code Caption: Changed wording to:Click <i><b>here</b></i> (or Scan QR) to Join Group.
-
 3. Greetings Welcome Message: Restored extend our so the greeting opens with:“We open our hearts and extend our arms in warm Christian love as we welcome you to the “2026 Eternal Happiness” International Convention...” across all 16 languages.
-
 4. JW.ORG Convention Program Card Redesign:
 	A) Swapped in co-pgm26_E_lg.jpg loaded from root (./co-pgm26_E_lg.jpg).
 	B) Built a dynamic overlay canvas structured exactly according to your layout requirements:
@@ -38,7 +28,6 @@ Key Updates Made:
 		iv) Line 3 (Top, below dividing line): "2026 CONVENTION OF JEHOVAH'S WITNESSES", centered, matching width of the line, Calibri Bold (or script equivalent), color #173631.
 		v) Line 4 (Bottom): "PROGRAM" (or native translation), centered, matching size of Line 3, Calibri Bold (or script equivalent), color #000000.
 		vi) Uses native, clear typography for Non-Roman scripts (Arabic, Chinese, Kannada, Korean, Persian, Russian).
-
 5. Changed the JW.ORG card title color to hex #453BC8.
 
 ==========================================================================================
