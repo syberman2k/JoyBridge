@@ -1,3 +1,8 @@
+Version 2.81 08 Oct 2026 incorporating all requested changes:
+1. Version Update: Bumped to v2.81 in the header indicator, comments, and cache key.
+2. WhatsApp QR Code Caption: Changed to Click <i><b>here</b></i> or Scan QR to Join Group.
+3. "Open in Maps" Overlay: Centered in the photo container (both vertically and horizontally) and doubled in size (100% enlargement with larger icon, padding, and text).
+
 Version 2.8 08 Oct 2026:
 Key Changes Made:
 1. Bigger Font Sizes for Small Mobile Displays:
