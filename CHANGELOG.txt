@@ -1,10 +1,29 @@
+
 ==========================================================================================
-Version 2.8.2.3 - 08 Oct 2026:
+Version 2.8.3 09Oct2026:
+
+What Was Updated:
+Targeted Invitation Link Added: In renderPhrases(), when the phrase matches the convention invitation (item.en.startsWith("I am here to invite you")), an anchor link styled like the action buttons is placed to the left of the Listen button in both Native and English modes.
+
+Button Layout: The card action footer uses justify-between items-center with wrapping enabled so both buttons display cleanly side-by-side on mobile and desktop without crowding.
+
+PWA & Cache Bump: Updated the comment, cache key (joybridge-cache-v2.8.3), and on-screen version indicators to v2.8.3.
+
+==========================================================================================
+Version 2.8.2.4 09Oct2026:
+
+Summary of corrections:
+1. JW.ORG Convention Program Card correction: Make the word "PROGRAM" in all languages White color font.
+
+
+==========================================================================================
+Version 2.8.2.3 08Oct2026:
 
 Summary of corrections:
 1. JW.ORG Convention Program Card correction:
  A) The words "2026 CONVENTION OF JEHOVAH'S WITNESSES" must stay on one line only. Change font to adjust. It’s currently showing “WITNESSES” on it’s own line below this.
  B) Correct the color of the words at bottom to WHITE “PROGRAM”
+
 
 ==========================================================================================
 Version 2.8.2.2 – 08 Oct 2026:
