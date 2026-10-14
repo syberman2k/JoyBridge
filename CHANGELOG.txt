@@ -1,13 +1,25 @@
 
 ==========================================================================================
+Version 2.9 13Oct2026:
+
+Requested items:
+1. Version Update: Bumped to v2.9 in meta comments, header badge, cache version (joybridge-cache-v2.9), and cache manifest.
+
+2. Dedicated Invitation Video Card: The Invitation Video is now decoupled from the bottom action row and rendered in its own card right above "I am happy to see you in San Diego" in the Ministry Skills section across all languages (retaining the exact same link).
+
+3. Fixed English Audio Listen (EN): Unescaped inner quotation marks inside item.en ("2026 Eternal Happiness") were previously breaking the onclick="speakText('...')" inline attribute by terminating JavaScript string literals prematurely. The string escaping logic has been hardened with a dedicated safeSpeak() handler that cleans both single and double quotes seamlessly.
+
+4. Complete Phonetic Transcriptions: Added full-sentence chosen language phonetics (phNative) for the entire English invitation sentence across all 10 languages, rather than truncating with ellipses.
+
+==========================================================================================
 Version 2.8.3 09Oct2026:
 
 What Was Updated:
-Targeted Invitation Link Added: In renderPhrases(), when the phrase matches the convention invitation (item.en.startsWith("I am here to invite you")), an anchor link styled like the action buttons is placed to the left of the Listen button in both Native and English modes.
+1. Targeted Invitation Link Added: In renderPhrases(), when the phrase matches the convention invitation (item.en.startsWith("I am here to invite you")), an anchor link styled like the action buttons is placed to the left of the Listen button in both Native and English modes.
 
-Button Layout: The card action footer uses justify-between items-center with wrapping enabled so both buttons display cleanly side-by-side on mobile and desktop without crowding.
+2. Button Layout: The card action footer uses justify-between items-center with wrapping enabled so both buttons display cleanly side-by-side on mobile and desktop without crowding.
 
-PWA & Cache Bump: Updated the comment, cache key (joybridge-cache-v2.8.3), and on-screen version indicators to v2.8.3.
+3. PWA & Cache Bump: Updated the comment, cache key (joybridge-cache-v2.8.3), and on-screen version indicators to v2.8.3.
 
 ==========================================================================================
 Version 2.8.2.4 09Oct2026:
