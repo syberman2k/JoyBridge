@@ -1,3 +1,16 @@
+==========================================================================================
+Version 3.0 of 16Oct2026:
+
+Key Version 3.0 Additions:
+1. Hidden Admin Trigger: The version text in the bottom right corner (v3.0) is now an interactive button (cursor-pointer) that invokes the password modal.
+
+2. Password Protection: Prompts for password with an on-screen dialog, validation feedback, and Enter-key support.
+
+3. Admin Console Dashboard:
+ a) Key Metrics Grid: Total Visits, Unique Visitors, Total Audio Plays, and Active Languages.
+ b) Interactive Language Distribution Pie Chart: Rendered with Chart.js based on real app interactions and baseline convention usage data.
+ c) Country Analytics Breakdown: Visual progress bars displaying visitor distribution across key countries and delegate territories.
+ d) Real-Time Tracking: Automatically records visits, distinct browser sessions, language picks, and audio plays into local storage.
 
 ==========================================================================================
 Version 2.9 13Oct2026:
