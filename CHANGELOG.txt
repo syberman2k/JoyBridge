@@ -1,4 +1,13 @@
 ==========================================================================================
+Version 3.0 of 23Oct2026:
+
+1. Version 3.0 Updates: Updated the HTML header comment, the top navigation bar version badge (v3.0), and the Service Worker CACHE_NAME (joybridge-cache-v3.0).
+
+2. Removed JW.ORG Convention Program Card & Links: Removed the JW.ORG Convention Program card from the Welcome screen, cleaned up the jwOrgLinks object, removed the unused program card translation properties and DOM bindings, and removed co-pgm26_BLANK_lg.jpg from CORE_ASSETS.
+
+3. Fixed Arabic & Persian Phonetics (phNative) for All English Expressions: Replaced all Latin/truncated phonetic strings in the Arabic and Persian datasets across all four categories (greetings, everyday, getting_around, and ministry_skills) with complete, natural Arabic and Persian script transcriptions of the English phrases.
+
+==========================================================================================
 Version 3.0 of 16Oct2026:
 
 Key Version 3.0 Additions:
