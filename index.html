@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 2.9 (13 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.0 (23 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Convention Language Helper</title>
@@ -27,7 +27,6 @@
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .phrase-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .phrase-card:hover { transform: translateY(-2px); }
-    .jw-program-font { font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif; }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-20 sm:pt-24 text-base">
@@ -101,7 +100,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v2.9</span>
+      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.0</span>
     </div>
   </header>
 
@@ -242,62 +241,8 @@
         </div>
       </div>
 
-      <!-- Quick Delegate Links: JW.ORG Program & WhatsApp Support -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        
-        <!-- JW.ORG Program Card with Dynamic Card Image & Text Overlay -->
-        <a id="jwOrgDynamicLink" href="https://www.jw.org/en/library/programs/2026-convention-program/" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md hover:border-indigo-500 dark:hover:border-indigo-400 transition flex flex-col group">
-          
-          <div class="flex items-start space-x-4">
-            <div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white font-black flex items-center justify-center text-2xl flex-shrink-0 shadow-sm group-hover:scale-105 transition">
-              JW
-            </div>
-            <div class="flex-grow">
-              <div class="flex items-center justify-between">
-                <h4 id="jwOrgCardTitle" class="font-bold text-base sm:text-lg transition leading-snug" style="color: #453BC8;">JW.ORG Convention Program</h4>
-                <i class="fa-solid fa-arrow-up-right-from-square text-sm text-slate-400 group-hover:text-indigo-500"></i>
-              </div>
-              <p id="jwOrgCardDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-snug">
-                Access the convention daily programs, convention releases, music and spiritual encouragement in hundreds of languages
-              </p>
-            </div>
-          </div>
-
-          <!-- Dynamic Booklet Container -->
-          <div class="mt-4 pt-3 border-t border-slate-200/70 dark:border-slate-800 flex justify-center">
-            <div class="w-full max-w-[340px] min-h-[420px] rounded-2xl overflow-hidden relative shadow-lg border border-slate-300/80 dark:border-slate-700 bg-[#e7ebec] bg-cover bg-center flex flex-col justify-between p-4 group-hover:shadow-xl transition" style="background-image: url('co-pgm26_BLANK_lg.jpg');">
-              
-              <!-- Direct IMG fallback layer to trigger browser fetch -->
-              <img src="co-pgm26_BLANK_lg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover pointer-events-none -z-10" onerror="this.parentElement.style.backgroundColor='#e2e8f0';">
-
-              <!-- Upper Block (Lines 1, 2, Line 3) -->
-              <div class="w-full flex flex-col items-center pt-2 text-center pointer-events-none select-none z-10">
-                <div id="jwPgmLine1" class="jw-program-font font-normal uppercase leading-tight tracking-[0.2em] text-xl sm:text-2xl w-[90%] mx-auto text-center drop-shadow-sm" style="color: #173631;">
-                  ETERNAL
-                </div>
-
-                <div id="jwPgmLine2" class="jw-program-font font-normal uppercase leading-tight tracking-[0.2em] text-xl sm:text-2xl w-[90%] mx-auto text-center mt-1 drop-shadow-sm" style="color: #173631;">
-                  HAPPINESS
-                </div>
-
-                <div class="w-[85%] border-b-2 border-[#173631]/70 my-2.5"></div>
-
-                <div id="jwPgmLine3" class="jw-program-font font-bold uppercase leading-snug tracking-[0.06em] text-[11px] sm:text-[13px] w-[88%] mx-auto text-center" style="color: #173631;">
-                  2026 CONVENTION OF JEHOVAH'S WITNESSES
-                </div>
-              </div>
-
-              <!-- Lower Block (Line 4): WHITE & larger font -->
-              <div class="w-full pb-2 text-center pointer-events-none select-none z-10">
-                <div id="jwPgmLine4" class="jw-program-font font-bold uppercase leading-none tracking-[0.16em] text-lg sm:text-xl mx-auto text-center text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
-                  PROGRAM
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </a>
-
+      <!-- Quick Delegate Links: WhatsApp Support -->
+      <div class="pt-2">
         <!-- WhatsApp Support Group Card -->
         <a href="https://chat.whatsapp.com/HKDpPyi2kEJFnMIqE3hzaE?mode=gi_t" target="_blank" rel="noopener noreferrer" class="p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md hover:border-emerald-500 dark:hover:border-emerald-400 transition flex flex-col group">
           <div class="flex items-start space-x-4">
@@ -336,7 +281,6 @@
             </span>
           </div>
         </a>
-
       </div>
 
     </section>
@@ -434,26 +378,6 @@
       window.location.reload();
     }
 
-    const jwOrgLinks = {
-      english: "https://www.jw.org/en/library/programs/2026-convention-program/",
-      arabic: "https://www.jw.org/ar/%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8%D8%A9/%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D9%85%D8%AC/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9-%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A-%D9%85%D8%AD%D9%81%D9%84-%D9%A2%D9%A0%D9%A2%D9%A6/",
-      chinese: "https://www.jw.org/cmn-hans/%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9B%BE%E4%B9%A6%E9%A6%86/%E8%8A%82%E7%9B%AE%E8%A1%A8/2026-%E5%A4%A7%E4%BC%9A%E8%8A%82%E7%9B%AE%E8%A1%A8/",
-      dutch: "https://www.jw.org/nl/bibliotheek/programmas/congresprogramma-2026/",
-      french: "https://www.jw.org/fr/biblioth%C3%A8que/programmes/programme-assemblee-regionale-2026/",
-      german: "https://www.jw.org/de/bibliothek/programme/kongressprogramm-2026/",
-      kannada: "https://www.jw.org/kn/%E0%B2%B2%E0%B3%88%E0%B2%AC%E0%B3%8D%E0%B2%B0%E0%B2%B0%E0%B2%BF/%E0%B2%95%E0%B2%BE%E0%B2%B0%E0%B3%8D%E0%B2%AF%E0%B2%95%E0%B3%8D%E0%B2%B0%E0%B2%AE%E0%B2%97%E0%B2%B3%E0%B3%81/2026%E0%B2%B0-%E0%B2%85%E0%B2%A7%E0%B2%BF%E0%B2%B5%E0%B3%87%E0%B2%B6%E0%B2%A8-%E0%B2%95%E0%B2%BE%E0%B2%B0%E0%B3%8D%E0%B2%AF%E0%B2%95%E0%B3%8D%E0%B2%B0%E0%B2%AE/",
-      konkani_romi: "https://www.jw.org/gom/library/kariavolli/2026-odhivexon-kariavoll/",
-      korean: "https://www.jw.org/ko/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/2026-%EB%8C%80%ED%9A%8C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/",
-      persian: "https://www.jw.org/fa/%DA%A9%D8%AA%D8%A7%D8%A8%D8%AE%D8%A7%D9%86%D9%87/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%E2%80%8C%D9%87%D8%A7/%DA%A9%D9%86%DA%AF%D8%B1%D9%87-%DB%B2%DB%B0%DB%B2%DB%B6-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87/",
-      polish: "https://www.jw.org/pl/biblioteka/programy/2026-program-kongresu/",
-      russian: "https://www.jw.org/ru/%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B9/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BA%D0%BE%D0%BD%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B0-2026-%D0%B3%D0%BE%D0%B4%D0%B0/",
-      slovenian: "https://www.jw.org/sl/knjiznica/programi/zborovalni-program-2026/",
-      spanish: "https://www.jw.org/es/biblioteca/programas/programa-asamblea-regional-2026/",
-      tagalog: "https://www.jw.org/tl/library/programa/2026-kombensiyon-programa/",
-      turkish: "https://www.jw.org/tr/kutuphane/programlar/2026-bolge-kongresi-program/",
-      vietnamese: "https://www.jw.org/vi/thu-vien/chuong-trinh/chuong-trinh-dai-hoi-2026/"
-    };
-
     const greetingTranslations = {
       english: {
         welcomeLine1: "WELCOME TO",
@@ -477,16 +401,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "Nov 27–29, 2026",
         venueCopyright: "Images may be subject to copyright . Image capture: Oct 2020",
-        jwOrgTitle: "JW.ORG Convention Program",
-        jwOrgDesc: "Access the convention daily programs, convention releases, music and spiritual encouragement in hundreds of languages",
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship.",
         waLine1: "NW JoyBridge App",
         waLine2: "Support for Delegates",
-        waLine3: "WhatsApp Group",
-        pgmLine1: "ETERNAL",
-        pgmLine2: "HAPPINESS",
-        pgmLine3: "2026 CONVENTION OF JEHOVAH'S WITNESSES",
-        pgmLine4: "PROGRAM"
+        waLine3: "WhatsApp Group"
       },
       arabic: {
         welcomeLine1: "أهلاً وسهلاً بكم في",
@@ -510,16 +428,10 @@
         venuePhotoLine2: "مركز مؤتمرات سان دييغو",
         venuePhotoLine3: "٢٧–٢٩ نوفمبر ٢٠٢٦",
         venueCopyright: "قد تخضع الصور لحقوق الطبع والنشر . تاريخ التقاط الصورة: أكتوبر ٢٠٢٠",
-        jwOrgTitle: "برنامج محفل 2026 على JW.ORG",
-        jwOrgDesc: "الاطلاع على برامج المحفل اليومية، وإصدارات المحفل، والموسيقى، والتشجيع الروحي بمئات اللغات",
         whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية.",
         waLine1: "تطبيق NW JoyBridge",
         waLine2: "دعم المندوبين الدوليين",
-        waLine3: "مجموعة واتساب",
-        pgmLine1: "السعادة",
-        pgmLine2: "الأبدية",
-        pgmLine3: "محفل شهود يهوه لعام ٢٠٢٦",
-        pgmLine4: "البرنامج"
+        waLine3: "مجموعة واتساب"
       },
       chinese: {
         welcomeLine1: "热烈欢迎光临",
@@ -543,16 +455,10 @@
         venuePhotoLine2: "圣迭戈会展中心",
         venuePhotoLine3: "2026年11月27日至29日",
         venueCopyright: "图片可能受版权保护。拍摄时间：2020年10月",
-        jwOrgTitle: "JW.ORG 2026 大会节目表",
-        jwOrgDesc: "获取以数百种语言提供的大会每日节目表、发行物、音乐及属灵鼓励",
         whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。",
         waLine1: "NW JoyBridge 应用",
         waLine2: "大会代表交流支持",
-        waLine3: "WhatsApp 交流群",
-        pgmLine1: "永恒的",
-        pgmLine2: "幸福",
-        pgmLine3: "2026 耶和华见证人大会",
-        pgmLine4: "节目表"
+        waLine3: "WhatsApp 交流群"
       },
       dutch: {
         welcomeLine1: "WELKOM IN",
@@ -576,16 +482,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27–29 nov 2026",
         venueCopyright: "Afbeeldingen zijn mogelijk auteursrechtelijk beschermd . Opname: okt 2020",
-        jwOrgTitle: "JW.ORG Congresprogramma 2026",
-        jwOrgDesc: "Bekijk de dagprogramma's, publicaties, muziek en geestelijke aanmoediging in honderden talen",
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hulp voor Afgevaardigden",
-        waLine3: "WhatsApp-groep",
-        pgmLine1: "EEUWIGE",
-        pgmLine2: "VREUGDE",
-        pgmLine3: "CONGRES VAN JEHOVAH'S GETUIGEN 2026",
-        pgmLine4: "PROGRAMMA"
+        waLine3: "WhatsApp-groep"
       },
       french: {
         welcomeLine1: "BIENVENUE À",
@@ -609,16 +509,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27–29 nov. 2026",
         venueCopyright: "Les images peuvent être protégées par des droits d'auteur . Octobre 2020",
-        jwOrgTitle: "Programme de l'assemblée 2026 sur JW.ORG",
-        jwOrgDesc: "Accédez aux programmes quotidiens de l'assemblée, parutions, musique et encouragements en des centaines de langues",
         whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange.",
         waLine1: "Application NW JoyBridge",
         waLine2: "Assistance aux Délégués",
-        waLine3: "Groupe WhatsApp",
-        pgmLine1: "LE BONHEUR",
-        pgmLine2: "ÉTERNEL",
-        pgmLine3: "ASSEMBLÉE DES TÉMOINS DE JÉHOVAH 2026",
-        pgmLine4: "PROGRAMME"
+        waLine3: "Groupe WhatsApp"
       },
       german: {
         welcomeLine1: "WILLKOMMEN IN",
@@ -642,16 +536,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27.–29. Nov. 2026",
         venueCopyright: "Bilder sind möglicherweise urheberrechtlich geschützt . Aufnahme: Okt. 2020",
-        jwOrgTitle: "JW.ORG Kongressprogramm 2026",
-        jwOrgDesc: "Zugang zu den Tagesprogrammen, Kongressveröffentlichungen, Musik und geistiger Ermunterung in Hunderten von Sprachen",
         whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hilfe für Delegierte",
-        waLine3: "WhatsApp-Gruppe",
-        pgmLine1: "EWIGE",
-        pgmLine2: "FREUDE",
-        pgmLine3: "KONGRESS DER ZEUGEN JEHOVAS 2026",
-        pgmLine4: "PROGRAMM"
+        waLine3: "WhatsApp-Gruppe"
       },
       kannada: {
         welcomeLine1: "ಸ್ವಾಗತ",
@@ -675,16 +563,10 @@
         venuePhotoLine2: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್",
         venuePhotoLine3: "ನವೆಂಬರ್ 27–29, 2026",
         venueCopyright: "ಚಿತ್ರಗಳು ಹಕ್ಕುಸ್ವಾಮ್ಯಕ್ಕೆ ಒಳಪಟ್ಟಿರಬಹುದು . ಅಕ್ಟೋಬರ್ 2020",
-        jwOrgTitle: "JW.ORG 2026 ಸಮಾವೇಶ ಕಾರ್ಯಕ್ರಮ",
-        jwOrgDesc: "ನೂರಾರು ಭಾಷೆಗಳಲ್ಲಿ ಸಮಾವೇಶದ ದಿನಚರಿ ಕಾರ್ಯಕ್ರಮಗಳು, ಬಿಡುಗಡೆಗಳು, ಸಂಗೀತ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಪ್ರೋತ್ಸಾಹವನ್ನು ಪಡೆಯಿರಿ",
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ.",
         waLine1: "NW JoyBridge ಆ್ಯಪ್",
         waLine2: "ಪ್ರತಿನಿಧಿಗಳಿಗೆ ಸಹಾಯ",
-        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು",
-        pgmLine1: "ಶಾಶ್ವತ",
-        pgmLine2: "ಸಂತೋಷ",
-        pgmLine3: "ಯೆಹೋವನ ಸಾಕ್ಷಿಗಳ 2026 ರ ಅಧಿವೇಶನ",
-        pgmLine4: "ಕಾರ್ಯಕ್ರಮ"
+        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು"
       },
       konkani_romi: {
         welcomeLine1: "BOREM YEUKOR",
@@ -708,16 +590,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "Nov 27–29, 2026",
         venueCopyright: "Chitram kopiraitik khala asonk xoktat . Otbr 2020",
-        jwOrgTitle: "JW.ORG 2026 Odhivexon Kariavoll",
-        jwOrgDesc: "Xenkddeamni bhasamni mellache disache kareakrom, uzvaddavnneo, gavpam ani bhavartik sfurti melloiat",
         whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat.",
         waLine1: "NW JoyBridge App",
         waLine2: "Pratinidhink Adar",
-        waLine3: "WhatsApp Zomo",
-        pgmLine1: "SODANKALCHEM",
-        pgmLine2: "DHADOSPONN",
-        pgmLine3: "JEHOVACHEA GOVAYANCHO 2026 MELL",
-        pgmLine4: "KARIAVOLL"
+        waLine3: "WhatsApp Zomo"
       },
       korean: {
         welcomeLine1: "환영합니다",
@@ -741,16 +617,10 @@
         venuePhotoLine2: "샌디에이고 컨벤션 센터",
         venuePhotoLine3: "2026년 11월 27일~29일",
         venueCopyright: "이미지는 저작권의 보호를 받을 수 있습니다 . 2020년 10월",
-        jwOrgTitle: "JW.ORG 2026 대회 프로그램",
-        jwOrgDesc: "수백 개 언어로 제공되는 대회 일일 프로그램, 발표물, 음악 및 영적 격려를 확인해 보세요",
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요.",
         waLine1: "NW JoyBridge 앱",
         waLine2: "국제 대표자 지원 안내",
-        waLine3: "WhatsApp 그룹",
-        pgmLine1: "영원한",
-        pgmLine2: "행복",
-        pgmLine3: "2026 여호와의 증인 대회",
-        pgmLine4: "프로그램"
+        waLine3: "WhatsApp 그룹"
       },
       persian: {
         welcomeLine1: "خوش آمدید به",
@@ -774,16 +644,10 @@
         venuePhotoLine2: "مرکز همایش‌های سن دیگو",
         venuePhotoLine3: "۲۷ تا ۲۹ نوامبر ۲۰۲۶",
         venueCopyright: "تصاویر ممکن است مشمول حق نسخه‌برداری باشند . اکتبر ۲۰۲۰",
-        jwOrgTitle: "برنامه کنگره ۲۰۲۶ در JW.ORG",
-        jwOrgDesc: "دسترسی به برنامه‌های روزانه کنگره، نشریات جدید، سرودها و تشویق‌های روحانی به صدها زبان",
         whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید.",
         waLine1: "اپلیکیشن NW JoyBridge",
         waLine2: "پشتیبانی از نمایندگان مجمع",
-        waLine3: "گروه واتس‌اپ",
-        pgmLine1: "شادی",
-        pgmLine2: "جاودانی",
-        pgmLine3: "کنگره شاهدان یَهُوَه ۲۰۲۶",
-        pgmLine4: "برنامه"
+        waLine3: "گروه واتس‌اپ"
       },
       polish: {
         welcomeLine1: "WITAJCIE W",
@@ -807,16 +671,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27–29 listopada 2026",
         venueCopyright: "Obrazy mogą być chronione prawem autorskim . Październik 2020",
-        jwOrgTitle: "JW.ORG Program Kongresu 2026",
-        jwOrgDesc: "Korzystaj z programu dziennego kongresu, materiałów, pieśni i duchowych zachęt w setkach języków",
         whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą.",
         waLine1: "Aplikacja NW JoyBridge",
         waLine2: "Wsparcie dla Delegatów",
-        waLine3: "Grupa WhatsApp",
-        pgmLine1: "WIECZNE",
-        pgmLine2: "SZCZĘŚCIE",
-        pgmLine3: "KONGRES ŚWIADKÓW JEHOWY 2026",
-        pgmLine4: "PROGRAM"
+        waLine3: "Grupa WhatsApp"
       },
       russian: {
         welcomeLine1: "ДОБРО ПОЖАЛОВАТЬ В",
@@ -840,16 +698,10 @@
         venuePhotoLine2: "Конференц-центр Сан-Диего",
         venuePhotoLine3: "27–29 ноября 2026 г.",
         venueCopyright: "Изображения могут быть защищены авторским правом . Октябрь 2020 г.",
-        jwOrgTitle: "JW.ORG Программа конгресса 2026",
-        jwOrgDesc: "Получите доступ к ежедневной программе конгресса, выпускам, музыке и духовному ободрению на сотнях языков",
         whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения.",
         waLine1: "Приложение NW JoyBridge",
         waLine2: "Поддержка делегатов",
-        waLine3: "Группа в WhatsApp",
-        pgmLine1: "ВЕЧНОЕ",
-        pgmLine2: "СЧАСТЬЕ",
-        pgmLine3: "КОНГРЕСС СВИДЕТЕЛЕЙ ИЕГОВЫ 2026 ГОДА",
-        pgmLine4: "ПРОГРАММА"
+        waLine3: "Группа в WhatsApp"
       },
       slovenian: {
         welcomeLine1: "DOBRODOŠLI V",
@@ -873,16 +725,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27.–29. nov. 2026",
         venueCopyright: "Slike so morda zaščitene z avtorskimi pravicami . Okt. 2020",
-        jwOrgTitle: "JW.ORG Zborovalni program 2026",
-        jwOrgDesc: "Dostopajte do dnevnih programov zborovanja, novih izdaj, glasbe in duhovne spodbude v stotinah jezikov",
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje.",
         waLine1: "Aplikacija NW JoyBridge",
         waLine2: "Podpora za delegate",
-        waLine3: "Skupina WhatsApp",
-        pgmLine1: "VEČNA",
-        pgmLine2: "SREČA",
-        pgmLine3: "ZBOROVANJE JEHOVOVIH PRIČ 2026",
-        pgmLine4: "PROGRAM"
+        waLine3: "Skupina WhatsApp"
       },
       spanish: {
         welcomeLine1: "BIENVENIDOS A",
@@ -906,16 +752,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "27 al 29 de nov. de 2026",
         venueCopyright: "Las imágenes pueden estar sujetas a derechos de autor . Octubre de 2020",
-        jwOrgTitle: "JW.ORG Programa de la asamblea 2026",
-        jwOrgDesc: "Acceda a los programas diarios de la asamblea, publicaciones, canciones y ánimo espiritual en cientos de idiomas",
         whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal.",
         waLine1: "App NW JoyBridge",
         waLine2: "Apoyo para Delegados",
-        waLine3: "Grupo de WhatsApp",
-        pgmLine1: "FELICIDAD",
-        pgmLine2: "ETERNA",
-        pgmLine3: "ASAMBLEA DE LOS TESTIGOS DE JEHOVÁ 2026",
-        pgmLine4: "PROGRAMA"
+        waLine3: "Grupo de WhatsApp"
       },
       tagalog: {
         welcomeLine1: "MALIGAYANG PAGDATING SA",
@@ -939,16 +779,10 @@
         venuePhotoLine2: "San Diego Convention Center",
         venuePhotoLine3: "Nob 27–29, 2026",
         venueCopyright: "Maaaring may copyright ang mga larawan . Kuha noong Oktubre 2020",
-        jwOrgTitle: "JW.ORG 2026 Kombensiyon Programa",
-        jwOrgDesc: "Tingnan ang pang-araw-araw na programa ng kombensiyon, mga inilabas, musika, at pampatibay sa daan-daang wika",
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama.",
         waLine1: "NW JoyBridge App",
         waLine2: "Tulong para sa mga Delegado",
-        waLine3: "WhatsApp Group",
-        pgmLine1: "WALANG-HANGGANG",
-        pgmLine2: "KALIGAYAHAN",
-        pgmLine3: "2026 KOMBENSIYON NG MGA SAKSI NI JEHOVA",
-        pgmLine4: "PROGRAMA"
+        waLine3: "WhatsApp Group"
       },
       turkish: {
         welcomeLine1: "HOŞ GELDİNİZ",
@@ -972,16 +806,10 @@
         venuePhotoLine2: "San Diego Kongre Merkezi",
         venuePhotoLine3: "27–29 Kasım 2026",
         venueCopyright: "Görseller telif hakkına tabi olabilir . Çekim tarihi: Ekim 2020",
-        jwOrgTitle: "JW.ORG 2026 Kongre Programı",
-        jwOrgDesc: "Yüzlerce dilde günlük kongre programlarına, yeni yayınlara, ilahilere ve ruhi teşviklere ulaşın",
         whatsAppDesc: "Konukseverlik duyuruları, yerel destek ve kardeşlik bağı için özel <strong>ESMCHDelegatesSupport</strong> WhatsApp grubumuza katılın.",
         waLine1: "NW JoyBridge Uygulaması",
         waLine2: "Delegeler İçin Destek",
-        waLine3: "WhatsApp Grubu",
-        pgmLine1: "SONSUZ",
-        pgmLine2: "MUTLULUK",
-        pgmLine3: "YEHOVA’NIN ŞAHİTLERİ 2026 BÖLGE KONGRESİ",
-        pgmLine4: "PROGRAM"
+        waLine3: "WhatsApp Grubu"
       },
       vietnamese: {
         welcomeLine1: "NỒNG NHIỆT CHÀO MỪNG ĐẾN",
@@ -1005,16 +833,10 @@
         venuePhotoLine2: "Trung tâm Hội nghị San Diego",
         venuePhotoLine3: "27–29 tháng 11, 2026",
         venueCopyright: "Hình ảnh có thể có bản quyền . Thời gian chụp ảnh: Tháng 10 năm 2020",
-        jwOrgTitle: "JW.ORG Chương trình Đại hội 2026",
-        jwOrgDesc: "Truy cập chương trình đại hội mỗi ngày, các ấn phẩm mới, âm nhạc và sự khích lệ thiêng liêng bằng hàng trăm ngôn ngữ",
         whatsAppDesc: "Tham gia nhóm WhatsApp <strong>ESMCHDelegatesSupport</strong> để nhận thông tin hỗ trợ đón tiếp, hướng dẫn địa phương và sự kết hợp nồng ấm.",
         waLine1: "Ứng dụng NW JoyBridge",
         waLine2: "Hỗ trợ Đại biểu",
-        waLine3: "Nhóm WhatsApp",
-        pgmLine1: "HẠNH PHÚC",
-        pgmLine2: "VĨNH CỬU",
-        pgmLine3: "ĐẠI HỘI NHÂN CHỨNG GIÊ-HÔ-VA 2026",
-        pgmLine4: "CHƯƠNG TRÌNH"
+        waLine3: "Nhóm WhatsApp"
       }
     };
 
@@ -1071,22 +893,6 @@
       if (venueTapEl) venueTapEl.innerText = data.venueTap;
       const venueCopyEl = document.getElementById('venueCopyrightText');
       if (venueCopyEl) venueCopyEl.innerText = data.venueCopyright;
-
-      const dynamicUrl = jwOrgLinks[langKey] || jwOrgLinks.english;
-      const jwLink = document.getElementById('jwOrgDynamicLink');
-      if (jwLink) jwLink.href = dynamicUrl;
-      const jwTitleEl = document.getElementById('jwOrgCardTitle');
-      if (jwTitleEl) jwTitleEl.innerText = data.jwOrgTitle || "JW.ORG Convention Program";
-      document.getElementById('jwOrgCardDesc').innerText = data.jwOrgDesc;
-      
-      const l1 = document.getElementById('jwPgmLine1');
-      const l2 = document.getElementById('jwPgmLine2');
-      const l3 = document.getElementById('jwPgmLine3');
-      const l4 = document.getElementById('jwPgmLine4');
-      if (l1) l1.innerText = data.pgmLine1 || "ETERNAL";
-      if (l2) l2.innerText = data.pgmLine2 || "HAPPINESS";
-      if (l3) l3.innerText = data.pgmLine3 || "2026 CONVENTION OF JEHOVAH'S WITNESSES";
-      if (l4) l4.innerText = data.pgmLine4 || "PROGRAM";
 
       document.getElementById('whatsappCardDesc').innerHTML = data.whatsAppDesc;
       document.getElementById('waLine1').innerText = data.waLine1 || "NW JoyBridge App";
@@ -1165,7 +971,7 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v2.9';
+    const CACHE_NAME = 'joybridge-cache-v3.0';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -1174,8 +980,7 @@
       './LOGO_Circular.png',
       './AppBKGrnd.jpg',
       './VenuePhoto.png',
-      './VideoPoster.jpg',
-      './co-pgm26_BLANK_lg.jpg'
+      './VideoPoster.jpg'
     ];
 
     async function checkCacheReadiness() {
@@ -1286,10 +1091,10 @@
             { en: "I am happy to see you in San Diego.", tr: "I am happy to see you in San Diego.", phNative: "Aym hap-pee tu see yu in San Dee-ay-go.", phEng: "EYEM HAP-ee TOO SEE YOO IN SAN dee-AY-goh." },
             { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", phNative: "Aym heer tu in-vayt yu end yur fam-li tu awr kon-ven-shun tay-tuld \"tenty twen-ty siks ee-ter-nul hap-i-nes\" on no-vem-ber twen-ti se-venth in San Dee-ay-go, heerz yur pur-suh-nul in-vi-tay-shun.", phEng: "EYEM HEER TOO in-VYT YOO end YOOR FAM-uh-lee TOO OWR kun-VEN-shun TY-tulld \"TWEN-tee TWEN-tee SIKS ee-TER-nul HAP-ee-nis\" ON noh-VEM-ber TWEN-tee SEV-unth IN SAN dee-AY-goh, HEERZ YOOR PUR-suh-nul in-vuh-TAY-shun." },
             { en: "I am visiting from ...(country)", tr: "I am visiting from ...(country)", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "EYEM VIZ-it-ing FRUM ...(KUN-tree)" },
-            { en: "We’re offering a free Bible course this month.", tr: "We’re offering a free Bible course this month.", phNative: "Weer of-fer-ing a free Bay-bol kors...", phEng: "WEER OFF-er-ing AY FREE BY-bul KORS THIS MUNTH." },
-            { en: "Would you be interested in a free Bible study?", tr: "Would you be interested in a free Bible study?", phNative: "Wud yu bee in-ter-es-ted...", phEng: "WOOLD YOO BEE IN-ter-est-ed IN AY FREE BY-bul STUH-dee?" },
-            { en: "This course can help you understand the Bible.", tr: "This course can help you understand the Bible.", phNative: "Dis kors ken help yu...", phEng: "THIS KORS KAN HELP YOO un-der-STAND THE BY-bul." },
-            { en: "There is no charge and no obligation.", tr: "There is no charge and no obligation.", phNative: "Der iz no charj...", phEng: "THAIR IZ NOH CHARJ AND NOH ob-li-GAY-shun." }
+            { en: "We’re offering a free Bible course this month.", tr: "We’re offering a free Bible course this month.", phNative: "Weer of-fer-ing a free Bay-bol kors dis manth.", phEng: "WEER OFF-er-ing AY FREE BY-bul KORS THIS MUNTH." },
+            { en: "Would you be interested in a free Bible study?", tr: "Would you be interested in a free Bible study?", phNative: "Wud yu bee in-ter-es-ted in a free Bay-bol sta-dee?", phEng: "WOOLD YOO BEE IN-ter-est-ed IN AY FREE BY-bul STUH-dee?" },
+            { en: "This course can help you understand the Bible.", tr: "This course can help you understand the Bible.", phNative: "Dis kors ken help yu an-der-stend da Bay-bol.", phEng: "THIS KORS KAN HELP YOO un-der-STAND THE BY-bul." },
+            { en: "There is no charge and no obligation.", tr: "There is no charge and no obligation.", phNative: "Der iz no charj end no ob-li-gay-shun.", phEng: "THAIR IZ NOH CHARJ AND NOH ob-li-GAY-shun." }
           ]
         }
       },
@@ -1300,36 +1105,36 @@
         categories: { greetings: "التحيات", everyday: "الحياة اليومية", getting_around: "التنقل", ministry_skills: "مهارات الخدمة" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "مرحباً / أهلاً", phNative: "Mahr-hah-ban / Ah-lan", phEng: "MAR-hah-bahn / AH-lan" },
-            { en: "Good morning", tr: "صباح الخير", phNative: "Gud mor-ning", phEng: "sah-BAHH al-KHAYR" },
-            { en: "My name is...", tr: "اسمي...", phNative: "May neym iz...", phEng: "IS-mee..." },
-            { en: "Nice to meet you", tr: "تشرفت بمعرفتك", phNative: "Nays tu mit yu", phEng: "tah-SHAR-raf-too bee-mah-ree-FAH-tik" },
-            { en: "How are you?", tr: "كيف حالك؟", phNative: "Haw ar yu?", phEng: "KAY-fah HAH-look?" },
-            { en: "I'm fine, thank you", tr: "أنا بخير، شكراً لك", phNative: "Aym fayn, thenk yu", phEng: "AH-nah bee-KHAYR, SHOOK-ran lak" }
+            { en: "Hello / Hi", tr: "مرحباً / أهلاً", phNative: "هَلَو / هاي", phEng: "MAR-hah-bahn / AH-lan" },
+            { en: "Good morning", tr: "صباح الخير", phNative: "غود مورنينغ", phEng: "sah-BAHH al-KHAYR" },
+            { en: "My name is...", tr: "اسمي...", phNative: "ماي نيم إز...", phEng: "IS-mee..." },
+            { en: "Nice to meet you", tr: "تشرفت بمعرفتك", phNative: "نايس تو ميت يو", phEng: "tah-SHAR-raf-too bee-mah-ree-FAH-tik" },
+            { en: "How are you?", tr: "كيف حالك؟", phNative: "هاو آر يو؟", phEng: "KAY-fah HAH-look?" },
+            { en: "I'm fine, thank you", tr: "أنا بخير، شكراً لك", phNative: "آيم فاين، ثانك يو", phEng: "AH-nah bee-KHAYR, SHOOK-ran lak" }
           ],
           everyday: [
-            { en: "Please", tr: "من فضلك", phNative: "Pleez", phEng: "min FAD-lak" },
-            { en: "Thank you", tr: "شكراً لك", phNative: "Thenk yu", phEng: "SHOOK-ran lak" },
-            { en: "You're welcome", tr: "عفواً", phNative: "Yur wel-kam", phEng: "AHF-wan" },
-            { en: "Excuse me", tr: "عذراً / المعذرة", phNative: "Eks-kyuz mi", phEng: "OOTH-ran / ahl-MAH-zee-rah" },
-            { en: "I'm sorry", tr: "أنا آسف", phNative: "Aym sah-ree", phEng: "AH-nah AH-sif" },
-            { en: "Can you help me?", tr: "هل يمكنك مساعدتي؟", phNative: "Ken yu help mi?", phEng: "hal YOOM-kee-nook moo-SAH-ah-dah-tee?" }
+            { en: "Please", tr: "من فضلك", phNative: "بليز", phEng: "min FAD-lak" },
+            { en: "Thank you", tr: "شكراً لك", phNative: "ثانك يو", phEng: "SHOOK-ran lak" },
+            { en: "You're welcome", tr: "عفواً", phNative: "يور ويلكم", phEng: "AHF-wan" },
+            { en: "Excuse me", tr: "عذراً / المعذرة", phNative: "إكسكيوز مي", phEng: "OOTH-ran / ahl-MAH-zee-rah" },
+            { en: "I'm sorry", tr: "أنا آسف", phNative: "آيم سوري", phEng: "AH-nah AH-sif" },
+            { en: "Can you help me?", tr: "هل يمكنك مساعدتي؟", phNative: "كان يو هيلب مي؟", phEng: "hal YOOM-kee-nook moo-SAH-ah-dah-tee?" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "أين دورة المياه؟", phNative: "Wer iz da baht-room?", phEng: "AY-nah DOW-rat ahl-mee-YAH?" },
-            { en: "How much is this?", tr: "كم ثمن هذا؟", phNative: "Haw mach iz dis?", phEng: "kam THAH-man HAH-thah?" },
-            { en: "I would like...", tr: "أود أن...", phNative: "Ay wud layk...", phEng: "oo-WAD-doo an..." },
-            { en: "I don't understand", tr: "لا أفهم", phNative: "Ay dont an-der-stend", phEng: "LAH AF-ham" },
-            { en: "What time is it?", tr: "كم الساعة؟", phNative: "Wat taym iz it?", phEng: "kam ahl-SAH-ah?" }
+            { en: "Where is the bathroom?", tr: "أين دورة المياه؟", phNative: "وير إز ذا باثروم؟", phEng: "AY-nah DOW-rat ahl-mee-YAH?" },
+            { en: "How much is this?", tr: "كم ثمن هذا؟", phNative: "هاو ماتش إز ذيس؟", phEng: "kam THAH-man HAH-thah?" },
+            { en: "I would like...", tr: "أود أن...", phNative: "آي وود لايك...", phEng: "oo-WAD-doo an..." },
+            { en: "I don't understand", tr: "لا أفهم", phNative: "آي دونت أندرستاند", phEng: "LAH AF-ham" },
+            { en: "What time is it?", tr: "كم الساعة؟", phNative: "وات تايم إز إت؟", phEng: "kam ahl-SAH-ah?" }
           ],
           ministry_skills: [
-            { en: "I am happy to see you in San Diego.", tr: "يسعدني جداً أن أراك في سان دييغو.", phNative: "Aym hap-pee tu see yu in San Dee-ay-go.", phEng: "yoos-ee-DOO-nee JID-dan an ah-RAH-ka fee San Dee-EH-go." },
+            { en: "I am happy to see you in San Diego.", tr: "يسعدني جداً أن أراك في سان دييغو.", phNative: "آيم هابي تو سي يو إن سان دييغو.", phEng: "yoos-ee-DOO-nee JID-dan an ah-RAH-ka fee San Dee-EH-go." },
             { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "أنا هنا لأدعوك أنت وعائلتك لحضور محفلنا بعنوان «السعادة الأبدية ٢٠٢٦» في 27 نوفمبر في سان دييغو، تفضل دعوتك الشخصية.", phNative: "آيم هير تو إنفايت يو آند يور فاميلي تو آور كونفينشن تايتلد «توينتي توينتي سيكس إتيرنال هابينيس» أون نوفمبر توينتي سيفينث إن سان دييغو، هيرز يور بيرسونال إنفيتيشن.", phEng: "AH-nah HOON-ah li-ad-OO-wah-ka wa ah-ee-LAH-took li-hoo-DOOR mahf-lee-NAH bee-oon-WAHN as-sah-AH-dah al-ab-ah-DEE-yah fee sah-bah-ah wa eesh-REEN no-VEM-bar fee San Dee-EH-go, tah-FAD-dal dah-wah-TOOK ash-shakh-SEE-yah." },
-            { en: "I am visiting from ...(country)", tr: "أنا زائر من ...(البلد)", phNative: "Aym vi-zi-ting from ...(kahn-tree)", phEng: "AH-nah ZAH-eer min ...(al-BAH-lad)" },
-            { en: "We’re offering a free Bible course this month.", tr: "نحن نقدم دورة مجانية في دراسة الكتاب المقدس هذا الشهر.", phNative: "Weer of-fer-ing a free Bay-bol kors.", phEng: "NAH-noo noo-QAD-dim DOW-rah moo-JAH-nee-yah feel kee-TAHB ahl-moo-QAD-dahs." },
-            { en: "Would you be interested in a free Bible study?", tr: "هل ترغب في تجربة درس مجاني في الكتاب المقدس؟", phNative: "Wud yu bee in-ter-es-ted...", phEng: "hal TAR-ghab fee taj-REE-bah DARS moo-JAH-nee?" },
-            { en: "This course can help you understand the Bible.", tr: "هذه الدورة تساعدك على فهم الكتاب المقدس.", phNative: "Dis kors ken help yu...", phEng: "HAH-zee-hee ahd-DOW-rah too-SAH-ee-dook ah-lah FAHM ahl-kee-TAHB." },
-            { en: "There is no charge and no obligation.", tr: "الدورة مجانية بالكامل وبدون أي التزام.", phNative: "Der iz no charj...", phEng: "ahd-DOW-rah moo-JAH-nee-yah beel-KAH-mil wah bee-DOON ay il-tee-ZAHM." }
+            { en: "I am visiting from ...(country)", tr: "أنا زائر من ...(البلد)", phNative: "آيم فيزيتينغ فروم ...(كانتري)", phEng: "AH-nah ZAH-eer min ...(al-BAH-lad)" },
+            { en: "We’re offering a free Bible course this month.", tr: "نحن نقدم دورة مجانية في دراسة الكتاب المقدس هذا الشهر.", phNative: "وير أوفرينغ أيه فري بايبل كورس ذيس مانث.", phEng: "NAH-noo noo-QAD-dim DOW-rah moo-JAH-nee-yah fee dee-RAH-sat ahl-kee-TAHB ahl-moo-QAD-dahs HAH-thah ash-SHAHR." },
+            { en: "Would you be interested in a free Bible study?", tr: "هل ترغب في تجربة درس مجاني في الكتاب المقدس؟", phNative: "وود يو بي إنتريستد إن أيه فري بايبل ستادي؟", phEng: "hal TAR-ghab fee taj-REE-bah DARS moo-JAH-nee feel kee-TAHB ahl-moo-QAD-dahs?" },
+            { en: "This course can help you understand the Bible.", tr: "هذه الدورة تساعدك على فهم الكتاب المقدس.", phNative: "ذيس كورس كان هيلب يو أندرستاند ذا بايبل.", phEng: "HAH-zee-hee ahd-DOW-rah too-SAH-ee-dook ah-lah FAHM ahl-kee-TAHB ahl-moo-QAD-dahs." },
+            { en: "There is no charge and no obligation.", tr: "الدورة مجانية بالكامل وبدون أي التزام.", phNative: "ذير إز نو تشارج آند نو أوبليغيشن.", phEng: "ahd-DOW-rah moo-JAH-nee-yah beel-KAH-mil wah bee-DOON ay il-tee-ZAHM." }
           ]
         }
       },
@@ -1620,36 +1425,36 @@
         categories: { greetings: "احوال‌پرسی", everyday: "روزمره", getting_around: "مسیر و آدرس", ministry_skills: "مهارت‌های خدمت" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "سلام / درود", phNative: "هلو / های (Hello / Hay)", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
-            { en: "Good morning", tr: "صبح بخیر", phNative: "گود مورنینگ (Gud mor-ning)", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
-            { en: "My name is...", tr: "نام من ... است", phNative: "مای نِیم ایز... (May neym iz...)", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
-            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "نایس تو میت یو (Nays tu mit yu)", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
-            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "هاو آر یو؟ (Haw ar yu?)", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
-            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "آیم فاین، تَنک یو (Aym fayn, thenk yu)", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
+            { en: "Hello / Hi", tr: "سلام / درود", phNative: "هَلو / های", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
+            { en: "Good morning", tr: "صبح بخیر", phNative: "گود مورنینگ", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
+            { en: "My name is...", tr: "نام من ... است", phNative: "مای نِیم ایز...", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
+            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "نایس تو میت یو", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
+            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "هاو آر یو؟", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
+            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "آیم فاین، تَنک یو", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
           ],
           everyday: [
-            { en: "Please", tr: "لطفاً", phNative: "پلیز (Pleez)", phEng: "لُطفاً (LOHT-fan)" },
-            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "تَنک یو (Thenk yu)", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
-            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "یور ولکام (Yur wel-kam)", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
-            { en: "Excuse me", tr: "ببخشید", phNative: "اکسکیوز می (Eks-kyuz mi)", phEng: "بِبَخشید (beh-BAKH-sheed)" },
-            { en: "I'm sorry", tr: "متأسفم", phNative: "آیم ساری (Aym sah-ree)", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
-            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "کَن یو هِلپ می؟ (Ken yu help mi?)", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
+            { en: "Please", tr: "لطفاً", phNative: "پلیز", phEng: "لُطفاً (LOHT-fan)" },
+            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "تَنک یو", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
+            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "یور وِلکام", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
+            { en: "Excuse me", tr: "ببخشید", phNative: "اِکسکیوز می", phEng: "بِبَخشید (beh-BAKH-sheed)" },
+            { en: "I'm sorry", tr: "متأسفم", phNative: "آیم ساری", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
+            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "کَن یو هِلپ می؟", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "وِر ایز دَ باثروم؟ (Wer iz da baht-room?)", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
-            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "هاو ماچ ایز دیس؟ (Haw mach iz dis?)", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
-            { en: "I would like...", tr: "من میخواهم...", phNative: "آی وود لایک... (Ay wud layk...)", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
-            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "آی دُنت آندرستَند (Ay dont an-der-stend)", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
-            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "وات تایم ایز ایت؟ (Wat taym iz it?)", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
+            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "وِر ایز دِ بَثروم؟", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
+            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "هاو ماچ ایز دیس؟", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
+            { en: "I would like...", tr: "من میخواهم...", phNative: "آی وود لایک...", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
+            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "آی دُنت آندِرستَند", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
+            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "وات تایم ایز ایت؟", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
           ],
           ministry_skills: [
-            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "آیم هَپی تو سی یو این سن دیگو", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
-            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی ۲۰۲۶» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "آیم هیر تو اینوایت یو اند یور فمیلی تو آور کانونکشن تایتلد «توئنتی توئنتی سیکس ایترنال هپینس» آن نوامبر توئنتی سونث این سن دیگو، هیرز یور پرسنال اینویتیشن.", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را دَعوَت کُنَم (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE 2026» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam)" },
-            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
-            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "ویر آفرینگ اِ فری بایبل کورس...", phEng: "ما این ماه یِک دورِه رایِگانِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
-            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "وود یو بی اینترستد...", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
-            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "دیس کورس کَن هِلپ یو...", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
-            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "دِر ایز نو چارژ...", phEng: "این دورِه کامِلاً رایِگان اَست (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
+            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "آیم هَپی تو سی یو این سَن دیگو.", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی ۲۰۲۶» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "آیم هیر تو اینوایت یو اَند یور فَمیلی تو آوِر کانوِنشِن تایتِلد «توئِنتی توئِنتی سیکس ایتِرنال هَپینِس» آن نُوامبِر توئِنتی سِوِنث این سَن دیگو، هیرز یور پِرسُنال اینویتِیشِن.", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را بِه مَجمَعِ «شادیِ جاودانی ۲۰۲۶» دَر ۲۷ نُوامبر دَر سَن دیگو دَعوَت کُنَم. بِفَرمایید، این دَعوَتنَامِه شَخصیِ شُماست. (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE 2026» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-mah-YEED, een dah-vat-nah-MEH-yeh shakh-SEE-yeh shoh-MAHST.)" },
+            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم و مِهمان هَستَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
+            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "ویر آفِرینگ اِ فری بایبِل کورس دیس مانث.", phEng: "ما این ماه یِک دورِه رایِگانِ بَررِسیِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
+            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "وود یو بی اینتِرِستِد این اِ فری بایبِل استادی؟", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
+            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "دیس کورس کَن هِلپ یو آندِرستَند دِ بایبِل.", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد کِتابِ مُقَدَّس را بِهتَر دَرک کُنید (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
+            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "دِر ایز نو چارج اَند نو آبلیگِیشِن.", phEng: "این دورِه کامِلاً رایِگان اَست و هیچ تَعَهُدی نَدارَد (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
           ]
         }
       },
@@ -2063,7 +1868,7 @@
       const list = database[currentLangKey].data[currentCategory] || [];
       const lang = database[currentLangKey];
 
-      // Item 2: Dedicated Invitation Video Card above "I am happy to see you in San Diego"
+      // Dedicated Invitation Video Card above "I am happy to see you in San Diego"
       if (currentCategory === 'ministry_skills') {
         const videoPromoCard = document.createElement('div');
         videoPromoCard.className = 'bg-gradient-to-r from-indigo-700 to-indigo-900 dark:from-slate-800 dark:to-indigo-950 text-white rounded-2xl p-5 sm:p-6 shadow-md border border-indigo-500/40 dark:border-indigo-800 flex flex-col sm:flex-row items-center justify-between gap-4';
@@ -2109,7 +1914,6 @@
             </div>
           `;
           container.appendChild(card);
-          // Item 3: Directly attach listener to prevent syntax breaks from embedded quotes
           document.getElementById(`btnListenEn_${index}`).onclick = () => speakText(item.en, 'en-US');
         } else {
           const isPersian = currentLangKey === 'persian';
