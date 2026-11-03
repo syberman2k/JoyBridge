@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.01 (03 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.02 (03 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Convention Language Helper</title>
@@ -27,6 +27,27 @@
     body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .phrase-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
     .phrase-card:hover { transform: translateY(-2px); }
+
+    /* Morphing Sticky Category Bar Styles */
+    #categoryContainer {
+      transition: all 0.2s ease-in-out;
+    }
+    #categoryContainer.compact-mode {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 0.5rem !important;
+    }
+    #categoryContainer.compact-mode .cat-btn {
+      padding: 0.6rem 0.5rem !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    #categoryContainer.compact-mode .cat-icon-wrap {
+      margin-bottom: 0 !important;
+      justify-content: center !important;
+    }
+    #categoryContainer.compact-mode .cat-text-wrap {
+      display: none !important;
+    }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-20 sm:pt-24 text-base">
@@ -96,7 +117,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.01</span>
+      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.02</span>
     </div>
   </header>
 
@@ -341,7 +362,7 @@
 
     <!-- Screen 2: Language Detail -->
     <section id="detailScreen" class="hidden space-y-4">
-      <div class="flex items-center justify-between bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-700 p-4 rounded-xl shadow-md gap-3">
+      <div id="detailHeaderCard" class="flex items-center justify-between bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-700 p-4 rounded-xl shadow-md gap-3">
         <div class="flex items-center space-x-3">
           <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-indigo-100 dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-xl">
             <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -360,19 +381,21 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="categoryContainer"></div>
+      <!-- Sticky Categories (Morphing on Scroll) + Native/English Mode Tabs -->
+      <div id="stickyControlsWrapper" class="sticky top-[60px] sm:top-[68px] z-40 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-2 sm:rounded-b-2xl border-b border-slate-200/80 dark:border-slate-800/80 transition-all shadow-sm space-y-2.5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="categoryContainer"></div>
 
-      <!-- Sticky Native / English Mode Tabs -->
-      <div class="sticky top-[60px] sm:top-[68px] z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors shadow-sm">
-        <div class="flex bg-slate-200/80 dark:bg-slate-800/80 p-1.5 rounded-xl font-bold text-base shadow-sm">
-          <button id="tabNative" onclick="setMode('native')" class="flex-1 py-3 rounded-lg transition text-center shadow-sm">
-            <span id="tabNativeText"></span>
-          </button>
-          <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-3 rounded-lg transition text-center">
-            ENGLISH
-          </button>
+        <div>
+          <div class="flex bg-slate-200/80 dark:bg-slate-800/80 p-1.5 rounded-xl font-bold text-base shadow-sm">
+            <button id="tabNative" onclick="setMode('native')" class="flex-1 py-3 rounded-lg transition text-center shadow-sm">
+              <span id="tabNativeText"></span>
+            </button>
+            <button id="tabEnglish" onclick="setMode('english')" class="flex-1 py-3 rounded-lg transition text-center">
+              ENGLISH
+            </button>
+          </div>
+          <p id="modeDescription" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 italic text-center mt-1.5"></p>
         </div>
-        <p id="modeDescription" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 italic text-center mt-1.5"></p>
       </div>
 
       <div id="phrasesList" class="space-y-3.5 pb-8 pt-1"></div>
@@ -882,6 +905,24 @@
     let currentLangKey = 'spanish';
     let currentCategory = 'greetings';
     let currentMode = 'native';
+    let isCategoriesCompact = false;
+
+    function handleCategoryScrollMorph() {
+      const detailScreen = document.getElementById('detailScreen');
+      const catContainer = document.getElementById('categoryContainer');
+      if (!detailScreen || detailScreen.classList.contains('hidden') || !catContainer) return;
+
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if (!isCategoriesCompact && y > 85) {
+        isCategoriesCompact = true;
+        catContainer.classList.add('compact-mode');
+      } else if (isCategoriesCompact && y < 25) {
+        isCategoriesCompact = false;
+        catContainer.classList.remove('compact-mode');
+      }
+    }
+
+    window.addEventListener('scroll', handleCategoryScrollMorph, { passive: true });
 
     function onGlobalLanguageChange(langKey) {
       currentGreetingLang = langKey;
@@ -964,6 +1005,7 @@
       currentLangKey = langKey;
       currentCategory = 'greetings';
       currentMode = 'native';
+      isCategoriesCompact = false;
 
       const topSelect = document.getElementById('topGreetingLangSelect');
       if (topSelect) topSelect.value = langKey;
@@ -1006,7 +1048,7 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v3.01';
+    const CACHE_NAME = 'joybridge-cache-v3.02';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -1460,36 +1502,36 @@
         categories: { greetings: "احوال‌پرسی", everyday: "روزمره", getting_around: "مسیر و آدرس", ministry_skills: "مهارت‌های خدمت" },
         data: {
           greetings: [
-            { en: "Hello / Hi", tr: "سلام / درود", phNative: "هَلو / های", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
-            { en: "Good morning", tr: "صبح بخیر", phNative: "گود مورنینگ", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
-            { en: "My name is...", tr: "نام من ... است", phNative: "مای نِیم ایز...", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
-            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", phNative: "نایس تو میت یو", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
-            { en: "How are you?", tr: "حال شما چطور است؟", phNative: "هاو آر یو؟", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
-            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", phNative: "آیم فاین، تَنک یو", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
+            { en: "Hello / Hi", tr: "سلام / درود", ttsFa: "سَلام ، دُرود", phNative: "هَلو / های", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
+            { en: "Good morning", tr: "صبح بخیر", ttsFa: "صُبح بِخِير", phNative: "گود مورنینگ", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
+            { en: "My name is...", tr: "نام من ... است", ttsFa: "نامِ مَن ... اَست", phNative: "مای نِیم ایز...", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
+            { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", ttsFa: "اَز ديدارِتان خُوشبَختَم", phNative: "نایس تو میت یو", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
+            { en: "How are you?", tr: "حال شما چطور است؟", ttsFa: "حالِ شُما تْشِطُور اَست؟", phNative: "هاو آر یو؟", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
+            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", ttsFa: "خُوبَم، مُتِشَكِّرَم", phNative: "آیم فاین، تَنک یو", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
           ],
           everyday: [
-            { en: "Please", tr: "لطفاً", phNative: "پلیز", phEng: "لُطفاً (LOHT-fan)" },
-            { en: "Thank you", tr: "سپاسگزارم / ممنون", phNative: "تَنک یو", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
-            { en: "You're welcome", tr: "خواهش می‌کنم", phNative: "یور وِلکام", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
-            { en: "Excuse me", tr: "ببخشید", phNative: "اِکسکیوز می", phEng: "بِبَخشید (beh-BAKH-sheed)" },
-            { en: "I'm sorry", tr: "متأسفم", phNative: "آیم ساری", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
-            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", phNative: "کَن یو هِلپ می؟", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
+            { en: "Please", tr: "لطفاً", ttsFa: "لُطفاً", phNative: "پلیز", phEng: "لُطفاً (LOHT-fan)" },
+            { en: "Thank you", tr: "سپاسگزارم / ممنون", ttsFa: "سِباسْكُزارَم ، مَمنُون", phNative: "تَنک یو", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
+            { en: "You're welcome", tr: "خواهش می‌کنم", ttsFa: "خاهِش مِيكُنَم", phNative: "یور وِلکام", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
+            { en: "Excuse me", tr: "ببخشید", ttsFa: "بِبَخشِيد", phNative: "اِکسکیوز می", phEng: "بِبَخشید (beh-BAKH-sheed)" },
+            { en: "I'm sorry", tr: "متأسفم", ttsFa: "مُتِأَسِّفَم", phNative: "آیم ساری", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
+            { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", ttsFa: "مِيتَوانِيد كُمَكَم كُنِيد؟", phNative: "کَن یو هِلپ می؟", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
           ],
           getting_around: [
-            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", phNative: "وِر ایز دِ بَثروم؟", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
-            { en: "How much is this?", tr: "قیمت این چقدر است؟", phNative: "هاو ماچ ایز دیس؟", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
-            { en: "I would like...", tr: "من میخواهم...", phNative: "آی وود لایک...", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
-            { en: "I don't understand", tr: "متوجه نمی‌شوم", phNative: "آی دُنت آندِرستَند", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
-            { en: "What time is it?", tr: "ساعت چند است؟", phNative: "وات تایم ایز ایت؟", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
+            { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", ttsFa: "دَستْشُويِي كُجاست؟", phNative: "وِر ایز دِ بَثروم؟", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
+            { en: "How much is this?", tr: "قیمت این چقدر است؟", ttsFa: "قِيمَتِ إِين تْشِقَدْر اَست؟", phNative: "هاو ماچ ایز دیس؟", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
+            { en: "I would like...", tr: "من میخواهم...", ttsFa: "مَن مِيخاهَم...", phNative: "آی وود لایک...", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
+            { en: "I don't understand", tr: "متوجه نمی‌شوم", ttsFa: "مُتَوَجِّه نِمِيشَوَم", phNative: "آی دُنت آندِرستَند", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
+            { en: "What time is it?", tr: "ساعت چند است؟", ttsFa: "ساعَت تْشَند اَست؟", phNative: "وات تایم ایز ایت؟", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
           ],
           ministry_skills: [
-            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", phNative: "آیم هَپی تو سی یو این سَن دیگو.", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
-            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی ۲۰۲۶» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", phNative: "آیم هیر تو اینوایت یو اَند یور فَمیلی تو آوِر کانوِنشِن تایتِلد «توئِنتی توئِنتی سیکس ایتِرنال هَپینِس» آن نُوامبِر توئِنتی سِوِنث این سَن دیگو، هیرز یور پِرسُنال اینویتِیشِن.", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را بِه مَجمَعِ «شادیِ جاودانی ۲۰۲۶» دَر ۲۷ نُوامبر دَر سَن دیگو دَعوَت کُنَم. بِفَرمایید، این دَعوَتنَامِه شَخصیِ شُماست. (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE 2026» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-mah-YEED, een dah-vat-nah-MEH-yeh shakh-SEE-yeh shoh-MAHST.)" },
-            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم و مِهمان هَستَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
-            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", phNative: "ویر آفِرینگ اِ فری بایبِل کورس دیس مانث.", phEng: "ما این ماه یِک دورِه رایِگانِ بَررِسیِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
-            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", phNative: "وود یو بی اینتِرِستِد این اِ فری بایبِل استادی؟", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
-            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", phNative: "دیس کورس کَن هِلپ یو آندِرستَند دِ بایبِل.", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد کِتابِ مُقَدَّس را بِهتَر دَرک کُنید (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
-            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", phNative: "دِر ایز نو چارج اَند نو آبلیگِیشِن.", phEng: "این دورِه کامِلاً رایِگان اَست و هیچ تَعَهُدی نَدارَد (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
+            { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", ttsFa: "اَز ديدارِ شُما دَر سَن دِيِغُو بِسيار خُوشحالَم.", phNative: "آیم هَپی تو سی یو این سَن دیگو.", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی ۲۰۲۶» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", ttsFa: "مَن إِينجا هَستَم تا شُما وَ خانِوادِه تان را بِه مَجمَعِ شادِيِ جاودانِي دُو هِزار وَ بِيست وَ شِش دَر بِيست وَ هَفتِ نُوامبِر دَر سَن دِيِغُو دَعوَت كُنَم. بِفَرمايِيد، إِين دَعوَت نامِه شَخصِيِ شُماست.", phNative: "آیم هیر تو اینوایت یو اَند یور فَمیلی تو آوِر کانوِنشِن تایتِلد «توئِنتی توئِنتی سیکس ایتِرنال هَپینِس» آن نُوامبِر توئِنتی سِوِنث این سَن دیگو، هیرز یور پِرسُنال اینویتِیشِن.", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را بِه مَجمَعِ «شادیِ جاودانی ۲۰۲۶» دَر ۲۷ نُوامبر دَر سَن دیگو دَعوَت کُنَم. بِفَرمایید، این دَعوَتنَامِه شَخصیِ شُماست. (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE 2026» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-mah-YEED, een dah-vat-nah-MEH-yeh shakh-SEE-yeh shoh-MAHST.)" },
+            { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", ttsFa: "مَن اَز كِشوَرِ ... آمَدِه اَم وَ مِهمان هَستَم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم و مِهمان هَستَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
+            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", ttsFa: "ما إِين ماه يِك دُورِه رايِغانِ بَررَسِيِ كِتابِ مُقَدَّس إِرائِه مِيدَهيم.", phNative: "ویر آفِرینگ اِ فری بایبِل کورس دیس مانث.", phEng: "ما این ماه یِک دورِه رایِگانِ بَررِسیِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
+            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", ttsFa: "آيا مايِل بِه بَررَسِيِ رايِغانِ كِتابِ مُقَدَّس هَستِيد؟", phNative: "وود یو بی اینتِرِستِد این اِ فری بایبِل استادی؟", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
+            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", ttsFa: "إِين دُورِه مِيتَوانَد بِه شُما كُمَك كُنَد كِتابِ مُقَدَّس را بِهتَر دَرك كُنِيد.", phNative: "دیس کورس کَن هِلپ یو آندِرستَند دِ بایبِل.", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد کِتابِ مُقَدَّس را بِهتَر دَرک کُنید (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
+            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", ttsFa: "إِين دُورِه كامِلاً رايِغان اَست وَ هِيتْش تَعَهُّدِي نَدارَد.", phNative: "دِر ایز نو چارج اَند نو آبلیگِیشِن.", phEng: "این دورِه کامِلاً رایِگان اَست و هیچ تَعَهُدی نَدارَد (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
           ]
         }
       },
@@ -1817,6 +1859,12 @@
       const container = document.getElementById('categoryContainer');
       container.innerHTML = '';
 
+      if (isCategoriesCompact) {
+        container.classList.add('compact-mode');
+      } else {
+        container.classList.remove('compact-mode');
+      }
+
       const catKeys = [
         { id: 'greetings', icon: 'fa-handshake' },
         { id: 'everyday', icon: 'fa-comments' },
@@ -1827,23 +1875,24 @@
       catKeys.forEach(cat => {
         const isActive = currentCategory === cat.id;
         const btn = document.createElement('button');
+        btn.title = `${lang.categories[cat.id]} (${categoryEnglishNames[cat.id]})`;
         btn.onclick = () => {
           currentCategory = cat.id;
           renderCategories();
           renderPhrases();
         };
 
-        btn.className = `p-3.5 sm:p-4 rounded-xl border text-left flex flex-col justify-between transition-all shadow-sm ${
+        btn.className = `cat-btn p-3.5 sm:p-4 rounded-xl border text-left flex flex-col justify-between transition-all shadow-sm ${
           isActive 
             ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-400/30' 
-            : 'bg-white/80 dark:bg-slate-800/80 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700 hover:border-indigo-400'
+            : 'bg-white/90 dark:bg-slate-800/90 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700 hover:border-indigo-400'
         }`;
 
         btn.innerHTML = `
-          <div class="flex justify-between items-center w-full mb-2">
+          <div class="cat-icon-wrap flex justify-between items-center w-full mb-2">
             <i class="fa-solid ${cat.icon} text-2xl ${isActive ? 'text-indigo-200' : 'text-indigo-600 dark:text-indigo-400'}"></i>
           </div>
-          <div>
+          <div class="cat-text-wrap">
             <div class="text-sm sm:text-base font-bold leading-tight">${lang.categories[cat.id]}</div>
             <div class="text-xs sm:text-sm italic leading-tight mt-1 ${isActive ? 'text-indigo-200' : 'text-slate-500 dark:text-slate-400'}">${categoryEnglishNames[cat.id]}</div>
           </div>
@@ -1878,72 +1927,80 @@
       }
     }
 
-    let activeAudio = null;
+    // Preload speechSynthesis voices so they are ready on first tap
+    let cachedVoices = [];
+    function loadVoices() {
+      if ('speechSynthesis' in window) {
+        cachedVoices = window.speechSynthesis.getVoices() || [];
+      }
+    }
+    loadVoices();
+    if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function normalizePersianForArabicTTS(str) {
+      return (str || '')
+        .replace(/گ/g, 'ك')
+        .replace(/چ/g, 'تش')
+        .replace(/پ/g, 'ب')
+        .replace(/ژ/g, 'ج')
+        .replace(/ی/g, 'ي')
+        .replace(/ک/g, 'ك')
+        .replace(/۰/g, '0')
+        .replace(/۱/g, '1')
+        .replace(/۲/g, '2')
+        .replace(/۳/g, '3')
+        .replace(/۴/g, '4')
+        .replace(/۵/g, '5')
+        .replace(/۶/g, '6')
+        .replace(/۷/g, '7')
+        .replace(/۸/g, '8')
+        .replace(/۹/g, '9');
+    }
 
     function speakText(text, langCode, item) {
-      if (activeAudio) {
-        activeAudio.pause();
-        activeAudio = null;
-      }
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+      if (!('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+      const voices = window.speechSynthesis.getVoices() || cachedVoices;
 
       if (langCode === 'fa-IR') {
-        const voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
-        const faVoice = voices.find(v => v.lang && (v.lang.toLowerCase().startsWith('fa') || v.lang.toLowerCase().includes('persian') || v.lang.toLowerCase().includes('farsi')));
+        // 1. Check if device has a dedicated Persian/Farsi voice installed
+        const faVoice = voices.find(v => v.lang && (
+          v.lang.toLowerCase().startsWith('fa') ||
+          v.name.toLowerCase().includes('persian') ||
+          v.name.toLowerCase().includes('farsi')
+        ));
 
         if (faVoice) {
           const utterance = new SpeechSynthesisUtterance(text);
           utterance.voice = faVoice;
-          utterance.lang = 'fa-IR';
+          utterance.lang = faVoice.lang || 'fa-IR';
           utterance.rate = 0.9;
           window.speechSynthesis.speak(utterance);
           return;
         }
 
-        // Try online Persian TTS stream, with automatic fallback to local speech synthesis
-        const ttsUrl = `https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=fa&q=${encodeURIComponent(text)}`;
-        const audio = new Audio();
-        audio.referrerPolicy = 'no-referrer';
-        audio.src = ttsUrl;
-        activeAudio = audio;
-
-        const playFallback = () => {
-          if (!('speechSynthesis' in window)) return;
-          const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
-          if (arVoice) {
-            const normalizedText = text
-              .replace(/گ/g, 'ك')
-              .replace(/چ/g, 'تش')
-              .replace(/پ/g, 'ب')
-              .replace(/ژ/g, 'ج')
-              .replace(/ی/g, 'ي')
-              .replace(/ک/g, 'ك');
-            const utterance = new SpeechSynthesisUtterance(normalizedText);
-            utterance.voice = arVoice;
-            utterance.lang = arVoice.lang;
-            utterance.rate = 0.85;
-            window.speechSynthesis.speak(utterance);
-          } else {
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'fa-IR';
-            utterance.rate = 0.9;
-            window.speechSynthesis.speak(utterance);
-          }
-        };
-
-        audio.onerror = playFallback;
-        audio.play().catch(playFallback);
+        // 2. Synchronous fallback to built-in Arabic (ar-SA) engine using vocalized Persian phonetics
+        const spokenPersianText = (item && item.ttsFa) ? item.ttsFa : normalizePersianForArabicTTS(text);
+        const utterance = new SpeechSynthesisUtterance(spokenPersianText);
+        const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+        if (arVoice) {
+          utterance.voice = arVoice;
+          utterance.lang = arVoice.lang;
+        } else {
+          utterance.lang = 'ar-SA';
+        }
+        utterance.rate = 0.88;
+        window.speechSynthesis.speak(utterance);
         return;
       }
 
-      if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        if (langCode) utterance.lang = langCode;
-        utterance.rate = 0.9;
-        window.speechSynthesis.speak(utterance);
-      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      if (langCode) utterance.lang = langCode;
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
     }
 
     function escapeHtml(str) {
