@@ -1,4 +1,21 @@
 ==========================================================================================
+Version 3.01 of 03Nov2026:
+
+Includes all requested changes:
+
+1. Version 3.01: Updated the version comment, header badge (v3.01), and service worker cache key (joybridge-cache-v3.01).
+
+2. Logo References Updated: Replaced all LOGO_Square.png references with LOGO_Circular.png.
+
+S3. hare App QR Card Added: Added the "Share the NW JoyBridge App with others" card to the bottom of the Welcome page featuring ShareNWJoyBridgeQRCode.png (linked to  [https://syberman2k.github.io/JoyBridge/ShareNWJoyBridgeQRCode.png] (https://syberman2k.github.io/JoyBridge/ShareNWJoyBridgeQRCode.png) when clicked/tapped), scanning instructions, and the direct browser link to [https://syberman2k.github.io/JoyBridge](https://syberman2k.github.io/JoyBridge).
+
+4. Persian Sound Clips Added: Enabled the Listen (Persian) audio button across all 4 categories (Greetings, Everyday, Getting Around, Ministry Skills) on the ENGLISH tab, with multi-tier audio playback fallback so Persian expressions play reliably across browsers and devices.
+
+5. Removed Official Convention Invitation Video Link: Completely removed the promo banner and link to the external convention invitation video.
+
+6. Removed Redundant "Languages" Header Button: Removed the top-right Languages button from the header and cleaned up its DOM references in the navigation functions.
+
+==========================================================================================
 Version 3.0 of 23Oct2026:
 
 1. Version 3.0 Updates: Updated the HTML header comment, the top navigation bar version badge (v3.0), and the Service Worker CACHE_NAME (joybridge-cache-v3.0).
