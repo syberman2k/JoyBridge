@@ -1,4 +1,18 @@
 ==========================================================================================
+Version 3.02 of 03Nov2026:
+
+Updated app version from 3.01 to 3.02 and modified various styles and functionalities for the category container and language selection.
+
+What Was Fixed & Updated in v3.02
+1. Sticky Morphing Category Bar (#stickyControlsWrapper):
+    -Placed the 4 category buttons (Greetings, Everyday, Getting Around, Ministry Skills) and the [Native] / [ENGLISH] mode tabs into a unified sticky container (sticky top-[60px] sm:top-[68px] z-40) locked directly beneath the top header.
+    -At the top of the page, the categories display their full cards (icons + native/English titles). When scrolling down, #categoryContainer smoothly morphs into a single 4-icon row (compact-mode), while the [Native] / [ENGLISH] toggle tabs remain right below them.
+
+2. Persian Sound Clips Fix (speakText + ttsFa):
+    -Root cause: Most mobile and desktop browsers do not ship with a native fa-IR voice installed, and the previous asynchronous audio fallback caused mobile browsers (iOS Safari and Android Chrome) to block speechSynthesis.speak() because it ran outside the synchronous tap event.
+    -Solution: Added vocalized Perso-Arabic phonetic strings (ttsFa) for all 24 Persian phrases across all 4 categories and updated speakText() to trigger window.speechSynthesis.speak() synchronously on tap—using a native Persian (fa-IR) voice if installed on the device, or immediately routing through the built-in ar-SA speech engine so Persian plays reliably on every device where Arabic works.
+
+==========================================================================================
 Version 3.01 of 03Nov2026:
 
 Includes all requested changes:
