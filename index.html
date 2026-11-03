@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.0 (23 Oct 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.01 (03 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Convention Language Helper</title>
 
   <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
-  <link rel="icon" type="image/png" href="LOGO_Square.png">
-  <link rel="apple-touch-icon" href="LOGO_Square.png">
+  <link rel="icon" type="image/png" href="LOGO_Circular.png">
+  <link rel="apple-touch-icon" href="LOGO_Circular.png">
   <meta name="theme-color" content="#4338ca">
 
   <!-- Web App Manifest for PWA Installation -->
@@ -90,17 +90,13 @@
             <i class="fa-solid fa-chevron-down"></i>
           </div>
         </div>
-
-        <button id="homeBtn" onclick="goToHome()" class="hidden text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition font-semibold">
-          <i class="fa-solid fa-earth-americas sm:mr-1"></i> <span class="hidden sm:inline">Languages</span>
-        </button>
       </div>
     </div>
 
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
       <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.0</span>
+      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.01</span>
     </div>
   </header>
 
@@ -281,6 +277,48 @@
             </span>
           </div>
         </a>
+      </div>
+
+      <!-- Share the NW JoyBridge App Card -->
+      <div class="pt-2">
+        <div class="p-5 md:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4">
+          <div class="flex items-center space-x-3.5 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-sm">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-lg sm:text-xl leading-tight">
+                Share the NW JoyBridge App with others
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                Easy QR Code &amp; Web Link Access
+              </p>
+            </div>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-700 dark:text-slate-200 text-center max-w-xl mx-auto leading-relaxed">
+            Show this QR Code to others and have them use their camera or QR Scanner App to Scan this QR Code.
+          </p>
+
+          <div class="flex flex-col items-center justify-center">
+            <a href="https://syberman2k.github.io/JoyBridge/ShareNWJoyBridgeQRCode.png" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-2xl shadow-md border-2 border-indigo-100 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 transition group" title="Tap to open full-size QR Code image">
+              <img src="ShareNWJoyBridgeQRCode.png" alt="Share the NW JoyBridge App with others QR Code" class="w-48 h-48 sm:w-56 sm:h-56 object-contain mx-auto group-hover:scale-105 transition-transform duration-200">
+            </a>
+            <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium text-center">
+              Tap or click the QR Code to open the full-screen image
+            </span>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800 text-center space-y-1">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Or they can point their web browser to:
+            </p>
+            <a href="https://syberman2k.github.io/JoyBridge" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm sm:text-base font-extrabold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 underline break-all">
+              <span>https://syberman2k.github.io/JoyBridge</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -848,7 +886,7 @@
     function onGlobalLanguageChange(langKey) {
       currentGreetingLang = langKey;
       applyGreetingLanguage(langKey);
-      
+
       const detailScreen = document.getElementById('detailScreen');
       if (!detailScreen.classList.contains('hidden') && database[langKey]) {
         selectLanguage(langKey);
@@ -861,22 +899,22 @@
 
     function applyGreetingLanguage(langKey) {
       const data = greetingTranslations[langKey] || greetingTranslations.english;
-      
+
       document.getElementById('welcomeLine1').innerText = data.welcomeLine1 || "WELCOME TO";
       document.getElementById('welcomeLine2').innerText = data.welcomeLine2 || "SAN DIEGO!";
-      
+
       document.getElementById('headerLine1').innerText = data.headerLine1 || "NW JoyBridge";
       document.getElementById('headerLine2').innerText = data.headerLine2 || "Convention Language Helper";
 
       document.getElementById('welcomeBadge').innerText = data.badge;
       document.getElementById('welcomeTitle').innerHTML = data.title;
       document.getElementById('welcomeBody').innerHTML = data.body;
-      
+
       document.getElementById('welcomeScriptureText').innerText = data.scriptureText;
       document.getElementById('welcomeScriptureCite').innerText = data.scriptureCite;
 
       document.getElementById('welcomeActionBtnText').innerText = data.actionBtn;
-      
+
       document.getElementById('videoCardTitle').innerHTML = data.videoTitle;
       document.getElementById('videoCardSubtitle').innerText = data.videoSubtitle;
       document.getElementById('videoCardCaption').innerText = data.videoCaption;
@@ -884,7 +922,7 @@
       document.getElementById('venueCardTitle').innerText = data.venueTitle;
       document.getElementById('venueCardSubtitle').innerHTML = data.venueSubtitle;
       document.getElementById('venueCardDescription').innerText = data.venueDesc;
-      
+
       document.getElementById('venuePhotoOverlayLine1').innerText = data.venuePhotoLine1;
       document.getElementById('venuePhotoOverlayLine2').innerText = data.venuePhotoLine2;
       document.getElementById('venuePhotoOverlayLine3').innerText = data.venuePhotoLine3;
@@ -912,7 +950,6 @@
       document.getElementById('welcomeScreen').classList.remove('hidden');
       document.getElementById('languageScreen').classList.add('hidden');
       document.getElementById('detailScreen').classList.add('hidden');
-      document.getElementById('homeBtn').classList.add('hidden');
       window.scrollTo(0, 0);
     }
 
@@ -920,7 +957,6 @@
       document.getElementById('welcomeScreen').classList.add('hidden');
       document.getElementById('languageScreen').classList.remove('hidden');
       document.getElementById('detailScreen').classList.add('hidden');
-      document.getElementById('homeBtn').classList.add('hidden');
       window.scrollTo(0, 0);
     }
 
@@ -947,7 +983,6 @@
       document.getElementById('welcomeScreen').classList.add('hidden');
       document.getElementById('languageScreen').classList.add('hidden');
       document.getElementById('detailScreen').classList.remove('hidden');
-      document.getElementById('homeBtn').classList.remove('hidden');
       window.scrollTo(0, 0);
     }
 
@@ -971,13 +1006,13 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v3.0';
+    const CACHE_NAME = 'joybridge-cache-v3.01';
     const CORE_ASSETS = [
       './',
       './index.html',
       './manifest.json',
-      './LOGO_Square.png',
       './LOGO_Circular.png',
+      './ShareNWJoyBridgeQRCode.png',
       './AppBKGrnd.jpg',
       './VenuePhoto.png',
       './VideoPoster.jpg'
@@ -1750,7 +1785,7 @@
     function renderLanguageGrid() {
       const grid = document.getElementById('languageButtonsGrid');
       grid.innerHTML = '';
-      
+
       const sortedKeys = Object.keys(database).sort((a, b) => {
         if (a === 'english') return -1;
         if (b === 'english') return 1;
@@ -1843,9 +1878,67 @@
       }
     }
 
-    function speakText(text, langCode) {
+    let activeAudio = null;
+
+    function speakText(text, langCode, item) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
+      }
+
+      if (langCode === 'fa-IR') {
+        const voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
+        const faVoice = voices.find(v => v.lang && (v.lang.toLowerCase().startsWith('fa') || v.lang.toLowerCase().includes('persian') || v.lang.toLowerCase().includes('farsi')));
+
+        if (faVoice) {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.voice = faVoice;
+          utterance.lang = 'fa-IR';
+          utterance.rate = 0.9;
+          window.speechSynthesis.speak(utterance);
+          return;
+        }
+
+        // Try online Persian TTS stream, with automatic fallback to local speech synthesis
+        const ttsUrl = `https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=fa&q=${encodeURIComponent(text)}`;
+        const audio = new Audio();
+        audio.referrerPolicy = 'no-referrer';
+        audio.src = ttsUrl;
+        activeAudio = audio;
+
+        const playFallback = () => {
+          if (!('speechSynthesis' in window)) return;
+          const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+          if (arVoice) {
+            const normalizedText = text
+              .replace(/گ/g, 'ك')
+              .replace(/چ/g, 'تش')
+              .replace(/پ/g, 'ب')
+              .replace(/ژ/g, 'ج')
+              .replace(/ی/g, 'ي')
+              .replace(/ک/g, 'ك');
+            const utterance = new SpeechSynthesisUtterance(normalizedText);
+            utterance.voice = arVoice;
+            utterance.lang = arVoice.lang;
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+          } else {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'fa-IR';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+          }
+        };
+
+        audio.onerror = playFallback;
+        audio.play().catch(playFallback);
+        return;
+      }
+
+      if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(text);
         if (langCode) utterance.lang = langCode;
         utterance.rate = 0.9;
@@ -1867,29 +1960,6 @@
       container.innerHTML = '';
       const list = database[currentLangKey].data[currentCategory] || [];
       const lang = database[currentLangKey];
-
-      // Dedicated Invitation Video Card above "I am happy to see you in San Diego"
-      if (currentCategory === 'ministry_skills') {
-        const videoPromoCard = document.createElement('div');
-        videoPromoCard.className = 'bg-gradient-to-r from-indigo-700 to-indigo-900 dark:from-slate-800 dark:to-indigo-950 text-white rounded-2xl p-5 sm:p-6 shadow-md border border-indigo-500/40 dark:border-indigo-800 flex flex-col sm:flex-row items-center justify-between gap-4';
-        videoPromoCard.innerHTML = `
-          <div class="flex items-center space-x-4 text-center sm:text-left">
-            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-2xl text-amber-300">
-              <i class="fa-solid fa-film"></i>
-            </div>
-            <div>
-              <div class="text-xs uppercase font-extrabold tracking-wider text-indigo-200">Official Convention Invitation Video</div>
-              <h4 class="text-lg sm:text-xl font-bold leading-tight mt-0.5">You Are Invited: 2026 “Eternal Happiness” Convention Video</h4>
-            </div>
-          </div>
-          <a href="https://www.jw.org/en/jehovahs-witnesses/conventions/2026-convention-video/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-900 font-extrabold px-5 py-3 rounded-xl shadow-md transition-all text-sm sm:text-base flex-shrink-0">
-            <i class="fa-solid fa-play"></i>
-            <span>Watch Invitation Video</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
-          </a>
-        `;
-        container.appendChild(videoPromoCard);
-      }
 
       list.forEach((item, index) => {
         const card = document.createElement('div');
@@ -1914,9 +1984,8 @@
             </div>
           `;
           container.appendChild(card);
-          document.getElementById(`btnListenEn_${index}`).onclick = () => speakText(item.en, 'en-US');
+          document.getElementById(`btnListenEn_${index}`).onclick = () => speakText(item.en, 'en-US', item);
         } else {
-          const isPersian = currentLangKey === 'persian';
           card.innerHTML = `
             <div class="space-y-2">
               <p class="text-base sm:text-lg text-slate-500 dark:text-slate-400 italic">${safeEn}</p>
@@ -1924,17 +1993,13 @@
               <p class="text-lg sm:text-xl font-bold text-indigo-600 dark:text-indigo-400 tracking-wide">🗣️ [ ${safePhEng} ]</p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap items-center justify-end gap-2.5">
-              ${!isPersian ? `
-                <button id="btnListenLang_${index}" class="text-base sm:text-lg font-bold bg-slate-100/90 dark:bg-slate-700/90 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-700 dark:text-slate-200 px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl shadow-sm transition flex items-center gap-3">
-                  <i class="fa-solid fa-volume-high text-lg sm:text-xl"></i> Listen (${lang.englishName})
-                </button>
-              ` : ''}
+              <button id="btnListenLang_${index}" class="text-base sm:text-lg font-bold bg-slate-100/90 dark:bg-slate-700/90 hover:bg-indigo-50 dark:hover:bg-slate-600 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-700 dark:text-slate-200 px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl shadow-sm transition flex items-center gap-3">
+                <i class="fa-solid fa-volume-high text-lg sm:text-xl"></i> Listen (${lang.englishName})
+              </button>
             </div>
           `;
           container.appendChild(card);
-          if (!isPersian) {
-            document.getElementById(`btnListenLang_${index}`).onclick = () => speakText(item.tr, lang.code);
-          }
+          document.getElementById(`btnListenLang_${index}`).onclick = () => speakText(item.tr, lang.code, item);
         }
       });
     }
