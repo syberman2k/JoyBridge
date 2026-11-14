@@ -1,4 +1,21 @@
 ==========================================================================================
+Version 3.03 of 14Nov2026:
+
+Update to Version 3.03, incorporating all requested changes:
+
+1. Version 3.03: Updated the HTML header comment, service worker cache key (joybridge-cache-v3.03), and the bottom-right header version indicator (v3.03).
+
+2. Top Header Redesign:
+   1) Removed the refresh button/icon (#pwaRefreshBtn).
+   b) Assigned onclick="refreshApp()" directly to NW JoyBridge in the top left (with a hover/title hint to refresh the app).
+  c) Changed the subtitle from "Convention Language Helper" to "Language Helper App" across the HTML, JavaScript defaults, and all language welcome translations.
+  d) Scaled down all top header text sizes by ~20% (text-sm sm:text-base for NW JoyBridge, text-[10px] sm:text-xs for the subtitle and action buttons, and text-[10px] for the version tag).
+
+3. "What is your name?" Added: Included "What is your name?" with native translations, native-script phonetics, and English-speaker phonetics in the Greetings category across all 20 languages.
+
+4. 4 New Languages Added: Added Catalan, Finnish, Estonian, and Greek (bringing the total to 20 languages, updating the "All 20 Languages" button text, the top language dropdown, welcome screen translations, and the full phrase database).
+
+==========================================================================================
 Version 3.02 of 03Nov2026:
 
 Updated app version from 3.01 to 3.02 and modified various styles and functionalities for the category container and language selection.
