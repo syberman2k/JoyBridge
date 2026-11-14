@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.02 (03 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.03 (14 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NW JoyBridge - Convention Language Helper</title>
+  <title>NW JoyBridge - Language Helper App</title>
 
   <!-- Browser Tab Icon (Favicon) & Apple Touch Icon -->
   <link rel="icon" type="image/png" href="LOGO_Circular.png">
@@ -50,7 +50,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-20 sm:pt-24 text-base">
+<body class="min-h-screen text-slate-800 dark:text-slate-100 flex flex-col relative transition-colors duration-200 pt-16 sm:pt-20 text-base">
 
   <!-- DYNAMIC VIEWPORT BACKGROUND IMAGE & OVERLAY -->
   <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
@@ -61,40 +61,40 @@
 
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-indigo-700/95 dark:bg-slate-900/95 backdrop-blur-md text-white shadow-md border-b border-indigo-600/60 dark:border-slate-800">
-    <div class="max-w-4xl mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between pb-3.5 sm:pb-3.5 gap-2">
-      <div class="flex items-center space-x-2.5 cursor-pointer flex-shrink-0" onclick="goToWelcome()">
-        <button id="pwaRefreshBtn" onclick="event.stopPropagation(); refreshApp();" class="p-2 rounded-lg bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 transition text-sm sm:text-base text-indigo-100" title="Refresh Application">
-          <i class="fa-solid fa-rotate-right"></i>
-        </button>
-
+    <div class="max-w-4xl mx-auto px-4 py-2 sm:py-2.5 flex items-center justify-between pb-3 sm:pb-3 gap-2">
+      <div class="flex items-center flex-shrink-0">
         <div class="text-left">
-          <h1 id="headerLine1" class="text-base sm:text-lg font-black tracking-tight leading-tight text-white drop-shadow-sm">NW JoyBridge</h1>
-          <p id="headerLine2" class="text-xs sm:text-sm text-indigo-200 dark:text-slate-300 font-semibold leading-tight">Convention Language Helper</p>
+          <h1 id="headerLine1" onclick="refreshApp()" title="Refresh Application" class="text-sm sm:text-base font-black tracking-tight leading-tight text-white drop-shadow-sm cursor-pointer hover:text-indigo-200 transition">NW JoyBridge</h1>
+          <p id="headerLine2" onclick="goToWelcome()" class="text-[10px] sm:text-xs text-indigo-200 dark:text-slate-300 font-semibold leading-tight cursor-pointer">Language Helper App</p>
         </div>
       </div>
 
       <!-- Action Buttons in Top Right -->
-      <div class="flex items-center space-x-2 sm:space-x-2.5 flex-shrink-0">
-        <button id="installBtn" onclick="installPWA()" class="hidden text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2.5 py-1.5 rounded-lg shadow-sm transition flex items-center gap-1">
+      <div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
+        <button id="installBtn" onclick="installPWA()" class="hidden text-[10px] sm:text-xs bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-2 py-1 rounded-lg shadow-sm transition flex items-center gap-1">
           <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Install</span>
         </button>
 
-        <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1" title="Greeting & Welcome Page">
+        <button id="welcomeNavBtn" onclick="goToWelcome()" class="text-[10px] sm:text-xs bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2 py-1 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition flex items-center gap-1" title="Greeting & Welcome Page">
           <i class="fa-solid fa-heart text-pink-300"></i> <span class="hidden sm:inline font-semibold">Welcome</span>
         </button>
 
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-base bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="text-xs sm:text-sm bg-indigo-800/80 hover:bg-indigo-900 dark:bg-slate-800 dark:hover:bg-slate-700 px-2 py-1 rounded-lg border border-indigo-500/50 dark:border-slate-700 transition" title="Toggle theme">
           <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
         <div class="relative inline-block">
-          <select id="topGreetingLangSelect" onchange="onGlobalLanguageChange(this.value)" class="appearance-none bg-indigo-800/90 dark:bg-slate-800 hover:bg-indigo-900 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 rounded-lg px-2.5 py-1.5 pr-7 text-xs sm:text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer shadow-sm transition max-w-[135px] sm:max-w-[210px] truncate">
+          <select id="topGreetingLangSelect" onchange="onGlobalLanguageChange(this.value)" class="appearance-none bg-indigo-800/90 dark:bg-slate-800 hover:bg-indigo-900 dark:hover:bg-slate-700 border border-indigo-500/50 dark:border-slate-700 rounded-lg px-2 py-1 pr-6 text-[10px] sm:text-xs font-bold text-white focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer shadow-sm transition max-w-[125px] sm:max-w-[190px] truncate">
             <option value="english">&#x200E;🗣️ English (English)</option>
             <option value="arabic">&#x200E;🗣️ العربية (Arabic)</option>
+            <option value="catalan">&#x200E;🗣️ Català (Catalan)</option>
             <option value="chinese">&#x200E;🗣️ 中文 (Chinese)</option>
             <option value="dutch">&#x200E;🗣️ Nederlands (Dutch)</option>
+            <option value="estonian">&#x200E;🗣️ Eesti (Estonian)</option>
+            <option value="finnish">&#x200E;🗣️ Suomi (Finnish)</option>
             <option value="french">&#x200E;🗣️ Français (French)</option>
             <option value="german">&#x200E;🗣️ Deutsch (German)</option>
+            <option value="greek">&#x200E;🗣️ Ελληνικά (Greek)</option>
             <option value="kannada">&#x200E;🗣️ ಕನ್ನಡ (Kannada)</option>
             <option value="konkani_romi">&#x200E;🗣️ Konknni Romi (Konkani)</option>
             <option value="korean">&#x200E;🗣️ 한국어 (Korean)</option>
@@ -107,7 +107,7 @@
             <option value="turkish">&#x200E;🗣️ Türkçe (Turkish)</option>
             <option value="vietnamese">&#x200E;🗣️ Tiếng Việt (Vietnamese)</option>
           </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-indigo-200 dark:text-slate-400 text-xs">
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-indigo-200 dark:text-slate-400 text-[10px]">
             <i class="fa-solid fa-chevron-down"></i>
           </div>
         </div>
@@ -115,14 +115,14 @@
     </div>
 
     <!-- Version Indicator -->
-    <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1.5">
-      <span id="offlineIndicatorDot" class="text-xs leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-xs text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.02</span>
+    <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1">
+      <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.03</span>
     </div>
   </header>
 
   <!-- Offline Status Banner -->
-  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-sm font-bold py-1.5 px-4 text-center fixed top-[60px] sm:top-[68px] left-0 right-0 z-40">
+  <div id="offlineBanner" class="hidden bg-amber-500 text-slate-900 text-sm font-bold py-1.5 px-4 text-center fixed top-[52px] sm:top-[60px] left-0 right-0 z-40">
     <i class="fa-solid fa-wifi-slash mr-1"></i> Offline Mode: JoyBridge is running from local device cache.
   </div>
 
@@ -179,7 +179,7 @@
           </button>
           <button onclick="goToHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100/90 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold px-5 py-4 rounded-xl border border-slate-200/80 dark:border-slate-700 text-base transition">
             <i class="fa-solid fa-list-ul"></i>
-            <span>All 16 Languages</span>
+            <span>All 20 Languages</span>
           </button>
         </div>
       </div>
@@ -382,7 +382,7 @@
       </div>
 
       <!-- Sticky Categories (Morphing on Scroll) + Native/English Mode Tabs -->
-      <div id="stickyControlsWrapper" class="sticky top-[60px] sm:top-[68px] z-40 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-2 sm:rounded-b-2xl border-b border-slate-200/80 dark:border-slate-800/80 transition-all shadow-sm space-y-2.5">
+      <div id="stickyControlsWrapper" class="sticky top-[52px] sm:top-[60px] z-40 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md pt-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-2 sm:rounded-b-2xl border-b border-slate-200/80 dark:border-slate-800/80 transition-all shadow-sm space-y-2.5">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="categoryContainer"></div>
 
         <div>
@@ -427,9 +427,9 @@
     function applyThemeIcon(isDark) {
       const icon = document.getElementById('themeIcon');
       if (isDark) {
-        icon.className = 'fa-solid fa-sun text-amber-400 text-base';
+        icon.className = 'fa-solid fa-sun text-amber-400 text-xs sm:text-sm';
       } else {
-        icon.className = 'fa-solid fa-moon text-indigo-100 text-base';
+        icon.className = 'fa-solid fa-moon text-indigo-100 text-xs sm:text-sm';
       }
     }
 
@@ -444,7 +444,7 @@
         welcomeLine1: "WELCOME TO",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Convention Language Helper",
+        headerLine2: "Language Helper App",
         badge: "San Diego, California • 2026",
         title: "Welcome, Dear International Delegates!",
         body: "We open our hearts and extend our arms in warm Christian love as we welcome you to the <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Eternal Happiness”</strong> International Convention. Whether you have traveled across oceans or continents, we rejoice to have you with us in sunny San Diego! We are happy you are here!",
@@ -471,7 +471,7 @@
         welcomeLine1: "أهلاً وسهلاً بكم في",
         welcomeLine2: "سان دييغو!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "المساعد اللغوي للمحفل",
+        headerLine2: "تطبيق المساعد اللغوي",
         badge: "سان دييغو، كاليفورنيا • 2026",
         title: "أهلاً وسهلاً بكم، أيها المندوبون الدوليون الأعزاء!",
         body: "نفتح قلوبنا ونمد أذرعنا بمحبة مسيحية دافئة لنرحب بكم في المحفل الأممي <strong class=\"text-indigo-700 dark:text-indigo-400\">«السعادة الأبدية ٢٠٢٦»</strong>. سواء سافرتم عبر المحيطات أو القارات، يغمرنا الفرح بوجودكم معنا في سان دييغو المشمسة! نحن سعداء جداً بوجودكم معنا!",
@@ -494,11 +494,38 @@
         waLine2: "دعم المندوبين الدوليين",
         waLine3: "مجموعة واتساب"
       },
+      catalan: {
+        welcomeLine1: "BENVINGUTS A",
+        welcomeLine2: "SAN DIEGO!",
+        headerLine1: "NW JoyBridge",
+        headerLine2: "Aplicació d'ajuda lingüística",
+        badge: "San Diego, Califòrnia • 2026",
+        title: "Benvinguts, estimats delegats internacionals!",
+        body: "Obrim el nostre cor i estenem els braços amb càlid amor cristià per donar-vos la benvinguda al Congrés Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">«Felicitat eterna 2026»</strong>. Tant si heu creuat oceans com continents, ens alegra molt tenir-vos amb nosaltres a l'assolellada San Diego! Estem molt feliços que sigueu aquí!",
+        scriptureText: "«Feliços els vostres ulls perquè veuen, i les vostres orelles perquè senten.»",
+        scriptureCite: "— Mateu 13:16",
+        actionBtn: "Obre l'ajuda lingüística (Català)",
+        videoTitle: "Benvinguts al Congrés Internacional de San Diego<br>«Felicitat eterna»! (Isaïes 26:7)",
+        videoSubtitle: "Preparatius i moments destacats del congrés",
+        videoCaption: "Vídeo dels preparatius i moments destacats del Congrés Internacional de San Diego.",
+        venueTitle: "Lloc del congrés",
+        venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 de nov. de 2026</span>",
+        venueDesc: "El San Diego Convention Center és la seu oficial del Congrés Internacional dels Testimonis de Jehovà «Felicitat eterna», que se celebrarà del 27 al 29 de novembre de 2026.",
+        venueTap: "Obre a Maps",
+        venuePhotoLine1: "LLOC DEL CONGRÉS",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27–29 de nov. de 2026",
+        venueCopyright: "Les imatges poden estar subjectes a drets d'autor . Octubre de 2020",
+        whatsAppDesc: "Uniu-vos al nostre grup exclusiu de WhatsApp <strong>ESMCHDelegatesSupport</strong> per rebre avisos d'hospitalitat, assistència local i companyia fraternal.",
+        waLine1: "Aplicació NW JoyBridge",
+        waLine2: "Suport per a Delegats",
+        waLine3: "Grup de WhatsApp"
+      },
       chinese: {
         welcomeLine1: "热烈欢迎光临",
         welcomeLine2: "圣迭戈！",
         headerLine1: "NW JoyBridge",
-        headerLine2: "大会语言交流助手",
+        headerLine2: "语言助手应用",
         badge: "加利福尼亚州圣迭戈 • 2026",
         title: "热烈欢迎亲爱的国际代表们！",
         body: "我们敞开心扉并伸出双臂，怀着满腔温暖的基督徒爱心，热烈欢迎大家参加<strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 永恒的幸福”</strong>国际大会！无论您远涉重洋还是跨越大洲，我们都无比欣喜能在阳光明媚的圣迭戈与您欢聚一堂！我们非常高兴您能来到这里！",
@@ -525,7 +552,7 @@
         welcomeLine1: "WELKOM IN",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Congrestaalhulp",
+        headerLine2: "Taalhulp-app",
         badge: "San Diego, Californië • 2026",
         title: "Welkom, Lieve Internationale Afgevaardigden!",
         body: "We openen ons hart en strekken onze armen uit in warme christelijke liefde om u van harte welkom te heten op het <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Eeuwige vreugde”</strong> internationale congres. Of u nu over oceanen of continenten hebt gereisd, we zijn intens blij om u hier bij ons in het zonnige San Diego te hebben! We zijn heel blij dat u er bent!",
@@ -548,11 +575,65 @@
         waLine2: "Hulp voor Afgevaardigden",
         waLine3: "WhatsApp-groep"
       },
+      estonian: {
+        welcomeLine1: "TERE TULEMAST",
+        welcomeLine2: "SAN DIEGOSSE!",
+        headerLine1: "NW JoyBridge",
+        headerLine2: "Keeleabi rakendus",
+        badge: "San Diego, California • 2026",
+        title: "Tere tulemast, kallid rahvusvahelised delegaadid!",
+        body: "Avame oma südamed ja sirutame käed soojas kristlikus armastuses, et tervitada teid rahvusvahelisel kokkutulekul <strong class=\"text-indigo-700 dark:text-indigo-400\">„Igavene õnn 2026”</strong>. Ükskõik kas olete reisinud üle ookeanide või mandrite, rõõmustame südamest, et olete meiega päikeselises San Diegos! Meil on nii hea meel, et olete siin!",
+        scriptureText: "„Õnnelikud on teie silmad, sest need näevad, ja teie kõrvad, sest need kuulevad.”",
+        scriptureCite: "— Matteuse 13:16",
+        actionBtn: "Ava keeleabi (Eesti)",
+        videoTitle: "Tere tulemast San Diego „Igavene õnn”<br>rahvusvahelisele kokkutulekule! (Jesaja 26:7)",
+        videoSubtitle: "Kokkutuleku ettevalmistused ja tipphetked",
+        videoCaption: "San Diego rahvusvahelise kokkutuleku ettevalmistuste ja tipphetkede video.",
+        venueTitle: "Kokkutulekupaik",
+        venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29. nov 2026</span>",
+        venueDesc: "San Diego Convention Center on Jehoova tunnistajate rahvusvahelise kokkutuleku „Igavene õnn” ametlik toimumispaik 27.–29. novembril 2026.",
+        venueTap: "Ava kaardil",
+        venuePhotoLine1: "KOKKUTULEKUPAIK",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27.–29. nov 2026",
+        venueCopyright: "Pildid võivad olla autoriõigusega kaitstud . Pildistatud: okt 2020",
+        whatsAppDesc: "Liituge meie <strong>ESMCHDelegatesSupport</strong> WhatsAppi grupiga, et saada külalislahkuse teateid, kohalikku abi ja nautida sõbralikku seltskonda.",
+        waLine1: "NW JoyBridge rakendus",
+        waLine2: "Tugi delegaatidele",
+        waLine3: "WhatsAppi grupp"
+      },
+      finnish: {
+        welcomeLine1: "TERVETULOA",
+        welcomeLine2: "SAN DIEGOON!",
+        headerLine1: "NW JoyBridge",
+        headerLine2: "Kieliapusovellus",
+        badge: "San Diego, Kalifornia • 2026",
+        title: "Tervetuloa, rakkaat kansainväliset konventtivieraat!",
+        body: "Avaamme sydämemme ja ojennamme kätemme lämpimässä kristillisessä rakkaudessa toivottaessamme teidät tervetulleiksi <strong class=\"text-indigo-700 dark:text-indigo-400\">”Ikuinen onnellisuus 2026”</strong> -kansainväliseen konventtiin. Olettepa matkustaneet yli valtamerten tai mantereiden, iloitsemme suuresti saadessamme teidät luoksemme aurinkoiseen San Diegoon! Olemme todella iloisia, että olette täällä!",
+        scriptureText: "”Onnelliset ovat teidän silmänne, koska ne näkevät, ja teidän korvanne, koska ne kuulevat.”",
+        scriptureCite: "— Matteus 13:16",
+        actionBtn: "Avaa kieliapu (Suomi)",
+        videoTitle: "Tervetuloa San Diegon ”Ikuinen onnellisuus”<br>-kansainväliseen konventtiin! (Jesaja 26:7)",
+        videoSubtitle: "Konventin valmistelut ja kohokohdat",
+        videoCaption: "San Diegon kansainvälisen konventin valmistelut ja kohokohdat -video.",
+        venueTitle: "Konventtipaikka",
+        venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29.11.2026</span>",
+        venueDesc: "San Diego Convention Center on Jehovan todistajien ”Ikuinen onnellisuus” -kansainvälisen konventin virallinen kokoontumispaikka 27.–29. marraskuuta 2026.",
+        venueTap: "Avaa kartassa",
+        venuePhotoLine1: "KONVENTTIPAIKKA",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27.–29.11.2026",
+        venueCopyright: "Kuvat voivat olla tekijänoikeuden alaisia . Kuvattu: loka 2020",
+        whatsAppDesc: "Liity <strong>ESMCHDelegatesSupport</strong>-WhatsApp-ryhmäämme saadaksesi vieraanvaraisuustiedotteita, paikallista apua ja lämmintä seuraa.",
+        waLine1: "NW JoyBridge -sovellus",
+        waLine2: "Tuki konventtivieraille",
+        waLine3: "WhatsApp-ryhmä"
+      },
       french: {
         welcomeLine1: "BIENVENUE À",
         welcomeLine2: "SAN DIEGO !",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Aide linguistique de l'assemblée",
+        headerLine2: "Application d'aide linguistique",
         badge: "San Diego, Californie • 2026",
         title: "Bienvenue, chers délégués internationaux !",
         body: "Nous vous ouvrons nos cœurs et vous tendons les bras avec un amour fraternel chaleureux pour vous accueillir à l'assemblée internationale <strong class=\"text-indigo-700 dark:text-indigo-400\">« Le bonheur éternel 2026 »</strong>. Que vous ayez traversé des océans ou des continents, c'est une joie immense de vous compter parmi nous sous le soleil de San Diego ! Nous sommes si heureux de votre présence !",
@@ -579,7 +660,7 @@
         welcomeLine1: "WILLKOMMEN IN",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Kongress-Sprachhelfer",
+        headerLine2: "Sprachhelfer-App",
         badge: "San Diego, Kalifornien • 2026",
         title: "Herzlich willkommen, liebe internationale Delegierte!",
         body: "Wir öffnen unsere Herzen und breiten unsere Arme in herzlicher christlicher Liebe aus, um Sie zum Internationalen Kongress <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Ewige Freude“</strong> willkommen zu heißen. Ob Sie über Ozeane oder Kontinente gereist sind – wir freuen uns von Herzen, Sie im sonnigen San Diego bei uns zu haben! Wir freuen uns sehr, dass Sie hier sind!",
@@ -602,11 +683,38 @@
         waLine2: "Hilfe für Delegierte",
         waLine3: "WhatsApp-Gruppe"
       },
+      greek: {
+        welcomeLine1: "ΚΑΛΩΣ ΟΡΙΣΑΤΕ ΣΤΟ",
+        welcomeLine2: "ΣΑΝ ΝΤΙΕΓΚΟ!",
+        headerLine1: "NW JoyBridge",
+        headerLine2: "Εφαρμογή Γλωσσικής Βοήθειας",
+        badge: "Σαν Ντιέγκο, Καλιφόρνια • 2026",
+        title: "Καλώς ορίσατε, αγαπητοί διεθνείς εκπρόσωποι!",
+        body: "Ανοίγουμε τις καρδιές μας και απλώνουμε την αγκαλιά μας με θερμή χριστιανική αγάπη καθώς σας καλωσορίζουμε στη Διεθνή Συνέλευση <strong class=\"text-indigo-700 dark:text-indigo-400\">«Αιώνια Ευτυχία 2026»</strong>. Είτε ταξιδέψατε διασχίζοντας ωκεανούς είτε ηπείρους, χαιρόμαστε ιδιαίτερα που σας έχουμε κοντά μας στο ηλιόλουστο Σαν Ντιέγκο! Είμαστε πολύ χαρούμενοι που είστε εδώ!",
+        scriptureText: "«Ευτυχισμένα είναι τα μάτια σας επειδή βλέπουν και τα αφτιά σας επειδή ακούν».",
+        scriptureCite: "— Ματθαίος 13:16",
+        actionBtn: "Άνοιγμα Γλωσσικής Βοήθειας (Ελληνικά)",
+        videoTitle: "Καλώς ορίσατε στη Διεθνή Συνέλευση του Σαν Ντιέγκο<br>«Αιώνια Ευτυχία»! (Ησαΐας 26:7)",
+        videoSubtitle: "Προετοιμασίες & Στιγμιότυπα της Συνέλευσης",
+        videoCaption: "Βίντεο προετοιμασιών και στιγμιότυπων της Διεθνούς Συνέλευσης του Σαν Ντιέγκο.",
+        venueTitle: "Χώρος Διεξαγωγής Συνέλευσης",
+        venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 Νοε. 2026</span>",
+        venueDesc: "Το San Diego Convention Center είναι ο επίσημος χώρος διεξαγωγής της Διεθνούς Συνέλευσης των Μαρτύρων του Ιεχωβά «Αιώνια Ευτυχία», που θα πραγματοποιηθεί από τις 27 έως τις 29 Νοεμβρίου 2026.",
+        venueTap: "Άνοιγμα στους Χάρτες",
+        venuePhotoLine1: "ΧΩΡΟΣ ΣΥΝΕΛΕΥΣΗΣ",
+        venuePhotoLine2: "San Diego Convention Center",
+        venuePhotoLine3: "27–29 Νοε. 2026",
+        venueCopyright: "Οι εικόνες ενδέχεται να υπόκεινται σε πνευματικά δικαιώματα . Οκτ. 2020",
+        whatsAppDesc: "Γίνετε μέλη της ειδικής ομάδας WhatsApp <strong>ESMCHDelegatesSupport</strong> για ενημερώσεις φιλοξενίας, τοπική βοήθεια και όμορφη συναναστροφή.",
+        waLine1: "Εφαρμογή NW JoyBridge",
+        waLine2: "Υποστήριξη Εκπροσώπων",
+        waLine3: "Ομάδα WhatsApp"
+      },
       kannada: {
         welcomeLine1: "ಸ್ವಾಗತ",
         welcomeLine2: "ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "ಸಮಾವೇಶ ಭಾಷಾ ಸಹಾಯಕ",
+        headerLine2: "ಭಾಷಾ ಸಹಾಯಕ ಆ್ಯಪ್",
         badge: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ, ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ • 2026",
         title: "ಆತ್ಮೀಯ ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ, ನಿಮಗೆ ಆತ್ಮೀಯ ಸ್ವಾಗತ!",
         body: "<strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 ಶಾಶ್ವತ ಸಂತೋಷ\"</strong> ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶಕ್ಕೆ ನಿಮ್ಮನ್ನು ಸ್ವಾಗತಿಸಲು ನಾವು ನಮ್ಮ ಹೃದಯಗಳನ್ನು ತೆರೆದು ನಮ್ಮ ತೋಳುಗಳನ್ನು ಪ್ರೀತಿಯಿಂದ ಚಾಚುತ್ತೇವೆ. ನೀವು ಸಾಗರಗಳನ್ನು ದಾಟಿ ಬಂದಿರಲಿ, ಬಿಸಿಲು ತುಂಬಿದ ಸ್ಯಾನ್ ಡಿಯಾಗೋದಲ್ಲಿ ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದಕ್ಕೆ ನಾವು ಅಪಾರವಾಗಿ ಸಂತೋಷಪಡುತ್ತೇವೆ! ನೀವು ಇಲ್ಲಿರುವುದಕ್ಕೆ ನಮಗೆ ತುಂಬಾ ಸಂತೋಷವಾಗಿದೆ!",
@@ -633,7 +741,7 @@
         welcomeLine1: "BOREM YEUKOR",
         welcomeLine2: "SAN DIEGO-NT!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Mellachi Bhas Adar",
+        headerLine2: "Bhas Adar App",
         badge: "San Diego, California • 2026",
         title: "Mogachea Sonvsarik Pratinidhimno, Tumkam Borem Yeukor!",
         body: "Ami amchim kallzam ugttim korun ani Kristi mogan hath vistaron tumkam <strong class=\"text-indigo-700 dark:text-indigo-400\">“2026 Sodankalchem Dhadosponn”</strong> Sonvsarik Mellak borem yeukor mhonnttat. Tumi dori vo khonddam utrun ailat, hea boro vell aslelea San Diego xarant tumche sangata asonk amkam vhodd kuxalkai bhogta! Tumi hanga asat mhonn amkam khub khuxi bhogli!",
@@ -660,7 +768,7 @@
         welcomeLine1: "환영합니다",
         welcomeLine2: "샌디에이고에 오신 것을!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "대회 언어 도우미",
+        headerLine2: "언어 도우미 앱",
         badge: "캘리포니아주 샌디에이고 • 2026",
         title: "국제 대표자 여러분을 따뜻한 사랑으로 환영합니다!",
         body: "우리는 따뜻한 그리스도인 사랑으로 마음을 열고 두 팔을 활짝 벌려 여러분을 <strong class=\"text-indigo-700 dark:text-indigo-400\">\"2026 영원한 행복\"</strong> 국제대회에 진심으로 환영합니다. 바다와 대륙을 건너 이곳 햇살 가득한 샌디에이고를 찾아주신 여러분과 함께하게 되어 크나큰 기쁨을 느낍니다! 여러분과 함께하게 되어 정말 행복합니다!",
@@ -687,7 +795,7 @@
         welcomeLine1: "خوش آمدید به",
         welcomeLine2: "سن دیگو!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "راهنمای زبان مجمع",
+        headerLine2: "اپلیکیشن راهنمای زبان",
         badge: "سن دیگو، کالیفرنیا • 2026",
         title: "به گرمی به شما نمایندگان گرامی بین‌المللی خوش‌آمد می‌گوییم!",
         body: "ما دل‌های خود را می‌گشاییم و آغوش پرمهر مسیحی خود را باز می‌کنیم تا ورود شما را به مجمع بین‌المللی <strong class=\"text-indigo-700 dark:text-indigo-400\">«شادی جاودانی ۲۰۲۶»</strong> گرامی بداریم. چه از اقیانوس‌ها گذشته باشید چه از قاره‌ها، از حضور پرمهر شما در سن دیگوی آفتابی بی‌نهایت شادمانیم! از حضور شما در اینجا بسیار خوشحالیم!",
@@ -714,7 +822,7 @@
         welcomeLine1: "WITAJCIE W",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Pomoc językowa na kongresie",
+        headerLine2: "Aplikacja pomocy językowej",
         badge: "San Diego, Kalifornia • 2026",
         title: "Witajcie, Drodzy Międzynarodowi Delegaci!",
         body: "Otwieramy nasze serca i wyciągamy ramiona z gorącą chrześcijańską miłością, witając Was na Kongresie Międzynarodowym pod hasłem <strong class=\"text-indigo-700 dark:text-indigo-400\">„Wieczne szczęście 2026”</strong>. Niezależnie od tego, czy przemierzyliście oceany czy kontynenty, ogromnie się cieszymy, że jesteście z nami w słonecznym San Diego! Bardzo się cieszymy, że tu jesteście!",
@@ -741,7 +849,7 @@
         welcomeLine1: "ДОБРО ПОЖАЛОВАТЬ В",
         welcomeLine2: "САН-ДИЕГО!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Языковой помощник конгресса",
+        headerLine2: "Приложение языкового помощника",
         badge: "Сан-Диего, Калифорния • 2026",
         title: "Добро пожаловать, дорогие международные делегаты!",
         body: "Мы открываем наши сердца и простираем объятия с теплой христианской любовью, приветствуя вас на Международном конгрессе <strong class=\"text-indigo-700 dark:text-indigo-400\">«Вечное счастье 2026»</strong>! Пересекли ли вы океаны или континенты, мы безмерно рады приветствовать вас в солнечном Сан-Диего! Мы очень счастливы, что вы здесь!",
@@ -768,7 +876,7 @@
         welcomeLine1: "DOBRODOŠLI V",
         welcomeLine2: "SAN DIEGU!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Zborovalni jezikovni pripomoček",
+        headerLine2: "Aplikacija za jezikovno pomoč",
         badge: "San Diego, Kalifornija • 2026",
         title: "Dobrodošli, dragi mednarodni delegati!",
         body: "Odpiramo svoja srca in roke v topli krščanski ljubezni ter vas pozdravljamo na mednarodnem zborovanju <strong class=\"text-indigo-700 dark:text-indigo-400\">»Večna sreča 2026«</strong>. Ne glede na to, ali ste potovali čez oceane ali celine, se nadvse veselimo vaše navzočnosti v sončnem San Diegu! Zelo smo veseli, da ste tukaj!",
@@ -795,7 +903,7 @@
         welcomeLine1: "BIENVENIDOS A",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Ayuda de idiomas para la asamblea",
+        headerLine2: "Aplicación de ayuda de idiomas",
         badge: "San Diego, California • 2026",
         title: "¡Bienvenidos, queridos delegados internacionales!",
         body: "Les abrimos nuestro corazón y les extendemos los brazos con cálido amor cristiano para darles la más sincera bienvenida a la Asamblea Internacional <strong class=\"text-indigo-700 dark:text-indigo-400\">“Felicidad eterna 2026”</strong>. Ya sea que hayan cruzado océanos o continentes, ¡nos llena de gozo tenerlos con nosotros en la soleada San Diego! ¡Estamos muy felices de que estén aquí!",
@@ -822,7 +930,7 @@
         welcomeLine1: "MALIGAYANG PAGDATING SA",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Pantulong sa Wika para sa Kombensiyon",
+        headerLine2: "App na Pantulong sa Wika",
         badge: "San Diego, California • 2026",
         title: "Maligayang Pagdating, Mahal naming mga Internasyonal na Delegado!",
         body: "Binubuksan namin ang aming mga puso at iniuunat ang aming mga bisig taglay ang mainit na Kristiyanong pag-ibig sa pagsalubong sa inyo sa <strong class=\"text-indigo-700 dark:text-indigo-400\">“Walang-Hanggang Kaligayahan 2026”</strong> Internasyonal na Kombensiyon. Tumawid man kayo ng mga karagatan o kontinente, labis ang aming kagalakan na makasama kayo rito sa maaraw na San Diego! Masaya kaming nandito kayo!",
@@ -849,7 +957,7 @@
         welcomeLine1: "HOŞ GELDİNİZ",
         welcomeLine2: "SAN DIEGO'YA!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Bölge Kongresi Dil Yardımcısı",
+        headerLine2: "Dil Yardımcısı Uygulaması",
         badge: "San Diego, Kaliforniya • 2026",
         title: "Değerli Uluslararası Delegelerimiz, Hoş Geldiniz!",
         body: "Sizleri sıcak Hristiyan sevgisiyle kollarımızı ve kalbimizi açarak <strong class=\"text-indigo-700 dark:text-indigo-400\">„2026 Sonsuz Mutluluk”</strong> Uluslararası Bölge Kongresi’nde karşılamaktan büyük sevinç duyuyoruz. Okyanusları veya kıtaları aşmış olun, güneşli San Diego’da bizimle birlikte olmanızdan ötürü çok mutluyuz! Burada olmanızdan dolayı çok mutluyuz!",
@@ -876,7 +984,7 @@
         welcomeLine1: "NỒNG NHIỆT CHÀO MỪNG ĐẾN",
         welcomeLine2: "SAN DIEGO!",
         headerLine1: "NW JoyBridge",
-        headerLine2: "Trợ giúp ngôn ngữ Đại hội",
+        headerLine2: "Ứng dụng Trợ giúp Ngôn ngữ",
         badge: "San Diego, California • 2026",
         title: "Nồng nhiệt chào đón quý đại biểu quốc tế!",
         body: "Chúng tôi mở rộng tấm lòng và dang rộng vòng tay với tình yêu thương ấm áp của anh em đồng đạo để chào đón quý vị đến với Đại hội Quốc tế <strong class=\"text-indigo-700 dark:text-indigo-400\">“Hạnh phúc vĩnh cửu 2026”</strong>. Dù đã vượt qua đại dương hay châu lục, chúng tôi vô cùng hân hoan khi có quý vị tại thành phố San Diego tràn ngập ánh nắng! Chúng tôi rất vui mừng vì sự hiện diện của quý vị!",
@@ -945,7 +1053,7 @@
       document.getElementById('welcomeLine2').innerText = data.welcomeLine2 || "SAN DIEGO!";
 
       document.getElementById('headerLine1').innerText = data.headerLine1 || "NW JoyBridge";
-      document.getElementById('headerLine2').innerText = data.headerLine2 || "Convention Language Helper";
+      document.getElementById('headerLine2').innerText = data.headerLine2 || "Language Helper App";
 
       document.getElementById('welcomeBadge').innerText = data.badge;
       document.getElementById('welcomeTitle').innerHTML = data.title;
@@ -1014,7 +1122,7 @@
 
       const langData = database[langKey];
       document.getElementById('detailLangName').innerText = langData.name;
-      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Convention Language Helper`;
+      document.getElementById('detailLangSub').innerText = `${langData.englishName} • Language Helper App`;
 
       document.getElementById('tabNativeText').innerText = langData.name.toUpperCase();
 
@@ -1048,7 +1156,7 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v3.02';
+    const CACHE_NAME = 'joybridge-cache-v3.03';
     const CORE_ASSETS = [
       './',
       './index.html',
@@ -1144,6 +1252,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Hello / Hi", phNative: "Hel-lo / Hy", phEng: "HEL-loh / HY" },
             { en: "Good morning", tr: "Good morning", phNative: "Gud mor-ning", phEng: "GOOD MOR-ning" },
+            { en: "What is your name?", tr: "What is your name?", phNative: "Wat iz yur neym?", phEng: "WUHT IZ YOOR NAYM?" },
             { en: "My name is...", tr: "My name is...", phNative: "My neym iz...", phEng: "MY NAYM IZ..." },
             { en: "Nice to meet you", tr: "Nice to meet you", phNative: "Nays tu mit yu", phEng: "NYS TOO MEET YOO" },
             { en: "How are you?", tr: "How are you?", phNative: "Haw ar yu?", phEng: "HOW AHR YOO?" },
@@ -1184,6 +1293,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "مرحباً / أهلاً", phNative: "هَلَو / هاي", phEng: "MAR-hah-bahn / AH-lan" },
             { en: "Good morning", tr: "صباح الخير", phNative: "غود مورنينغ", phEng: "sah-BAHH al-KHAYR" },
+            { en: "What is your name?", tr: "ما اسمك؟", phNative: "وات إز يور نيم؟", phEng: "MAH IS-mook?" },
             { en: "My name is...", tr: "اسمي...", phNative: "ماي نيم إز...", phEng: "IS-mee..." },
             { en: "Nice to meet you", tr: "تشرفت بمعرفتك", phNative: "نايس تو ميت يو", phEng: "tah-SHAR-raf-too bee-mah-ree-FAH-tik" },
             { en: "How are you?", tr: "كيف حالك؟", phNative: "هاو آر يو؟", phEng: "KAY-fah HAH-look?" },
@@ -1215,6 +1325,47 @@
           ]
         }
       },
+      catalan: {
+        name: "Català",
+        englishName: "Catalan",
+        code: "ca-ES",
+        categories: { greetings: "Salutacions", everyday: "Quotidià", getting_around: "Desplaçar-se", ministry_skills: "Habilitats per predicar" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hola", phNative: "Helou / Hai", phEng: "OH-lah" },
+            { en: "Good morning", tr: "Bon dia", phNative: "Gud morning", phEng: "bohn DEE-ah" },
+            { en: "What is your name?", tr: "Com et dius? / Com es diu?", phNative: "Uat is iur neim?", phEng: "kohm eht DEE-oos? / kohm ehs DEE-oo?" },
+            { en: "My name is...", tr: "Em dic...", phNative: "Mai neim is...", phEng: "uhm DEEK..." },
+            { en: "Nice to meet you", tr: "Molt de gust / Encantat(da)", phNative: "Nais tu mit iu", phEng: "mohl duh GOOST / uhn-kuhn-TAHT(dah)" },
+            { en: "How are you?", tr: "Com estàs? / Com està?", phNative: "Hau ar iu?", phEng: "kohm uhs-TAHS? / kohm uhs-TAH?" },
+            { en: "I'm fine, thank you", tr: "Molt bé, gràcies", phNative: "Aim fain, zenk iu", phEng: "mohl BEH, GRAH-syuhs" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Si us plau", phNative: "Plis", phEng: "sees PLOW" },
+            { en: "Thank you", tr: "Gràcies / Moltes gràcies", phNative: "Zenk iu", phEng: "GRAH-syuhs / MOHL-tuhs GRAH-syuhs" },
+            { en: "You're welcome", tr: "De res", phNative: "Iur uelcam", phEng: "duh REHS" },
+            { en: "Excuse me", tr: "Disculpi / Perdoni", phNative: "Ekskius mi", phEng: "dees-KOOL-pee / puhr-DOH-nee" },
+            { en: "I'm sorry", tr: "Ho sento / Perdó", phNative: "Aim sori", phEng: "oo SEHN-too / puhr-DOH" },
+            { en: "Can you help me?", tr: "Em pot ajudar?", phNative: "Ken iu help mi?", phEng: "uhm POHT ah-zhoo-DAH?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "On és el lavabo?", phNative: "Uer is da bazrum?", phEng: "ohn EHS uhl lah-BAH-boo?" },
+            { en: "How much is this?", tr: "Quant val això?", phNative: "Hau matx is dis?", phEng: "kwahn BAHL ah-SHOH?" },
+            { en: "I would like...", tr: "Voldria...", phNative: "Ai uud laik...", phEng: "bool-DREE-ah..." },
+            { en: "I don't understand", tr: "No ho entenc", phNative: "Ai dont anderstand", phEng: "noh oo uhn-TEHNG" },
+            { en: "What time is it?", tr: "Quina hora és?", phNative: "Uat taim is it?", phEng: "KEE-nah OH-rah EHS?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Estic molt content(a) de veure't aquí a San Diego!", phNative: "Aim hapi tu si iu in San Diego.", phEng: "uhs-TEEK mohl koon-TEHN(tah) duh BEW-ruht ah-KEE ah San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Sóc aquí per convidar-lo a vostè i a la seva família al nostre congrés titulat «Felicitat eterna 2026», el 27 de novembre a San Diego. Aquí té la seva invitació personal.", phNative: "Aim hir tu invait iu end iur fàmili tu auer konvenxon taitold «tuenti tuenti siks iternal hapines» on novèmber tuenti sevent in San Diego, hirz iur pèrsonal inviteixon.", phEng: "sohk ah-KEE puhr koon-bee-DAHR-loo ah boos-TEH ee ah lah SEH-bah fah-MEE-lyah uhl NOHS-truh koon-GREHS tee-too-LAHT «Feh-lee-see-TAHT uh-TEHR-nah 2026», uhl been-tee-SEHT duh noo-BEHM-brah ah San Diego. ah-KEE TEH lah SEH-bah een-bee-tah-SYOH puhr-soo-NAHL." },
+            { en: "I am visiting from ...(country)", tr: "Estic de visita des de ...(país).", phNative: "Aim viziting from ...(kantri)", phEng: "uhs-TEEK duh bee-ZEE-tah dehs duh ...(pah-EES)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Aquest mes oferim un curs bíblic gratuït.", phNative: "Uir ofering a fri baibol kors...", phEng: "ah-KEHT mehs oo-fuh-REEM oon koors BEE-bleek grah-too-EET." },
+            { en: "Would you be interested in a free Bible study?", tr: "Li agradaria provar un curs bíblic gratuït?", phNative: "Uud iu bi interested...", phEng: "lee ah-grah-dah-REE-ah proo-BAH oon koors BEE-bleek grah-too-EET?" },
+            { en: "This course can help you understand the Bible.", tr: "Aquest curs el pot ajudar a entendre la Bíblia.", phNative: "Dis kors ken help iu...", phEng: "ah-KEHT koors uhl POHT ah-zhoo-DAH ah uhn-TEHN-druh lah BEE-blyah." },
+            { en: "There is no charge and no obligation.", tr: "És totalment gratuït i sense cap compromís.", phNative: "Der is no txardj...", phEng: "ehs too-tahl-MEHN grah-too-EET ee SEHN-suh kahp koom-proo-MEES." }
+          ]
+        }
+      },
       chinese: {
         name: "中文 (普通话)",
         englishName: "Chinese (Mandarin)",
@@ -1224,6 +1375,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "你好 / 嗨", phNative: "哈喽 / 嗨 (Hā-lóu / Hāi)", phEng: "NEE-HOW / HY" },
             { en: "Good morning", tr: "早上好", phNative: "古德 摸宁 (Gǔ-dé mō-níng)", phEng: "DZOW-shuhng HOW" },
+            { en: "What is your name?", tr: "你叫什么名字？", phNative: "瓦特 伊兹 尤尔 耐姆 (Wǎ-tè yī-zī yóu-ěr nài-mǔ)", phEng: "NEE JYAOW SHUHN-muh MING-zuh?" },
             { en: "My name is...", tr: "我的名字是...", phNative: "麦 耐姆 伊兹 (Mài nài-mǔ yī-zī)", phEng: "WOH-duh MING-zuh SHUH..." },
             { en: "Nice to meet you", tr: "很高兴认识你", phNative: "耐斯 吐 密特 尤 (Nài-sī tǔ mì-tè yóu)", phEng: "HUHN gow-SHING RUHN-shuh NEE" },
             { en: "How are you?", tr: "你好吗？", phNative: "豪 阿 尤 (Háo ā yóu)", phEng: "NEE HOW MAH?" },
@@ -1264,6 +1416,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Hallo / Hoi", phNative: "Hè-lo / Haai", phEng: "HAH-loh / HOY" },
             { en: "Good morning", tr: "Goedemorgen", phNative: "Goed mor-ning", phEng: "KHOO-duh-MOR-khun" },
+            { en: "What is your name?", tr: "Hoe heet u? / Wat is uw naam?", phNative: "Wat is joer neem?", phEng: "HOO HAYT oo? / VAHT iss ew NAHM?" },
             { en: "My name is...", tr: "Mijn naam is...", phNative: "Maai neem is...", phEng: "MAYN NAHM ISS..." },
             { en: "Nice to meet you", tr: "Aangenaam kennis te maken", phNative: "Nais toe miet joe", phEng: "AHN-khuh-NAHM KEH-nis tuh MAH-kun" },
             { en: "How are you?", tr: "Hoe gaat het?", phNative: "Hauw aar joe?", phEng: "HOO KHAHT HET?" },
@@ -1295,6 +1448,88 @@
           ]
         }
       },
+      estonian: {
+        name: "Eesti",
+        englishName: "Estonian",
+        code: "et-EE",
+        categories: { greetings: "Tervitused", everyday: "Igapäevane", getting_around: "Liikumine", ministry_skills: "Kuulutustöö" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Tere / Tervist", phNative: "Hel-lou / Hai", phEng: "TEH-reh / TEHR-vist" },
+            { en: "Good morning", tr: "Tere hommikust", phNative: "Gud mor-ning", phEng: "TEH-reh HOHM-mee-koost" },
+            { en: "What is your name?", tr: "Mis teie nimi on? / Mis su nimi on?", phNative: "Uat is jor neim?", phEng: "miss TAY-yeh NEE-mee ohn?" },
+            { en: "My name is...", tr: "Minu nimi on...", phNative: "Mai neim is...", phEng: "MEE-noo NEE-mee ohn..." },
+            { en: "Nice to meet you", tr: "Meeldiv tutvuda", phNative: "Nais tu miit ju", phEng: "MAYL-div TOOT-voo-dah" },
+            { en: "How are you?", tr: "Kuidas läheb?", phNative: "Hau aar ju?", phEng: "KOO-ee-dahs LAH-heb?" },
+            { en: "I'm fine, thank you", tr: "Hästi, aitäh", phNative: "Aim fain, tänk ju", phEng: "HAHS-tee, eye-TAH" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Palun", phNative: "Pliis", phEng: "PAH-loon" },
+            { en: "Thank you", tr: "Aitäh / Tänan", phNative: "Tänk ju", phEng: "eye-TAH / TAH-nahn" },
+            { en: "You're welcome", tr: "Pole tänu väärt / Palun", phNative: "Jor vel-kam", phEng: "POH-leh TAH-noo VAART" },
+            { en: "Excuse me", tr: "Vabandage / Vabandust", phNative: "Eks-kjuus mi", phEng: "VAH-bahn-dah-geh" },
+            { en: "I'm sorry", tr: "Vabandust / Mul on kahju", phNative: "Aim sor-ri", phEng: "VAH-bahn-doost" },
+            { en: "Can you help me?", tr: "Kas te saate mind aidata?", phNative: "Kän ju help mi?", phEng: "kahs teh SAH-teh meend EYE-dah-tah?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Kus on tualett?", phNative: "Veer is dö baas-ruum?", phEng: "koos ohn twah-LET?" },
+            { en: "How much is this?", tr: "Kui palju see maksab?", phNative: "Hau matš is dis?", phEng: "koo-ee PAHL-yoo say MAHK-sahb?" },
+            { en: "I would like...", tr: "Ma sooviksin...", phNative: "Ai vud laik...", phEng: "mah SOH-veek-seen..." },
+            { en: "I don't understand", tr: "Ma ei saa aru", phNative: "Ai dount an-der-ständ", phEng: "mah ay SAH AH-roo" },
+            { en: "What time is it?", tr: "Mis kell on?", phNative: "Uat taim is it?", phEng: "miss KELL ohn?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Mul on nii hea meel teid San Diegos näha!", phNative: "Aim häp-pi tu sii ju in San Diego.", phEng: "mool ohn nee HAY-ah mayl tayd San Diegos NAH-hah!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tulin kutsuma teid ja teie peret meie kokkutulekule „Igavene õnn 2026”, mis toimub 27. novembril San Diegos. Siin on teie isiklik kutse.", phNative: "Aim hiir tu invait ju änd jor fämili tu auer konvenšn taitld «tventi tventi siks i-törnl häpines» on novembr tventi sevent in San Diego, hiirz jor pörsonl inviteišn.", phEng: "TOO-leen KOOT-soo-mah tayd yah TAY-yeh PEH-ret MAY-yeh KOHK-koo-too-leh-koo-leh „EE-gah-veh-neh UHN 2026”, miss TOY-moob KAHKS-koom-mend SAYT-seh-mehn-dahl noh-VEM-breel San Diegos. seen ohn TAY-yeh EE-seek-leek KOOT-seh." },
+            { en: "I am visiting from ...(country)", tr: "Olen külas ...(riik).", phNative: "Aim viziting from ...(kantri)", phEng: "OH-len KOO-lahs ...(reek)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Pakume sel kuul tasuta piiblikursust.", phNative: "Viir ofering ö frii baibl koors...", phEng: "PAH-koo-meh sell kool TAH-soo-tah PEEB-lee-koor-soost." },
+            { en: "Would you be interested in a free Bible study?", tr: "Kas te oleksite huvitatud tasuta piiblikursusest?", phNative: "Vud ju bi intrested...", phEng: "kahs teh OH-lek-see-teh HOO-vee-tah-tood TAH-soo-tah PEEB-lee-koor-soo-sest?" },
+            { en: "This course can help you understand the Bible.", tr: "See kursus aitab teil Piiblit mõista.", phNative: "Dis koors kän help ju...", phEng: "say KOOR-soos EYE-tahb tayl PEEB-leet MOYS-tah." },
+            { en: "There is no charge and no obligation.", tr: "See on täiesti tasuta ega kohusta millekski.", phNative: "Deer is nou tšaardž...", phEng: "say ohn TAY-es-tee TAH-soo-tah EH-gah KOH-hoos-tah MEEL-leks-kee." }
+          ]
+        }
+      },
+      finnish: {
+        name: "Suomi",
+        englishName: "Finnish",
+        code: "fi-FI",
+        categories: { greetings: "Tervehdykset", everyday: "Arkikieli", getting_around: "Liikkuminen", ministry_skills: "Palvelustaidot" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Hei / Terve / Moi", phNative: "Helou / Hai", phEng: "HAY / TEHR-veh / MOY" },
+            { en: "Good morning", tr: "Hyvää huomenta", phNative: "Gud morning", phEng: "HEW-vaa HOO-oh-men-tah" },
+            { en: "What is your name?", tr: "Mikä sinun nimesi on? / Mikä nimenne on?", phNative: "Wat is jor neim?", phEng: "MEE-ka SEE-noon NEE-meh-see ohn?" },
+            { en: "My name is...", tr: "Minun nimeni on...", phNative: "Mai neim is...", phEng: "MEE-noon NEE-meh-nee ohn..." },
+            { en: "Nice to meet you", tr: "Hauska tutustua", phNative: "Nais tu miit juu", phEng: "HOWS-kah TOO-toos-too-ah" },
+            { en: "How are you?", tr: "Mitä kuuluu?", phNative: "Hau aar juu?", phEng: "MEE-ta KOO-loo?" },
+            { en: "I'm fine, thank you", tr: "Kiitos, hyvää", phNative: "Aim fain, tänk juu", phEng: "KEE-tohs, HEW-vaa" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Ole hyvä / Kiitos", phNative: "Pliis", phEng: "OH-leh HEW-va / KEE-tohs" },
+            { en: "Thank you", tr: "Kiitos", phNative: "Tänk juu", phEng: "KEE-tohs" },
+            { en: "You're welcome", tr: "Ole hyvä / Eipä kestä", phNative: "Jor velkam", phEng: "OH-leh HEW-va / AY-pa KES-ta" },
+            { en: "Excuse me", tr: "Anteeksi", phNative: "Ekskjuus mii", phEng: "AHN-tayk-see" },
+            { en: "I'm sorry", tr: "Olen pahoillani / Anteeksi", phNative: "Aim sori", phEng: "OH-len PAH-hoyl-lah-nee" },
+            { en: "Can you help me?", tr: "Voitteko auttaa minua?", phNative: "Kän juu help mii?", phEng: "VOYT-teh-koh OWT-taa MEE-noo-ah?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Missä on wc (vessa)?", phNative: "Veer is dö baathruum?", phEng: "MEES-sa ohn VES-sah?" },
+            { en: "How much is this?", tr: "Paljonko tämä maksaa?", phNative: "Hau matš is dis?", phEng: "PAHL-yohn-koh TA-ma MAHK-saa?" },
+            { en: "I would like...", tr: "Haluaisin...", phNative: "Ai wud laik...", phEng: "HAH-loo-eye-seen..." },
+            { en: "I don't understand", tr: "En ymmärrä", phNative: "Ai dount anderständ", phEng: "en EWM-mar-ra" },
+            { en: "What time is it?", tr: "Paljonko kello on?", phNative: "Wat taim is it?", phEng: "PAHL-yohn-koh KEL-loh ohn?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "On ilo nähdä teidät San Diegossa!", phNative: "Aim häpi tu sii juu in San Diego.", phEng: "ohn EE-loh NAH-da TAY-dat San Diegossa!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Olen täällä kutsumassa teidät ja perheenne ”Ikuinen onnellisuus 2026” -konventtiimme 27. marraskuuta San Diegossa. Tässä on henkilökohtainen kutsunne.", phNative: "Aim hiir tu invait juu änd jor fämili tu auer konvenšn taitld «twenti twenti siks i-törnl häpines» on novembör twenti sevent in San Diego, hiirz jor pörsönl inviteišn.", phEng: "OH-len TAA-lla KOOT-soo-mahs-sah TAY-dat yah PEHR-hayn-neh ”EE-koo-ee-nen OHN-nel-lee-soos 2026” -kohn-VENT-teem-meh KAHK-see-kewm-men-en-ten-a SAYT-seh-man-ten-a MAHR-rahs-koo-tah San Diegossa. TAS-sa ohn HEN-kee-loh-koh-tah-ee-nen KOOT-soon-neh." },
+            { en: "I am visiting from ...(country)", tr: "Olen vierailulla maasta ...(maa).", phNative: "Aim viziting from ...(kantri)", phEng: "OH-len VEE-eh-rye-lool-lah MAAS-tah ...(maa)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Tarjoamme tässä kuussa ilmaista raamattukurssia.", phNative: "Wiir ofering ö frii baibl koors...", phEng: "TAHR-yoh-ahm-meh TAS-sa KOOS-sah EEL-mye-stah RAA-maht-too-koors-see-ah." },
+            { en: "Would you be interested in a free Bible study?", tr: "Olisitteko kiinnostunut ilmaisesta raamattukurssista?", phNative: "Wud juu bi intrested...", phEng: "OH-lee-seet-teh-koh KEEN-nohs-too-noot EEL-mye-ses-tah RAA-maht-too-koors-sees-tah?" },
+            { en: "This course can help you understand the Bible.", tr: "Tämä kurssi voi auttaa teitä ymmärtämään Raamattua.", phNative: "Dis koors kän help juu...", phEng: "TA-ma KOORS-see voy OWT-taa TAY-ta EWM-mar-ta-maan RAA-maht-too-ah." },
+            { en: "There is no charge and no obligation.", tr: "Se on täysin ilmainen eikä sido mihinkään.", phNative: "Deer is nou tšaardž...", phEng: "seh ohn TAY-seen EEL-mye-nen AY-ka SEE-doh MEE-heen-kaan." }
+          ]
+        }
+      },
       french: {
         name: "Français",
         englishName: "French",
@@ -1304,6 +1539,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Bonjour / Salut", phNative: "Hèlo / Haï", phEng: "bohn-ZHOOR / sah-LOO" },
             { en: "Good morning", tr: "Bonjour", phNative: "Goud morningue", phEng: "bohn-ZHOOR" },
+            { en: "What is your name?", tr: "Comment vous appelez-vous ? / Comment tu t'appelles ?", phNative: "Ouate iz yor nèym ?", phEng: "koh-mahn vooz ahp-LAY voo?" },
             { en: "My name is...", tr: "Je m'appelle...", phNative: "Maï nèym iz...", phEng: "zhuh mah-PEL..." },
             { en: "Nice to meet you", tr: "Enchanté(e)", phNative: "Naïss tou mite you", phEng: "ahn-shahn-TAY" },
             { en: "How are you?", tr: "Comment allez-vous ? / Ça va ?", phNative: "Haow are you ?", phEng: "koh-mahn tah-lay VOO? / sah VAH?" },
@@ -1344,6 +1580,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Hallo", phNative: "Hällo / Hai", phEng: "HAH-loh" },
             { en: "Good morning", tr: "Guten Morgen", phNative: "Gud mourning", phEng: "GOO-ten MOR-gen" },
+            { en: "What is your name?", tr: "Wie heißen Sie? / Wie ist Ihr Name?", phNative: "Wott is juhr nehm?", phEng: "VEE HY-sen zee? / VEE ist eer NAH-muh?" },
             { en: "My name is...", tr: "Ich heiße... / Mein Name ist...", phNative: "Mei nehm is...", phEng: "Ikh HY-suh / Myn NAH-muh ist..." },
             { en: "Nice to meet you", tr: "Freut mich, Sie kennenzulernen", phNative: "Neis tu miht ju", phEng: "FROYT mikh, zee KEHN-en-tsoo-LEHR-nen" },
             { en: "How are you?", tr: "Wie geht es Ihnen?", phNative: "Hau ahr ju?", phEng: "VEE gayt ess EE-nen?" },
@@ -1375,6 +1612,47 @@
           ]
         }
       },
+      greek: {
+        name: "Ελληνικά",
+        englishName: "Greek",
+        code: "el-GR",
+        categories: { greetings: "Χαιρετισμοί", everyday: "Καθημερινά", getting_around: "Μετακίνηση", ministry_skills: "Ικανότητες στη Διακονία" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "Γεια σας / Γεια σου", phNative: "Χέλοου / Χάι", phEng: "YAH sahs / YAH soo" },
+            { en: "Good morning", tr: "Καλημέρα", phNative: "Γκουντ μόρνινγκ", phEng: "kah-lee-MEH-rah" },
+            { en: "What is your name?", tr: "Πώς σας λένε; / Πώς λέγεστε;", phNative: "Γουάτ ιζ γιορ νέιμ;", phEng: "POHS sahs LEH-neh? / POHS LEH-yeh-steh?" },
+            { en: "My name is...", tr: "Με λένε...", phNative: "Μάι νέιμ ιζ...", phEng: "meh LEH-neh..." },
+            { en: "Nice to meet you", tr: "Χάρηκα πολύ", phNative: "Νάις του μιτ γιου", phEng: "KHAH-ree-kah poh-LEE" },
+            { en: "How are you?", tr: "Τι κάνετε; / Πώς είστε;", phNative: "Χάου αρ γιου;", phEng: "TEE KAH-neh-teh? / POHS EE-steh?" },
+            { en: "I'm fine, thank you", tr: "Είμαι καλά, ευχαριστώ", phNative: "Άιμ φάιν, θενκ γιου", phEng: "EE-meh kah-LAH, ef-khah-ree-STOH" }
+          ],
+          everyday: [
+            { en: "Please", tr: "Παρακαλώ", phNative: "Πλιζ", phEng: "pah-rah-kah-LOH" },
+            { en: "Thank you", tr: "Ευχαριστώ", phNative: "Θενκ γιου", phEng: "ef-khah-ree-STOH" },
+            { en: "You're welcome", tr: "Παρακαλώ / Τίποτα", phNative: "Γιορ γουέλκαμ", phEng: "pah-rah-kah-LOH / TEE-poh-tah" },
+            { en: "Excuse me", tr: "Συγγνώμη", phNative: "Εξκιούζ μι", phEng: "see-GHNOH-mee" },
+            { en: "I'm sorry", tr: "Λυπάμαι / Συγγνώμη", phNative: "Άιμ σόρι", phEng: "lee-PAH-meh / see-GHNOH-mee" },
+            { en: "Can you help me?", tr: "Μπορείτε να με βοηθήσετε;", phNative: "Κεν γιου χελπ μι;", phEng: "boh-REE-teh nah meh voh-ee-THEE-seh-teh?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "Πού είναι η τουαλέτα;", phNative: "Γουέρ ιζ δε μπάθρουμ;", phEng: "POO EE-neh ee twah-LEH-tah?" },
+            { en: "How much is this?", tr: "Πόσο κοστίζει αυτό;", phNative: "Χάου ματς ιζ δις;", phEng: "POH-soh koh-STEE-zee af-TOH?" },
+            { en: "I would like...", tr: "Θα ήθελα...", phNative: "Άι γουντ λάικ...", phEng: "thah EE-theh-lah..." },
+            { en: "I don't understand", tr: "Δεν καταλαβαίνω", phNative: "Άι ντοντ αντερστάντ", phEng: "then kah-tah-lah-VEH-noh" },
+            { en: "What time is it?", tr: "Τι ώρα είναι;", phNative: "Γουάτ τάιμ ιζ ιτ;", phEng: "TEE OH-rah EE-neh?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "Χαίρομαι πολύ που σας βλέπω στο Σαν Ντιέγκο!", phNative: "Άιμ χάπι του σι γιου ιν Σαν Ντιέγκο.", phEng: "KHEH-roh-meh poh-LEE poo sahs VLEH-poh stoh San Diego!" },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Είμαι εδώ για να προσκαλέσω εσάς και την οικογένειά σας στη συνέλευσή μας με θέμα «Αιώνια Ευτυχία 2026» στις 27 Νοεμβρίου στο Σαν Ντιέγκο. Ορίστε η προσωπική σας πρόσκληση.", phNative: "Άιμ χίαρ του ινβάιτ γιου εντ γιορ φάμιλι του άουερ κονβένσιον τάιτλντ «τουέντι τουέντι σιξ ιτέρναλ χάπινες» ον νοβέμπερ τουέντι σέβενθ ιν Σαν Ντιέγκο, χίαρζ γιορ πέρσοναλ ινβιτέισιον.", phEng: "EE-meh eh-THOH yah nah proh-skah-LEH-soh eh-SAHS keh teen ee-koh-YEH-nee-AH sahs stee see-NEH-lef-SEE mahs meh THEH-mah «eh-OH-nee-ah ef-tee-KHEE-ah 2026» stees EE-koh-see ef-TAH noh-em-VREE-oo stoh San Diego. oh-REE-steh ee proh-soh-pee-KEE sahs PROH-sklee-see." },
+            { en: "I am visiting from ...(country)", tr: "Έχω έρθει επίσκεψη από ...(χώρα).", phNative: "Άιμ βίζιτινγκ φρομ ...(κάντρι)", phEng: "EH-khoh EHR-thee eh-PEE-skep-see ah-POH ...(KHOH-rah)." },
+            { en: "We’re offering a free Bible course this month.", tr: "Αυτόν τον μήνα προσφέρουμε δωρεάν μαθήματα της Αγίας Γραφής.", phNative: "Γουίαρ όφερινγκ ε φρι μπάιμπλ κορς...", phEng: "af-TOHN tohn MEE-nah proh-SFEH-roo-meh thoh-reh-AHN mah-THEE-mah-tah tees ah-YEE-ahs ghrah-FEES." },
+            { en: "Would you be interested in a free Bible study?", tr: "Θα σας ενδιέφερε ένα δωρεάν μάθημα της Αγίας Γραφής;", phNative: "Γουντ γιου μπι ίντρεστιντ...", phEng: "thah sahs en-thee-EH-feh-reh EH-nah thoh-reh-AHN MAH-thee-mah tees ah-YEE-ahs ghrah-FEES?" },
+            { en: "This course can help you understand the Bible.", tr: "Αυτό το πρόγραμμα μπορεί να σας βοηθήσει να κατανοήσετε την Αγία Γραφή.", phNative: "Δις κορς κεν χελπ γιου...", phEng: "af-TOH toh PROH-ghrah-mah boh-REE nah sahs voh-ee-THEE-see nah kah-tah-noh-EE-seh-teh teen ah-YEE-ah ghrah-FEE." },
+            { en: "There is no charge and no obligation.", tr: "Δεν υπάρχει καμία χρέωση ούτε υποχρέωση.", phNative: "Δερ ιζ νόου τσαρτζ...", phEng: "then ee-PAHR-khee kah-MEE-ah KHREH-oh-see OO-teh ee-poh-KHREH-oh-see." }
+          ]
+        }
+      },
       kannada: {
         name: "ಕನ್ನಡ",
         englishName: "Kannada",
@@ -1384,6 +1662,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "ನಮಸ್ಕಾರ", phNative: "ಹೆಲೋ / ಹಾಯ್", phEng: "nuh-muhs-KAH-ruh" },
             { en: "Good morning", tr: "ಶುಭೋದಯ", phNative: "ಗುಡ್ ಮಾರ್ನಿಂಗ್", phEng: "shoo-BHOH-duh-yuh" },
+            { en: "What is your name?", tr: "ನಿಮ್ಮ ಹೆಸರೇನು?", phNative: "ವಾಟ್ ಈಸ್ ಯುವರ್ ನೇಮ್?", phEng: "NEEM-muh HEH-suh-ray-noo?" },
             { en: "My name is...", tr: "ನನ್ನ ಹೆಸರು...", phNative: "ಮೈ ನೇಮ್ ಈಸ್...", phEng: "NUHN-nuh HEH-suh-roo..." },
             { en: "Nice to meet you", tr: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", phNative: "ನೈಸ್ ಟು ಮೀಟ್ ಯು", phEng: "neem-MUHN-noo bhay-tee-YAH-gid-doo sahn-TOH-shuh" },
             { en: "How are you?", tr: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", phNative: "ಹೌ ಆರ್ ಯು?", phEng: "NEE-voo hay-GEED-dee-ree?" },
@@ -1424,6 +1703,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Deo boro dis dium / Nomoskar", phNative: "Hel-lo / Hay", phEng: "DEH-oh BOH-roh DEES dyoom / noh-mohs-KAHR" },
             { en: "Good morning", tr: "Boro sokall", phNative: "Gud mor-ning", phEng: "BOH-roh soh-KAHL" },
+            { en: "What is your name?", tr: "Tumchem nanv kitem?", phNative: "Wat iz yur neym?", phEng: "toom-CHEM NAHMV kee-TEM?" },
             { en: "My name is...", tr: "Mhojem nanv...", phNative: "May neym iz...", phEng: "mhoh-JEM NAHMV..." },
             { en: "Nice to meet you", tr: "Tumkam bhettun khuxalkai bhogli", phNative: "Nays tu mit yu", phEng: "toom-KAHM bhay-TOON khoo-shahl-KYE bhog-LEE" },
             { en: "How are you?", tr: "Tumi koxe asat?", phNative: "Haw ar yu?", phEng: "too-MEE koh-SHAY ah-SAHT?" },
@@ -1464,8 +1744,9 @@
           greetings: [
             { en: "Hello / Hi", tr: "안녕하세요", phNative: "헬로 / 하이", phEng: "ahn-nyung-hah-seh-yoh" },
             { en: "Good morning", tr: "좋은 아침입니다", phNative: "굿 모닝", phEng: "joh-eun ah-cheem-eem-nee-dah" },
+            { en: "What is your name?", tr: "성함이 어떻게 되세요?", phNative: "왓 이즈 유어 네임?", phEng: "suhng-hahm-ee uh-tuhk-keh dweh-seh-yoh?" },
             { en: "My name is...", tr: "제 이름은 ... 입니다", phNative: "마이 네임 이즈...", phEng: "jeh ee-reum-eun ... eem-nee-dah" },
-            { en: "Nice to meet you", tr: "만나서 반갑습니다", phNative: "나이스 투 미트 유", phEng: "mahn-nah-suh balance-gahp-seum-nee-dah" },
+            { en: "Nice to meet you", tr: "만나서 반갑습니다", phNative: "나이스 투 미트 유", phEng: "mahn-nah-suh bahn-gahp-seum-nee-dah" },
             { en: "How are you?", tr: "어떻게 지내세요?", phNative: "하우 아 유?", phEng: "uh-tuhk-keh jee-neh-seh-yoh?" },
             { en: "I'm fine, thank you", tr: "잘 지내요, 감사합니다", phNative: "아임 파인, 땡큐", phEng: "jahl jee-neh-yoh, gahm-sah-hahm-nee-dah" }
           ],
@@ -1486,8 +1767,8 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "샌디에이고에서 뵙게 되어 정말 기쁩니다.", phNative: "아임 해피 투 씨 유 인 샌디에이고.", phEng: "San Diego-eh-suh bwehp-geh dweh-uh juhng-mahl geep-peum-nee-dah." },
-            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "11월 27일 샌디에이고에서 열리는 \"2026 영원한 행복\" 대회의 초대장을 전해 드리고자 합니다. 가족과 함께 꼭 참석해 보세요.", phNative: "아임 히어 투 인바이트 유 앤드 유어 패밀리 투 아워 컨벤션 타이틀드 «트웬티 트웬티 식스 이터널 해피니스» 온 노벰버 트웬티 세븐스 인 샌디에이고, 히어스 유어 퍼스널 인비테이션.", phEng: "sheeb-eel-wahl ee-sheeb-cheel-eel San Diego-eh-suh yuhl-lee-neun \"2026 young-won-hahn heng-bohk\" deh-hweh-eui choh-deh-jahng-eul juhn-heh deu-ree-goh-jah hahm-nee-dah. gah-johk-gwah hahm-kkeh kkok chahm-suhk-heh balance-seh-yoh." },
-            { en: "I am visiting from ...(country)", tr: "저는 ...(국가)에서 방문했습니다.", phNative: "아임 비지팅 프롬 ...(컨트리)", phEng: "juh-neun ...(gook-kkah)-eh-suh balance-haess-seum-nee-dah." },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "11월 27일 샌디에이고에서 열리는 \"2026 영원한 행복\" 대회의 초대장을 전해 드리고자 합니다. 가족과 함께 꼭 참석해 보세요.", phNative: "아임 히어 투 인바이트 유 앤드 유어 패밀리 투 아워 컨벤션 타이틀드 «트웬티 트웬티 식스 이터널 해피니스» 온 노벰버 트웬티 세븐스 인 샌디에이고, 히어스 유어 퍼스널 인비테이션.", phEng: "sheeb-eel-wahl ee-sheeb-cheel-eel San Diego-eh-suh yuhl-lee-neun \"2026 young-won-hahn heng-bohk\" deh-hweh-eui choh-deh-jahng-eul juhn-heh deu-ree-goh-jah hahm-nee-dah. gah-johk-gwah hahm-kkeh kkok chahm-suhk-heh boh-seh-yoh." },
+            { en: "I am visiting from ...(country)", tr: "저는 ...(국가)에서 방문했습니다.", phNative: "아임 비지팅 프롬 ...(컨트리)", phEng: "juh-neun ...(gook-kkah)-eh-suh bahng-moon-haess-seum-nee-dah." },
             { en: "We’re offering a free Bible course this month.", tr: "이번 달에 무료 성경 공부 과정을 제공하고 있습니다.", phNative: "위어 오퍼링 어 프리 바이블 코스...", phEng: "ee-bun dahl-eh moo-ryoh suhng-gyung gohng-boo gwah-jung-eul jeh-gohng-hah-goh eess-seum-nee-dah." },
             { en: "Would you be interested in a free Bible study?", tr: "무료 성경 공부에 관심이 있으신가요?", phNative: "우드 유 비 인터레스티드...", phEng: "moo-ryoh suhng-gyung gohng-boo-eh gwahn-sheem-ee eess-euh-sheen-gah-yoh?" },
             { en: "This course can help you understand the Bible.", tr: "이 과정은 성경을 이해하는 데 큰 도움이 됩니다.", phNative: "디스 코스 캔 헬프 유...", phEng: "ee gwah-jung-eun suhng-gyung-eul ee-heh-hah-neun deh keun doh-oom-ee dwehm-nee-dah." },
@@ -1504,34 +1785,35 @@
           greetings: [
             { en: "Hello / Hi", tr: "سلام / درود", ttsFa: "سَلام ، دُرود", phNative: "هَلو / های", phEng: "سَلام / دُرود (sah-LAHM / deh-ROOD)" },
             { en: "Good morning", tr: "صبح بخیر", ttsFa: "صُبح بِخِير", phNative: "گود مورنینگ", phEng: "صُبح بِخِیر (sohb beh-KHAYR)" },
+            { en: "What is your name?", tr: "نام شما چیست؟ / اسم شما چیه؟", ttsFa: "نامِ شُما تْشِيست؟", phNative: "وات ایز یور نِیم؟", phEng: "نامِ شُما چیست؟ (NAH-meh shoh-MAH cheest?)" },
             { en: "My name is...", tr: "نام من ... است", ttsFa: "نامِ مَن ... اَست", phNative: "مای نِیم ایز...", phEng: "نامِ مَن ... اَست (NAH-meh man ... ast)" },
             { en: "Nice to meet you", tr: "از دیدارتان خوشبختم", ttsFa: "اَز ديدارِتان خُوشبَختَم", phNative: "نایس تو میت یو", phEng: "اَز دیدارِتان خوشبَختَم (az dee-dah-reh-TAHN khoosh-BAKH-tam)" },
             { en: "How are you?", tr: "حال شما چطور است؟", ttsFa: "حالِ شُما تْشِطُور اَست؟", phNative: "هاو آر یو؟", phEng: "حالِ شُما چِطور اَست؟ (HAH-leh shoh-MAH cheh-TOOR ast?)" },
-            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", ttsFa: "خُوبَم، مُتِشَكِّرَم", phNative: "آیم فاین، تَنک یو", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
+            { en: "I'm fine, thank you", tr: "خوبم، متشکرم", ttsFa: "خُوبَم، مُتِشَكِّرَم", phNative: "آیم فاین، تَنک یو", phEng: "خوبَم، مُتِشَکِّرَم (KHOO-bam, mot-shak-KEH-ram)" }
           ],
           everyday: [
             { en: "Please", tr: "لطفاً", ttsFa: "لُطفاً", phNative: "پلیز", phEng: "لُطفاً (LOHT-fan)" },
             { en: "Thank you", tr: "سپاسگزارم / ممنون", ttsFa: "سِباسْكُزارَم ، مَمنُون", phNative: "تَنک یو", phEng: "سِپاسگُزارَم / مَمنون (seh-pahs-goz-AH-ram / mam-NOON)" },
             { en: "You're welcome", tr: "خواهش می‌کنم", ttsFa: "خاهِش مِيكُنَم", phNative: "یور وِلکام", phEng: "خواهِش می‌کُنَم (khah-HESH mee-koh-nam)" },
             { en: "Excuse me", tr: "ببخشید", ttsFa: "بِبَخشِيد", phNative: "اِکسکیوز می", phEng: "بِبَخشید (beh-BAKH-sheed)" },
-            { en: "I'm sorry", tr: "متأسفم", ttsFa: "مُتِأَسِّفَم", phNative: "آیم ساری", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
+            { en: "I'm sorry", tr: "متأسفم", ttsFa: "مُتِأَسِّفَم", phNative: "آیم ساری", phEng: "مُتِأسِّفَم (mote-ah-SEH-fam)" },
             { en: "Can you help me?", tr: "می‌توانید کمکم کنید؟", ttsFa: "مِيتَوانِيد كُمَكَم كُنِيد؟", phNative: "کَن یو هِلپ می؟", phEng: "می‌توانید کُمَکَم کُنید؟ (mee-tav-AH-need koh-MAH-kam koh-NEED?)" }
           ],
           getting_around: [
             { en: "Where is the bathroom?", tr: "دستشویی کجاست؟", ttsFa: "دَستْشُويِي كُجاست؟", phNative: "وِر ایز دِ بَثروم؟", phEng: "دَستشویی کُجاست؟ (dast-SHOO-yee koh-JAHST?)" },
             { en: "How much is this?", tr: "قیمت این چقدر است؟", ttsFa: "قِيمَتِ إِين تْشِقَدْر اَست؟", phNative: "هاو ماچ ایز دیس؟", phEng: "قیمَتِ این چِقدَر اَست؟ (ghey-MAH-teh een cheh-GHADR ast?)" },
             { en: "I would like...", tr: "من میخواهم...", ttsFa: "مَن مِيخاهَم...", phNative: "آی وود لایک...", phEng: "مَن می‌خواهَم... (man mee-KHAH-ham...)" },
-            { en: "I don't understand", tr: "متوجه نمی‌شوم", ttsFa: "مُتَوَجِّه نِمِيشَوَم", phNative: "آی دُنت آندِرستَند", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
+            { en: "I don't understand", tr: "متوجه نمی‌شوم", ttsFa: "مُتَوَجِّه نِمِيشَوَم", phNative: "آی دُنت آندِرستَند", phEng: "مُتَوَجِّه نِمی‌شَوَم (moh-tah-VAJ-jeh neh-mee-SHOH-vam)" },
             { en: "What time is it?", tr: "ساعت چند است؟", ttsFa: "ساعَت تْشَند اَست؟", phNative: "وات تایم ایز ایت؟", phEng: "ساعَت چَند اَست؟ (sah-AT chand ast?)" }
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "از دیدار شما در سن دیگو بسیار خوشحالم.", ttsFa: "اَز ديدارِ شُما دَر سَن دِيِغُو بِسيار خُوشحالَم.", phNative: "آیم هَپی تو سی یو این سَن دیگو.", phEng: "اَز دیدارِ شُما دَر سَن دیگو بِسیار خوشحالَم (az dee-DAH-reh shoh-MAH dar San Diego bee-SYAHR khoosh-HAH-lam)" },
             { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "من اینجا هستم تا شما و خانواده‌تان را به مجمع «شادی جاودانی ۲۰۲۶» در ۲۷ نوامبر در سن دیگو دعوت کنم. بفرمایید، این دعوتنامه شخصی شماست.", ttsFa: "مَن إِينجا هَستَم تا شُما وَ خانِوادِه تان را بِه مَجمَعِ شادِيِ جاودانِي دُو هِزار وَ بِيست وَ شِش دَر بِيست وَ هَفتِ نُوامبِر دَر سَن دِيِغُو دَعوَت كُنَم. بِفَرمايِيد، إِين دَعوَت نامِه شَخصِيِ شُماست.", phNative: "آیم هیر تو اینوایت یو اَند یور فَمیلی تو آوِر کانوِنشِن تایتِلد «توئِنتی توئِنتی سیکس ایتِرنال هَپینِس» آن نُوامبِر توئِنتی سِوِنث این سَن دیگو، هیرز یور پِرسُنال اینویتِیشِن.", phEng: "مَن اینجا هَستَم تا شُما و خانِوادِه‌تان را بِه مَجمَعِ «شادیِ جاودانی ۲۰۲۶» دَر ۲۷ نُوامبر دَر سَن دیگو دَعوَت کُنَم. بِفَرمایید، این دَعوَتنَامِه شَخصیِ شُماست. (man een-JAH has-tam tah shoh-MAH vah khah-neh-VAH-deh-yeh-tahn rah beh maj-MAH-eh «SHAH-dee-yeh jahv-dah-NEE 2026» dar bee-st-oh-haf-tohm-eh noh-vahm-br dar San Diego dah-VAT koh-nam. beh-far-mah-YEED, een dah-vat-nah-MEH-yeh shakh-SEE-yeh shoh-MAHST.)" },
             { en: "I am visiting from ...(country)", tr: "من از ...(کشور) آمده‌ام و مهمان هستم.", ttsFa: "مَن اَز كِشوَرِ ... آمَدِه اَم وَ مِهمان هَستَم.", phNative: "آیم ویزیتینگ فرام ...(کانتری)", phEng: "مَن اَز ...(کِشوَر) آمَدِه‌اَم و مِهمان هَستَم (man az ...(kesh-var) ah-meh-deh-AM vah meh-MAHN has-tam)" },
-            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", ttsFa: "ما إِين ماه يِك دُورِه رايِغانِ بَررَسِيِ كِتابِ مُقَدَّس إِرائِه مِيدَهيم.", phNative: "ویر آفِرینگ اِ فری بایبِل کورس دیس مانث.", phEng: "ما این ماه یِک دورِه رایِگانِ بَررِسیِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
-            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", ttsFa: "آيا مايِل بِه بَررَسِيِ رايِغانِ كِتابِ مُقَدَّس هَستِيد؟", phNative: "وود یو بی اینتِرِستِد این اِ فری بایبِل استادی؟", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
-            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", ttsFa: "إِين دُورِه مِيتَوانَد بِه شُما كُمَك كُنَد كِتابِ مُقَدَّس را بِهتَر دَرك كُنِيد.", phNative: "دیس کورس کَن هِلپ یو آندِرستَند دِ بایبِل.", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد کِتابِ مُقَدَّس را بِهتَر دَرک کُنید (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
-            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", ttsFa: "إِين دُورِه كامِلاً رايِغان اَست وَ هِيتْش تَعَهُّدِي نَدارَد.", phNative: "دِر ایز نو چارج اَند نو آبلیگِیشِن.", phEng: "این دورِه کامِلاً رایِگان اَست و هیچ تَعَهُدی نَدارَد (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
+            { en: "We’re offering a free Bible course this month.", tr: "ما این ماه یک دوره رایگان بررسی کتاب مقدس ارائه می‌دهیم.", ttsFa: "ما إِين ماه يِك دُورِه رايِغانِ بَررَسِيِ كِتابِ مُقَدَّس إِرائِه مِيدَهيم.", phNative: "ویر آفِرینگ اِ فری بایبِل کورس دیس مانث.", phEng: "ما این ماه یِک دورِه رایِگانِ بَررِسیِ کِتابِ مُقَدَّس اِرائِه می‌دهیم (mah een mah yek dow-reh-yeh rah-yeh-GAHN-eh bar-rah-see-yeh ke-TAHB-eh mo-GHAD-das eh-rah-EH mee-dah-heem)" },
+            { en: "Would you be interested in a free Bible study?", tr: "آیا مایل به بررسی رایگان کتاب مقدس هستید؟", ttsFa: "آيا مايِل بِه بَررَسِيِ رايِغانِ كِتابِ مُقَدَّس هَستِيد؟", phNative: "وود یو بی اینتِرِستِد این اِ فری بایبِل استادی؟", phEng: "آیا مایِل بِه بَررِسیِ رایِگانِ کِتابِ مُقَدَّس هَستید؟ (AH-yah MAH-yel beh bar-rah-see-yeh rah-yeh-GAHN-eh ke-TAHB-eh mo-GHAD-das has-TEED?)" },
+            { en: "This course can help you understand the Bible.", tr: "این دوره می‌تواند به شما کمک کند کتاب مقدس را بهتر درک کنید.", ttsFa: "إِين دُورِه مِيتَوانَد بِه شُما كُمَك كُنَد كِتابِ مُقَدَّس را بِهتَر دَرك كُنِيد.", phNative: "دیس کورس کَن هِلپ یو آندِرستَند دِ بایبِل.", phEng: "این دورِه می‌تَوانَد بِه شُما کُمَک کُنَد کِتابِ مُقَدَّس را بِهتَر دَرک کُنید (een DOW-reh mee-tah-vah-nad beh shoh-MAH koh-MAK koh-nad ke-TAHB-eh mo-GHAD-das rah beh-tar dark koh-NEED)" },
+            { en: "There is no charge and no obligation.", tr: "این دوره کاملاً رایگان است و هیچ تعهدی ندارد.", ttsFa: "إِين دُورِه كامِلاً رايِغان اَست وَ هِيتْش تَعَهُّدِي نَدارَد.", phNative: "دِر ایز نو چارج اَند نو آبلیگِیشِن.", phEng: "این دورِه کامِلاً رایِگان اَست و هیچ تَعَهُدی نَدارَد (een DOW-reh KAH-meh-lan rah-yeh-GAHN ast vah HEECH tah-ah-HOO-dee nah-DAH-rad)" }
           ]
         }
       },
@@ -1544,6 +1826,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Cześć / Dzień dobry", phNative: "Helo / Haj", phEng: "CHESHTCH / Jyen DOH-bry" },
             { en: "Good morning", tr: "Dzień dobry", phNative: "Gud morning", phEng: "Jyen DOH-bry" },
+            { en: "What is your name?", tr: "Jak masz na imię? / Jak się Pan(i) nazywa?", phNative: "Łot yz jur nejm?", phEng: "YAHK mahsh nah EE-myeh?" },
             { en: "My name is...", tr: "Nazywam się...", phNative: "Maj nejm yz...", phEng: "nah-ZY-vahm SHYEH..." },
             { en: "Nice to meet you", tr: "Miło cię poznać", phNative: "Najs tu mit ju", phEng: "MEE-woh chyeh POHZ-nahch" },
             { en: "How are you?", tr: "Jak się masz?", phNative: "Hał ar ju?", phEng: "YAHK shyeh MAHSH?" },
@@ -1584,6 +1867,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Здравствуйте / Привет", phNative: "Khel-lo / Khay", phEng: "ZDRAHST-vuy-tye / PREE-vyet" },
             { en: "Good morning", tr: "Доброе утро", phNative: "Gud mor-ning", phEng: "DOHB-ruh-yeh OO-truh" },
+            { en: "What is your name?", tr: "Как вас зовут? / Как тебя зовут?", phNative: "Wat iz yur neym?", phEng: "KAHK vahs zah-VOOT?" },
             { en: "My name is...", tr: "Меня зовут...", phNative: "May neym iz...", phEng: "mye-NYAH zah-VOOT..." },
             { en: "Nice to meet you", tr: "Приятно познакомиться", phNative: "Nays tu mit yu", phEng: "pree-YAHT-nuh pahz-nah-KOH-mee-tsah" },
             { en: "How are you?", tr: "Как ваши дела?", phNative: "Haw ar yu?", phEng: "KAHK VAH-shee dye-LAH?" },
@@ -1624,6 +1908,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Zdravo / Pozdravljeni", phNative: "Helo / Haj", phEng: "ZDRAH-voh / poh-ZRAHV-lyeh-nee" },
             { en: "Good morning", tr: "Dobro jutro", phNative: "Gud morning", phEng: "DOH-broh YOO-troh" },
+            { en: "What is your name?", tr: "Kako vam je ime? / Kako ti je ime?", phNative: "Vot iz jur nejm?", phEng: "kah-KOH vahm yeh ee-MEH?" },
             { en: "My name is...", tr: "Moje ime je...", phNative: "Maj nejm iz...", phEng: "MOH-yeh ee-MEH yeh..." },
             { en: "Nice to meet you", tr: "Me veseli", phNative: "Najs tu mit ju", phEng: "meh veh-SEH-lee" },
             { en: "How are you?", tr: "Kako ste?", phNative: "Hav ar ju?", phEng: "kah-KOH steh?" },
@@ -1664,6 +1949,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Hola", phNative: "Jelou / Jai", phEng: "OH-lah" },
             { en: "Good morning", tr: "Buenos días", phNative: "Gud morning", phEng: "BWEH-nos DEE-as" },
+            { en: "What is your name?", tr: "¿Cómo se llama usted? / ¿Cómo te llamas?", phNative: "Guat is iur neim?", phEng: "KOH-moh seh YAH-mah oos-TED?" },
             { en: "My name is...", tr: "Mi nombre es...", phNative: "Mai neim is...", phEng: "mee NOHM-breh ess..." },
             { en: "Nice to meet you", tr: "Mucho gusto / Encantado(a)", phNative: "Nais tu mit iu", phEng: "MOO-choh GOOS-toh" },
             { en: "How are you?", tr: "¿Cómo está usted? / ¿Cómo estás?", phNative: "Jau ar iu?", phEng: "KOH-moh ess-TAH oos-TED?" },
@@ -1704,6 +1990,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Kumusta / Kamusta", phNative: "He-lo / Hay", phEng: "koo-moos-TAH" },
             { en: "Good morning", tr: "Magandang umaga", phNative: "Gud mor-ning", phEng: "mah-gahn-DAHNG oo-MAH-gah" },
+            { en: "What is your name?", tr: "Ano po ang pangalan ninyo?", phNative: "Wat is yur neym?", phEng: "ah-NOH poh ahng pah-NGAH-lahn neen-YOH?" },
             { en: "My name is...", tr: "Ang pangalan ko ay...", phNative: "May neym is...", phEng: "ahng pah-NGAH-lahn koh eye..." },
             { en: "Nice to meet you", tr: "Ikinagagalak kitang makilala", phNative: "Nays tu mit yu", phEng: "ee-kee-nah-gah-gah-LAHK kee-tahng mah-kee-LAH-lah" },
             { en: "How are you?", tr: "Kumusta ka?", phNative: "Haw ar yu?", phEng: "koo-moos-TAH kah?" },
@@ -1715,7 +2002,7 @@
             { en: "You're welcome", tr: "Walang anuman", phNative: "Yur wel-kam", phEng: "wah-LAHNG ah-noo-MAHN" },
             { en: "Excuse me", tr: "Ipagpaumanhin po / Paumanhin", phNative: "Eks-kyuz mi", phEng: "ee-pahg-pow-mahn-HEEN poh" },
             { en: "I'm sorry", tr: "Patawad po / Pasensya na", phNative: "Aym soh-ri", phEng: "pah-TAH-wahd poh / pah-SEN-syah nah" },
-            { en: "Can you help me?", tr: "Puwede mo ba akong tulungan?", phNative: "Ken yu help mi?", phEng: "PWEH-deh moh balance-KOHNG too-LOO-ngahn?" }
+            { en: "Can you help me?", tr: "Puwede mo ba akong tulungan?", phNative: "Ken yu help mi?", phEng: "PWEH-deh moh bah ah-KOHNG too-LOO-ngahn?" }
           ],
           getting_around: [
             { en: "Where is the bathroom?", tr: "Nasaan po ang banyo (CR)?", phNative: "Wer is da bat-rum?", phEng: "nah-sah-AHN poh ahng BAHN-yoh?" },
@@ -1729,7 +2016,7 @@
             { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Nandito po ako para anyayahan kayo at ang inyong pamilya sa aming kombensiyon na may temang “Walang-Hanggang Kaligayahan 2026” sa Nobyembre 27 sa San Diego. Narito po ang inyong personal na imbitasyon.", phNative: "Aym hir tu in-vayt yu end yur pam-li tu awr kon-ven-shun tay-tuld «twen-ti twen-ti siks i-tur-nul hap-i-nes» on no-vem-ber twen-ti se-bent in San Diego, hirz yur per-suh-nuhl in-vi-tay-shun.", phEng: "nahn-DEE-toh poh ah-KOH PAH-rah ahn-yah-YAH-hahn kah-YOH aht ahng een-YOHNG pah-MEEL-yah sah AH-meeng kohm-ben-shon nah may TAY-mah “Wah-lahng-Hahng-gahng Kah-lee-gah-YAH-hahn 2026” sah nohb-YEM-breh dwah-leem-PAHT-sah-PEE-toh sah San Diego. nah-REE-toh poh ahng een-YOHNG pair-soh-NAHL nah eem-bee-tahs-YOHN." },
             { en: "I am visiting from ...(country)", tr: "Bumisita po ako mula sa ...(bansa).", phNative: "Aym visiting from ...(kantri)", phEng: "boo-mee-SEE-tah poh ah-KOH MOO-lah sah ...(bahn-SAH)." },
             { en: "We’re offering a free Bible course this month.", tr: "Nag-aalok kami ng libreng pag-aaral sa Bibliya ngayong buwan.", phNative: "Wir o-fe-ring e fri Bay-bol kors...", phEng: "nahg-ah-AH-lohk kah-MEE nahng LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah ngah-YOHNG BOO-wahn." },
-            { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted...", phEng: "een-teh-reh-SAH-doh kah balance sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
+            { en: "Would you be interested in a free Bible study?", tr: "Interesado ka ba sa isang libreng pag-aaral sa Bibliya?", phNative: "Wud yu bi in-te-res-ted...", phEng: "een-teh-reh-SAH-doh kah bah sah ee-SAHNG LEEG-breng pahg-ah-AH-rahl sah beeb-LEE-yah?" },
             { en: "This course can help you understand the Bible.", tr: "Makakatulong ang kursong ito para mas maunawaan mo ang Bibliya.", phNative: "Dis kors ken help yu...", phEng: "mah-kah-kah-TOO-lohng ahng KOOR-sohng ee-TOH PAH-rah mahs mah-oo-nah-wah-AHN moh ahng beeb-LEE-yah." },
             { en: "There is no charge and no obligation.", tr: "Ito ay libre at walang anumang obligasyon.", phNative: "Der is no tsards...", phEng: "ee-TOH eye LEEG-breh aht wah-LAHNG ah-noo-MAHNG ohb-lee-gahs-YOHN." }
           ]
@@ -1744,6 +2031,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Merhaba / Selam", phNative: "Helo / Hay", phEng: "MEHR-hah-bah / seh-LAHM" },
             { en: "Good morning", tr: "Günaydın", phNative: "Gud morning", phEng: "gew-NYE-duhn" },
+            { en: "What is your name?", tr: "Adınız nedir? / İsminiz nedir?", phNative: "Vat iz yur neym?", phEng: "ah-duh-NUHZ neh-DEER?" },
             { en: "My name is...", tr: "Benim adım...", phNative: "May neym iz...", phEng: "beh-NEEM ah-DUHM..." },
             { en: "Nice to meet you", tr: "Tanıştığımıza memnun oldum", phNative: "Nays tu mit yu", phEng: "tah-nuhsh-tuh-uh-muh-ZAH mehm-NOON ohl-DOOM" },
             { en: "How are you?", tr: "Nasılsınız?", phNative: "Hav ar yu?", phEng: "nah-suhl-suh-NUHZ?" },
@@ -1784,6 +2072,7 @@
           greetings: [
             { en: "Hello / Hi", tr: "Xin chào", phNative: "Hơ-lô / Hai", phEng: "seen CHOW" },
             { en: "Good morning", tr: "Chào buổi sáng", phNative: "Gút mo-ninh", phEng: "chow bwoy SAHNG" },
+            { en: "What is your name?", tr: "Bạn tên là gì?", phNative: "Quát ít du-ơ nem?", phEng: "bahn ten LAH ZEE?" },
             { en: "My name is...", tr: "Tên tôi là...", phNative: "Mai nem ít...", phEng: "ten toy LAH..." },
             { en: "Nice to meet you", tr: "Rất vui được gặp bạn", phNative: "Nai-sơ tu mít du", phEng: "zuht vooy dew-uhk guhp bahn" },
             { en: "How are you?", tr: "Bạn khỏe không?", phNative: "Hao a du?", phEng: "bahn KHWEY-uh khohm?" },
@@ -1806,7 +2095,7 @@
           ],
           ministry_skills: [
             { en: "I am happy to see you in San Diego.", tr: "Rất vui được gặp bạn tại San Diego!", phNative: "Aim háp-pi tu si du in San Đi-ê-gô.", phEng: "zuht vooy dew-uhk guhp bahn tye San Diego!" },
-            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tôi đến đây để mời bạn và gia đình tham dự Đại hội mang chủ đề “Hạnh phúc vĩnh cửu 2026” vào ngày 27 tháng 11 tại San Diego; xin gửi bạn giấy mời này.", phNative: "Aim hi-ơ tu in-vai-t du en du-ơ phe-mi-li tu ao-ơ cơn-ven-sừn tai-tồ «tu-en-ti tu-en-ti xích-x i-tơ-nồ hép-pi-nịt» on nô-vem-bơ tu-en-ti se-vơn-th in San Đi-ê-gô, hi-ơ-z du-ơ pơ-sơ-nồ in-vi-tay-sừn.", phEng: "toy den dye deh moy bahn vah zyah deen tahm zew dye hoy mahng choo deh “Hahn fook veeng kew 2026” vow nye hay-mwoy byet tahng mwoy mot tye San Diego; seen guy balance zye moy nye." },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "Tôi đến đây để mời bạn và gia đình tham dự Đại hội mang chủ đề “Hạnh phúc vĩnh cửu 2026” vào ngày 27 tháng 11 tại San Diego; xin gửi bạn giấy mời này.", phNative: "Aim hi-ơ tu in-vai-t du en du-ơ phe-mi-li tu ao-ơ cơn-ven-sừn tai-tồ «tu-en-ti tu-en-ti xích-x i-tơ-nồ hép-pi-nịt» on nô-vem-bơ tu-en-ti se-vơn-th in San Đi-ê-gô, hi-ơ-z du-ơ pơ-sơ-nồ in-vi-tay-sừn.", phEng: "toy den dye deh moy bahn vah zyah deen tahm zew dye hoy mahng choo deh “Hahn fook veeng kew 2026” vow nye hay-mwoy byet tahng mwoy mot tye San Diego; seen guy bahn zye moy nye." },
             { en: "I am visiting from ...(country)", tr: "Tôi đến từ ...(quốc gia).", phNative: "Aim vi-si-tinh ph-rom ...(con-tri)", phEng: "toy den too ...(kwohk zyah)." },
             { en: "We’re offering a free Bible course this month.", tr: "Tháng này chúng tôi có khóa học Kinh Thánh miễn phí.", phNative: "Quy-ơ óp-phơ-rinh ơ ph-ri...", phEng: "tahng nye choong toy koh khwah hawk keen tahng myen fee." },
             { en: "Would you be interested in a free Bible study?", tr: "Bạn có muốn tìm hiểu khóa học Kinh Thánh miễn phí không?", phNative: "Quút du bi in-tơ-rét-tịt...", phEng: "bahn koh mwon teem hew khwah hawk keen tahng myen fee khohm?" },
