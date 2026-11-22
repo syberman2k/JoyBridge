@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.03 (14 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.04 (22 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Language Helper App</title>
@@ -117,7 +117,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1">
       <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.03</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.04</span>
     </div>
   </header>
 
@@ -188,15 +188,29 @@
       <div class="space-y-4 pt-2">
         <!-- Video Card -->
         <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3.5">
-          <div class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-800 pb-3">
-            <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-xl"></i>
-            <div>
-              <h3 id="videoCardTitle" class="font-bold text-slate-900 dark:text-white text-lg sm:text-xl leading-tight">
-                Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)
-              </h3>
-              <p id="videoCardSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Convention Preparation & Highlights</p>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 gap-2.5">
+            <div class="flex items-center space-x-3">
+              <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-xl"></i>
+              <div>
+                <h3 id="videoCardTitle" class="font-bold text-slate-900 dark:text-white text-lg sm:text-xl leading-tight">
+                  Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)
+                </h3>
+                <p id="videoCardSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Convention Preparation & Highlights</p>
+              </div>
             </div>
+
+            <!-- Offline Media Download Control -->
+            <button id="offlineVideoBtn" onclick="toggleOfflineVideo()" class="self-start sm:self-center inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold bg-indigo-50/90 dark:bg-slate-800/90 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-slate-700 px-3.5 py-2 rounded-lg border border-indigo-200/80 dark:border-slate-700 transition flex-shrink-0">
+              <i id="offlineVideoIcon" class="fa-solid fa-cloud-arrow-down"></i>
+              <span id="offlineVideoText">Save Video Offline</span>
+            </button>
           </div>
+
+          <!-- Download Progress Bar -->
+          <div id="videoDownloadProgressWrap" class="hidden w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+            <div id="videoDownloadProgressBar" class="bg-indigo-600 dark:bg-indigo-400 h-full transition-all duration-150" style="width: 0%"></div>
+          </div>
+
           <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center relative bg-cover bg-center" style="background-image: url('VideoPoster.jpg');">
             <video id="welcomeVideo" controls playsinline preload="none" poster="VideoPoster.jpg" src="VIDEO_SanDiegoConventionPrep.mp4" class="w-full h-full object-contain relative z-10">
               Your browser does not support HTML5 video streaming.
@@ -1156,38 +1170,22 @@
       }
     }
 
-    const CACHE_NAME = 'joybridge-cache-v3.03';
-    const CORE_ASSETS = [
-      './',
-      './index.html',
-      './manifest.json',
-      './LOGO_Circular.png',
-      './ShareNWJoyBridgeQRCode.png',
-      './AppBKGrnd.jpg',
-      './VenuePhoto.png',
-      './VideoPoster.jpg'
-    ];
+    // -----------------------------------------------------------------------
+    // Service Worker Registration, Offline Readiness & Persistent Media Caching
+    // -----------------------------------------------------------------------
+    const SHELL_CACHE_NAME = 'joybridge-shell-v3.04';
+    const PERSISTENT_MEDIA_CACHE = 'joybridge-media-v1';
+    const WELCOME_VIDEO_URL = new URL('./VIDEO_SanDiegoConventionPrep.mp4', window.location.href).href;
+    let isDownloadingVideo = false;
 
     async function checkCacheReadiness() {
       if (!('caches' in window)) return false;
       try {
-        const cache = await caches.open(CACHE_NAME);
+        const cache = await caches.open(SHELL_CACHE_NAME);
         const keys = await cache.keys();
         return keys.length >= 3;
       } catch (e) {
         return false;
-      }
-    }
-
-    async function precacheAssets() {
-      if ('caches' in window) {
-        try {
-          const cache = await caches.open(CACHE_NAME);
-          await cache.addAll(CORE_ASSETS);
-          updateOnlineStatus();
-        } catch (err) {
-          console.warn('Pre-caching background note:', err);
-        }
       }
     }
 
@@ -1217,28 +1215,131 @@
       }
     }
 
-    window.addEventListener('online', () => {
-      updateOnlineStatus();
-      precacheAssets();
-    });
+    async function updateOfflineVideoButtonState() {
+      const btn = document.getElementById('offlineVideoBtn');
+      const icon = document.getElementById('offlineVideoIcon');
+      const text = document.getElementById('offlineVideoText');
+      if (!btn || !('caches' in window)) return;
+
+      const cache = await caches.open(PERSISTENT_MEDIA_CACHE);
+      const match = await cache.match(WELCOME_VIDEO_URL);
+
+      if (match) {
+        icon.className = 'fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400';
+        text.innerText = 'Saved Offline';
+        btn.title = 'Video is saved for offline playback (click to remove)';
+        btn.classList.remove('bg-indigo-50/90', 'dark:bg-slate-800/90', 'text-indigo-700', 'dark:text-indigo-300', 'border-indigo-200/80');
+        btn.classList.add('bg-emerald-50/90', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-300', 'border-emerald-300/80', 'dark:border-emerald-700');
+      } else {
+        icon.className = 'fa-solid fa-cloud-arrow-down';
+        text.innerText = 'Save Video Offline';
+        btn.title = 'Download video to device cache for offline viewing';
+        btn.classList.remove('bg-emerald-50/90', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-300', 'border-emerald-300/80', 'dark:border-emerald-700');
+        btn.classList.add('bg-indigo-50/90', 'dark:bg-slate-800/90', 'text-indigo-700', 'dark:text-indigo-300', 'border-indigo-200/80');
+      }
+    }
+
+    async function toggleOfflineVideo() {
+      if (isDownloadingVideo || !('caches' in window)) return;
+
+      const cache = await caches.open(PERSISTENT_MEDIA_CACHE);
+      const existing = await cache.match(WELCOME_VIDEO_URL);
+
+      // If already saved, allow user to remove it to reclaim device storage
+      if (existing) {
+        await cache.delete(WELCOME_VIDEO_URL);
+        await updateOfflineVideoButtonState();
+        return;
+      }
+
+      if (!navigator.onLine) {
+        alert('You are currently offline. Please connect to the internet once to save this video for offline viewing.');
+        return;
+      }
+
+      isDownloadingVideo = true;
+      const icon = document.getElementById('offlineVideoIcon');
+      const text = document.getElementById('offlineVideoText');
+      const progressWrap = document.getElementById('videoDownloadProgressWrap');
+      const progressBar = document.getElementById('videoDownloadProgressBar');
+
+      icon.className = 'fa-solid fa-spinner fa-spin';
+      text.innerText = 'Saving... 0%';
+      progressWrap.classList.remove('hidden');
+      progressBar.style.width = '0%';
+
+      try {
+        const response = await fetch(WELCOME_VIDEO_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const contentLength = Number(response.headers.get('Content-Length')) || 0;
+        const reader = response.body.getReader();
+        const chunks = [];
+        let receivedBytes = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          receivedBytes += value.length;
+
+          if (contentLength > 0) {
+            const pct = Math.min(100, Math.round((receivedBytes / contentLength) * 100));
+            text.innerText = `Saving... ${pct}%`;
+            progressBar.style.width = `${pct}%`;
+          } else {
+            const mb = (receivedBytes / (1024 * 1024)).toFixed(1);
+            text.innerText = `Saving... ${mb} MB`;
+          }
+        }
+
+        const blob = new Blob(chunks, {
+          type: response.headers.get('Content-Type') || 'video/mp4'
+        });
+        const cacheResponse = new Response(blob, {
+          status: 200,
+          statusText: 'OK',
+          headers: {
+            'Content-Type': response.headers.get('Content-Type') || 'video/mp4',
+            'Content-Length': String(blob.size)
+          }
+        });
+
+        await cache.put(WELCOME_VIDEO_URL, cacheResponse);
+      } catch (err) {
+        console.error('Offline video save failed:', err);
+        text.innerText = 'Save Failed';
+        icon.className = 'fa-solid fa-triangle-exclamation text-amber-500';
+        await new Promise((r) => setTimeout(r, 2000));
+      } finally {
+        isDownloadingVideo = false;
+        progressWrap.classList.add('hidden');
+        await updateOfflineVideoButtonState();
+      }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
     updateOnlineStatus();
-    precacheAssets();
+    updateOfflineVideoButtonState();
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then(reg => {
+          .then((reg) => {
+            updateOnlineStatus();
             reg.onupdatefound = () => {
               const installingWorker = reg.installing;
+              if (!installingWorker) return;
               installingWorker.onstatechange = () => {
-                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                if (installingWorker.state === 'activated' || installingWorker.state === 'installed') {
                   updateOnlineStatus();
+                  updateOfflineVideoButtonState();
                 }
               };
             };
           })
-          .catch(err => console.error('Service Worker registration failed:', err));
+          .catch((err) => console.error('Service Worker registration failed:', err));
       });
     }
 
@@ -2255,7 +2356,6 @@
       const voices = window.speechSynthesis.getVoices() || cachedVoices;
 
       if (langCode === 'fa-IR') {
-        // 1. Check if device has a dedicated Persian/Farsi voice installed
         const faVoice = voices.find(v => v.lang && (
           v.lang.toLowerCase().startsWith('fa') ||
           v.name.toLowerCase().includes('persian') ||
@@ -2271,7 +2371,6 @@
           return;
         }
 
-        // 2. Synchronous fallback to built-in Arabic (ar-SA) engine using vocalized Persian phonetics
         const spokenPersianText = (item && item.ttsFa) ? item.ttsFa : normalizePersianForArabicTTS(text);
         const utterance = new SpeechSynthesisUtterance(spokenPersianText);
         const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
