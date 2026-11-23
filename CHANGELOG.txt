@@ -1,4 +1,14 @@
 ==========================================================================================
+Version 3.04 of 22Nov2026:
+
+
+1. Bumped version comment and header badge to v3.04.
+
+2. Added a "Save Video Offline" button inside the Welcome Video Card (VIDEO_SanDiegoConventionPrep.mp4) that streams the file into joybridge-media-v1 with a real-time percentage progress indicator and switches to "Saved Offline" (with a tap-to-remove option) once cached.
+
+3. Replaced the duplicate inline caches.open logic with a unified check against joybridge-shell-v3.04 and joybridge-media-v1 so the top-right status dot (#10B981 green online / #06B6D4 cyan cached offline) reflects the Service Worker's actual cache state.
+
+==========================================================================================
 Version 3.03 of 14Nov2026:
 
 Update to Version 3.03, incorporating all requested changes:
