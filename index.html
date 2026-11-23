@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.04 (22 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.05 (22 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Language Helper App</title>
@@ -117,7 +117,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1">
       <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.04</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.05</span>
     </div>
   </header>
 
@@ -187,7 +187,7 @@
       <!-- VIDEO & MAP SECTION -->
       <div class="space-y-4 pt-2">
         <!-- Video Card -->
-        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3.5">
+        <div id="welcomeVideoSection" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3.5 scroll-mt-24">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 gap-2.5">
             <div class="flex items-center space-x-3">
               <i class="fa-solid fa-video text-indigo-600 dark:text-indigo-400 text-xl"></i>
@@ -356,6 +356,47 @@
         </div>
       </div>
 
+      <!-- Welcome to San Diego, International Delegates! Video QR Card -->
+      <div class="pt-2 pb-4">
+        <div id="welcomeVideoQrCard" class="p-5 md:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4">
+          <div class="flex items-center space-x-3.5 border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl flex-shrink-0 shadow-sm">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <div>
+              <h3 id="welcomeQrCardTitle" class="font-bold text-slate-900 dark:text-white text-lg sm:text-xl leading-tight">
+                Welcome to San Diego, International Delegates! Video
+              </h3>
+              <p id="welcomeQrCardSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                Scan QR Code or Tap to Watch the Welcome Video
+              </p>
+            </div>
+          </div>
+
+          <p id="welcomeQrCardBody" class="text-sm sm:text-base text-slate-700 dark:text-slate-200 text-center max-w-xl mx-auto leading-relaxed">
+            Scan this QR Code with your phone camera or tap the QR Code below to watch the “Welcome to San Diego, International Delegates!” video.
+          </p>
+
+          <div class="flex flex-col items-center justify-center">
+            <a href="#welcomeVideoSection"
+               onclick="openWelcomeVideoFromCard(event)"
+               class="p-3 bg-white rounded-2xl shadow-md border-2 border-indigo-100 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 transition group"
+               title="Tap to watch Welcome to San Diego, International Delegates! Video">
+              <img src="WelcomeVideoQRCode.jpg"
+                   alt="Welcome to San Diego, International Delegates! Video QR Code"
+                   class="w-48 h-48 sm:w-56 sm:h-56 object-contain mx-auto group-hover:scale-105 transition-transform duration-200">
+            </a>
+            <a id="welcomeQrCardAction"
+               href="#welcomeVideoSection"
+               onclick="openWelcomeVideoFromCard(event)"
+               class="mt-3 inline-flex items-center gap-2 text-sm sm:text-base font-extrabold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 underline text-center">
+              <i class="fa-solid fa-circle-play"></i>
+              <span id="welcomeQrCardActionText">Watch “Welcome to San Diego, International Delegates!” Video</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- Screen 1: Language Selection -->
@@ -479,7 +520,11 @@
         whatsAppDesc: "Join our dedicated <strong>ESMCHDelegatesSupport</strong> WhatsApp group for hospitality updates, local assistance, and friendly fellowship.",
         waLine1: "NW JoyBridge App",
         waLine2: "Support for Delegates",
-        waLine3: "WhatsApp Group"
+        waLine3: "WhatsApp Group",
+        welcomeQrTitle: "Welcome to San Diego, International Delegates! Video",
+        welcomeQrSubtitle: "Scan QR Code or Tap to Watch the Welcome Video",
+        welcomeQrBody: "Scan this QR Code with your phone camera or tap the QR Code below to watch the “Welcome to San Diego, International Delegates!” video.",
+        welcomeQrAction: "Watch “Welcome to San Diego, International Delegates!” Video"
       },
       arabic: {
         welcomeLine1: "أهلاً وسهلاً بكم في",
@@ -506,7 +551,11 @@
         whatsAppDesc: "انضم إلى مجموعة واتساب المخصصة <strong>ESMCHDelegatesSupport</strong> لتحديثات الضيافة والمساعدة المحلية.",
         waLine1: "تطبيق NW JoyBridge",
         waLine2: "دعم المندوبين الدوليين",
-        waLine3: "مجموعة واتساب"
+        waLine3: "مجموعة واتساب",
+        welcomeQrTitle: "فيديو ترحيبي: أهلاً بكم في سان دييغو، أيها المندوبون الدوليون!",
+        welcomeQrSubtitle: "امسح رمز الاستجابة السريعة أو انقر لمشاهدة فيديو الترحيب",
+        welcomeQrBody: "امسح رمز QR هذا بكاميرا هاتفك أو انقر على الرمز أدناه لمشاهدة فيديو «أهلاً بكم في سان دييغو، أيها المندوبون الدوليون!».",
+        welcomeQrAction: "مشاهدة فيديو «أهلاً بكم في سان دييغو، أيها المندوبون الدوليون!»"
       },
       catalan: {
         welcomeLine1: "BENVINGUTS A",
@@ -533,7 +582,11 @@
         whatsAppDesc: "Uniu-vos al nostre grup exclusiu de WhatsApp <strong>ESMCHDelegatesSupport</strong> per rebre avisos d'hospitalitat, assistència local i companyia fraternal.",
         waLine1: "Aplicació NW JoyBridge",
         waLine2: "Suport per a Delegats",
-        waLine3: "Grup de WhatsApp"
+        waLine3: "Grup de WhatsApp",
+        welcomeQrTitle: "Vídeo: Benvinguts a San Diego, delegats internacionals!",
+        welcomeQrSubtitle: "Escaneja el codi QR o toca per veure el vídeo de benvinguda",
+        welcomeQrBody: "Escaneja aquest codi QR amb la càmera del mòbil o toca el codi QR de sota per veure el vídeo «Benvinguts a San Diego, delegats internacionals!».",
+        welcomeQrAction: "Mira el vídeo «Benvinguts a San Diego, delegats internacionals!»"
       },
       chinese: {
         welcomeLine1: "热烈欢迎光临",
@@ -560,7 +613,11 @@
         whatsAppDesc: "欢迎加入我们专属的 <strong>ESMCHDelegatesSupport</strong> WhatsApp 交流群，获取接待指引、当地协助及温馨联谊信息。",
         waLine1: "NW JoyBridge 应用",
         waLine2: "大会代表交流支持",
-        waLine3: "WhatsApp 交流群"
+        waLine3: "WhatsApp 交流群",
+        welcomeQrTitle: "《欢迎来到圣迭戈，国际代表们！》欢迎视频",
+        welcomeQrSubtitle: "扫描二维码或点击观看欢迎视频",
+        welcomeQrBody: "请使用手机相机扫描此二维码，或点击下方二维码观看《欢迎来到圣迭戈，国际代表们！》欢迎视频。",
+        welcomeQrAction: "观看《欢迎来到圣迭戈，国际代表们！》视频"
       },
       dutch: {
         welcomeLine1: "WELKOM IN",
@@ -587,7 +644,11 @@
         whatsAppDesc: "Neem deel aan onze speciale WhatsApp-groep <strong>ESMCHDelegatesSupport</strong> voor gastvrijheidsupdates, lokale hulp en warme omgang.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hulp voor Afgevaardigden",
-        waLine3: "WhatsApp-groep"
+        waLine3: "WhatsApp-groep",
+        welcomeQrTitle: "Welkom in San Diego, internationale afgevaardigden! Video",
+        welcomeQrSubtitle: "Scan de QR-code of tik om de welkomstvideo te bekijken",
+        welcomeQrBody: "Scan deze QR-code met de camera van uw telefoon of tik op de onderstaande QR-code om de video „Welkom in San Diego, internationale afgevaardigden!” te bekijken.",
+        welcomeQrAction: "Bekijk de video „Welkom in San Diego, internationale afgevaardigden!”"
       },
       estonian: {
         welcomeLine1: "TERE TULEMAST",
@@ -614,7 +675,11 @@
         whatsAppDesc: "Liituge meie <strong>ESMCHDelegatesSupport</strong> WhatsAppi grupiga, et saada külalislahkuse teateid, kohalikku abi ja nautida sõbralikku seltskonda.",
         waLine1: "NW JoyBridge rakendus",
         waLine2: "Tugi delegaatidele",
-        waLine3: "WhatsAppi grupp"
+        waLine3: "WhatsAppi grupp",
+        welcomeQrTitle: "Video: Tere tulemast San Diegosse, rahvusvahelised delegaadid!",
+        welcomeQrSubtitle: "Skannige QR-kood või puudutage tervitusvideo vaatamiseks",
+        welcomeQrBody: "Skannige see QR-kood telefoni kaameraga või puudutage allolevat QR-koodi, et vaadata videot „Tere tulemast San Diegosse, rahvusvahelised delegaadid!”.",
+        welcomeQrAction: "Vaadake videot „Tere tulemast San Diegosse, rahvusvahelised delegaadid!”"
       },
       finnish: {
         welcomeLine1: "TERVETULOA",
@@ -641,7 +706,11 @@
         whatsAppDesc: "Liity <strong>ESMCHDelegatesSupport</strong>-WhatsApp-ryhmäämme saadaksesi vieraanvaraisuustiedotteita, paikallista apua ja lämmintä seuraa.",
         waLine1: "NW JoyBridge -sovellus",
         waLine2: "Tuki konventtivieraille",
-        waLine3: "WhatsApp-ryhmä"
+        waLine3: "WhatsApp-ryhmä",
+        welcomeQrTitle: "Tervetuloa San Diegoon, kansainväliset konventtivieraat! -video",
+        welcomeQrSubtitle: "Skannaa QR-koodi tai napauta katsoaksesi tervetulovideon",
+        welcomeQrBody: "Skannaa tämä QR-koodi puhelimesi kameralla tai napauta alla olevaa QR-koodia katsoaksesi videon ”Tervetuloa San Diegoon, kansainväliset konventtivieraat!”.",
+        welcomeQrAction: "Katso ”Tervetuloa San Diegoon, kansainväliset konventtivieraat!” -video"
       },
       french: {
         welcomeLine1: "BIENVENUE À",
@@ -668,7 +737,11 @@
         whatsAppDesc: "Rejoignez notre groupe WhatsApp dédié <strong>ESMCHDelegatesSupport</strong> pour les informations d'accueil, l'assistance locale et les moments d'échange.",
         waLine1: "Application NW JoyBridge",
         waLine2: "Assistance aux Délégués",
-        waLine3: "Groupe WhatsApp"
+        waLine3: "Groupe WhatsApp",
+        welcomeQrTitle: "Vidéo : Bienvenue à San Diego, délégués internationaux !",
+        welcomeQrSubtitle: "Scannez le code QR ou appuyez pour regarder la vidéo de bienvenue",
+        welcomeQrBody: "Scannez ce code QR avec l'appareil photo de votre téléphone ou appuyez sur le code QR ci-dessous pour regarder la vidéo « Bienvenue à San Diego, délégués internationaux ! ».",
+        welcomeQrAction: "Regarder la vidéo « Bienvenue à San Diego, délégués internationaux ! »"
       },
       german: {
         welcomeLine1: "WILLKOMMEN IN",
@@ -695,7 +768,11 @@
         whatsAppDesc: "Treten Sie unserer WhatsApp-Gruppe <strong>ESMCHDelegatesSupport</strong> bei, um Hospitality-Neuigkeiten, Unterstützung vor Ort und Gemeinschaft zu erhalten.",
         waLine1: "NW JoyBridge App",
         waLine2: "Hilfe für Delegierte",
-        waLine3: "WhatsApp-Gruppe"
+        waLine3: "WhatsApp-Gruppe",
+        welcomeQrTitle: "Video: Willkommen in San Diego, internationale Delegierte!",
+        welcomeQrSubtitle: "QR-Code scannen oder tippen, um das Begrüßungsvideo anzusehen",
+        welcomeQrBody: "Scannen Sie diesen QR-Code mit Ihrer Handykamera oder tippen Sie auf den QR-Code unten, um das Video „Willkommen in San Diego, internationale Delegierte!“ anzusehen.",
+        welcomeQrAction: "Video „Willkommen in San Diego, internationale Delegierte!“ ansehen"
       },
       greek: {
         welcomeLine1: "ΚΑΛΩΣ ΟΡΙΣΑΤΕ ΣΤΟ",
@@ -722,7 +799,11 @@
         whatsAppDesc: "Γίνετε μέλη της ειδικής ομάδας WhatsApp <strong>ESMCHDelegatesSupport</strong> για ενημερώσεις φιλοξενίας, τοπική βοήθεια και όμορφη συναναστροφή.",
         waLine1: "Εφαρμογή NW JoyBridge",
         waLine2: "Υποστήριξη Εκπροσώπων",
-        waLine3: "Ομάδα WhatsApp"
+        waLine3: "Ομάδα WhatsApp",
+        welcomeQrTitle: "Βίντεο: Καλώς ορίσατε στο Σαν Ντιέγκο, διεθνείς εκπρόσωποι!",
+        welcomeQrSubtitle: "Σαρώστε τον κωδικό QR ή πατήστε για να δείτε το βίντεο καλωσορίσματος",
+        welcomeQrBody: "Σαρώστε αυτόν τον κωδικό QR με την κάμερα του τηλεφώνου σας ή πατήστε τον παρακάτω κωδικό QR για να παρακολουθήσετε το βίντεο «Καλώς ορίσατε στο Σαν Ντιέγκο, διεθνείς εκπρόσωποι!».",
+        welcomeQrAction: "Παρακολουθήστε το βίντεο «Καλώς ορίσατε στο Σαν Ντιέγκο, διεθνείς εκπρόσωποι!»"
       },
       kannada: {
         welcomeLine1: "ಸ್ವಾಗತ",
@@ -749,7 +830,11 @@
         whatsAppDesc: "ಆತಿಥ್ಯ ನವೀಕರಣಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಾಯಕ್ಕಾಗಿ ನಮ್ಮ <strong>ESMCHDelegatesSupport</strong> ವಾಟ್ಸಾಪ್ ಗುಂಪಿಗೆ ಸೇರಿ.",
         waLine1: "NW JoyBridge ಆ್ಯಪ್",
         waLine2: "ಪ್ರತಿನಿಧಿಗಳಿಗೆ ಸಹಾಯ",
-        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು"
+        waLine3: "ವಾಟ್ಸಾಪ್ ಗುಂಪು",
+        welcomeQrTitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ ಸುಸ್ವಾಗತ, ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ! ವೀಡಿಯೊ",
+        welcomeQrSubtitle: "ಸ್ವಾಗತ ವೀಡಿಯೊ ವೀಕ್ಷಿಸಲು QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಟ್ಯಾಪ್ ಮಾಡಿ",
+        welcomeQrBody: "“ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ ಸುಸ್ವಾಗತ, ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ!” ವೀಡಿಯೊ ವೀಕ್ಷಿಸಲು ನಿಮ್ಮ ಫೋನ್ ಕ್ಯಾಮೆರಾದಿಂದ ಈ QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಕೆಳಗಿನ QR ಕೋಡ್ ಟ್ಯಾಪ್ ಮಾಡಿ.",
+        welcomeQrAction: "“ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ ಸುಸ್ವಾಗತ, ಅಂತರರಾಷ್ಟ್ರೀಯ ಪ್ರತಿನಿಧಿಗಳೇ!” ವೀಡಿಯೊ ವೀಕ್ಷಿಸಿ"
       },
       konkani_romi: {
         welcomeLine1: "BOREM YEUKOR",
@@ -776,7 +861,11 @@
         whatsAppDesc: "Upegi mahiti mellonk amchea <strong>ESMCHDelegatesSupport</strong> WhatsApp zomeant bhag gheiat.",
         waLine1: "NW JoyBridge App",
         waLine2: "Pratinidhink Adar",
-        waLine3: "WhatsApp Zomo"
+        waLine3: "WhatsApp Zomo",
+        welcomeQrTitle: "San Diego-nt Borem Yeukor, Sonvsarik Pratinidhimno! Video",
+        welcomeQrSubtitle: "Yevkaracho video pollounk QR code scan korat vo tap korat",
+        welcomeQrBody: "“San Diego-nt Borem Yeukor, Sonvsarik Pratinidhimno!” video pollounk tumchea phone-achea camera-n ho QR code scan korat vo sokoil dilolea QR code-acher tap korat.",
+        welcomeQrAction: "“San Diego-nt Borem Yeukor, Sonvsarik Pratinidhimno!” Video Polloiat"
       },
       korean: {
         welcomeLine1: "환영합니다",
@@ -803,7 +892,11 @@
         whatsAppDesc: "환대 소식, 현지 안내 및 따뜻한 교제를 위해 마련된 <strong>ESMCHDelegatesSupport</strong> 왓츠앱(WhatsApp) 그룹에 참여해 보세요.",
         waLine1: "NW JoyBridge 앱",
         waLine2: "국제 대표자 지원 안내",
-        waLine3: "WhatsApp 그룹"
+        waLine3: "WhatsApp 그룹",
+        welcomeQrTitle: "샌디에이고에 오신 국제 대표단 여러분을 환영합니다! 동영상",
+        welcomeQrSubtitle: "QR 코드를 스캔하거나 탭하여 환영 동영상을 시청하세요",
+        welcomeQrBody: "휴대폰 카메라로 이 QR 코드를 스캔하거나 아래 QR 코드를 탭하여 “샌디에이고에 오신 국제 대표단 여러분을 환영합니다!” 동영상을 시청하세요.",
+        welcomeQrAction: "“샌디에이고에 오신 국제 대표단 여러분을 환영합니다!” 동영상 시청하기"
       },
       persian: {
         welcomeLine1: "خوش آمدید به",
@@ -830,7 +923,11 @@
         whatsAppDesc: "جهت اطلاع از هماهنگی‌های مهمان‌نوازی و کمک‌های محلی به گروه واتس‌اپ <strong>ESMCHDelegatesSupport</strong> بپیوندید.",
         waLine1: "اپلیکیشن NW JoyBridge",
         waLine2: "پشتیبانی از نمایندگان مجمع",
-        waLine3: "گروه واتس‌اپ"
+        waLine3: "گروه واتس‌اپ",
+        welcomeQrTitle: "ویدئوی خوش‌آمدگویی: نمایندگان بین‌المللی، به سن دیگو خوش آمدید!",
+        welcomeQrSubtitle: "کد QR را اسکن کنید یا برای تماشای ویدئوی خوش‌آمدگویی ضربه بزنید",
+        welcomeQrBody: "برای تماشای ویدئوی «نمایندگان بین‌المللی، به سن دیگو خوش آمدید!» این کد QR را با دوربین تلفن خود اسکن کنید یا روی کد QR زیر ضربه بزنید.",
+        welcomeQrAction: "تماشای ویدئوی «نمایندگان بین‌المللی، به سن دیگو خوش آمدید!»"
       },
       polish: {
         welcomeLine1: "WITAJCIE W",
@@ -857,7 +954,11 @@
         whatsAppDesc: "Dołącz do naszej dedykowanej grupy WhatsApp <strong>ESMCHDelegatesSupport</strong>, aby otrzymywać informacje dotyczące gościnności, lokalną pomoc i cieszyć się braterską atmosferą.",
         waLine1: "Aplikacja NW JoyBridge",
         waLine2: "Wsparcie dla Delegatów",
-        waLine3: "Grupa WhatsApp"
+        waLine3: "Grupa WhatsApp",
+        welcomeQrTitle: "Film: Witamy w San Diego, delegaci międzynarodowi!",
+        welcomeQrSubtitle: "Zeskanuj kod QR lub dotknij, aby obejrzeć film powitalny",
+        welcomeQrBody: "Zeskanuj ten kod QR aparatem w telefonie lub dotknij poniższy kod QR, aby obejrzeć film „Witamy w San Diego, delegaci międzynarodowi!”.",
+        welcomeQrAction: "Obejrzyj film „Witamy w San Diego, delegaci międzynarodowi!”"
       },
       russian: {
         welcomeLine1: "ДОБРО ПОЖАЛОВАТЬ В",
@@ -884,7 +985,11 @@
         whatsAppDesc: "Присоединяйтесь к нашей группе WhatsApp <strong>ESMCHDelegatesSupport</strong> для получения информации о приеме и дружеского общения.",
         waLine1: "Приложение NW JoyBridge",
         waLine2: "Поддержка делегатов",
-        waLine3: "Группа в WhatsApp"
+        waLine3: "Группа в WhatsApp",
+        welcomeQrTitle: "Видео: Добро пожаловать в Сан-Диего, международные делегаты!",
+        welcomeQrSubtitle: "Отсканируйте QR-код или нажмите, чтобы посмотреть приветственное видео",
+        welcomeQrBody: "Отсканируйте этот QR-код камерой телефона или нажмите на QR-код ниже, чтобы посмотреть видео «Добро пожаловать в Сан-Диего, международные делегаты!».",
+        welcomeQrAction: "Смотреть видео «Добро пожаловать в Сан-Диего, международные делегаты!»"
       },
       slovenian: {
         welcomeLine1: "DOBRODOŠLI V",
@@ -911,7 +1016,11 @@
         whatsAppDesc: "Pridružite se naši WhatsApp skupini <strong>ESMCHDelegatesSupport</strong> za obvestila o gostoljubnosti, lokalno pomoč in prijetno druženje.",
         waLine1: "Aplikacija NW JoyBridge",
         waLine2: "Podpora za delegate",
-        waLine3: "Skupina WhatsApp"
+        waLine3: "Skupina WhatsApp",
+        welcomeQrTitle: "Video: Dobrodošli v San Diegu, mednarodni delegati!",
+        welcomeQrSubtitle: "Skenirajte kodo QR ali tapnite za ogled pozdravnega videa",
+        welcomeQrBody: "Skenirajte to kodo QR s kamero telefona ali tapnite spodnjo kodo QR za ogled videoposnetka »Dobrodošli v San Diegu, mednarodni delegati!«.",
+        welcomeQrAction: "Oglejte si video »Dobrodošli v San Diegu, mednarodni delegati!«"
       },
       spanish: {
         welcomeLine1: "BIENVENIDOS A",
@@ -938,7 +1047,11 @@
         whatsAppDesc: "Únase a nuestro grupo exclusivo de WhatsApp <strong>ESMCHDelegatesSupport</strong> para recibir avisos de hospitalidad, asistencia local y compañía fraternal.",
         waLine1: "App NW JoyBridge",
         waLine2: "Apoyo para Delegados",
-        waLine3: "Grupo de WhatsApp"
+        waLine3: "Grupo de WhatsApp",
+        welcomeQrTitle: "Video: ¡Bienvenidos a San Diego, delegados internacionales!",
+        welcomeQrSubtitle: "Escanee el código QR o toque para ver el video de bienvenida",
+        welcomeQrBody: "Escanee este código QR con la cámara de su teléfono o toque el código QR de abajo para ver el video “¡Bienvenidos a San Diego, delegados internacionales!”.",
+        welcomeQrAction: "Ver el video “¡Bienvenidos a San Diego, delegados internacionales!”"
       },
       tagalog: {
         welcomeLine1: "MALIGAYANG PAGDATING SA",
@@ -965,7 +1078,11 @@
         whatsAppDesc: "Sumali sa aming <strong>ESMCHDelegatesSupport</strong> WhatsApp group para sa mga update sa hospitalidad, lokal na tulong, at masayang pagsasama.",
         waLine1: "NW JoyBridge App",
         waLine2: "Tulong para sa mga Delegado",
-        waLine3: "WhatsApp Group"
+        waLine3: "WhatsApp Group",
+        welcomeQrTitle: "Video: Maligayang Pagdating sa San Diego, mga Internasyonal na Delegado!",
+        welcomeQrSubtitle: "I-scan ang QR code o i-tap para panoorin ang welcome video",
+        welcomeQrBody: "I-scan ang QR code na ito gamit ang camera ng iyong telepono o i-tap ang QR code sa ibaba para panoorin ang video na “Maligayang Pagdating sa San Diego, mga Internasyonal na Delegado!”.",
+        welcomeQrAction: "Panoorin ang “Maligayang Pagdating sa San Diego, mga Internasyonal na Delegado!” Video"
       },
       turkish: {
         welcomeLine1: "HOŞ GELDİNİZ",
@@ -992,7 +1109,11 @@
         whatsAppDesc: "Konukseverlik duyuruları, yerel destek ve kardeşlik bağı için özel <strong>ESMCHDelegatesSupport</strong> WhatsApp grubumuza katılın.",
         waLine1: "NW JoyBridge Uygulaması",
         waLine2: "Delegeler İçin Destek",
-        waLine3: "WhatsApp Grubu"
+        waLine3: "WhatsApp Grubu",
+        welcomeQrTitle: "San Diego'ya Hoş Geldiniz, Uluslararası Delegeler! Videosu",
+        welcomeQrSubtitle: "Karşılama videosunu izlemek için QR kodunu tarayın veya dokunun",
+        welcomeQrBody: "“San Diego'ya Hoş Geldiniz, Uluslararası Delegeler!” videosunu izlemek için bu QR kodunu telefonunuzun kamerasıyla tarayın veya aşağıdaki QR koduna dokunun.",
+        welcomeQrAction: "“San Diego'ya Hoş Geldiniz, Uluslararası Delegeler!” Videosunu İzle"
       },
       vietnamese: {
         welcomeLine1: "NỒNG NHIỆT CHÀO MỪNG ĐẾN",
@@ -1019,7 +1140,11 @@
         whatsAppDesc: "Tham gia nhóm WhatsApp <strong>ESMCHDelegatesSupport</strong> để nhận thông tin hỗ trợ đón tiếp, hướng dẫn địa phương và sự kết hợp nồng ấm.",
         waLine1: "Ứng dụng NW JoyBridge",
         waLine2: "Hỗ trợ Đại biểu",
-        waLine3: "Nhóm WhatsApp"
+        waLine3: "Nhóm WhatsApp",
+        welcomeQrTitle: "Video: Chào mừng các đại biểu quốc tế đến với San Diego!",
+        welcomeQrSubtitle: "Quét mã QR hoặc chạm để xem video chào mừng",
+        welcomeQrBody: "Quét mã QR này bằng camera điện thoại của bạn hoặc chạm vào mã QR bên dưới để xem video “Chào mừng các đại biểu quốc tế đến với San Diego!”.",
+        welcomeQrAction: "Xem video “Chào mừng các đại biểu quốc tế đến với San Diego!”"
       }
     };
 
@@ -1099,6 +1224,32 @@
       document.getElementById('waLine1').innerText = data.waLine1 || "NW JoyBridge App";
       document.getElementById('waLine2').innerText = data.waLine2 || "Support for Delegates";
       document.getElementById('waLine3').innerText = data.waLine3 || "WhatsApp Group";
+
+      // Update Welcome Video QR Card language
+      const qrTitleEl = document.getElementById('welcomeQrCardTitle');
+      const qrSubEl = document.getElementById('welcomeQrCardSubtitle');
+      const qrBodyEl = document.getElementById('welcomeQrCardBody');
+      const qrActionTextEl = document.getElementById('welcomeQrCardActionText');
+      const qrCardEl = document.getElementById('welcomeVideoQrCard');
+
+      if (qrTitleEl) qrTitleEl.innerText = data.welcomeQrTitle || "Welcome to San Diego, International Delegates! Video";
+      if (qrSubEl) qrSubEl.innerText = data.welcomeQrSubtitle || "Scan QR Code or Tap to Watch the Welcome Video";
+      if (qrBodyEl) qrBodyEl.innerText = data.welcomeQrBody || "Scan this QR Code with your phone camera or tap the QR Code below to watch the “Welcome to San Diego, International Delegates!” video.";
+      if (qrActionTextEl) qrActionTextEl.innerText = data.welcomeQrAction || "Watch “Welcome to San Diego, International Delegates!” Video";
+      if (qrCardEl) qrCardEl.dir = (langKey === 'arabic' || langKey === 'persian') ? 'rtl' : 'ltr';
+    }
+
+    function openWelcomeVideoFromCard(event) {
+      if (event) event.preventDefault();
+      goToWelcome();
+      const videoSection = document.getElementById('welcomeVideoSection');
+      const videoEl = document.getElementById('welcomeVideo');
+      if (videoSection) {
+        videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (videoEl) {
+        videoEl.play().catch(() => {});
+      }
     }
 
     function launchLanguageHelperFromWelcome() {
@@ -1173,10 +1324,11 @@
     // -----------------------------------------------------------------------
     // Service Worker Registration, Offline Readiness & Persistent Media Caching
     // -----------------------------------------------------------------------
-    const SHELL_CACHE_NAME = 'joybridge-shell-v3.04';
+    const SHELL_CACHE_NAME = 'joybridge-shell-v3.05';
     const PERSISTENT_MEDIA_CACHE = 'joybridge-media-v1';
     const WELCOME_VIDEO_URL = new URL('./VIDEO_SanDiegoConventionPrep.mp4', window.location.href).href;
     let isDownloadingVideo = false;
+    let isCheckingConnectivity = false;
 
     async function checkCacheReadiness() {
       if (!('caches' in window)) return false;
@@ -1189,29 +1341,58 @@
       }
     }
 
-    async function updateOnlineStatus() {
-      const banner = document.getElementById('offlineBanner');
-      const dot = document.getElementById('offlineIndicatorDot');
-      const isOnline = navigator.onLine;
+    // Active same-origin GET probe prevents false "Offline" flags on macOS Chrome
+    async function verifyRealConnectivity() {
+      if (window.location.protocol === 'file:') return true;
 
-      if (isOnline) {
-        banner.classList.add('hidden');
-        if (dot) {
-          dot.style.color = '#10B981';
-          dot.title = "Online (Live): Fully connected";
-        }
-      } else {
-        banner.classList.remove('hidden');
-        const hasCache = await checkCacheReadiness();
-        if (dot) {
-          if (hasCache) {
-            dot.style.color = '#06B6D4';
-            dot.title = "Offline (Cached & Ready): Running locally";
-          } else {
-            dot.style.color = '#64748B';
-            dot.title = "Offline (Not Cached): Disconnected";
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+      try {
+        const probeUrl = `./manifest.json?ping=${Date.now()}`;
+        const response = await fetch(probeUrl, {
+          method: 'GET',
+          cache: 'no-store',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        return response.ok;
+      } catch (err) {
+        clearTimeout(timeoutId);
+        return false;
+      }
+    }
+
+    async function updateOnlineStatus() {
+      if (isCheckingConnectivity) return;
+      isCheckingConnectivity = true;
+
+      try {
+        const banner = document.getElementById('offlineBanner');
+        const dot = document.getElementById('offlineIndicatorDot');
+        const isOnline = await verifyRealConnectivity();
+
+        if (isOnline) {
+          if (banner) banner.classList.add('hidden');
+          if (dot) {
+            dot.style.color = '#10B981';
+            dot.title = "Online (Live): Fully connected";
+          }
+        } else {
+          if (banner) banner.classList.remove('hidden');
+          const hasCache = await checkCacheReadiness();
+          if (dot) {
+            if (hasCache) {
+              dot.style.color = '#06B6D4';
+              dot.title = "Offline (Cached & Ready): Running locally";
+            } else {
+              dot.style.color = '#64748B';
+              dot.title = "Offline (Not Cached): Disconnected";
+            }
           }
         }
+      } finally {
+        isCheckingConnectivity = false;
       }
     }
 
@@ -1252,7 +1433,8 @@
         return;
       }
 
-      if (!navigator.onLine) {
+      const actuallyOnline = await verifyRealConnectivity();
+      if (!actuallyOnline) {
         alert('You are currently offline. Please connect to the internet once to save this video for offline viewing.');
         return;
       }
@@ -1320,6 +1502,9 @@
 
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') updateOnlineStatus();
+    });
     updateOnlineStatus();
     updateOfflineVideoButtonState();
 
