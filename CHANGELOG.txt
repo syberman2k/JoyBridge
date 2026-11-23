@@ -1,3 +1,14 @@
+
+==========================================================================================
+Version 3.05 of 22Nov2026:
+
+1. Updated header comment, version badge (v3.05), and SHELL_CACHE_NAME (joybridge-shell-v3.05) in both index.html and sw.js.
+
+2. MacOS Chrome Offline Indicator Fix: Replaced navigator.onLine-only checks in updateOnlineStatus() with a cache-busted same-origin GET probe (./manifest.json?ping=${Date.now()}) with cache: 'no-store' and a 4-second timeout, re-checked whenever the browser tab becomes visible or network state changes.
+
+3. WelcomeVideoQRCode.jpg Bottom Card (All 21 Languages): Added a matching card below the Share the NW JoyBridge App card that links directly to the Welcome to San Diego, International Delegates! video (#welcomeVideoCard → scrolls smoothly to #welcomeVideoSection and starts playback), with full translations across all 21 languages (english, arabic, catalan, chinese, dutch, estonian, finnish, french, german, greek, kannada, konkani_romi, korean, persian, polish, russian, slovenian, spanish, tagalog, turkish, vietnamese).
+
+
 ==========================================================================================
 Version 3.04 of 22Nov2026:
 
