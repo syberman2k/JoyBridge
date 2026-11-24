@@ -1,3 +1,14 @@
+==========================================================================================
+Version 3.06 of 22Nov2026:
+
+1. Version Bump (v3.06): Updated the HTML header comment, the visible top-right version badge (v3.06), and SHELL_CACHE_NAME (joybridge-shell-v3.06). (Note: Updated CACHE_NAME in sw.js to joybridge-shell-v3.06 as well so the service worker refreshes cleanly.)
+
+2. "Welcome International Candidates Video" Translation & Card Update: Replaced "Convention Preparation & Highlights" and "San Diego International Convention Preparation & Highlights video." with "Welcome International Candidates Video" (and "Welcome International Candidates video." in the caption) across all 18 languages in greetingTranslations.
+
+3. Clickable VideoPoster.jpg Link: Wrapped the video poster container and added a direct link/overlay ([https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk](https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk)) on VideoPoster.jpg so clicking the poster opens the Google Drive video in a new tab while keeping the inline player available.
+
+4. External Drive Link on QR Card: Updated both the QR code anchor (WelcomeVideoQRCode.jpg) and the action link beneath it (Watch “Welcome to San Diego, International Delegates!” Video) to open [https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk](https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk) in a new tab.
+
 
 ==========================================================================================
 Version 3.05 of 22Nov2026:
