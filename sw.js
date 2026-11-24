@@ -1,5 +1,5 @@
-// NW JoyBridge Service Worker v3.05
-const SHELL_VERSION = 'v3.05';
+// NW JoyBridge Service Worker v3.06
+const SHELL_VERSION = 'v3.06';
 const SHELL_CACHE = `joybridge-shell-${SHELL_VERSION}`;
 const RUNTIME_CACHE = `joybridge-runtime-${SHELL_VERSION}`;
 const PERSISTENT_MEDIA_CACHE = 'joybridge-media-v1';
