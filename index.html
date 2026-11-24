@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.05 (22 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.06 (23 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Language Helper App</title>
@@ -117,7 +117,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1">
       <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.05</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.06</span>
     </div>
   </header>
 
@@ -195,7 +195,7 @@
                 <h3 id="videoCardTitle" class="font-bold text-slate-900 dark:text-white text-lg sm:text-xl leading-tight">
                   Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)
                 </h3>
-                <p id="videoCardSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Convention Preparation & Highlights</p>
+                <p id="videoCardSubtitle" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Welcome International Candidates Video</p>
               </div>
             </div>
 
@@ -211,13 +211,22 @@
             <div id="videoDownloadProgressBar" class="bg-indigo-600 dark:bg-indigo-400 h-full transition-all duration-150" style="width: 0%"></div>
           </div>
 
-          <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video flex items-center justify-center relative bg-cover bg-center" style="background-image: url('VideoPoster.jpg');">
-            <video id="welcomeVideo" controls playsinline preload="none" poster="VideoPoster.jpg" src="VIDEO_SanDiegoConventionPrep.mp4" class="w-full h-full object-contain relative z-10">
-              Your browser does not support HTML5 video streaming.
-            </video>
-          </div>
+          <a href="https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk"
+             target="_blank"
+             rel="noopener noreferrer"
+             title="Open Welcome International Candidates Video on Google Drive"
+             class="block rounded-xl overflow-hidden bg-black shadow-inner aspect-video relative group border border-slate-200/80 dark:border-slate-700">
+            <img src="VideoPoster.jpg"
+                 alt="Welcome International Candidates Video Poster"
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+            <div class="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition flex items-center justify-center">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-2xl border-2 border-white/80 transition-transform duration-200 group-hover:scale-110">
+                <i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i>
+              </div>
+            </div>
+          </a>
           <p id="videoCardCaption" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 italic text-center">
-            San Diego International Convention Preparation & Highlights video.
+            Welcome International Candidates video.
           </p>
         </div>
 
@@ -378,8 +387,9 @@
           </p>
 
           <div class="flex flex-col items-center justify-center">
-            <a href="#welcomeVideoSection"
-               onclick="openWelcomeVideoFromCard(event)"
+            <a href="https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk"
+               target="_blank"
+               rel="noopener noreferrer"
                class="p-3 bg-white rounded-2xl shadow-md border-2 border-indigo-100 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 transition group"
                title="Tap to watch Welcome to San Diego, International Delegates! Video">
               <img src="WelcomeVideoQRCode.jpg"
@@ -387,8 +397,9 @@
                    class="w-48 h-48 sm:w-56 sm:h-56 object-contain mx-auto group-hover:scale-105 transition-transform duration-200">
             </a>
             <a id="welcomeQrCardAction"
-               href="#welcomeVideoSection"
-               onclick="openWelcomeVideoFromCard(event)"
+               href="https://drive.google.com/file/d/1XvYY2KKlQQXNuQ_nPHIu_dVrHcHQ_Czk"
+               target="_blank"
+               rel="noopener noreferrer"
                class="mt-3 inline-flex items-center gap-2 text-sm sm:text-base font-extrabold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 underline text-center">
               <i class="fa-solid fa-circle-play"></i>
               <span id="welcomeQrCardActionText">Watch “Welcome to San Diego, International Delegates!” Video</span>
@@ -507,8 +518,8 @@
         scriptureCite: "— Matthew 13:16",
         actionBtn: "Open Language Helper",
         videoTitle: "Welcome to the San Diego “Eternal Happiness”<br>International Convention! (Isaiah 26:7)",
-        videoSubtitle: "Convention Preparation & Highlights",
-        videoCaption: "San Diego International Convention Preparation & Highlights video.",
+        videoSubtitle: "Welcome International Candidates Video",
+        videoCaption: "Welcome International Candidates video.",
         venueTitle: "Convention Venue",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">Nov 27–29, 2026</span>",
         venueDesc: "The San Diego Convention Center is the official gathering place for the “Eternal Happiness” International Convention of Jehovah's Witnesses, taking place November 27 thru 29, 2026.",
@@ -538,8 +549,8 @@
         scriptureCite: "— متى ١٣: ١٦",
         actionBtn: "افتح المساعد اللغوي (العربية)",
         videoTitle: "مرحباً بكم في محفل سان دييغو الأممي<br>«السعادة الأبدية»! (إشعيا ٢٦: ٧)",
-        videoSubtitle: "استعدادات المحفل وأبرز المحطات",
-        videoCaption: "فيديو استعدادات وأبرز محطات محفل سان دييغو الأممي.",
+        videoSubtitle: "فيديو الترحيب بالمرشحين الدوليين",
+        videoCaption: "فيديو الترحيب بالمرشحين الدوليين.",
         venueTitle: "موقع انعقاد المحفل",
         venueSubtitle: "مركز مؤتمرات سان دييغو<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">٢٧–٢٩ نوفمبر ٢٠٢٦</span>",
         venueDesc: "مركز مؤتمرات سان دييغو هو المقر الرسمي لانعقاد المحفل الأممي لشهود يهوه تحت عنوان «السعادة الأبدية»، في الفترة من ٢٧ إلى ٢٩ نوفمبر ٢٠٢٦.",
@@ -569,8 +580,8 @@
         scriptureCite: "— Mateu 13:16",
         actionBtn: "Obre l'ajuda lingüística (Català)",
         videoTitle: "Benvinguts al Congrés Internacional de San Diego<br>«Felicitat eterna»! (Isaïes 26:7)",
-        videoSubtitle: "Preparatius i moments destacats del congrés",
-        videoCaption: "Vídeo dels preparatius i moments destacats del Congrés Internacional de San Diego.",
+        videoSubtitle: "Vídeo de benvinguda als candidats internacionals",
+        videoCaption: "Vídeo de benvinguda als candidats internacionals.",
         venueTitle: "Lloc del congrés",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 de nov. de 2026</span>",
         venueDesc: "El San Diego Convention Center és la seu oficial del Congrés Internacional dels Testimonis de Jehovà «Felicitat eterna», que se celebrarà del 27 al 29 de novembre de 2026.",
@@ -600,8 +611,8 @@
         scriptureCite: "—— 马太福音 13:16",
         actionBtn: "开启语言交流助手 (普通话)",
         videoTitle: "欢迎来到圣迭戈“永恒的幸福”<br>国际大会！（以赛亚书 26:7）",
-        videoSubtitle: "大会筹备与精彩亮点",
-        videoCaption: "圣迭戈国际大会筹备与亮点精选短片。",
+        videoSubtitle: "欢迎国际候选人视频",
+        videoCaption: "欢迎国际候选人视频。",
         venueTitle: "大会主会场",
         venueSubtitle: "圣迭戈会展中心<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">2026年11月27日至29日</span>",
         venueDesc: "圣迭戈会展中心是耶和华见证人2026年“永恒的幸福”国际大会的官方举办地点，盛会将于2026年11月27日至29日隆重举行。",
@@ -631,8 +642,8 @@
         scriptureCite: "— Mattheüs 13:16",
         actionBtn: "Open Taalhulp (Nederlands)",
         videoTitle: "Welkom op het San Diego „Eeuwige vreugde”<br>Internationaal Congres! (Jesaja 26:7)",
-        videoSubtitle: "Congresvoorbereiding en Hoogtepunten",
-        videoCaption: "San Diego Internationaal Congres voorbereiding en hoogtepunten video.",
+        videoSubtitle: "Welkomstvideo voor internationale kandidaten",
+        videoCaption: "Welkomstvideo voor internationale kandidaten.",
         venueTitle: "Congreslocatie",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 nov 2026</span>",
         venueDesc: "Het San Diego Convention Center is de officiële locatie voor het „Eeuwige vreugde” Internationale Congres van Jehovah's Getuigen, van 27 t/m 29 november 2026.",
@@ -662,8 +673,8 @@
         scriptureCite: "— Matteuse 13:16",
         actionBtn: "Ava keeleabi (Eesti)",
         videoTitle: "Tere tulemast San Diego „Igavene õnn”<br>rahvusvahelisele kokkutulekule! (Jesaja 26:7)",
-        videoSubtitle: "Kokkutuleku ettevalmistused ja tipphetked",
-        videoCaption: "San Diego rahvusvahelise kokkutuleku ettevalmistuste ja tipphetkede video.",
+        videoSubtitle: "Rahvusvaheliste kandidaatide tervitusvideo",
+        videoCaption: "Rahvusvaheliste kandidaatide tervitusvideo.",
         venueTitle: "Kokkutulekupaik",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29. nov 2026</span>",
         venueDesc: "San Diego Convention Center on Jehoova tunnistajate rahvusvahelise kokkutuleku „Igavene õnn” ametlik toimumispaik 27.–29. novembril 2026.",
@@ -693,8 +704,8 @@
         scriptureCite: "— Matteus 13:16",
         actionBtn: "Avaa kieliapu (Suomi)",
         videoTitle: "Tervetuloa San Diegon ”Ikuinen onnellisuus”<br>-kansainväliseen konventtiin! (Jesaja 26:7)",
-        videoSubtitle: "Konventin valmistelut ja kohokohdat",
-        videoCaption: "San Diegon kansainvälisen konventin valmistelut ja kohokohdat -video.",
+        videoSubtitle: "Tervetuloa kansainväliset ehdokkaat -video",
+        videoCaption: "Tervetuloa kansainväliset ehdokkaat -video.",
         venueTitle: "Konventtipaikka",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29.11.2026</span>",
         venueDesc: "San Diego Convention Center on Jehovan todistajien ”Ikuinen onnellisuus” -kansainvälisen konventin virallinen kokoontumispaikka 27.–29. marraskuuta 2026.",
@@ -724,8 +735,8 @@
         scriptureCite: "— Matthieu 13:16",
         actionBtn: "Ouvrir l'aide linguistique (Français)",
         videoTitle: "Bienvenue à l'assemblée internationale de San Diego<br>« Le bonheur éternel » ! (Isaïe 26:7)",
-        videoSubtitle: "Préparatifs et moments forts de l'assemblée",
-        videoCaption: "Vidéo des préparatifs et moments forts de l'assemblée internationale de San Diego.",
+        videoSubtitle: "Vidéo de bienvenue aux candidats internationaux",
+        videoCaption: "Vidéo de bienvenue aux candidats internationaux.",
         venueTitle: "Lieu de l'assemblée",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 nov. 2026</span>",
         venueDesc: "Le San Diego Convention Center est le lieu officiel de rassemblement pour l'assemblée internationale des Témoins de Jéhovah « Le bonheur éternel », qui se tiendra du 27 au 29 novembre 2026.",
@@ -755,8 +766,8 @@
         scriptureCite: "— Matthäus 13:16",
         actionBtn: "Sprachhelfer öffnen (Deutsch)",
         videoTitle: "Willkommen zum Internationalen Kongress in San Diego<br>„Ewige Freude“! (Jesaja 26:7)",
-        videoSubtitle: "Kongressvorbereitung & Höhepunkte",
-        videoCaption: "Video über Vorbereitung und Höhepunkte des Internationalen Kongresses in San Diego.",
+        videoSubtitle: "Willkommensvideo für internationale Kandidaten",
+        videoCaption: "Willkommensvideo für internationale Kandidaten.",
         venueTitle: "Kongressveranstaltungsort",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29. Nov. 2026</span>",
         venueDesc: "Das San Diego Convention Center ist der offizielle Veranstaltungsort für den Internationalen Kongress der Zeugen Jehovas „Ewige Freude“, der vom 27. bis 29. November 2026 stattfindet.",
@@ -786,8 +797,8 @@
         scriptureCite: "— Ματθαίος 13:16",
         actionBtn: "Άνοιγμα Γλωσσικής Βοήθειας (Ελληνικά)",
         videoTitle: "Καλώς ορίσατε στη Διεθνή Συνέλευση του Σαν Ντιέγκο<br>«Αιώνια Ευτυχία»! (Ησαΐας 26:7)",
-        videoSubtitle: "Προετοιμασίες & Στιγμιότυπα της Συνέλευσης",
-        videoCaption: "Βίντεο προετοιμασιών και στιγμιότυπων της Διεθνούς Συνέλευσης του Σαν Ντιέγκο.",
+        videoSubtitle: "Βίντεο Καλωσορίσματος Διεθνών Υποψηφίων",
+        videoCaption: "Βίντεο καλωσορίσματος διεθνών υποψηφίων.",
         venueTitle: "Χώρος Διεξαγωγής Συνέλευσης",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 Νοε. 2026</span>",
         venueDesc: "Το San Diego Convention Center είναι ο επίσημος χώρος διεξαγωγής της Διεθνούς Συνέλευσης των Μαρτύρων του Ιεχωβά «Αιώνια Ευτυχία», που θα πραγματοποιηθεί από τις 27 έως τις 29 Νοεμβρίου 2026.",
@@ -817,8 +828,8 @@
         scriptureCite: "— ಮತ್ತಾಯ 13:16",
         actionBtn: "ಭಾಷಾ ಸಹಾಯ ತೆರೆಯಿರಿ (ಕನ್ನಡ)",
         videoTitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ<br>ಸಮಾವೇಶಕ್ಕೆ ಸುಸ್ವಾಗತ! (ಯೆಶಾಯ 26:7)",
-        videoSubtitle: "ಸಮಾವೇಶದ ಸಿದ್ಧತೆ ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳು",
-        videoCaption: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಸಿದ್ಧತೆ ಮತ್ತು ಮುಖ್ಯಾಂಶಗಳ ವೀಡಿಯೊ.",
+        videoSubtitle: "ಅಂತರರಾಷ್ಟ್ರೀಯ ಅಭ್ಯರ್ಥಿಗಳಿಗೆ ಸ್ವಾಗತ ವೀಡಿಯೊ",
+        videoCaption: "ಅಂತರರಾಷ್ಟ್ರೀಯ ಅಭ್ಯರ್ಥಿಗಳಿಗೆ ಸ್ವಾಗತ ವೀಡಿಯೊ.",
         venueTitle: "ಸಮಾವೇಶದ ಸ್ಥಳ",
         venueSubtitle: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">ನವೆಂಬರ್ 27–29, 2026</span>",
         venueDesc: "ಸ್ಯಾನ್ ಡಿಯಾಗೋ ಕನ್ವೆನ್ಷನ್ ಸೆಂಟರ್ ಯೆಹೋವನ ಸಾಕ್ಷಿಗಳ \"ಶಾಶ್ವತ ಸಂತೋಷ\" ಅಂತರರಾಷ್ಟ್ರೀಯ ಸಮಾವೇಶದ ಅಧಿಕೃತ ತಾಣವಾಗಿದ್ದು, ನವೆಂಬರ್ 27 ರಿಂದ 29, 2026 ರವರೆಗೆ ನಡೆಯಲಿದೆ.",
@@ -848,8 +859,8 @@
         scriptureCite: "— Matev 13:16",
         actionBtn: "Bhas Adar Ugtto Korat (Konknni Romi)",
         videoTitle: "San Diego “Sodankalchem Dhadosponn” Sonvsarik<br>Mellak Borem Yeukor! (Izaias 26:7)",
-        videoSubtitle: "Mellachi Toyari ani Khas Ghoddnneo",
-        videoCaption: "San Diego Sonvsarik Mellachi toyari ani mukhel ghoddnneancho video.",
+        videoSubtitle: "Sonvsarik Umedvarank Yevkar Video",
+        videoCaption: "Sonvsarik umedvarank yevkar video.",
         venueTitle: "Mellachem Tholl",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">Nov 27–29, 2026</span>",
         venueDesc: "San Diego Convention Center hem Jehovachea Govayancho 'Sodankalchem Dhadosponn' Sonvsarik Mellachem odhikrut zago, zo Novembrache 27 te 29, 2026 meren choltolo.",
@@ -879,8 +890,8 @@
         scriptureCite: "— 마태복음 13:16",
         actionBtn: "언어 도우미 열기 (한국어)",
         videoTitle: "샌디에이고 “영원한 행복” 국제대회에<br>오신 것을 환영합니다! (이사야 26:7)",
-        videoSubtitle: "대회 준비 과정 및 주요 하이라이트",
-        videoCaption: "샌디에이고 국제대회 준비 과정 및 하이라이트 영상.",
+        videoSubtitle: "국제 후보자 환영 동영상",
+        videoCaption: "국제 후보자 환영 동영상.",
         venueTitle: "대회 개최 장소",
         venueSubtitle: "샌디에이고 컨벤션 센터<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">2026년 11월 27일~29일</span>",
         venueDesc: "샌디에이고 컨벤션 센터는 2026년 11월 27일부터 29일까지 개최되는 여호와의 증인의 \"영원한 행복\" 국제대회 공식 행사장입니다.",
@@ -910,8 +921,8 @@
         scriptureCite: "— مَتّی ۱۳: ۱۶",
         actionBtn: "باز کردن راهنمای زبان (فارسی)",
         videoTitle: "به مجمع بین‌المللی سن دیگو «شادی جاودانی»<br>خوش آمدید! (اِشَعْیا ۲۶: ۷)",
-        videoSubtitle: "آمادگی‌های مجمع و نکات برجسته",
-        videoCaption: "ویدئوی آمادگی‌ها و نکات برجسته مجمع بین‌المللی سن دیگو.",
+        videoSubtitle: "ویدئوی خوش‌آمدگویی به داوطلبان بین‌المللی",
+        videoCaption: "ویدئوی خوش‌آمدگویی به داوطلبان بین‌المللی.",
         venueTitle: "محل برگزاری مجمع",
         venueSubtitle: "مرکز همایش‌های سن دیگو<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">۲۷ تا ۲۹ نوامبر ۲۰۲۶</span>",
         venueDesc: "مرکز همایش‌های سن دیگو محل رسمی برگزاری مجمع بین‌المللی شاهدان یَهُوَه با عنوان «شادی جاودانی» است که از ۲۷ تا ۲۹ نوامبر ۲۰۲۶ برگزار خواهد شد.",
@@ -941,8 +952,8 @@
         scriptureCite: "— Mateusza 13:16",
         actionBtn: "Otwórz pomoc językową (Polski)",
         videoTitle: "Witamy na Kongresie Międzynarodowym w San Diego<br>„Wieczne szczęście”! (Izajasza 26:7)",
-        videoSubtitle: "Przygotowania do Kongresu i najważniejsze momenty",
-        videoCaption: "Film przedstawiający przygotowania i najważniejsze momenty Kongresu Międzynarodowego w San Diego.",
+        videoSubtitle: "Film powitalny dla międzynarodowych kandydatów",
+        videoCaption: "Film powitalny dla międzynarodowych kandydatów.",
         venueTitle: "Miejsce Kongresu",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 listopada 2026</span>",
         venueDesc: "San Diego Convention Center to oficjalne miejsce Kongresu Międzynarodowego Świadków Jehowy pod hasłem „Wieczne szczęście”, odbywającego się w dniach 27–29 listopada 2026 r.",
@@ -972,8 +983,8 @@
         scriptureCite: "— Матфея 13:16",
         actionBtn: "Открыть языковой помощник (Русский)",
         videoTitle: "Добро пожаловать на Международный конгресс в Сан-Диего<br>«Вечное счастье»! (Исаия 26:7)",
-        videoSubtitle: "Подготовка к конгрессу и ключевые моменты",
-        videoCaption: "Видео подготовки и ярких моментов Международного конгресса в Сан-Диего.",
+        videoSubtitle: "Приветственное видео для международных кандидатов",
+        videoCaption: "Приветственное видео для международных кандидатов.",
         venueTitle: "Место проведения конгресса",
         venueSubtitle: "Конференц-центр Сан-Диего<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 ноября 2026 г.</span>",
         venueDesc: "Конференц-центр Сан-Диего (San Diego Convention Center) — официальное место проведения Международного конгресса Свидетелей Иеговы «Вечное счастье», который пройдет с 27 по 29 ноября 2026 года.",
@@ -1003,8 +1014,8 @@
         scriptureCite: "— Matej 13:16",
         actionBtn: "Odpri jezikovni pripomoček (Slovenščina)",
         videoTitle: "Dobrodošli na mednarodnem zborovanju v San Diegu<br>»Večna sreča«! (Izaija 26:7)",
-        videoSubtitle: "Priprave na zborovanje in vrhunci",
-        videoCaption: "Videoposnetek priprav in vrhuncev mednarodnega zborovanja v San Diegu.",
+        videoSubtitle: "Pozdravni video za mednarodne kandidate",
+        videoCaption: "Pozdravni video za mednarodne kandidate.",
         venueTitle: "Prizorišče zborovanja",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27.–29. nov. 2026</span>",
         venueDesc: "San Diego Convention Center je uradno zbirališče za mednarodno zborovanje Jehovovih prič z naslovom »Večna sreča«, ki bo potekalo od 27. do 29. novembra 2026.",
@@ -1034,8 +1045,8 @@
         scriptureCite: "— Mateo 13:16",
         actionBtn: "Abrir ayuda de idiomas (Español)",
         videoTitle: "¡Bienvenidos a la Asamblea Internacional de San Diego<br>“Felicidad eterna”! (Isaías 26:7)",
-        videoSubtitle: "Preparativos y momentos destacados de la asamblea",
-        videoCaption: "Video de preparativos y momentos destacados de la Asamblea Internacional de San Diego.",
+        videoSubtitle: "Video de bienvenida para candidatos internacionales",
+        videoCaption: "Video de bienvenida para candidatos internacionales.",
         venueTitle: "Lugar de la asamblea",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27 al 29 de nov. de 2026</span>",
         venueDesc: "El Centro de Convenciones de San Diego (San Diego Convention Center) es la sede oficial de la Asamblea Internacional de los Testigos de Jehová “Felicidad eterna”, que tendrá lugar del 27 al 29 de noviembre de 2026.",
@@ -1065,8 +1076,8 @@
         scriptureCite: "— Mateo 13:16",
         actionBtn: "Buksan ang Pantulong sa Wika (Tagalog)",
         videoTitle: "Maligayang Pagdating sa San Diego “Walang-Hanggang Kaligayahan”<br>Internasyonal na Kombensiyon! (Isaias 26:7)",
-        videoSubtitle: "Paghahanda at Mahahalagang Bahagi ng Kombensiyon",
-        videoCaption: "Video ng paghahanda at highlights para sa San Diego International Convention.",
+        videoSubtitle: "Video ng Pagsalubong sa mga Internasyonal na Kandidato",
+        videoCaption: "Video ng pagsalubong sa mga internasyonal na kandidato.",
         venueTitle: "Lugar ng Kombensiyon",
         venueSubtitle: "San Diego Convention Center<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">Nob 27–29, 2026</span>",
         venueDesc: "Ang San Diego Convention Center ang opisyal na venue para sa “Walang-Hanggang Kaligayahan” Internasyonal na Kombensiyon ng mga Saksi ni Jehova sa Nobyembre 27 hanggang 29, 2026.",
@@ -1096,8 +1107,8 @@
         scriptureCite: "— Matta 13:16",
         actionBtn: "Dil Yardımcısını Aç (Türkçe)",
         videoTitle: "San Diego „Sonsuz Mutluluk” Uluslararası<br>Bölge Kongresine Hoş Geldiniz! (İşaya 26:7)",
-        videoSubtitle: "Kongre Hazırlıkları ve Öne Çıkanlar",
-        videoCaption: "San Diego Uluslararası Bölge Kongresi hazırlıkları ve önemli anlar videosu.",
+        videoSubtitle: "Uluslararası Adaylara Hoş Geldiniz Videosu",
+        videoCaption: "Uluslararası adaylara hoş geldiniz videosu.",
         venueTitle: "Kongre Alanı",
         venueSubtitle: "San Diego Kongre Merkezi<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 Kasım 2026</span>",
         venueDesc: "San Diego Kongre Merkezi (San Diego Convention Center), Yehova’nın Şahitlerinin 27-29 Kasım 2026 tarihlerinde gerçekleşecek olan „Sonsuz Mutluluk” Uluslararası Kongresi’nin resmi buluşma merkezidir.",
@@ -1127,8 +1138,8 @@
         scriptureCite: "— Ma-thi-ơ 13:16",
         actionBtn: "Mở Trợ giúp Ngôn ngữ (Tiếng Việt)",
         videoTitle: "Chào mừng đến với Đại hội Quốc tế San Diego<br>“Hạnh phúc vĩnh cửu”! (Ê-sai 26:7)",
-        videoSubtitle: "Công tác chuẩn bị đại hội & những nét đặc sắc",
-        videoCaption: "Video chuẩn bị và những điểm nổi bật của Đại hội Quốc tế San Diego.",
+        videoSubtitle: "Video Chào mừng các Ứng viên Quốc tế",
+        videoCaption: "Video chào mừng các ứng viên quốc tế.",
         venueTitle: "Địa điểm Đại hội",
         venueSubtitle: "Trung tâm Hội nghị San Diego<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">27–29 tháng 11, 2026</span>",
         venueDesc: "Trung tâm Hội nghị San Diego (San Diego Convention Center) là địa điểm chính thức tổ chức Đại hội Quốc tế “Hạnh phúc vĩnh cửu” của Nhân Chứng Giê-hô-va, diễn ra từ ngày 27 đến 29 tháng 11 năm 2026.",
@@ -1239,19 +1250,6 @@
       if (qrCardEl) qrCardEl.dir = (langKey === 'arabic' || langKey === 'persian') ? 'rtl' : 'ltr';
     }
 
-    function openWelcomeVideoFromCard(event) {
-      if (event) event.preventDefault();
-      goToWelcome();
-      const videoSection = document.getElementById('welcomeVideoSection');
-      const videoEl = document.getElementById('welcomeVideo');
-      if (videoSection) {
-        videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      if (videoEl) {
-        videoEl.play().catch(() => {});
-      }
-    }
-
     function launchLanguageHelperFromWelcome() {
       if (currentGreetingLang !== 'english' && database[currentGreetingLang]) {
         selectLanguage(currentGreetingLang);
@@ -1324,7 +1322,7 @@
     // -----------------------------------------------------------------------
     // Service Worker Registration, Offline Readiness & Persistent Media Caching
     // -----------------------------------------------------------------------
-    const SHELL_CACHE_NAME = 'joybridge-shell-v3.05';
+    const SHELL_CACHE_NAME = 'joybridge-shell-v3.06';
     const PERSISTENT_MEDIA_CACHE = 'joybridge-media-v1';
     const WELCOME_VIDEO_URL = new URL('./VIDEO_SanDiegoConventionPrep.mp4', window.location.href).href;
     let isDownloadingVideo = false;
