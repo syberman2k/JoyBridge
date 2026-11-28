@@ -1,4 +1,15 @@
 ==========================================================================================
+Version 3.07 of 27Nov2026:
+
+1. Version Bump (v3.07): Updated the HTML header comment, the top-right version badge (v3.07), and SHELL_CACHE_NAME (joybridge-shell-v3.07). (Reminder: Also update CACHE_NAME in sw.js to joybridge-shell-v3.07 so offline PWA users receive the update cleanly.)
+
+2. Global Language Dropdown & Count: Added 🗣️ 日本語 (Japanese) in alphabetical order to #topGreetingLangSelect and updated the Welcome screen button label from "All 20 Languages" to "All 21 Languages".
+
+3. Welcome & Greeting Page (greetingTranslations.japanese): Added full Japanese translations for the hero banner, Matthew 13:16 scripture quote, Language Helper button, "Welcome International Candidates Video" card, San Diego Convention Center venue card, WhatsApp support card, and the Video QR card.
+
+4. Language Helper Module (database.japanese): Added Japanese (ja-JP) with category headers (挨拶, 日常会話, 移動・道案内, 宣教のスキル) and all 25 phrases across all four categories, including Katakana phonetics for Japanese speakers learning English (phNative) and English syllable phonetics for English speakers learning Japanese (phEng).
+
+==========================================================================================
 Version 3.06 of 22Nov2026:
 
 1. Version Bump (v3.06): Updated the HTML header comment, the visible top-right version badge (v3.06), and SHELL_CACHE_NAME (joybridge-shell-v3.06). (Note: Updated CACHE_NAME in sw.js to joybridge-shell-v3.06 as well so the service worker refreshes cleanly.)
