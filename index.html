@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- NW JoyBridge App Version 3.06 (23 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
+  <!-- NW JoyBridge App Version 3.07 (27 Nov 2026) by syberman2k@gmail.com. Comments and suggestions welcomed! Praise Jah! ❤️ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NW JoyBridge - Language Helper App</title>
@@ -95,6 +95,7 @@
             <option value="french">&#x200E;🗣️ Français (French)</option>
             <option value="german">&#x200E;🗣️ Deutsch (German)</option>
             <option value="greek">&#x200E;🗣️ Ελληνικά (Greek)</option>
+            <option value="japanese">&#x200E;🗣️ 日本語 (Japanese)</option>
             <option value="kannada">&#x200E;🗣️ ಕನ್ನಡ (Kannada)</option>
             <option value="konkani_romi">&#x200E;🗣️ Konknni Romi (Konkani)</option>
             <option value="korean">&#x200E;🗣️ 한국어 (Korean)</option>
@@ -117,7 +118,7 @@
     <!-- Version Indicator -->
     <div class="absolute bottom-0.5 right-4 pointer-events-none select-none flex items-center space-x-1">
       <span id="offlineIndicatorDot" class="text-[10px] leading-none transition-colors duration-300" title="Online Live" style="color: #10B981;">●</span>
-      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.06</span>
+      <span class="text-[10px] text-indigo-200/80 dark:text-slate-400/80 font-mono tracking-wider">v3.07</span>
     </div>
   </header>
 
@@ -179,7 +180,7 @@
           </button>
           <button onclick="goToHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100/90 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold px-5 py-4 rounded-xl border border-slate-200/80 dark:border-slate-700 text-base transition">
             <i class="fa-solid fa-list-ul"></i>
-            <span>All 20 Languages</span>
+            <span>All 21 Languages</span>
           </button>
         </div>
       </div>
@@ -816,6 +817,37 @@
         welcomeQrBody: "Σαρώστε αυτόν τον κωδικό QR με την κάμερα του τηλεφώνου σας ή πατήστε τον παρακάτω κωδικό QR για να παρακολουθήσετε το βίντεο «Καλώς ορίσατε στο Σαν Ντιέγκο, διεθνείς εκπρόσωποι!».",
         welcomeQrAction: "Παρακολουθήστε το βίντεο «Καλώς ορίσατε στο Σαν Ντιέγκο, διεθνείς εκπρόσωποι!»"
       },
+      japanese: {
+        welcomeLine1: "ようこそ",
+        welcomeLine2: "サンディエゴへ！",
+        headerLine1: "NW JoyBridge",
+        headerLine2: "言語ヘルパーアプリ",
+        badge: "カリフォルニア州サンディエゴ • 2026",
+        title: "親愛なる国際代表者の皆さん、ようこそ！",
+        body: "私たちは心を開き、温かいクリスチャン愛をもって両手を広げ、<strong class=\"text-indigo-700 dark:text-indigo-400\">「2026 永遠の幸福」</strong>国際大会へお越しくださった皆さんを歓迎いたします。海や大陸を越えてお越しくださった皆さんと、太陽輝くサンディエゴでお会いできることを心から喜んでいます！お会いできて本当に嬉しいです！",
+        scriptureText: "「しかし，あなた方の目は見ているので幸福であり，あなた方の耳は聞いているので幸福です」。",
+        scriptureCite: "— マタイ 13:16",
+        actionBtn: "言語ヘルパーを開く (日本語)",
+        videoTitle: "サンディエゴ「永遠の幸福」国際大会へ<br>ようこそ！（イザヤ 26:7）",
+        videoSubtitle: "国際候補者歓迎ビデオ",
+        videoCaption: "国際候補者歓迎ビデオ。",
+        venueTitle: "大会会場",
+        venueSubtitle: "サンディエゴ・コンベンションセンター<br><span class=\"text-slate-600 dark:text-slate-300 font-semibold\">2026年11月27日〜29日</span>",
+        venueDesc: "サンディエゴ・コンベンションセンターは、2026年11月27日から29日まで開催されるエホバの証人の「永遠の幸福」国際大会の公式会場です。",
+        venueTap: "マップで開く",
+        venuePhotoLine1: "大会会場",
+        venuePhotoLine2: "サンディエゴ・コンベンションセンター",
+        venuePhotoLine3: "2026年11月27日〜29日",
+        venueCopyright: "画像は著作権で保護されている場合があります。撮影日: 2020年10月",
+        whatsAppDesc: "おもてなしの最新情報、現地でのサポート、温かい交友のために、専用の <strong>ESMCHDelegatesSupport</strong> WhatsAppグループにご参加ください。",
+        waLine1: "NW JoyBridge アプリ",
+        waLine2: "代表者サポート",
+        waLine3: "WhatsApp グループ",
+        welcomeQrTitle: "「サンディエゴへようこそ、国際代表者の皆さん！」ビデオ",
+        welcomeQrSubtitle: "QRコードをスキャンするかタップして歓迎ビデオを見る",
+        welcomeQrBody: "スマートフォンのカメラでこのQRコードをスキャンするか、下のQRコードをタップして「サンディエゴへようこそ、国際代表者の皆さん！」のビデオをご覧ください。",
+        welcomeQrAction: "「サンディエゴへようこそ、国際代表者の皆さん！」ビデオを見る"
+      },
       kannada: {
         welcomeLine1: "ಸ್ವಾಗತ",
         welcomeLine2: "ಸ್ಯಾನ್ ಡಿಯಾಗೋಗೆ!",
@@ -1322,7 +1354,7 @@
     // -----------------------------------------------------------------------
     // Service Worker Registration, Offline Readiness & Persistent Media Caching
     // -----------------------------------------------------------------------
-    const SHELL_CACHE_NAME = 'joybridge-shell-v3.06';
+    const SHELL_CACHE_NAME = 'joybridge-shell-v3.07';
     const PERSISTENT_MEDIA_CACHE = 'joybridge-media-v1';
     const WELCOME_VIDEO_URL = new URL('./VIDEO_SanDiegoConventionPrep.mp4', window.location.href).href;
     let isDownloadingVideo = false;
@@ -1934,6 +1966,47 @@
             { en: "Would you be interested in a free Bible study?", tr: "Θα σας ενδιέφερε ένα δωρεάν μάθημα της Αγίας Γραφής;", phNative: "Γουντ γιου μπι ίντρεστιντ...", phEng: "thah sahs en-thee-EH-feh-reh EH-nah thoh-reh-AHN MAH-thee-mah tees ah-YEE-ahs ghrah-FEES?" },
             { en: "This course can help you understand the Bible.", tr: "Αυτό το πρόγραμμα μπορεί να σας βοηθήσει να κατανοήσετε την Αγία Γραφή.", phNative: "Δις κορς κεν χελπ γιου...", phEng: "af-TOH toh PROH-ghrah-mah boh-REE nah sahs voh-ee-THEE-see nah kah-tah-noh-EE-seh-teh teen ah-YEE-ah ghrah-FEE." },
             { en: "There is no charge and no obligation.", tr: "Δεν υπάρχει καμία χρέωση ούτε υποχρέωση.", phNative: "Δερ ιζ νόου τσαρτζ...", phEng: "then ee-PAHR-khee kah-MEE-ah KHREH-oh-see OO-teh ee-poh-KHREH-oh-see." }
+          ]
+        }
+      },
+      japanese: {
+        name: "日本語",
+        englishName: "Japanese",
+        code: "ja-JP",
+        categories: { greetings: "挨拶", everyday: "日常会話", getting_around: "移動・道案内", ministry_skills: "宣教のスキル" },
+        data: {
+          greetings: [
+            { en: "Hello / Hi", tr: "こんにちは", phNative: "ハロー / ハイ", phEng: "kohn-nee-chee-wah" },
+            { en: "Good morning", tr: "おはようございます", phNative: "グッド・モーニング", phEng: "oh-hah-yoh goh-zah-ee-mahs" },
+            { en: "What is your name?", tr: "お名前は何ですか？", phNative: "ワット・イズ・ユア・ネーム？", phEng: "oh-nah-mah-eh wah nahn dess-kah?" },
+            { en: "My name is...", tr: "私の名前は…です", phNative: "マイ・ネーム・イズ…", phEng: "wah-tah-shee noh nah-mah-eh wah ... dess" },
+            { en: "Nice to meet you", tr: "お会いできて嬉しいです", phNative: "ナイス・トゥ・ミート・ユー", phEng: "oh-eye deh-kee-teh oo-reh-shee dess" },
+            { en: "How are you?", tr: "お元気ですか？", phNative: "ハウ・アー・ユー？", phEng: "oh-gen-kee dess-kah?" },
+            { en: "I'm fine, thank you", tr: "元気です、ありがとうございます", phNative: "アイム・ファイン、サンキュー", phEng: "gen-kee dess, ah-ree-gah-toh goh-zah-ee-mahs" }
+          ],
+          everyday: [
+            { en: "Please", tr: "お願いします / どうぞ", phNative: "プリーズ", phEng: "oh-neh-guy shee-mahs / doh-zoh" },
+            { en: "Thank you", tr: "ありがとうございます", phNative: "サンキュー", phEng: "ah-ree-gah-toh goh-zah-ee-mahs" },
+            { en: "You're welcome", tr: "どういたしまして", phNative: "ユア・ウェルカム", phEng: "doh ee-tah-shee-mahsh-teh" },
+            { en: "Excuse me", tr: "すみません", phNative: "エクスキューズ・ミー", phEng: "soo-mee-mah-sen" },
+            { en: "I'm sorry", tr: "ごめんなさい / 申し訳ありません", phNative: "アイム・ソーリー", phEng: "goh-men-nah-sigh / moh-shee-wah-keh ah-ree-mah-sen" },
+            { en: "Can you help me?", tr: "手伝っていただけますか？", phNative: "キャン・ユー・ヘルプ・ミー？", phEng: "teh-tsoo-daht-teh ee-tah-dah-keh-mahs-kah?" }
+          ],
+          getting_around: [
+            { en: "Where is the bathroom?", tr: "お手洗いはどこですか？", phNative: "ウェア・イズ・ザ・バスルーム？", phEng: "oh-teh-ah-rye wah doh-koh dess-kah?" },
+            { en: "How much is this?", tr: "これはいくらですか？", phNative: "ハウ・マッチ・イズ・ディス？", phEng: "koh-reh wah ee-koo-rah dess-kah?" },
+            { en: "I would like...", tr: "…をお願いします", phNative: "アイ・ウッド・ライク…", phEng: "... oh oh-neh-guy shee-mahs" },
+            { en: "I don't understand", tr: "分かりません", phNative: "アイ・ドント・アンダースタンド", phEng: "wah-kah-ree-mah-sen" },
+            { en: "What time is it?", tr: "今何時ですか？", phNative: "ワット・タイム・イズ・イット？", phEng: "ee-mah nahn-jee dess-kah?" }
+          ],
+          ministry_skills: [
+            { en: "I am happy to see you in San Diego.", tr: "サンディエゴでお会いできて嬉しいです。", phNative: "アイム・ハッピー・トゥ・シー・ユー・イン・サンディエゴ。", phEng: "San Diego deh oh-eye deh-kee-teh oo-reh-shee dess." },
+            { en: "I am here to invite you and your family to our Convention Titled \"2026 Eternal Happiness\" on November 27th in San Diego, here's your personal invitation.", tr: "11月27日にサンディエゴで開催される「2026 永遠の幸福」大会に、あなたとご家族をご招待したくて参りました。こちらが招待状です。", phNative: "アイム・ヒア・トゥ・インバイト・ユー・アンド・ユア・ファミリー・トゥ・アワー・コンベンション・タイトルド「トゥエンティ・トゥエンティ・シックス・イターナル・ハピネス」オン・ノーベンバー・トゥエンティ・セブンス・イン・サンディエゴ、ヒアズ・ユア・パーソナル・インビテーション。", phEng: "joo-ee-chee-gah-tsoo nee-joo-shee-chee-nee-chee nee San Diego deh kigh-sigh sah-reh-roo '2026 Eh-ee-en noh Koh-foo-koo' tigh-kigh nee, ah-nah-tah toh goh-kah-zoh-koo oh goh-shoh-tigh sh-tah-koo-teh mah-ee-ree-mahsh-tah. koh-chee-rah gah shoh-tigh-joh dess." },
+            { en: "I am visiting from ...(country)", tr: "…（国名）から訪問しています。", phNative: "アイム・ビジティング・フロム…（カントリー）", phEng: "... (koo-nee) kah-rah hoh-mohn sh-teh ee-mahs." },
+            { en: "We’re offering a free Bible course this month.", tr: "今月、無料の聖書レッスンをご案内しています。", phNative: "ウィアー・オファリング・ア・フリー・バイブル・コース・ディス・マンス。", phEng: "kohn-geh-tsoo, moo-ryoh noh say-shoh res-soon oh goh-ahn-nigh sh-teh ee-mahs." },
+            { en: "Would you be interested in a free Bible study?", tr: "無料の聖書レッスンに関心がおありですか？", phNative: "ウッド・ユー・ビー・インタレスティッド・イン・ア・フリー・バイブル・スタディ？", phEng: "moo-ryoh noh say-shoh res-soon nee kahn-sheen gah oh-ah-ree dess-kah?" },
+            { en: "This course can help you understand the Bible.", tr: "このレッスンは聖書を理解するのに役立ちます。", phNative: "ディス・コース・キャン・ヘルプ・ユー・アンダースタンド・ザ・バイブル。", phEng: "koh-noh res-soon wah say-shoh oh ree-kigh soo-roo noh nee yah-koo-dah-chee-mahs." },
+            { en: "There is no charge and no obligation.", tr: "費用は一切かからず、義務もありません。", phNative: "ゼア・イズ・ノー・チャージ・アンド・ノー・オブリゲーション。", phEng: "hee-yoh wah ees-sigh kah-kah-rah-zoo, gee-moo moh ah-ree-mah-sen." }
           ]
         }
       },
